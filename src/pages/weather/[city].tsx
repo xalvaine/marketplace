@@ -6,6 +6,7 @@ import Layout from 'components/Layout'
 import CityWeather from '../../components/CityWeather'
 
 interface Props {
+  date: string
   forecast?: Forecast
 }
 
@@ -16,7 +17,10 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
     const { data } = await api.get(`/weather`, {
       params: { q: cityName, appid: process.env.WEATHER_API, units: `metric` },
     })
-    return { revalidate: 15, props: { forecast: data as Forecast } }
+    return {
+      revalidate: 15,
+      props: { forecast: data as Forecast, date: new Date().toJSON() },
+    }
   } catch (e) {
     console.error(e)
     return { notFound: true }
@@ -29,7 +33,7 @@ export const getStaticPaths: GetStaticPaths = async () => ({
 })
 
 const Weather = (props: Props) => {
-  const { forecast } = props
+  const { forecast, date } = props
 
   return (
     <>
@@ -37,7 +41,11 @@ const Weather = (props: Props) => {
         <title>Weather in {forecast?.name}</title>
       </Head>
       <Layout>
-        {forecast ? <CityWeather forecast={forecast} /> : `Загрузка...`}
+        {forecast ? (
+          <CityWeather forecast={forecast} date={date} />
+        ) : (
+          `Загрузка...`
+        )}
       </Layout>
     </>
   )

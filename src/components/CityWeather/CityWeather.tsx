@@ -4,10 +4,11 @@ import styles from './cityWeather.module.scss'
 
 interface Props {
   forecast: Forecast
+  date: string
 }
 
 const CityWeather = (props: Props) => {
-  const { forecast } = props
+  const { forecast, date } = props
 
   return (
     <div className={styles.wrapper}>
@@ -17,8 +18,12 @@ const CityWeather = (props: Props) => {
         {forecast.name}
       </p>
       <p>
-        <span className={styles.highlighted}>Время запроса: </span>
+        <span className={styles.highlighted}>Прогноз от: </span>
         {forecast.dt && moment(forecast?.dt * 1000).format(`HH:mm DD.MM.YYYY`)}
+      </p>
+      <p>
+        <span className={styles.highlighted}>Последний запрос: </span>
+        {forecast.dt && moment(date).format(`HH:mm:SS DD.MM.YYYY`)}
       </p>
       <p>
         <span className={styles.highlighted}>Температура: </span>
