@@ -1,12 +1,12 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
+import Head from 'next/head'
 import { Forecast } from 'interfaces/forecast'
 import api from 'api'
 import Layout from 'components/Layout'
 import CityWeather from '../../components/CityWeather'
-import { useRouter } from 'next/router'
 
 interface Props {
-  forecast: Forecast
+  forecast?: Forecast
 }
 
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
@@ -30,13 +30,16 @@ export const getStaticPaths: GetStaticPaths = async () => ({
 
 const Weather = (props: Props) => {
   const { forecast } = props
-  
-  const router = useRouter()
 
   return (
-    <Layout>
-      {router.isFallback ? `Загрузка...` : <CityWeather forecast={forecast} />}
-    </Layout>
+    <>
+      <Head>
+        <title>Weather in {forecast?.name}</title>
+      </Head>
+      <Layout>
+        {forecast ? <CityWeather forecast={forecast} /> : `Загрузка...`}
+      </Layout>
+    </>
   )
 }
 

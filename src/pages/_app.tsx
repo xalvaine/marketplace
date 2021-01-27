@@ -1,16 +1,20 @@
+import { configureStore } from '@reduxjs/toolkit'
 import { AppProps } from 'next/app'
-import Head from 'next/head'
+import auth from 'reducers/auth'
 import 'globals.scss'
+import { Provider } from 'react-redux'
+
+const store = configureStore({
+  reducer: { auth },
+})
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
-    <>
-      <Head>
-        <title>Create Next App</title>
-      </Head>
+    <Provider store={store}>
       <Component {...pageProps} />
-    </>
+    </Provider>
   )
 }
 
+export type RootState = ReturnType<typeof store.getState>
 export default MyApp

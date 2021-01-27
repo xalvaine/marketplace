@@ -1,7 +1,10 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Link from 'next/link'
+import { postAuth, logout } from 'reducers/auth'
+import { PUBLIC_PATH, PRIVATE_PATH } from 'config'
 import styles from './layout.module.scss'
-import { PUBLIC_PATH } from '../../config'
+import { RootState } from '../../pages/_app'
 
 interface Props {
   children: React.ReactNode
@@ -9,6 +12,9 @@ interface Props {
 
 const Layout = (props: Props) => {
   const { children } = props
+
+  const { isLoggedIn } = useSelector((state: RootState) => state.auth)
+  const dispatch = useDispatch()
 
   return (
     <>
@@ -23,10 +29,24 @@ const Layout = (props: Props) => {
           <li>
             <Link href={PUBLIC_PATH.PRAGUE}>Прага</Link>
           </li>
-          {1 === 2 - 1 ? (
-            <li className={styles.right}>Войти</li>
+          {isLoggedIn ? (
+            <>
+              <li style={{ marginLeft: `auto` }}>
+                <Link href={PRIVATE_PATH.PROFILE}>
+                  <a>Профиль</a>
+                </Link>
+              </li>
+              <li onClick={() => dispatch(logout())}>
+                <a>Выйти</a>
+              </li>
+            </>
           ) : (
-            <li className={styles.right}>Профиль</li>
+            <li
+              style={{ marginLeft: `auto` }}
+              onClick={() => dispatch(postAuth())}
+            >
+              <a>Войти</a>
+            </li>
           )}
         </ul>
       </header>
