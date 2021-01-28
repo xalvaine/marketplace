@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
+import { Provider } from 'react-redux'
 import { AppProps } from 'next/app'
 import auth from 'reducers/auth'
 import 'globals.scss'
-import { Provider } from 'react-redux'
 
 const store = configureStore({
   reducer: { auth },
