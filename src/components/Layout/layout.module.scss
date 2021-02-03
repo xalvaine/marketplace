@@ -1,0 +1,42 @@
+.header {
+  background: white;
+  height: 72px;
+  border-bottom: 1px solid #ebedf0;
+  position: sticky;
+  top: 0;
+
+  ul {
+    display: flex;
+    max-width: 1024px;
+    margin: 0 auto;
+    height: 100%;
+
+    li {
+      h1 {
+        font-size: inherit;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      a {
+        color: #ff7a45;
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        cursor: pointer;
+
+        &:hover {
+          background: #ffded7;
+        }
+      }
+    }
+  }
+}
+
+.main {
+  padding: 16px 24px;
+  max-width: 1024px;
+  margin: 0 auto;
+}
