@@ -11,7 +11,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged && jest"
+      "pre-commit": "pretty-quick --staged && tsc && jest"
     }
   },
   "dependencies": {
