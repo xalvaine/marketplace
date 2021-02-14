@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import Layout from 'components/Layout'
-import useUser from 'lib/useUser'
+import Layout from '@/components/Layout'
+import useUser from '@/lib/useUser'
 
 const Profile = () => {
   const user = useUser()

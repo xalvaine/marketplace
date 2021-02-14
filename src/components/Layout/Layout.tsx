@@ -1,9 +1,9 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { postAuth, logout } from 'reducers/auth'
 import Link from 'next/link'
-import { PUBLIC_PATH, PRIVATE_PATH } from 'config'
-import { RootState } from 'pages/_app'
+import { postAuth, logout } from '@/reducers/auth'
+import { PUBLIC_PATH, PRIVATE_PATH } from '@/config'
+import { RootState } from '@/pages/_app'
 import styles from './layout.module.scss'
 
 interface Props {

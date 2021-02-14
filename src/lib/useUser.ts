@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { RootState } from 'pages/_app'
-import { PUBLIC_PATH } from 'config'
+import { RootState } from '@/pages/_app'
+import { PUBLIC_PATH } from '@/config'
 
 const useUser = () => {
   const auth = useSelector((state: RootState) => state.auth)

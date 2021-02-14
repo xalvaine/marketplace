@@ -1,5 +1,5 @@
 import moment from 'moment'
-import { Forecast } from 'interfaces/forecast'
+import { Forecast } from '@/interfaces/forecast'
 import styles from './cityWeather.module.scss'
 
 interface Props {

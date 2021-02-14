@@ -1,9 +1,9 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
-import { Forecast } from 'interfaces/forecast'
-import api from 'api'
-import Layout from 'components/Layout'
-import CityWeather from 'components/CityWeather'
+import { Forecast } from '@/interfaces/forecast'
+import api from '@/api'
+import Layout from '@/components/Layout'
+import CityWeather from '@/components/CityWeather'
 
 interface Props {
   date: string
