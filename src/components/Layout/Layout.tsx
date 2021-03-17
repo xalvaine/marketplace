@@ -23,12 +23,6 @@ const Layout = (props: Props) => {
           <li>
             <Link href={PUBLIC_PATH.HOME}>Главная</Link>
           </li>
-          <li>
-            <Link href={PUBLIC_PATH.MOSCOW}>Москва</Link>
-          </li>
-          <li>
-            <Link href={PUBLIC_PATH.PRAGUE}>Прага</Link>
-          </li>
           {isLoggedIn ? (
             <>
               <li style={{ marginLeft: `auto` }}>

@@ -1,7 +1,6 @@
 export const PUBLIC_PATH = {
   HOME: `/`,
-  MOSCOW: `/weather/Moscow`,
-  PRAGUE: `/weather/Prague`,
+  PRODUCTS: `/products`,
 }
 
 export const PRIVATE_PATH = {
