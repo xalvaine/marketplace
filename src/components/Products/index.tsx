@@ -14,6 +14,7 @@ const Products = () => {
             <p>name: {product.name}</p>
             <p>brand_name: {product.brand_name}</p>
             <p>description: {product.description}</p>
+            <p>origin: {product.origin}</p>
           </div>
         ))}
       </div>
