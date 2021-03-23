@@ -2,7 +2,9 @@ version: '3.8'
 
 services:
   frontend:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile_deploy
     command: node_modules/.bin/next start
   nginx:
     depends_on:
