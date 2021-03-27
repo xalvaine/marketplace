@@ -4,6 +4,8 @@ services:
   frontend:
     build: .
     command: node_modules/.bin/next start
+    env_file:
+      - .env
   nginx:
     depends_on:
       - frontend
