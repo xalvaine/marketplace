@@ -9,7 +9,7 @@ const Products = () => {
       <p>Всего продуктов: {products?.length}</p>
       <div className={styles.wrapper}>
         {products?.map((product) => (
-          <div className={styles.product}>
+          <div key={product.id} className={styles.product}>
             <p>id: {product.id}</p>
             <p>name: {product.name}</p>
             <p>brand_name: {product.brand_name}</p>
