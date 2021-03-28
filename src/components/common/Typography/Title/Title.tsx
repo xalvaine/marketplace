@@ -6,11 +6,11 @@ type Props = DetailedHTMLProps<
   HTMLAttributes<HTMLHeadingElement>,
   HTMLHeadingElement
 > & {
-  level: 1 | 2 | 3 | 4 | 5
+  level?: 1 | 2 | 3 | 4 | 5
 }
 
 const Title = (props: Props) => {
-  const { level, children, className, ...rest } = props
+  const { level = 1, children, className, ...rest } = props
 
   return createElement(
     `h${level}`,
