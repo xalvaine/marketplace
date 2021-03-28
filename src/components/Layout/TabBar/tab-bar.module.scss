@@ -1,0 +1,22 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px 15px;
+  background: $monoWhite;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.08);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.item {
+  display: grid;
+  justify-items: center;
+}
+
+.icon {
+  fill: $disabled;
+}

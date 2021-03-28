@@ -1,11 +1,13 @@
 import { useProducts } from '@/hooks'
 import styles from './products.module.scss'
+import Typography from '@/components/common/Typography'
 
 const Products = () => {
   const { data: products } = useProducts()
 
   return (
     <>
+      <Typography.Title level={4}>Подборки недели</Typography.Title>
       <p>Всего продуктов: {products?.length}</p>
       <div className={styles.wrapper}>
         {products?.map((product) => (

@@ -2,9 +2,11 @@ FROM node:alpine AS runner
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-ENV NODE_ENV production
+COPY . .
 
-COPY .next ./.next
-COPY node_modules ./node_modules
+RUN yarn install
+RUN yarn build
+
+ENV NODE_ENV production
 
 RUN npx next telemetry disable

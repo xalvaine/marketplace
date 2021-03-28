@@ -1,0 +1,16 @@
+.wrapper {
+  position: relative;
+  display: flex;
+}
+
+.dot {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.badge {
+}

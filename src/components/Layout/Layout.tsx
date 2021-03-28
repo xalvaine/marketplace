@@ -1,7 +1,6 @@
-import React from 'react'
-
 import styles from './layout.module.scss'
 import Header from './Header'
+import TabBar from './TabBar'
 
 interface Props {
   children: React.ReactNode
@@ -14,6 +13,7 @@ const Layout = (props: Props) => {
     <>
       <Header />
       <main className={styles.main}>{children}</main>
+      <TabBar />
     </>
   )
 }
