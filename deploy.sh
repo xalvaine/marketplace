@@ -2,7 +2,7 @@
 #
 # a simple deploy script
 #
-base=$(basename $PWD)
+base="store-frontend"
 
 # build project
 # yarn install --frozen-lockfile
@@ -10,7 +10,7 @@ base=$(basename $PWD)
 
 cd ..
 
-tar --exclude="node_modules" --exclude=".*" -czvf $base.tar.gz $base
+tar --exclude="node_modules" --exclude=".next" --exclude=".husky" --exclude=".git" --exclude=".idea" -czvf $base.tar.gz $base
 rsync --archive --verbose --progress $base.tar.gz dev@178.154.232.196:~/face/
 
 ssh dev@178.154.232.196 "cd face && tar -xzvf $base.tar.gz && cd $base && docker-compose up -d --build"

@@ -3,7 +3,7 @@ import styles from './badge.module.scss'
 import Typography from '../Typography'
 import classNames from 'classnames'
 
-const colorToStyle = {
+const themeToStyle = {
   neutral: styles.neutral,
   selected: styles.selected,
   default: styles.default,
@@ -19,7 +19,8 @@ const sizeToStyle = {
 interface Props {
   dot?: boolean
   count?: number
-  color?: keyof typeof colorToStyle
+  color?: string
+  theme?: keyof typeof themeToStyle
   children: ReactNode
   disabled?: boolean
   size?: 'normal' | 'small'
@@ -30,7 +31,8 @@ const Badge = (props: Props) => {
     children,
     dot,
     count,
-    color = `neutral`,
+    color,
+    theme = `neutral`,
     size = `normal`,
     disabled,
   } = props
@@ -45,7 +47,7 @@ const Badge = (props: Props) => {
           <span
             className={classNames(
               sizeToStyle[size],
-              colorToStyle[color],
+              themeToStyle[theme],
               disabled && styles.disabled,
             )}
           >

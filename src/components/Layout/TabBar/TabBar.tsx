@@ -7,19 +7,19 @@ const TabBar = () => {
   return (
     <ul className={styles.wrapper}>
       <li className={styles.item}>
-        <Badge count={0} size="small" color="selected">
+        <Badge count={0} size="small" theme="selected">
           <BxMenu className={styles.icon} />
         </Badge>
         <Typography.Text disabled>Каталог</Typography.Text>
       </li>
       <li className={styles.item}>
-        <Badge count={6} size="small" color="selected">
+        <Badge count={6} size="small" theme="selected">
           <BxShoppingBag className={styles.icon} />
         </Badge>
         <Typography.Text disabled>Каталог</Typography.Text>
       </li>
       <li className={styles.item}>
-        <Badge count={99} size="small" color="selected">
+        <Badge count={99} size="small" theme="selected">
           <BxHeart className={styles.icon} />
         </Badge>
         <Typography.Text disabled>Каталог</Typography.Text>
