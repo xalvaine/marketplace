@@ -1,7 +1,7 @@
 import Logo from './assets/logo-small.svg'
 import styles from './header.module.scss'
 import { BxBell, BxUserCircle } from '@/icons'
-import Badge from '@/components/common/Badge'
+import { Badge } from '@/components/common'
 
 const Header = () => {
   return (

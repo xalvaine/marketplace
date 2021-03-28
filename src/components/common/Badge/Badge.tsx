@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import styles from './badge.module.scss'
-import Typography from '../Typography'
+import { Typography } from '@/components/common'
 import classNames from 'classnames'
 
 const themeToStyle = {

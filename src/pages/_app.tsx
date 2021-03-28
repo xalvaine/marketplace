@@ -8,6 +8,7 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 import auth from '@/reducers/auth'
 import '@/styles/fonts.scss'
 import '@/styles/globals.scss'
+import 'swiper/swiper.scss'
 
 const store = configureStore({
   reducer: { auth },
