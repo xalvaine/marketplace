@@ -1,27 +1,24 @@
 import { useProducts } from '@/hooks'
+import { Input } from '@/components/common'
+import { BxSearch } from '@/icons'
+
 import styles from './products.module.scss'
-import { Typography } from '@/components/common'
 import Carousel from './Carousel'
+import Items from './Items'
 
 const Products = () => {
   const { data: products } = useProducts()
 
   return (
     <>
+      <Input
+        leftIcon={BxSearch}
+        className={styles.input}
+        size="large"
+        placeholder="Поиск по товарам"
+      />
       <Carousel />
-      <Typography.Title level={4}>Подборки недели</Typography.Title>
-      <p>Всего продуктов: {products?.length}</p>
-      <div className={styles.wrapper}>
-        {products?.map((product) => (
-          <div key={product.id} className={styles.product}>
-            <p>id: {product.id}</p>
-            <p>name: {product.name}</p>
-            <p>brand_name: {product.brand_name}</p>
-            <p>description: {product.description}</p>
-            <p>origin: {product.origin}</p>
-          </div>
-        ))}
-      </div>
+      <Items products={products} />
     </>
   )
 }

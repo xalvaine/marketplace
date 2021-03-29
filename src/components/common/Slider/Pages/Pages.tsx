@@ -11,7 +11,10 @@ const Pages = (props: Props) => {
 
   for (let page = 0; page < total; page++) {
     pages.push(
-      <span className={page === current ? styles.current : styles.other} />,
+      <span
+        key={page}
+        className={page === current ? styles.current : styles.other}
+      />,
     )
   }
 

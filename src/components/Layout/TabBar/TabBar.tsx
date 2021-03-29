@@ -18,7 +18,7 @@ const TabBar = () => {
           <BxShoppingBag className={styles.icon} />
         </Badge>
         <Typography.Text secondary disabled>
-          Каталог
+          Корзина
         </Typography.Text>
       </li>
       <li className={styles.item}>
@@ -26,7 +26,7 @@ const TabBar = () => {
           <BxHeart className={styles.icon} />
         </Badge>
         <Typography.Text secondary disabled>
-          Каталог
+          Избранное
         </Typography.Text>
       </li>
     </ul>

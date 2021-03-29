@@ -1,14 +1,12 @@
 @import 'src/styles/colors.scss';
 
 .wrapper {
-  padding: 16px 15px 8px;
-  position: sticky;
-  top: 0;
+  padding: 16px 0 8px;
+  margin: 0 15px;
   background: $monoWhite;
   display: grid;
   grid-template-columns: 24px 1fr 24px;
   justify-items: center;
-  z-index: 2;
 }
 
 .icon {

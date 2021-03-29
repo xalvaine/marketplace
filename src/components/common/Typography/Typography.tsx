@@ -18,9 +18,9 @@ interface Props {
   strikethrough?: boolean
 }
 
-const Typography = <T extends FunctionComponent>(
-  Component: FunctionComponent,
-) => (props: ComponentProps<T> & Props) => {
+const Typography = <T extends {}>(
+  Component: FunctionComponent<Omit<T, keyof Props> & { className: string }>,
+) => (props: T & Props) => {
   const { className, strikethrough, underline, weight, ...rest } = props
   return (
     <Component
@@ -36,6 +36,6 @@ const Typography = <T extends FunctionComponent>(
   )
 }
 
-Typography.Text = Typography<typeof Text>(Text)
-Typography.Title = Typography<typeof Title>(Title)
+Typography.Text = Typography<ComponentProps<typeof Text>>(Text)
+Typography.Title = Typography<ComponentProps<typeof Title>>(Title)
 export default Typography
