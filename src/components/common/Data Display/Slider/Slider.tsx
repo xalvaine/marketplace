@@ -18,6 +18,7 @@ const Slider = (props: Props) => {
   const [page, setPage] = useState(0)
 
   const slides = Children.map(children, ({ props }) => props)
+  const pagesCount = slides.length
 
   return (
     <Swiper
@@ -25,13 +26,15 @@ const Slider = (props: Props) => {
       className={classNames(styles.slider, className)}
       spaceBetween={12}
       onSlideChange={(event) => setPage(event.realIndex)}
+      allowSlideNext={pagesCount > 1}
+      allowSlidePrev={pagesCount > 1}
     >
       {slides.map((props, index) => (
         <SwiperSlide key={index}>
           <img alt="" className={styles.image} src={props.image} />
         </SwiperSlide>
       ))}
-      <Pages total={slides.length} current={page} />
+      {pagesCount > 1 && <Pages total={pagesCount} current={page} />}
     </Swiper>
   )
 }
