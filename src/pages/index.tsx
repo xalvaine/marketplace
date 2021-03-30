@@ -1,24 +1,33 @@
 import Head from 'next/head'
 import Layout from '@/components/Layout'
-import { useEffect } from 'react'
-import { PUBLIC_PATH } from '@/config'
-import { useRouter } from 'next/router'
+import { QueryClient } from 'react-query'
+import { dehydrate } from 'react-query/hydration'
+import { getProducts } from '@/hooks'
+import Products from '@/components/Products'
 
-const IndexPage = () => {
-  const router = useRouter()
+export const getStaticProps = async () => {
+  const queryClient = new QueryClient()
 
-  useEffect(() => {
-    router.push(PUBLIC_PATH.PRODUCTS).then()
-  }, [])
+  await queryClient.prefetchQuery(`products`, getProducts)
 
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  }
+}
+
+const ProductsPage = () => {
   return (
-    <>
-      <Head>
-        <title>Redirecting</title>
-      </Head>
-      <Layout>Redirecting</Layout>
-    </>
+    <Layout>
+      <>
+        <Head>
+          <title>Продукты</title>
+        </Head>
+        <Products />
+      </>
+    </Layout>
   )
 }
 
-export default IndexPage
+export default ProductsPage

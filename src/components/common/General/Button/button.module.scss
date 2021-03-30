@@ -13,6 +13,7 @@
   font-family: Inter, sans-serif;
   transition: background-color 0.3s, color 0.3s, border 0.3s;
   outline: none;
+  padding: 0 16px;
 }
 
 .icon + .content {
@@ -39,7 +40,6 @@
 }
 
 .primary {
-  padding: 0 14px;
   background: $default;
   color: $monoWhite;
 
@@ -61,10 +61,8 @@
   }
 }
 
-.secondary {
-  padding: 0 14px;
+.link {
   background: $monoWhite;
-  border: 2px solid $default;
   color: $default;
 
   .icon {
@@ -73,6 +71,7 @@
 
   &:hover {
     border-color: $hover;
+    color: $hover;
   }
 
   &:active {
@@ -95,8 +94,19 @@
   }
 }
 
-.link {
+.secondary {
+  composes: link;
+  border: 2px solid $default;
 }
 
 .text {
+  composes: link;
+
+  &:hover {
+    background: $selected;
+  }
+
+  &:active {
+    background: $selected;
+  }
 }
