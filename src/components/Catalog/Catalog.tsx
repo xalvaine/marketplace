@@ -1,6 +1,7 @@
+import Link from 'next/link'
 import { Image, Input } from '@/components/common'
 import { BxSearch } from '@/icons'
-import { mockSrc } from '@/config'
+import { mockSrc, PATH } from '@/config'
 
 import styles from './catalog.module.scss'
 
@@ -14,7 +15,9 @@ const Catalog = () => {
         placeholder="Поиск по товарам"
       />
       <div className={styles.images}>
-        <Image src={mockSrc} label="Продукты питания" />
+        <Link href={{ pathname: PATH.CATEGORY, query: { category: `food` } }}>
+          <Image src={mockSrc} label="Продукты питания" />
+        </Link>
         <Image src={mockSrc} label="Продукты питания" />
         <Image src={mockSrc} label="Продукты питания" />
         <Image src={mockSrc} label="Продукты питания" />

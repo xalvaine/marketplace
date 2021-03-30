@@ -1,10 +1,7 @@
-export const PUBLIC_PATH = {
+export const PATH = {
   HOME: `/`,
-  PRODUCTS: `/products`,
+  PRODUCTS: `/catalog`,
+  CATEGORY: `/catalog/[category]`,
 }
 
-export const PRIVATE_PATH = {
-  PROFILE: `/profile`,
-}
-
-export const mockSrc = `https://drive.google.com/u/0/uc?id=1vife-7BHnHGBQmxN35bfEvHDaAY78f5l`
+export const mockSrc = `https://drive.google.com/u/0/uc?id=1trzBr12oqw1WhqQtwnldiApxd2XSI4a5`
