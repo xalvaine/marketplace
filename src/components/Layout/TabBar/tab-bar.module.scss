@@ -17,7 +17,7 @@
   display: grid;
   justify-items: center;
 
-  span {
+  .text {
     transition: color 0.3s;
   }
 
@@ -26,7 +26,7 @@
   }
 
   &:hover {
-    span {
+    .text {
       color: $hover;
     }
 
@@ -36,7 +36,7 @@
   }
 
   &:active {
-    span {
+    .text {
       color: $default;
     }
 
@@ -49,7 +49,7 @@
 .itemSelected {
   composes: item;
 
-  span {
+  .text {
     color: $default;
   }
 

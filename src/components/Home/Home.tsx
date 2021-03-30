@@ -10,7 +10,7 @@ const Home = () => {
   const { data: products } = useProducts()
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <Input
         leftIcon={BxSearch}
         className={styles.input}
@@ -19,7 +19,7 @@ const Home = () => {
       />
       <Carousel />
       <Items products={products} />
-    </>
+    </div>
   )
 }
 

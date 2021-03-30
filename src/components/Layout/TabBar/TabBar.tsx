@@ -50,7 +50,7 @@ const TabBar = () => {
             <Badge count={tab.notificationsCount} size="small" theme="selected">
               <tab.icon className={styles.icon} />
             </Badge>
-            <Typography.Text secondary disabled>
+            <Typography.Text secondary disabled className={styles.text}>
               {tab.name}
             </Typography.Text>
           </li>
