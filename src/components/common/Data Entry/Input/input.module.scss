@@ -1,0 +1,93 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  position: relative;
+  display: flex;
+}
+
+.input {
+  outline: none;
+  width: 100%;
+  background: $monoWhite;
+  border: 1px solid $border;
+  border-radius: 8px;
+  font-family: Inter, sans-serif;
+  color: $primary;
+  transition: border-color 0.3s, box-shadow 0.3s;
+
+  &::placeholder {
+    color: $disabled;
+  }
+
+  &:hover {
+    border-color: $hover;
+  }
+
+  &:focus {
+    border-color: $hover;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  &:disabled {
+    border: 1px solid $border;
+    box-shadow: unset;
+  }
+}
+
+.normalInput {
+  composes: input;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 6px 12px;
+
+  &.withLeftIcon {
+    padding-left: 30px;
+  }
+
+  &.withRightIcon {
+    padding-right: 30px;
+  }
+
+  + .icon {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.largeInput {
+  composes: input;
+  font-size: 16px;
+  line-height: 22px;
+  padding: 9px 12px;
+
+  &.withLeftIcon {
+    padding-left: 32px;
+  }
+
+  &.withRightIcon {
+    padding-right: 32px;
+  }
+
+  + .icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.icon {
+  fill: $disabled;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.leftIcon {
+  composes: icon;
+  left: 12px;
+}
+
+.rightIcon {
+  composes: icon;
+  right: 12px;
+}

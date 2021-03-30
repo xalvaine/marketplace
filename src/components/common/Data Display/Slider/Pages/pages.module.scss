@@ -1,0 +1,29 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12px;
+  z-index: 1;
+  display: grid;
+  justify-content: center;
+  grid-gap: 6px;
+  grid-auto-flow: column;
+}
+
+.other {
+  width: 16px;
+  height: 3px;
+  left: 30px;
+  background: $monoWhite;
+  opacity: 0.3;
+  border-radius: 2px;
+  transition: opacity 0.3s, width 0.3s;
+}
+
+.current {
+  composes: other;
+  width: 24px;
+  opacity: 1;
+}

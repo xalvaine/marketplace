@@ -17,4 +17,4 @@ const useUser = () => {
   return { authorized: auth.isLoggedIn }
 }
 
-export default useUser
+export { useUser }

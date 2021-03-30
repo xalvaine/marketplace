@@ -1,0 +1,65 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px 15px;
+  background: $monoWhite;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.08);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  z-index: 1;
+}
+
+.item {
+  display: grid;
+  justify-items: center;
+
+  span {
+    transition: color 0.3s;
+  }
+
+  .icon {
+    transition: fill 0.3s;
+  }
+
+  &:hover {
+    span {
+      color: $hover;
+    }
+
+    .icon {
+      fill: $hover;
+    }
+  }
+
+  &:active {
+    span {
+      color: $default;
+    }
+
+    .icon {
+      fill: $default;
+    }
+  }
+}
+
+.itemSelected {
+  composes: item;
+
+  span {
+    color: $default;
+  }
+
+  .icon {
+    fill: $default;
+  }
+}
+
+.icon {
+  fill: $disabled;
+  width: 26px;
+  height: 26px;
+}

@@ -6,7 +6,9 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { Hydrate } from 'react-query/hydration'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import auth from '@/reducers/auth'
-import '@/globals.scss'
+import '@/styles/fonts.scss'
+import '@/styles/globals.scss'
+import 'swiper/swiper.scss'
 
 const store = configureStore({
   reducer: { auth },
@@ -14,6 +16,7 @@ const store = configureStore({
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const queryClientRef = useRef<QueryClient>()
+
   if (!queryClientRef.current) {
     queryClientRef.current = new QueryClient({
       defaultOptions: { queries: { refetchOnWindowFocus: false } },
