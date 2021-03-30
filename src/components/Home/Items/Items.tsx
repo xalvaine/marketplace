@@ -1,9 +1,8 @@
 import { Product } from '@/interfaces'
-import { Typography } from '@/components/common'
+import { Typography, ProductCard } from '@/components/common'
 import { declareNumber } from '@/utils'
 
 import styles from './items.module.scss'
-import ProductCard from './ProductCard'
 
 interface Props {
   products?: Product[]
