@@ -1,13 +1,13 @@
 import Head from 'next/head'
-import Category from '@/components/Category'
+import Group from '@/components/Group'
 
 const CategoryPage = () => {
   return (
     <>
       <Head>
-        <title>Продукты питания</title>
+        <title>Сладости</title>
       </Head>
-      <Category />
+      <Group />
     </>
   )
 }

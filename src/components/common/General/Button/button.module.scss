@@ -64,6 +64,7 @@
 .link {
   background: $monoWhite;
   color: $default;
+  padding: 0;
 
   .icon {
     fill: $default;
@@ -96,11 +97,13 @@
 
 .secondary {
   composes: link;
+  padding: 0 16px;
   border: 2px solid $default;
 }
 
 .text {
   composes: link;
+  padding: 0 16px;
 
   &:hover {
     background: $selected;
