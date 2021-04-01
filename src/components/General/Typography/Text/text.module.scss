@@ -1,0 +1,17 @@
+@import '../../../../styles/colors';
+
+.text {
+  color: $primary;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.textSecondary {
+  font-size: 12px;
+  line-height: 18px;
+  color: $secondary;
+}
+
+.textDisabled {
+  color: $disabled;
+}

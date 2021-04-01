@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Products from '@/components/Home'
+import Products from '@/views/Home'
 
 const HomePage = () => {
   return (

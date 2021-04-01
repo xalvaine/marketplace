@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Group from '@/components/Group'
+import Group from '@/views/Group'
 
 const CategoryPage = () => {
   return (
