@@ -1,4 +1,4 @@
-@import '../../../styles/colors';
+@import 'src/styles/colors';
 
 .product {
   display: flex;
@@ -8,6 +8,7 @@
 .imageWrapper {
   position: relative;
   padding: 50% 0;
+  margin-bottom: 8px;
 }
 
 .slider {

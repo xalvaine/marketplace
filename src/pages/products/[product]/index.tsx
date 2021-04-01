@@ -1,13 +1,13 @@
 import Head from 'next/head'
-import Category from '@/views/pages/Category'
+import Product from '@/views/pages/Product'
 
 const CategoryPage = () => {
   return (
     <>
       <Head>
-        <title>Продукты питания</title>
+        <title>Арахисовая паста</title>
       </Head>
-      <Category />
+      <Product />
     </>
   )
 }

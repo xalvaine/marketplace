@@ -1,4 +1,6 @@
 import { ReactNode } from 'react'
+import styles from './tab.module.scss'
+import { Typography } from '@/components'
 
 interface Props {
   children?: ReactNode
@@ -6,7 +8,13 @@ interface Props {
 
 const Tab = (props: Props) => {
   const { children } = props
-  return <>{children}</>
+  return (
+    <li className={styles.wrapper}>
+      <Typography.Text className={styles.text} block>
+        {children}
+      </Typography.Text>
+    </li>
+  )
 }
 
 export default Tab

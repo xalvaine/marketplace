@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { Link } from '@/components'
 import { Image, Input } from '@/components'
 import { BxSearch } from '@/icons'
 import { mockSrc, PATH } from '@/config'

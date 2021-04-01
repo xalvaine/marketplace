@@ -1,14 +1,10 @@
-import { useProducts } from '@/hooks'
 import { Input } from '@/components'
 import { BxSearch } from '@/icons'
 
 import styles from './home.module.scss'
 import Carousel from './Carousel'
-import Items from './Items'
 
 const Home = () => {
-  const { data: products } = useProducts()
-
   return (
     <div className={styles.wrapper}>
       <Input
@@ -18,7 +14,6 @@ const Home = () => {
         placeholder="Поиск по товарам"
       />
       <Carousel />
-      <Items products={products} />
     </div>
   )
 }

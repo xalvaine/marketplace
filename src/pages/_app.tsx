@@ -8,7 +8,7 @@ import auth from '@/reducers/auth'
 import '@/styles/fonts.scss'
 import '@/styles/globals.scss'
 import 'swiper/swiper.scss'
-import Layout from '@/views/Layout'
+import Layout from '@/views/common/Layout'
 
 const store = configureStore({
   reducer: { auth },

@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Catalog from '@/views/Catalog'
+import Catalog from '@/views/pages/Catalog'
 
 const CatalogPage = () => {
   return (

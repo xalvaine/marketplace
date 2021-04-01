@@ -1,6 +1,6 @@
 import { Image, Input, Typography } from '@/components'
 import { BxSearch } from '@/icons'
-import Link from 'next/link'
+import { Link } from '@/components'
 import { mockSrc, PATH } from '@/config'
 import styles from './category.module.scss'
 

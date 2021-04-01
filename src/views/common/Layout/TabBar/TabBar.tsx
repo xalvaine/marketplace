@@ -1,33 +1,34 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
+import { Link } from '@/components'
 
 import styles from './tab-bar.module.scss'
 import { BxHeart, BxHomeAlt, BxMenu, BxShoppingBag } from '@/icons'
 import { Typography, Badge } from '@/components'
+import { PATH } from '@/config'
 
 const tabs = [
   {
     icon: BxHomeAlt,
-    key: ``,
+    key: PATH.HOME,
     name: `Главная`,
     notificationsCount: 0,
   },
   {
     icon: BxMenu,
-    key: `catalog`,
+    key: PATH.CATALOG,
     name: `Каталог`,
     notificationsCount: 0,
   },
   {
     icon: BxHeart,
-    key: `favorites`,
+    key: PATH.FAVOURITES,
     name: `Избранное`,
     notificationsCount: 9,
   },
   {
     icon: BxShoppingBag,
-    key: `cart`,
+    key: PATH.CART,
     name: `Корзина`,
     notificationsCount: 99,
   },
@@ -45,7 +46,7 @@ const TabBar = () => {
   return (
     <ul className={styles.wrapper}>
       {tabs.map((tab) => (
-        <Link key={tab.key} href={`/${tab.key}`}>
+        <Link key={tab.key} href={tab.key}>
           <li className={page === tab.key ? styles.itemSelected : styles.item}>
             <Badge count={tab.notificationsCount} size="small" theme="selected">
               <tab.icon className={styles.icon} />
