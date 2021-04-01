@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Group from '@/views/pages/Group'
 
-const CategoryPage = () => {
+const GroupPage = () => {
   return (
     <>
       <Head>
@@ -12,4 +12,4 @@ const CategoryPage = () => {
   )
 }
 
-export default CategoryPage
+export default GroupPage

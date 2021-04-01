@@ -5,7 +5,17 @@
   margin-bottom: 16px;
 }
 
+.sliderWrapper {
+  position: relative;
+  padding: 50% 0;
+}
+
 .slider {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   border-radius: 4px;
   margin-bottom: 16px;
 }

@@ -1,19 +1,17 @@
-import { Variant } from '@/interfaces/variant'
-
-interface Image {
-  id: string
-  pos: string
-  url: string
-  success: boolean
-}
-
 export interface Product {
-  brand_name: string
-  description: string
-  ext_id: null
   id: number
-  images: Image[]
   name: string
-  origin: unknown
-  variants: Variant[]
+  brand_name: string
+  origin: string
+  description: string
+  images: []
+  variants: []
+  attributes: [
+    {
+      code: string
+      value: string
+      title: string
+      type: string
+    },
+  ]
 }

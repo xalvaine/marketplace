@@ -1,10 +1,10 @@
-import { Product } from '@/interfaces'
+import { Products } from '@/interfaces'
 import styles from './product-card.module.scss'
 import { Button, Slider, Typography } from '@/components'
 import { mockSrc } from '@/config'
 
 interface Props {
-  product: Product
+  product: Products[0]
 }
 
 const ProductCard = (props: Props) => {

@@ -2,10 +2,16 @@ import { Link } from '@/components'
 import { Image, Input } from '@/components'
 import { BxSearch } from '@/icons'
 import { mockSrc, PATH } from '@/config'
-
 import styles from './catalog.module.scss'
+import { CatalogItem } from '@/interfaces'
 
-const Catalog = () => {
+interface Props {
+  catalog: CatalogItem[]
+}
+
+const Catalog = (props: Props) => {
+  const { catalog } = props
+
   return (
     <div className={styles.wrapper}>
       <Input
@@ -15,17 +21,14 @@ const Catalog = () => {
         placeholder="Поиск по товарам"
       />
       <div className={styles.images}>
-        <Link href={{ pathname: PATH.CATEGORY, query: { category: `food` } }}>
-          <Image src={mockSrc} label="Продукты питания" />
-        </Link>
-        <Image src={mockSrc} label="Продукты питания" />
-        <Image src={mockSrc} label="Продукты питания" />
-        <Image src={mockSrc} label="Продукты питания" />
-        <Image src={mockSrc} label="Продукты питания" />
-        <Image src={mockSrc} label="Продукты питания" />
-        <Image src={mockSrc} label="Продукты питания" />
-        <Image src={mockSrc} label="Продукты питания" />
-        <Image src={mockSrc} label="Продукты питания" />
+        {catalog?.map((item) => (
+          <Link
+            key={item.id}
+            href={{ pathname: PATH.CATEGORY, query: { category: item.slug } }}
+          >
+            <Image src={mockSrc} label={item.name} />
+          </Link>
+        ))}
       </div>
     </div>
   )

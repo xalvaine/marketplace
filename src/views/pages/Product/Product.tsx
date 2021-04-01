@@ -3,6 +3,7 @@ import { Button, Link, Slider, Typography } from '@/components'
 import { mockSrc, PATH } from '@/config'
 import { BxArrowBack } from '@/icons'
 import styles from './product.module.scss'
+import { Product as ProductType } from '@/interfaces'
 
 interface Query {
   category?: string
@@ -11,12 +12,21 @@ interface Query {
 
 const getURLObject = (query: Query) => {
   const { category, group } = query
-  if (category && group) return { pathname: PATH.GROUP, query }
-  if (category) return { pathname: PATH.CATEGORY, query: { category } }
+  if (category && group) {
+    return { pathname: PATH.GROUP, query: { category, group } }
+  }
+  if (category) {
+    return { pathname: PATH.CATEGORY, query: { category } }
+  }
   return { pathname: PATH.CATALOG }
 }
 
-const Product = () => {
+interface Props {
+  product: ProductType
+}
+
+const Product = (props: Props) => {
+  const { product } = props
   const { query } = useRouter()
 
   return (
@@ -27,12 +37,12 @@ const Product = () => {
             Назад в каталог
           </Button>
         </div>
-        <Slider className={styles.slider}>
-          <Slider.Slide className={styles.slide} image={mockSrc} />
-        </Slider>
-        <Typography.Title level={5}>
-          Арахисовая паста хрустящая Nattys СRUNCHY с кусочками арахиса 325 г
-        </Typography.Title>
+        <div className={styles.sliderWrapper}>
+          <Slider className={styles.slider}>
+            <Slider.Slide className={styles.slide} image={mockSrc} />
+          </Slider>
+        </div>
+        <Typography.Title level={5}>{product.name}</Typography.Title>
       </Link>
     </>
   )

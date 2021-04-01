@@ -1,1 +1,1 @@
-export { getProducts, useProducts } from './useProducts'
+export * from './useProducts'
