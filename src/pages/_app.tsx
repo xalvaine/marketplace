@@ -3,12 +3,12 @@ import { Provider } from 'react-redux'
 import { AppProps } from 'next/app'
 import { useRef } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
-import { Hydrate } from 'react-query/hydration'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import auth from '@/reducers/auth'
 import '@/styles/fonts.scss'
 import '@/styles/globals.scss'
 import 'swiper/swiper.scss'
+import Layout from '@/views/common/Layout'
 
 const store = configureStore({
   reducer: { auth },
@@ -25,12 +25,12 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <QueryClientProvider client={queryClientRef.current}>
-      <Hydrate state={pageProps.dehydratedState}>
-        <Provider store={store}>
+      <Provider store={store}>
+        <Layout>
           <Component {...pageProps} />
-        </Provider>
-        <ReactQueryDevtools />
-      </Hydrate>
+        </Layout>
+      </Provider>
+      <ReactQueryDevtools />
     </QueryClientProvider>
   )
 }

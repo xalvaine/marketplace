@@ -1,33 +1,15 @@
 import Head from 'next/head'
-import Layout from '@/components/Layout'
-import { QueryClient } from 'react-query'
-import { dehydrate } from 'react-query/hydration'
-import { getProducts } from '@/hooks'
-import Products from '@/components/Products'
+import Products from '@/views/pages/Home'
 
-export const getStaticProps = async () => {
-  const queryClient = new QueryClient()
-
-  await queryClient.prefetchQuery(`products`, getProducts)
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  }
-}
-
-const ProductsPage = () => {
+const HomePage = () => {
   return (
-    <Layout>
-      <>
-        <Head>
-          <title>Продукты</title>
-        </Head>
-        <Products />
-      </>
-    </Layout>
+    <>
+      <Head>
+        <title>Продукты</title>
+      </Head>
+      <Products />
+    </>
   )
 }
 
-export default ProductsPage
+export default HomePage

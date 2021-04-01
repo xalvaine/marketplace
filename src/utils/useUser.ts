@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { RootState } from '@/pages/_app'
-import { PUBLIC_PATH } from '@/config'
+import { PATH } from '@/config'
 
 const useUser = () => {
   const auth = useSelector((state: RootState) => state.auth)
@@ -10,7 +10,7 @@ const useUser = () => {
 
   useEffect(() => {
     if (!auth.isLoading && !auth.isLoggedIn) {
-      router.push(PUBLIC_PATH.HOME).then()
+      router.push(PATH.HOME).then()
     }
   }, [auth])
 

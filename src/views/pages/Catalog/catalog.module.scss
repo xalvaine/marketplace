@@ -1,0 +1,13 @@
+.wrapper {
+  margin-bottom: 24px;
+}
+
+.search {
+  margin-bottom: 16px;
+}
+
+.images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 8px 10px;
+}

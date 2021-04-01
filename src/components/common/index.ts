@@ -1,5 +1,0 @@
-export { default as Badge } from './Data Display/Badge'
-export { default as Slider } from './Data Display/Slider'
-export { default as Typography } from './General/Typography'
-export { default as Input } from './Data Entry/Input'
-export { default as Button } from './General/Button'

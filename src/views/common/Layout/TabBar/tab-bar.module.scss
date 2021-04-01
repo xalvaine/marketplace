@@ -1,0 +1,66 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0 15px;
+  background: $monoWhite;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.08);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  z-index: 1;
+}
+
+.item {
+  display: grid;
+  justify-items: center;
+  padding: 8px 0;
+
+  .text {
+    transition: color 0.3s;
+  }
+
+  .icon {
+    transition: fill 0.3s;
+  }
+
+  //&:hover {
+  //  .text {
+  //    color: $hover;
+  //  }
+  //
+  //  .icon {
+  //    fill: $hover;
+  //  }
+  //}
+
+  &:active {
+    .text {
+      color: $default;
+    }
+
+    .icon {
+      fill: $default;
+    }
+  }
+}
+
+.itemSelected {
+  composes: item;
+
+  .text {
+    color: $default;
+  }
+
+  .icon {
+    fill: $default;
+  }
+}
+
+.icon {
+  fill: $disabled;
+  width: 26px;
+  height: 26px;
+}
