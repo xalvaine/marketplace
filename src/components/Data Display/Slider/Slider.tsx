@@ -31,7 +31,11 @@ const Slider = (props: Props) => {
     >
       {slides.map((props, index) => (
         <SwiperSlide key={index}>
-          <img alt="" className={styles.image} src={props.image} />
+          <img
+            alt=""
+            className={classNames(styles.image, props.className)}
+            src={props.image}
+          />
         </SwiperSlide>
       ))}
       {pagesCount > 1 && <Pages total={pagesCount} current={page} />}

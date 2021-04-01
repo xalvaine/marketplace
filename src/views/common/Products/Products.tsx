@@ -17,9 +17,15 @@ const Products = (props: Props) => {
       <div className={styles.products}>
         {products.map((product) => (
           <Link
-            passHref
             key={product.id}
-            href={{ pathname: PATH.CATEGORY, query: { category: `food` } }}
+            href={{
+              pathname: PATH.PRODUCT,
+              query: {
+                product: `123`,
+                category: `food`,
+                group: `sweets`,
+              },
+            }}
           >
             <ProductCard product={product} />
           </Link>

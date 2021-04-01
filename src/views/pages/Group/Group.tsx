@@ -4,7 +4,7 @@ import { BxArrowBack, BxSearch } from '@/icons'
 import { PATH } from '@/config'
 import { useProducts } from '@/hooks'
 import styles from './group.module.scss'
-import Items from '@/views/common/Products'
+import Products from '@/views/common/Products'
 
 const Group = () => {
   const { data: products } = useProducts()
@@ -34,14 +34,14 @@ const Group = () => {
         1 024 товара
       </Typography.Text>
       <Tabs className={styles.tabs}>
-        <Tabs.Tab>Aasdasd</Tabs.Tab>
-        <Tabs.Tab>Aasdasd</Tabs.Tab>
-        <Tabs.Tab>Aasdasd</Tabs.Tab>
-        <Tabs.Tab>Aasdasd</Tabs.Tab>
-        <Tabs.Tab>Aasdasd</Tabs.Tab>
-        <Tabs.Tab>Aasdasd</Tabs.Tab>
+        <Tabs.Tab>Подкаталог</Tabs.Tab>
+        <Tabs.Tab>Подкаталог</Tabs.Tab>
+        <Tabs.Tab>Подкаталог</Tabs.Tab>
+        <Tabs.Tab>Подкаталог</Tabs.Tab>
+        <Tabs.Tab>Подкаталог</Tabs.Tab>
+        <Tabs.Tab>Подкаталог</Tabs.Tab>
       </Tabs>
-      <Items products={products} />
+      <Products products={products} />
     </div>
   )
 }

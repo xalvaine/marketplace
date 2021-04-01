@@ -10,25 +10,29 @@ import { PATH } from '@/config'
 const tabs = [
   {
     icon: BxHomeAlt,
-    key: PATH.HOME,
+    keys: [PATH.HOME],
+    path: PATH.HOME,
     name: `Главная`,
     notificationsCount: 0,
   },
   {
     icon: BxMenu,
-    key: PATH.CATALOG,
+    keys: [PATH.CATALOG, PATH._PRODUCTS],
+    path: PATH.CATALOG,
     name: `Каталог`,
     notificationsCount: 0,
   },
   {
     icon: BxHeart,
-    key: PATH.FAVOURITES,
+    keys: [PATH.FAVOURITES],
+    path: PATH.FAVOURITES,
     name: `Избранное`,
     notificationsCount: 9,
   },
   {
     icon: BxShoppingBag,
-    key: PATH.CART,
+    keys: [PATH.CART],
+    path: PATH.CART,
     name: `Корзина`,
     notificationsCount: 99,
   },
@@ -39,15 +43,20 @@ const TabBar = () => {
   const [page, setPage] = useState<string>()
 
   useEffect(
-    () => tabs.forEach((tab) => pathname.includes(tab.key) && setPage(tab.key)),
+    () =>
+      tabs.forEach(
+        (tab) =>
+          tab.keys.filter((key) => pathname.includes(key)).length &&
+          setPage(tab.path),
+      ),
     [pathname],
   )
 
   return (
     <ul className={styles.wrapper}>
       {tabs.map((tab) => (
-        <Link key={tab.key} href={tab.key}>
-          <li className={page === tab.key ? styles.itemSelected : styles.item}>
+        <Link key={tab.path} href={tab.path}>
+          <li className={page === tab.path ? styles.itemSelected : styles.item}>
             <Badge count={tab.notificationsCount} size="small" theme="selected">
               <tab.icon className={styles.icon} />
             </Badge>

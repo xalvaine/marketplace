@@ -1,4 +1,5 @@
 export const PATH = {
+  _PRODUCTS: `/products`,
   HOME: `/`,
   CATALOG: `/catalog`,
   CATEGORY: `/catalog/[category]`,
