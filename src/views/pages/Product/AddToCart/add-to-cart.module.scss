@@ -1,0 +1,14 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $monoWhite;
+  padding: 8px 0;
+}
+
+.price {
+  font-size: 20px;
+  line-height: 28px;
+}

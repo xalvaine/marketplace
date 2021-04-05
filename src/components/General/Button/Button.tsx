@@ -26,7 +26,7 @@ const typeToClass = {
 
 const sizeToClass = {
   normal: styles.buttonNormal,
-  large: styles.buttonNormal,
+  large: styles.buttonLarge,
 }
 
 const Button = (props: Props) => {
