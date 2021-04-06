@@ -18,9 +18,9 @@ interface Props {
   strikethrough?: boolean
 }
 
-const Typography = <T extends {}>(
+const Typography = <T extends Props>(
   Component: FunctionComponent<Omit<T, keyof Props> & { className: string }>,
-) => (props: T & Props) => {
+): FunctionComponent<T & Props> => (props) => {
   const { className, strikethrough, underline, weight, ...rest } = props
   return (
     <Component

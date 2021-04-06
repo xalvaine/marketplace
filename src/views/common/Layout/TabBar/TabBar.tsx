@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { Link } from '@/components'
+import { Link, Badge, Typography } from '@/components'
 
-import styles from './tab-bar.module.scss'
 import { BxHeart, BxHomeAlt, BxMenu, BxShoppingBag } from '@/icons'
-import { Typography, Badge } from '@/components'
+
 import { PATH } from '@/config'
+import styles from './tab-bar.module.scss'
 
 const tabs = [
   {
@@ -53,20 +53,23 @@ const TabBar = () => {
   )
 
   return (
-    <ul className={styles.wrapper}>
+    <div className={styles.wrapper}>
+      <div className={styles.tabBarExpansion} id="tab-bar-extension-root" />
       {tabs.map((tab) => (
         <Link key={tab.path} href={tab.path}>
-          <li className={page === tab.path ? styles.itemSelected : styles.item}>
+          <div
+            className={page === tab.path ? styles.itemSelected : styles.item}
+          >
             <Badge count={tab.notificationsCount} size="small" theme="selected">
               <tab.icon className={styles.icon} />
             </Badge>
-            <Typography.Text secondary disabled className={styles.text}>
+            <Typography.Text disabled secondary className={styles.text}>
               {tab.name}
             </Typography.Text>
-          </li>
+          </div>
         </Link>
       ))}
-    </ul>
+    </div>
   )
 }
 

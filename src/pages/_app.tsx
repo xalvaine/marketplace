@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import { AppProps } from 'next/app'
+import Head from 'next/head'
 import { useRef } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
@@ -27,6 +28,13 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     <QueryClientProvider client={queryClientRef.current}>
       <Provider store={store}>
         <Layout>
+          <Head>
+            <title>Green leaf</title>
+            <meta
+              content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+              name="viewport"
+            />
+          </Head>
           <Component {...pageProps} />
         </Layout>
       </Provider>

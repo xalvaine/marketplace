@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
-import styles from './tab.module.scss'
 import { Typography } from '@/components'
+import styles from './tab.module.scss'
 
 interface Props {
   children?: ReactNode
@@ -10,7 +10,7 @@ const Tab = (props: Props) => {
   const { children } = props
   return (
     <li className={styles.wrapper}>
-      <Typography.Text className={styles.text} block>
+      <Typography.Text block className={styles.text}>
         {children}
       </Typography.Text>
     </li>

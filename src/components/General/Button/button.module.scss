@@ -1,19 +1,19 @@
 @import 'src/styles/colors';
 
 .button {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
-  border-radius: 8px;
+  padding: 0 16px;
+  overflow: hidden;
   font-weight: 500;
   font-family: Inter, sans-serif;
-  transition: background-color 0.3s, color 0.3s, border 0.3s;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  border: none;
+  border-radius: 8px;
   outline: none;
-  padding: 0 16px;
+  transition: background-color 0.3s, color 0.3s, border 0.3s;
 }
 
 .icon + .content {
@@ -40,8 +40,8 @@
 }
 
 .primary {
-  background: $default;
   color: $monoWhite;
+  background: $default;
 
   .icon {
     fill: $monoWhite;
@@ -56,28 +56,28 @@
   }
 
   &:disabled {
-    background: $background;
     color: $disabled;
+    background: $background;
   }
 }
 
 .link {
-  background: $monoWhite;
-  color: $default;
   padding: 0;
+  color: $default;
+  background: $monoWhite;
 
   .icon {
     fill: $default;
   }
 
   &:hover {
-    border-color: $hover;
     color: $hover;
+    border-color: $hover;
   }
 
   &:active {
-    border-color: $active;
     color: $active;
+    border-color: $active;
 
     .icon {
       fill: $active;
@@ -85,9 +85,9 @@
   }
 
   &:disabled {
-    border-color: $border;
-    background: $background;
     color: $disabled;
+    background: $background;
+    border-color: $border;
 
     .icon {
       fill: $disabled;

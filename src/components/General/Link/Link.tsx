@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react'
-import { default as NextLink, LinkProps } from 'next/link'
+import { LinkProps, default as NextLink } from 'next/link'
 
 const Link = (props: PropsWithChildren<LinkProps>) => {
   const { children, ...rest } = props

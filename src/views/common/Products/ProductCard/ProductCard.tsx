@@ -1,7 +1,7 @@
 import { Products } from '@/interfaces'
-import styles from './product-card.module.scss'
 import { Button, Slider, Typography } from '@/components'
 import { mockSrc } from '@/config'
+import styles from './product-card.module.scss'
 
 interface Props {
   product: Products[0]
@@ -19,7 +19,7 @@ const ProductCard = (props: Props) => {
           </Slider>
         </div>
         <div className={styles.prices}>
-          <Typography.Text weight="bold" className={styles.newPrice}>
+          <Typography.Text className={styles.newPrice} weight="bold">
             575 ₽
           </Typography.Text>
           <Typography.Text strikethrough className={styles.oldPrice}>
@@ -29,7 +29,7 @@ const ProductCard = (props: Props) => {
         <Typography.Text block className={styles.name}>
           {product.name}
         </Typography.Text>
-        <Button type="primary" className={styles.button}>
+        <Button className={styles.button} type="primary">
           В корзину
         </Button>
       </div>

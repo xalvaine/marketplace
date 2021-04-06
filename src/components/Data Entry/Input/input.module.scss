@@ -5,14 +5,22 @@
   display: flex;
 }
 
+.icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  fill: $disabled;
+}
+
 .input {
-  outline: none;
   width: 100%;
+  color: $primary;
+  font-family: Inter, sans-serif;
   background: $monoWhite;
   border: 1px solid $border;
   border-radius: 8px;
-  font-family: Inter, sans-serif;
-  color: $primary;
+  outline: none;
   transition: border-color 0.3s, box-shadow 0.3s;
 
   &::placeholder {
@@ -36,9 +44,9 @@
 
 .normalInput {
   composes: input;
+  padding: 6px 12px;
   font-size: 14px;
   line-height: 20px;
-  padding: 6px 12px;
 
   &.withLeftIcon {
     padding-left: 30px;
@@ -56,9 +64,9 @@
 
 .largeInput {
   composes: input;
+  padding: 9px 12px;
   font-size: 16px;
   line-height: 22px;
-  padding: 9px 12px;
 
   &.withLeftIcon {
     padding-left: 32px;
@@ -72,14 +80,6 @@
     width: 16px;
     height: 16px;
   }
-}
-
-.icon {
-  fill: $disabled;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto;
 }
 
 .leftIcon {

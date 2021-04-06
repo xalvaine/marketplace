@@ -1,6 +1,5 @@
 import { Slider } from '@/components'
 import { mockSrc } from '@/config'
-
 import styles from './carousel.module.scss'
 
 const Carousel = () => {

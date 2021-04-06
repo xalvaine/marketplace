@@ -1,8 +1,8 @@
 import Head from 'next/head'
+import { GetStaticProps } from 'next'
 import api from '@/api'
 import { CatalogItem } from '@/interfaces'
 import Catalog from '@/views/pages/Catalog'
-import { GetStaticProps } from 'next'
 
 interface Props {
   catalog: CatalogItem[]

@@ -1,0 +1,17 @@
+.entering {
+  opacity: 1;
+  transition: height 0.3s, opacity 0.3s 0.3s;
+}
+
+.entered {
+  opacity: 1;
+}
+
+.exiting {
+  opacity: 0;
+  transition: opacity 0.3s, height 0.3s 0.3s;
+}
+
+.exited {
+  opacity: 0;
+}

@@ -1,4 +1,4 @@
-import { createElement, DetailedHTMLProps, HTMLAttributes } from 'react'
+import { DetailedHTMLProps, HTMLAttributes, createElement } from 'react'
 import classNames from 'classnames'
 import styles from './title.module.scss'
 

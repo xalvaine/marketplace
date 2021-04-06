@@ -1,8 +1,8 @@
 import { PATH } from '@/config'
 import { Products as ProductsType } from '@/interfaces'
 import { Link } from '@/components'
-import ProductCard from './ProductCard'
 import styles from './products.module.scss'
+import ProductCard from './ProductCard'
 
 interface Props {
   products?: ProductsType

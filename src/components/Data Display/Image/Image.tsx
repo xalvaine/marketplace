@@ -1,7 +1,6 @@
 import { DetailedHTMLProps, ImgHTMLAttributes, forwardRef } from 'react'
 import classNames from 'classnames'
 import { Typography } from '@/components'
-
 import styles from './image.module.scss'
 
 interface Props
@@ -16,15 +15,15 @@ const Image = forwardRef<HTMLDivElement, Props>((props, ref) => {
   const { label, alt = ``, className, ...rest } = props
 
   return (
-    <div className={styles.wrapper} ref={ref}>
+    <div ref={ref} className={styles.wrapper}>
       <div className={styles.imageWrapper}>
         <img
           {...rest}
-          className={classNames(styles.image, className)}
           alt={alt}
+          className={classNames(styles.image, className)}
         />
       </div>
-      <Typography.Text secondary weight="medium" className={styles.label}>
+      <Typography.Text secondary className={styles.label} weight="medium">
         {label}
       </Typography.Text>
     </div>
