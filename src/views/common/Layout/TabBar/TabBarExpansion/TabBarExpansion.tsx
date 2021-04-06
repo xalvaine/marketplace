@@ -1,6 +1,6 @@
-import { ReactNode, useEffect, useState } from 'react'
+import React, { ReactNode, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { CSSTransition } from 'react-transition-group'
+import { Transition } from 'react-transition-group'
 import styles from './tab-bar-expansion.module.scss'
 
 interface Props {
@@ -8,31 +8,50 @@ interface Props {
   visible: boolean
 }
 
+const activeStates = [`entering`, `entered`]
+
 const TabBarExpansion = (props: Props) => {
   const { children, visible } = props
   const [tabBar, setTabBar] = useState<HTMLElement | null>(null)
+  const [height, setHeight] = useState<number>()
+  const contentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     setTabBar(document.getElementById(`tab-bar-extension-root`))
   }, [])
 
+  useEffect(() => {
+    if (children) {
+      console.log(contentRef.current?.scrollHeight)
+      setHeight(contentRef.current?.scrollHeight)
+    }
+  }, [children])
+
   return (
     tabBar &&
     createPortal(
-      <CSSTransition
-        timeout={600}
-        mountOnEnter
-        unmountOnExit
-        in={visible}
-        classNames={{
-          enter: styles.enter,
-          enterActive: styles.enterActive,
-          exit: styles.exit,
-          exitActive: styles.exitActive,
-        }}
-      >
-        <div>{children}</div>
-      </CSSTransition>,
+      <>
+        <Transition
+          classNames={{
+            enter: styles.enter,
+            enterActive: styles.enterActive,
+            exit: styles.exit,
+            exitActive: styles.exitActive,
+          }}
+          in={visible}
+          timeout={600}
+        >
+          {(state) => (
+            <div
+              ref={contentRef}
+              className={styles[state]}
+              style={{ height: activeStates.includes(state) ? height : 0 }}
+            >
+              {children}
+            </div>
+          )}
+        </Transition>
+      </>,
       tabBar,
     )
   )

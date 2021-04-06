@@ -2,10 +2,10 @@
 
 .wrapper {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background: $monoWhite;
+  justify-content: space-between;
   padding: 8px 0;
+  background: $monoWhite;
 }
 
 .price {

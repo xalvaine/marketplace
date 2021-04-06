@@ -1,10 +1,10 @@
-import { Link } from '@/components'
-import { Button, Input, Tabs, Typography } from '@/components'
+import { Link, Button, Input, Tabs, Typography } from '@/components'
+
 import { BxArrowBack, BxSearch } from '@/icons'
 import { PATH } from '@/config'
 import { useProducts } from '@/hooks'
-import styles from './group.module.scss'
 import Products from '@/views/common/Products'
+import styles from './group.module.scss'
 
 const Group = () => {
   const { data: products } = useProducts()
@@ -14,8 +14,8 @@ const Group = () => {
       <Input
         className={styles.search}
         leftIcon={BxSearch}
-        size="large"
         placeholder="Поиск по товарам"
+        size="large"
       />
       <Link
         href={{
@@ -23,11 +23,11 @@ const Group = () => {
           query: { category: `food` },
         }}
       >
-        <Button type="link" icon={BxArrowBack}>
+        <Button icon={BxArrowBack} type="link">
           Продукты питания
         </Button>
       </Link>
-      <Typography.Title level={3} className={styles.title}>
+      <Typography.Title className={styles.title} level={3}>
         Сладости
       </Typography.Title>
       <Typography.Text block disabled className={styles.count}>

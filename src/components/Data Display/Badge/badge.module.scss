@@ -7,8 +7,8 @@
 
 .dot {
   position: absolute;
-  right: 2px;
   top: 0;
+  right: 2px;
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -18,14 +18,14 @@
   position: absolute;
   top: 0;
   left: calc(100% - 10px);
-  font-feature-settings: 'tnum';
-  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-width: 20px;
   height: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 0 6px;
+  border-radius: 10px;
+  font-feature-settings: 'tnum';
 }
 
 .smallBadge {

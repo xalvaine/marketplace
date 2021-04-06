@@ -1,7 +1,7 @@
-import { Image, Input, Typography } from '@/components'
+import { Image, Input, Typography, Link } from '@/components'
 import { BxSearch } from '@/icons'
-import { Link } from '@/components'
-import { mockSrc, PATH } from '@/config'
+
+import { PATH, mockSrc } from '@/config'
 import styles from './category.module.scss'
 
 const Category = () => {
@@ -11,10 +11,10 @@ const Category = () => {
         <Input
           className={styles.search}
           leftIcon={BxSearch}
-          size="large"
           placeholder="Поиск по товарам"
+          size="large"
         />
-        <Typography.Title level={3} className={styles.title}>
+        <Typography.Title className={styles.title} level={3}>
           Продукты питания
         </Typography.Title>
         <Typography.Text block disabled className={styles.count}>
@@ -28,16 +28,16 @@ const Category = () => {
               query: { category: `food`, group: `sweets` },
             }}
           >
-            <Image src={mockSrc} label="Чай, кофе и какао" />
+            <Image label="Чай, кофе и какао" src={mockSrc} />
           </Link>
-          <Image src={mockSrc} label="Чай, кофе и какао" />
-          <Image src={mockSrc} label="Чай, кофе и какао" />
-          <Image src={mockSrc} label="Чай, кофе и какао" />
-          <Image src={mockSrc} label="Чай, кофе и какао" />
-          <Image src={mockSrc} label="Чай, кофе и какао" />
-          <Image src={mockSrc} label="Чай, кофе и какао" />
-          <Image src={mockSrc} label="Чай, кофе и какао" />
-          <Image src={mockSrc} label="Чай, кофе и какао" />
+          <Image label="Чай, кофе и какао" src={mockSrc} />
+          <Image label="Чай, кофе и какао" src={mockSrc} />
+          <Image label="Чай, кофе и какао" src={mockSrc} />
+          <Image label="Чай, кофе и какао" src={mockSrc} />
+          <Image label="Чай, кофе и какао" src={mockSrc} />
+          <Image label="Чай, кофе и какао" src={mockSrc} />
+          <Image label="Чай, кофе и какао" src={mockSrc} />
+          <Image label="Чай, кофе и какао" src={mockSrc} />
         </div>
       </div>
     </>

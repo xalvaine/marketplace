@@ -2,9 +2,9 @@ import { useRouter } from 'next/router'
 import { Button, Link, Slider, Typography } from '@/components'
 import { mockSrc, PATH } from '@/config'
 import { BxArrowBack } from '@/icons'
-import styles from './product.module.scss'
 import { Product as ProductType } from '@/interfaces'
 import AddToCart from './AddToCart'
+import styles from './product.module.scss'
 
 interface Query {
   category?: string
@@ -34,7 +34,7 @@ const Product = (props: Props) => {
     <div className={styles.wrapper}>
       <div className={styles.back}>
         <Link href={getURLObject(query) as URL}>
-          <Button type="link" icon={BxArrowBack}>
+          <Button icon={BxArrowBack} type="link">
             Назад в каталог
           </Button>
         </Link>
@@ -44,13 +44,13 @@ const Product = (props: Props) => {
           <Slider.Slide className={styles.slide} image={mockSrc} />
         </Slider>
       </div>
-      <Typography.Title level={5} weight="semibold" className={styles.name}>
+      <Typography.Title className={styles.name} level={5} weight="semibold">
         {product.name}
       </Typography.Title>
-      <Typography.Title level={4} className={styles.descriptionTitle}>
+      <Typography.Title className={styles.descriptionTitle} level={4}>
         Описание
       </Typography.Title>
-      <Typography.Text className={styles.descriptionText} block>
+      <Typography.Text block className={styles.descriptionText}>
         {product.description}
       </Typography.Text>
       <AddToCart />

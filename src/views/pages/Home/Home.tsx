@@ -1,6 +1,5 @@
 import { Input } from '@/components'
 import { BxSearch } from '@/icons'
-
 import styles from './home.module.scss'
 import Carousel from './Carousel'
 
@@ -8,10 +7,10 @@ const Home = () => {
   return (
     <div className={styles.wrapper}>
       <Input
-        leftIcon={BxSearch}
         className={styles.input}
-        size="large"
+        leftIcon={BxSearch}
         placeholder="Поиск по товарам"
+        size="large"
       />
       <Carousel />
     </div>

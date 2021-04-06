@@ -1,9 +1,9 @@
-import { Link } from '@/components'
-import { Image, Input } from '@/components'
+import { Link, Image, Input } from '@/components'
+
 import { BxSearch } from '@/icons'
-import { mockSrc, PATH } from '@/config'
-import styles from './catalog.module.scss'
+import { PATH, mockSrc } from '@/config'
 import { CatalogItem } from '@/interfaces'
+import styles from './catalog.module.scss'
 
 interface Props {
   catalog: CatalogItem[]
@@ -17,8 +17,8 @@ const Catalog = (props: Props) => {
       <Input
         className={styles.search}
         leftIcon={BxSearch}
-        size="large"
         placeholder="Поиск по товарам"
+        size="large"
       />
       <div className={styles.images}>
         {catalog?.map((item) => (
@@ -26,7 +26,7 @@ const Catalog = (props: Props) => {
             key={item.id}
             href={{ pathname: PATH.CATEGORY, query: { category: item.slug } }}
           >
-            <Image src={mockSrc} label={item.name} />
+            <Image label={item.name} src={mockSrc} />
           </Link>
         ))}
       </div>

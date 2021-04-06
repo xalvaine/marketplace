@@ -1,3 +1,4 @@
 #!/bin/sh
 npx --no-install jest
 yarn pretty-quick --staged && yarn tsc
+npm test

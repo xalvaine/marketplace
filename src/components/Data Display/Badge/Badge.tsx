@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
-import styles from './badge.module.scss'
-import { Typography } from '@/components'
 import classNames from 'classnames'
+import { Typography } from '@/components'
+import styles from './badge.module.scss'
 
 const themeToStyle = {
   neutral: styles.neutral,

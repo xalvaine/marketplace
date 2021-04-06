@@ -1,7 +1,7 @@
-import { Button, Typography } from '@/components'
-import styles from './add-to-cart.module.scss'
-import Layout from '@/views/common/Layout'
 import { useEffect, useState } from 'react'
+import { Button, Typography } from '@/components'
+import Layout from '@/views/common/Layout'
+import styles from './add-to-cart.module.scss'
 
 const AddToCart = () => {
   const [visible, setVisible] = useState(false)
@@ -18,7 +18,7 @@ const AddToCart = () => {
   return (
     <Layout.TabBarExpansion visible={visible}>
       <div className={styles.wrapper}>
-        <Button type="primary" size="large">
+        <Button size="large" type="primary">
           Добавить в корзину
         </Button>
         <Typography.Text className={styles.price} weight="bold">

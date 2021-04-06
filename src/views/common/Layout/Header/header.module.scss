@@ -1,16 +1,16 @@
 @import 'src/styles/colors';
 
 .wrapper {
-  padding: 16px 0 8px;
-  margin: 0 15px;
-  background: $monoWhite;
   display: grid;
   grid-template-columns: 24px 1fr 24px;
   justify-items: center;
+  margin: 0 15px;
+  padding: 16px 0 8px;
+  background: $monoWhite;
 }
 
 .icon {
-  fill: $disabled;
   width: 24px;
   height: 24px;
+  fill: $disabled;
 }

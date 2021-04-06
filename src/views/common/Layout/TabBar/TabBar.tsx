@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { Link } from '@/components'
+import { Link, Badge, Typography } from '@/components'
 
-import styles from './tab-bar.module.scss'
 import { BxHeart, BxHomeAlt, BxMenu, BxShoppingBag } from '@/icons'
-import { Typography, Badge } from '@/components'
+
 import { PATH } from '@/config'
+import styles from './tab-bar.module.scss'
 
 const tabs = [
   {
@@ -63,7 +63,7 @@ const TabBar = () => {
             <Badge count={tab.notificationsCount} size="small" theme="selected">
               <tab.icon className={styles.icon} />
             </Badge>
-            <Typography.Text secondary disabled className={styles.text}>
+            <Typography.Text disabled secondary className={styles.text}>
               {tab.name}
             </Typography.Text>
           </div>

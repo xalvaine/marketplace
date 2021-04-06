@@ -1,4 +1,4 @@
-import { createSlice, Dispatch } from '@reduxjs/toolkit'
+import { Dispatch, createSlice } from '@reduxjs/toolkit'
 
 interface InitialState {
   isLoading: boolean

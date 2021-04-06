@@ -4,8 +4,8 @@ import {
   InputHTMLAttributes,
   SVGProps,
 } from 'react'
-import styles from './input.module.scss'
 import classNames from 'classnames'
+import styles from './input.module.scss'
 
 type Props = Omit<
   DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
