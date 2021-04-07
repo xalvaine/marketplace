@@ -22,7 +22,6 @@ const TabBarExpansion = (props: Props) => {
 
   useEffect(() => {
     if (children) {
-      console.log(contentRef.current?.scrollHeight)
       setHeight(contentRef.current?.scrollHeight)
     }
   }, [children])
@@ -31,16 +30,7 @@ const TabBarExpansion = (props: Props) => {
     tabBar &&
     createPortal(
       <>
-        <Transition
-          classNames={{
-            enter: styles.enter,
-            enterActive: styles.enterActive,
-            exit: styles.exit,
-            exitActive: styles.exitActive,
-          }}
-          in={visible}
-          timeout={600}
-        >
+        <Transition mountOnEnter unmountOnExit in={visible} timeout={600}>
           {(state) => (
             <div
               ref={contentRef}

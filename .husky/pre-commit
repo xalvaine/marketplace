@@ -1,4 +1,2 @@
 #!/bin/sh
-npx --no-install jest
-yarn pretty-quick --staged && yarn tsc
-npm test
+yarn pretty-quick --staged && yarn tsc && yarn eslint && yarn stylelint

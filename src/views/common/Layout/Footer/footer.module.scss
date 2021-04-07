@@ -1,0 +1,69 @@
+@import 'src/styles/colors';
+
+.footer {
+  display: none;
+}
+
+.columns {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: repeat(4, 1fr);
+  width: 930px;
+}
+
+.title {
+  margin-bottom: 8px;
+  color: $secondary;
+}
+
+.text {
+  margin-bottom: 8px;
+  color: $secondary;
+}
+
+.terms {
+  display: none;
+}
+
+.termsList {
+  display: flex;
+  width: 930px;
+}
+
+.term {
+  margin-right: 32px;
+
+  &:last-of-type {
+    margin-right: 0;
+    margin-left: auto;
+  }
+}
+
+.termText {
+  color: $disabled;
+}
+
+.icons {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 8px;
+  justify-content: start;
+  margin-top: 24px;
+}
+
+@media (min-width: 1024px) {
+  .footer {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    padding: 42px 0 76px;
+    background: $background;
+  }
+
+  .terms {
+    display: flex;
+    justify-content: center;
+    padding: 12px 0;
+    background: $dividers;
+  }
+}

@@ -50,7 +50,7 @@ const Product = (props: Props) => {
       <Typography.Title className={styles.descriptionTitle} level={4}>
         Описание
       </Typography.Title>
-      <Typography.Text block className={styles.descriptionText}>
+      <Typography.Text className={styles.descriptionText}>
         {product.description}
       </Typography.Text>
       <AddToCart />

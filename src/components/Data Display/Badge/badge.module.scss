@@ -38,7 +38,7 @@
 .neutral {
   background: $dividers;
 
-  span {
+  .text {
     color: $secondary;
   }
 }
@@ -46,7 +46,7 @@
 .selected {
   background: $selected;
 
-  span {
+  .text {
     color: $default;
   }
 }
@@ -54,7 +54,7 @@
 .default {
   background: $default;
 
-  span {
+  .text {
     color: $monoWhite;
   }
 }
@@ -62,7 +62,7 @@
 .green {
   background: $success500;
 
-  span {
+  .text {
     color: $monoWhite;
   }
 }
@@ -70,7 +70,7 @@
 .red {
   background: $error500;
 
-  span {
+  .text {
     color: $monoWhite;
   }
 }
@@ -78,7 +78,7 @@
 .disabled {
   background: $background;
 
-  span {
+  .text {
     color: $disabled;
   }
 }

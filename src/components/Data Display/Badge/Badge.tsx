@@ -24,6 +24,7 @@ interface Props {
   children: ReactNode
   disabled?: boolean
   size?: 'normal' | 'small'
+  className?: string
 }
 
 const Badge = (props: Props) => {
@@ -35,10 +36,11 @@ const Badge = (props: Props) => {
     theme = `neutral`,
     size = `normal`,
     disabled,
+    className,
   } = props
 
   return (
-    <div className={styles.wrapper}>
+    <div className={classNames(styles.wrapper, className)}>
       {children}
       {!!count &&
         (dot ? (
@@ -51,7 +53,9 @@ const Badge = (props: Props) => {
               disabled && styles.disabled,
             )}
           >
-            <Typography.Text secondary>{count}</Typography.Text>
+            <Typography.Text secondary className={styles.text}>
+              {count}
+            </Typography.Text>
           </span>
         ))}
     </div>

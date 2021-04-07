@@ -1,11 +1,13 @@
 @import 'src/styles/colors';
 
-.wrapper {
+.header {
   display: grid;
+  grid-gap: 16px 0;
   grid-template-columns: 24px 1fr 24px;
+  align-items: center;
   justify-items: center;
   margin: 0 15px;
-  padding: 16px 0 8px;
+  padding-top: 16px;
   background: $monoWhite;
 }
 
@@ -13,4 +15,47 @@
   width: 24px;
   height: 24px;
   fill: $disabled;
+}
+
+.logo {
+  display: flex;
+  width: auto;
+  height: 16px;
+}
+
+.catalogLink {
+  display: none;
+}
+
+.search {
+  grid-column: 1 / 4;
+  order: 1;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .header {
+    grid-auto-flow: column;
+    grid-gap: 16px;
+    grid-template-columns: auto auto 1fr auto;
+    width: 930px;
+    margin: 0 auto;
+    padding: 16px 0;
+  }
+
+  .catalogLink {
+    display: flex;
+  }
+
+  .logo {
+    height: 20px;
+  }
+
+  .bellBadge {
+    display: none;
+  }
+
+  .search {
+    grid-column: 3;
+  }
 }

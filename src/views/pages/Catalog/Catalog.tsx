@@ -1,6 +1,4 @@
-import { Link, Image, Input } from '@/components'
-
-import { BxSearch } from '@/icons'
+import { Link, Image } from '@/components'
 import { PATH, mockSrc } from '@/config'
 import { CatalogItem } from '@/interfaces'
 import styles from './catalog.module.scss'
@@ -14,12 +12,6 @@ const Catalog = (props: Props) => {
 
   return (
     <div className={styles.wrapper}>
-      <Input
-        className={styles.search}
-        leftIcon={BxSearch}
-        placeholder="Поиск по товарам"
-        size="large"
-      />
       <div className={styles.images}>
         {catalog?.map((item) => (
           <Link

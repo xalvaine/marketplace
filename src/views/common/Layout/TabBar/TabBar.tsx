@@ -53,7 +53,7 @@ const TabBar = () => {
   )
 
   return (
-    <div className={styles.wrapper}>
+    <section className={styles.wrapper}>
       <div className={styles.tabBarExpansion} id="tab-bar-extension-root" />
       {tabs.map((tab) => (
         <Link key={tab.path} href={tab.path}>
@@ -69,7 +69,7 @@ const TabBar = () => {
           </div>
         </Link>
       ))}
-    </div>
+    </section>
   )
 }
 

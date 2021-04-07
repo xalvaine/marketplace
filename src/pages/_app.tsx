@@ -5,14 +5,14 @@ import Head from 'next/head'
 import { useRef } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
-import auth from '@/reducers/auth'
+import { layout } from '@/reducers'
 import '@/styles/fonts.scss'
 import '@/styles/globals.scss'
 import 'swiper/swiper.scss'
 import Layout from '@/views/common/Layout'
 
-const store = configureStore({
-  reducer: { auth },
+export const store = configureStore({
+  reducer: { layout: layout.reducer },
 })
 
 const MyApp = ({ Component, pageProps }: AppProps) => {

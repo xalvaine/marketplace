@@ -42,6 +42,10 @@
   }
 }
 
+.search {
+  border: 1px solid $default;
+}
+
 .normalInput {
   composes: input;
   padding: 6px 12px;
@@ -56,6 +60,10 @@
     padding-right: 30px;
   }
 
+  &.search {
+    padding-right: 92px;
+  }
+
   + .icon {
     width: 14px;
     height: 14px;
@@ -64,7 +72,7 @@
 
 .largeInput {
   composes: input;
-  padding: 9px 12px;
+  padding: 8px 12px;
   font-size: 16px;
   line-height: 22px;
 
@@ -74,6 +82,10 @@
 
   &.withRightIcon {
     padding-right: 32px;
+  }
+
+  &.search {
+    padding-right: 92px;
   }
 
   + .icon {
@@ -90,4 +102,12 @@
 .rightIcon {
   composes: icon;
   right: 12px;
+}
+
+.searchButton {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }

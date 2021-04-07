@@ -1,0 +1,14 @@
+@import 'src/styles/colors';
+
+.title {
+  margin-bottom: 16px;
+}
+
+.rows {
+  display: grid;
+  grid-gap: 8px;
+}
+
+.text {
+  color: $secondary;
+}

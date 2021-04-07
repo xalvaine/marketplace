@@ -3,6 +3,8 @@ import { GetStaticProps } from 'next'
 import api from '@/api'
 import { CatalogItem } from '@/interfaces'
 import Catalog from '@/views/pages/Catalog'
+import { useDispatch } from 'react-redux'
+import { layout } from '@/reducers'
 
 interface Props {
   catalog: CatalogItem[]
@@ -15,6 +17,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
 const CatalogPage = (props: Props) => {
   const { catalog } = props
+  const dispatch = useDispatch()
+  dispatch(layout.setShowSearch(true))
 
   return (
     <>

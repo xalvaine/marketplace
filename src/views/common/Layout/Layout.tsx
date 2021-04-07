@@ -1,6 +1,7 @@
 import styles from './layout.module.scss'
 import Header from './Header'
 import TabBar from './TabBar'
+import Footer from './Footer'
 import TabBarExpansion from './TabBar/TabBarExpansion'
 
 interface Props {
@@ -15,6 +16,7 @@ const Layout = (props: Props) => {
       <Header />
       <main className={styles.main}>{children}</main>
       <TabBar />
+      <Footer />
     </>
   )
 }

@@ -10,9 +10,7 @@ const Tab = (props: Props) => {
   const { children } = props
   return (
     <li className={styles.wrapper}>
-      <Typography.Text block className={styles.text}>
-        {children}
-      </Typography.Text>
+      <Typography.Text className={styles.text}>{children}</Typography.Text>
     </li>
   )
 }

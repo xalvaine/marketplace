@@ -6,16 +6,16 @@ type Props = DetailedHTMLProps<
   HTMLAttributes<HTMLParagraphElement>,
   HTMLParagraphElement
 > & {
-  block?: boolean
+  inline?: boolean
   disabled?: boolean
   secondary?: boolean
 }
 
 const Text = (props: Props) => {
-  const { block, children, className, secondary, disabled, ...rest } = props
+  const { inline, children, className, secondary, disabled, ...rest } = props
 
   return createElement(
-    block ? `p` : `span`,
+    inline ? `span` : `p`,
     {
       className: classNames(
         className,

@@ -1,6 +1,5 @@
-import { Link, Button, Input, Tabs, Typography } from '@/components'
-
-import { BxArrowBack, BxSearch } from '@/icons'
+import { Link, Button, Tabs, Typography } from '@/components'
+import { BxArrowBack } from '@/icons'
 import { PATH } from '@/config'
 import { useProducts } from '@/hooks'
 import Products from '@/views/common/Products'
@@ -11,12 +10,6 @@ const Group = () => {
 
   return (
     <div className={styles.wrapper}>
-      <Input
-        className={styles.search}
-        leftIcon={BxSearch}
-        placeholder="Поиск по товарам"
-        size="large"
-      />
       <Link
         href={{
           pathname: PATH.CATEGORY,
@@ -30,16 +23,16 @@ const Group = () => {
       <Typography.Title className={styles.title} level={3}>
         Сладости
       </Typography.Title>
-      <Typography.Text block disabled className={styles.count}>
+      <Typography.Text disabled className={styles.count}>
         1 024 товара
       </Typography.Text>
       <Tabs className={styles.tabs}>
-        <Tabs.Tab>Подкаталог</Tabs.Tab>
-        <Tabs.Tab>Подкаталог</Tabs.Tab>
-        <Tabs.Tab>Подкаталог</Tabs.Tab>
-        <Tabs.Tab>Подкаталог</Tabs.Tab>
-        <Tabs.Tab>Подкаталог</Tabs.Tab>
-        <Tabs.Tab>Подкаталог</Tabs.Tab>
+        <Tabs.Tab>Коллекция</Tabs.Tab>
+        <Tabs.Tab>Коллекция</Tabs.Tab>
+        <Tabs.Tab>Коллекция</Tabs.Tab>
+        <Tabs.Tab>Коллекция</Tabs.Tab>
+        <Tabs.Tab>Коллекция</Tabs.Tab>
+        <Tabs.Tab>Коллекция</Tabs.Tab>
       </Tabs>
       <Products products={products} />
     </div>

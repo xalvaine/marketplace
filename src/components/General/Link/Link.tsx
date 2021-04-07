@@ -1,11 +1,15 @@
 import { PropsWithChildren } from 'react'
 import { LinkProps, default as NextLink } from 'next/link'
 
-const Link = (props: PropsWithChildren<LinkProps>) => {
-  const { children, ...rest } = props
+interface Props extends PropsWithChildren<LinkProps> {
+  className?: string
+}
+
+const Link = (props: Props) => {
+  const { children, className, ...rest } = props
   return (
     <NextLink {...rest}>
-      <a>{children}</a>
+      <a className={className}>{children}</a>
     </NextLink>
   )
 }

@@ -13,6 +13,7 @@
   border: none;
   border-radius: 8px;
   outline: none;
+  cursor: pointer;
   transition: background-color 0.3s, color 0.3s, border 0.3s;
 }
 
@@ -37,6 +38,11 @@
   height: 40px;
   font-size: 16px;
   line-height: 22px;
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
 }
 
 .primary {
