@@ -1,7 +1,7 @@
 import { ComponentProps, ReactElement } from 'react'
 import classNames from 'classnames'
-import styles from './tabs.module.scss'
 import Tab from './Tab'
+import styles from './tabs.module.scss'
 
 interface Props {
   children?:

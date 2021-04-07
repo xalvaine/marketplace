@@ -1,8 +1,8 @@
-import styles from './layout.module.scss'
 import Header from './Header'
 import TabBar from './TabBar'
 import Footer from './Footer'
 import TabBarExpansion from './TabBar/TabBarExpansion'
+import styles from './layout.module.scss'
 
 interface Props {
   children: React.ReactNode

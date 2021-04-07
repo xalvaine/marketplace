@@ -5,6 +5,7 @@ import Product from '@/views/pages/Product'
 import { Product as ProductType } from '@/interfaces'
 import { useDispatch } from 'react-redux'
 import { layout } from '@/reducers'
+import Layout from '@/views/common/Layout'
 
 interface Props {
   product: ProductType
@@ -32,12 +33,12 @@ const ProductPage = (props: Props) => {
   dispatch(layout.setShowSearch(false))
 
   return (
-    <>
+    <Layout>
       <Head>
         <title>Арахисовая паста</title>
       </Head>
       <Product product={product} />
-    </>
+    </Layout>
   )
 }
 

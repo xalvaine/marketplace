@@ -1,9 +1,9 @@
 import { Typography } from '@/components'
-import styles from './footer.module.scss'
 import Column from './Column'
 import VK from './assets/bxl-vk.svg'
 import Facebook from './assets/bxl-facebook-circle.svg'
 import Instagram from './assets/bxl-instagram-alt.svg'
+import styles from './footer.module.scss'
 
 const Footer = () => {
   return (

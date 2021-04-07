@@ -1,5 +1,5 @@
-import styles from './home.module.scss'
 import Carousel from './Carousel'
+import styles from './home.module.scss'
 
 const Home = () => {
   return (

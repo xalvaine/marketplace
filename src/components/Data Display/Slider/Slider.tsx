@@ -4,9 +4,9 @@ import SwiperClass from 'swiper/types/swiper-class'
 import classNames from 'classnames'
 
 import Slide from './Slide'
-import styles from './slider.module.scss'
 import Pages from './Pages'
 import Chevrons from './Chevrons'
+import styles from './slider.module.scss'
 
 interface Props extends Swiper {
   className?: string
