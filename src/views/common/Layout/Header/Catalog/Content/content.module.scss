@@ -1,0 +1,20 @@
+.title {
+  margin-bottom: 24px;
+}
+
+.list {
+  column-count: 3;
+  column-gap: 30px;
+  column-width: 170px;
+}
+
+.item {
+  break-inside: avoid-column;
+  display: grid;
+  grid-gap: 8px;
+}
+
+.subtitle {
+  font-size: 14px;
+  line-height: 32px;
+}

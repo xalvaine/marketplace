@@ -42,7 +42,7 @@ const Header = () => {
         <Input
           className={styles.search}
           hidden={!isDesktop && !showSearch}
-          leftIcon={BxSearch}
+          leftIcon={!isDesktop ? BxSearch : undefined}
           placeholder="Поиск по товарам"
           search={isDesktop}
           size="large"

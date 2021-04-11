@@ -20,7 +20,7 @@ const Group = () => {
           Продукты питания
         </Button>
       </Link>
-      <Typography.Title className={styles.title} level={3}>
+      <Typography.Title className={styles.title} level={4}>
         Сладости
       </Typography.Title>
       <Typography.Text disabled className={styles.count}>

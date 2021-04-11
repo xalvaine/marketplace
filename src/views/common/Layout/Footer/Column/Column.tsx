@@ -11,7 +11,7 @@ const Column = (props: Props) => {
 
   return (
     <li className={styles.block}>
-      <Typography.Title className={styles.title} level={5}>
+      <Typography.Title className={styles.title} level={6}>
         {title}
       </Typography.Title>
       <ul className={styles.rows}>

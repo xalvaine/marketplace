@@ -30,7 +30,7 @@ const Footer = () => {
           <li>
             <Typography.Title
               className={styles.title}
-              level={5}
+              level={6}
               weight="semibold"
             >
               Greenleaf

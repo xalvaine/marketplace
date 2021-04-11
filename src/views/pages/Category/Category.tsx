@@ -6,7 +6,7 @@ const Category = () => {
   return (
     <>
       <div className={styles.wrapper}>
-        <Typography.Title className={styles.title} level={3}>
+        <Typography.Title className={styles.title} level={4}>
           Продукты питания
         </Typography.Title>
         <Typography.Text disabled className={styles.count}>

@@ -4,6 +4,7 @@ import { layout } from '@/reducers'
 import { RootState } from '@/pages/_app'
 import Options from './Options'
 import styles from './catalog.module.scss'
+import Content from './Content'
 
 const Catalog = () => {
   const dispatch = useDispatch()
@@ -28,6 +29,7 @@ const Catalog = () => {
         />
         <div className={styles.dropdown}>
           <Options />
+          <Content />
         </div>
       </section>
     </CSSTransition>

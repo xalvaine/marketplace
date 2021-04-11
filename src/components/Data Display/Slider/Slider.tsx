@@ -44,7 +44,11 @@ const Slider = (props: Props) => {
         <SwiperSlide key={index}>
           <img
             alt=""
-            className={classNames(styles.image, props.className)}
+            className={classNames(
+              styles.image,
+              pagesCount > 1 && styles.grab,
+              props.className,
+            )}
             src={props.image}
           />
         </SwiperSlide>
