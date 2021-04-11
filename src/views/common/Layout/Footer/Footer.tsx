@@ -10,24 +10,7 @@ const Footer = () => {
     <>
       <footer className={styles.footer}>
         <ul className={styles.columns}>
-          <Column
-            rows={[`Как сделать заказ`, `Доставка`, `Оплата`, `Возвраты`]}
-            title="Покупателям"
-          />
-          <Column
-            rows={[
-              `Подключение продавца`,
-              `Личный кабинет продавца`,
-              `Справка для продавцов`,
-              `Сайт для партнеров`,
-            ]}
-            title="Продавцам"
-          />
-          <Column
-            rows={[`О GreenLeaf`, `Вакансии`, `Контакты`, `Реквизиты`]}
-            title="О компании"
-          />
-          <li>
+          <li className={styles.uniqueColumn}>
             <Typography.Title
               className={styles.title}
               level={6}
@@ -46,7 +29,27 @@ const Footer = () => {
               <Facebook />
               <Instagram />
             </div>
+            <Typography.Text className={styles.toggleVersion}>
+              Версия для ПК
+            </Typography.Text>
           </li>
+          <Column
+            rows={[`Как сделать заказ`, `Доставка`, `Оплата`, `Возвраты`]}
+            title="Покупателям"
+          />
+          <Column
+            rows={[
+              `Подключение продавца`,
+              `Личный кабинет продавца`,
+              `Справка для продавцов`,
+              `Сайт для партнеров`,
+            ]}
+            title="Продавцам"
+          />
+          <Column
+            rows={[`О GreenLeaf`, `Вакансии`, `Контакты`, `Реквизиты`]}
+            title="О компании"
+          />
         </ul>
       </footer>
       <section className={styles.terms}>

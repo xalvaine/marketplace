@@ -1,9 +1,10 @@
 import { Typography } from '@/components'
 import styles from './content.module.scss'
+import Brands from './Brands'
 
 const Content = () => {
   return (
-    <div>
+    <div className={styles.wrapper}>
       <Typography.Title className={styles.title} level={5}>
         Продукты питания
       </Typography.Title>
@@ -31,6 +32,7 @@ const Content = () => {
           <Typography.Text>Кофе</Typography.Text>
         </li>
       </ul>
+      <Brands />
     </div>
   )
 }

@@ -1,5 +1,6 @@
-import { Image, Typography, Link } from '@/components'
+import { Typography, Link } from '@/components'
 import { PATH, mockSrc } from '@/config'
+import Image from './Image'
 import styles from './category.module.scss'
 
 const Category = () => {

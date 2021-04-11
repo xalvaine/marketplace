@@ -1,8 +1,16 @@
+.wrapper {
+  display: grid;
+  grid-template-areas: 't t' 'l b';
+  grid-template-columns: 570px 90px;
+}
+
 .title {
+  grid-area: t;
   margin-bottom: 24px;
 }
 
 .list {
+  grid-area: l;
   column-count: 3;
   column-gap: 30px;
   column-width: 170px;
