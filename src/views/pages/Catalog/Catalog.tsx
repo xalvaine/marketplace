@@ -1,6 +1,7 @@
-import { Link, Image } from '@/components'
+import { Link } from '@/components'
 import { PATH, mockSrc } from '@/config'
 import { CatalogItem } from '@/interfaces'
+import Image from './Image'
 import styles from './catalog.module.scss'
 
 interface Props {

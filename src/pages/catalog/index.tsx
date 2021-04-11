@@ -16,8 +16,13 @@ interface Props {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const { data } = await api.get(`/catalog`)
-  return { props: { catalog: data.items }, revalidate: 60 }
+  try {
+    const { data } = await api.get(`/catalog`)
+    return { props: { catalog: data.items }, revalidate: 60 }
+  } catch (error) {
+    console.error(error)
+    return { props: { catalog: [] }, revalidate: 60 }
+  }
 }
 
 const CatalogPage = (props: Props) => {
