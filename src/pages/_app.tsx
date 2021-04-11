@@ -5,14 +5,13 @@ import Head from 'next/head'
 import { useRef } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
-import auth from '@/reducers/auth'
+import { layout } from '@/reducers'
 import '@/styles/fonts.scss'
 import '@/styles/globals.scss'
 import 'swiper/swiper.scss'
-import Layout from '@/views/common/Layout'
 
-const store = configureStore({
-  reducer: { auth },
+export const store = configureStore({
+  reducer: { layout: layout.reducer },
 })
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
@@ -27,16 +26,14 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <QueryClientProvider client={queryClientRef.current}>
       <Provider store={store}>
-        <Layout>
-          <Head>
-            <title>Green leaf</title>
-            <meta
-              content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-              name="viewport"
-            />
-          </Head>
-          <Component {...pageProps} />
-        </Layout>
+        <Head>
+          <title>Green leaf</title>
+          <meta
+            content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+            name="viewport"
+          />
+        </Head>
+        <Component {...pageProps} />
       </Provider>
       <ReactQueryDevtools />
     </QueryClientProvider>

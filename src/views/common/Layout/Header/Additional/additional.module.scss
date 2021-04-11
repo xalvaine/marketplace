@@ -1,0 +1,27 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .wrapper {
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    padding: 8px 0;
+    background: $tableHeader;
+  }
+
+  .list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 16px;
+    justify-content: end;
+    width: 930px;
+  }
+
+  .item {
+    padding: 3px 0;
+  }
+}

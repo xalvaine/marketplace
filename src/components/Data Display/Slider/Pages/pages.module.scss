@@ -27,3 +27,13 @@
   width: 24px;
   opacity: 1;
 }
+
+@media (min-width: 1024px) {
+  .wrapper {
+    bottom: 22px;
+  }
+
+  .other {
+    cursor: pointer;
+  }
+}

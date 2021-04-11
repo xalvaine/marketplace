@@ -1,8 +1,8 @@
 import { ComponentProps, FunctionComponent } from 'react'
 import classNames from 'classnames'
-import styles from './typography.module.scss'
 import Text from './Text'
 import Title from './Title'
+import styles from './typography.module.scss'
 
 const weightToClass = {
   regular: styles.regular,

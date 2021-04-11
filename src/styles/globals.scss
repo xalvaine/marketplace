@@ -21,3 +21,11 @@ h5,
 h6 {
   font-weight: bold;
 }
+
+@media (min-width: 1024px) {
+  #__next {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+}

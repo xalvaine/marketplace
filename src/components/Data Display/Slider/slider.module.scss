@@ -9,3 +9,11 @@
   object-fit: cover;
   border-radius: 6px;
 }
+
+.grab {
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}

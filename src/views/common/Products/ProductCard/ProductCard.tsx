@@ -26,7 +26,7 @@ const ProductCard = (props: Props) => {
             790 ₽
           </Typography.Text>
         </div>
-        <Typography.Text block className={styles.name}>
+        <Typography.Text className={styles.name}>
           {product.name}
         </Typography.Text>
         <Button className={styles.button} type="primary">

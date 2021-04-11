@@ -3,6 +3,10 @@ import Head from 'next/head'
 import api from '@/api'
 import Product from '@/views/pages/Product'
 import { Product as ProductType } from '@/interfaces'
+import { useDispatch } from 'react-redux'
+import { layout } from '@/reducers'
+import Layout from '@/views/common/Layout'
+import { useEffect } from 'react'
 
 interface Props {
   product: ProductType
@@ -26,14 +30,16 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 
 const ProductPage = (props: Props) => {
   const { product } = props
+  const dispatch = useDispatch()
+  useEffect(() => void dispatch(layout.setLayoutParams({})))
 
   return (
-    <>
+    <Layout>
       <Head>
         <title>Арахисовая паста</title>
       </Head>
       <Product product={product} />
-    </>
+    </Layout>
   )
 }
 

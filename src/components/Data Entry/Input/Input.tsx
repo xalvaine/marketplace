@@ -5,6 +5,7 @@ import {
   SVGProps,
 } from 'react'
 import classNames from 'classnames'
+import { Button } from '@/components'
 import styles from './input.module.scss'
 
 type Props = Omit<
@@ -12,6 +13,7 @@ type Props = Omit<
   'size'
 > & {
   size?: keyof typeof sizeToStyle
+  search?: boolean
   leftIcon?: FunctionComponent<SVGProps<SVGSVGElement>>
   rightIcon?: FunctionComponent<SVGProps<SVGSVGElement>>
 }
@@ -27,22 +29,30 @@ const Input = (props: Props) => {
     size = 'normal',
     leftIcon: LeftIcon,
     rightIcon: RightIcon,
+    search,
+    hidden,
     ...rest
   } = props
 
   return (
-    <div className={classNames(styles.wrapper, className)}>
+    <label className={classNames(styles.wrapper, className)} hidden={hidden}>
       <input
         className={classNames(
           sizeToStyle[size],
           LeftIcon && styles.withLeftIcon,
           RightIcon && styles.withRightIcon,
+          search && styles.search,
         )}
         {...rest}
       />
       {LeftIcon && <LeftIcon className={styles.leftIcon} />}
       {RightIcon && <RightIcon className={styles.rightIcon} />}
-    </div>
+      {search && (
+        <Button className={styles.searchButton} size={size} type="primary">
+          Найти
+        </Button>
+      )}
+    </label>
   )
 }
 

@@ -1,23 +1,16 @@
-import { Image, Input, Typography, Link } from '@/components'
-import { BxSearch } from '@/icons'
-
+import { Typography, Link } from '@/components'
 import { PATH, mockSrc } from '@/config'
+import Image from './Image'
 import styles from './category.module.scss'
 
 const Category = () => {
   return (
     <>
       <div className={styles.wrapper}>
-        <Input
-          className={styles.search}
-          leftIcon={BxSearch}
-          placeholder="Поиск по товарам"
-          size="large"
-        />
-        <Typography.Title className={styles.title} level={3}>
+        <Typography.Title className={styles.title} level={4}>
           Продукты питания
         </Typography.Title>
-        <Typography.Text block disabled className={styles.count}>
+        <Typography.Text disabled className={styles.count}>
           10 456 товаров
         </Typography.Text>
 

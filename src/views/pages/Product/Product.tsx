@@ -44,13 +44,13 @@ const Product = (props: Props) => {
           <Slider.Slide className={styles.slide} image={mockSrc} />
         </Slider>
       </div>
-      <Typography.Title className={styles.name} level={5} weight="semibold">
+      <Typography.Title className={styles.name} level={6} weight="semibold">
         {product.name}
       </Typography.Title>
-      <Typography.Title className={styles.descriptionTitle} level={4}>
+      <Typography.Title className={styles.descriptionTitle} level={5}>
         Описание
       </Typography.Title>
-      <Typography.Text block className={styles.descriptionText}>
+      <Typography.Text className={styles.descriptionText}>
         {product.description}
       </Typography.Text>
       <AddToCart />
