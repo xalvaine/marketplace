@@ -3,6 +3,10 @@
 .wrapper {
   position: relative;
   display: flex;
+
+  &[hidden] {
+    display: none;
+  }
 }
 
 .icon {

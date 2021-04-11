@@ -3,10 +3,16 @@ import Products from '@/views/pages/Home'
 import { useDispatch } from 'react-redux'
 import { layout } from '@/reducers'
 import Layout from '@/views/common/Layout'
+import { useEffect } from 'react'
 
 const HomePage = () => {
   const dispatch = useDispatch()
-  dispatch(layout.setShowSearch(true))
+  useEffect(
+    () =>
+      void dispatch(
+        layout.setLayoutParams({ showSearch: true, showCategories: true }),
+      ),
+  )
 
   return (
     <Layout>

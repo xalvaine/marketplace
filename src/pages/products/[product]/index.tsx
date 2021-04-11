@@ -6,6 +6,7 @@ import { Product as ProductType } from '@/interfaces'
 import { useDispatch } from 'react-redux'
 import { layout } from '@/reducers'
 import Layout from '@/views/common/Layout'
+import { useEffect } from 'react'
 
 interface Props {
   product: ProductType
@@ -30,7 +31,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 const ProductPage = (props: Props) => {
   const { product } = props
   const dispatch = useDispatch()
-  dispatch(layout.setShowSearch(false))
+  useEffect(() => void dispatch(layout.setLayoutParams({})))
 
   return (
     <Layout>

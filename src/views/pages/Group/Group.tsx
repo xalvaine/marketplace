@@ -1,4 +1,4 @@
-import { Link, Button, Tabs, Typography } from '@/components'
+import { Link, Button, List, Typography } from '@/components'
 import { BxArrowBack } from '@/icons'
 import { PATH } from '@/config'
 import { useProducts } from '@/hooks'
@@ -26,14 +26,14 @@ const Group = () => {
       <Typography.Text disabled className={styles.count}>
         1 024 товара
       </Typography.Text>
-      <Tabs className={styles.tabs}>
-        <Tabs.Tab>Коллекция</Tabs.Tab>
-        <Tabs.Tab>Коллекция</Tabs.Tab>
-        <Tabs.Tab>Коллекция</Tabs.Tab>
-        <Tabs.Tab>Коллекция</Tabs.Tab>
-        <Tabs.Tab>Коллекция</Tabs.Tab>
-        <Tabs.Tab>Коллекция</Tabs.Tab>
-      </Tabs>
+      <List className={styles.tabs}>
+        <List.Item>Коллекция</List.Item>
+        <List.Item>Коллекция</List.Item>
+        <List.Item>Коллекция</List.Item>
+        <List.Item>Коллекция</List.Item>
+        <List.Item>Коллекция</List.Item>
+        <List.Item>Коллекция</List.Item>
+      </List>
       <Products products={products} />
     </div>
   )

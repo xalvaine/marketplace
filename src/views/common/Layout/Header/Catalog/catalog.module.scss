@@ -1,0 +1,37 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  z-index: 2;
+  transition: opacity 0.3s;
+}
+
+.transparent {
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.button {
+  display: flex;
+}
+
+.shadow {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(45, 45, 45, 0.65);
+}
+
+.dropdown {
+  position: absolute;
+  top: 112px;
+  right: 0;
+  left: 0;
+  margin: auto;
+  padding: 12px calc(50% - 465px);
+  background: $monoWhite;
+}

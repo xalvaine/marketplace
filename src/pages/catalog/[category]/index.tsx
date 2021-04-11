@@ -3,10 +3,12 @@ import Category from '@/views/pages/Category'
 import { useDispatch } from 'react-redux'
 import { layout } from '@/reducers'
 import Layout from '@/views/common/Layout'
+import { useEffect } from 'react'
 
 const CategoryPage = () => {
   const dispatch = useDispatch()
-  dispatch(layout.setShowSearch(true))
+  useEffect(() => void dispatch(layout.setLayoutParams({ showSearch: true })))
+
   return (
     <Layout>
       <Head>

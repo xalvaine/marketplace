@@ -30,11 +30,12 @@ const Input = (props: Props) => {
     leftIcon: LeftIcon,
     rightIcon: RightIcon,
     search,
+    hidden,
     ...rest
   } = props
 
   return (
-    <label className={classNames(styles.wrapper, className)}>
+    <label className={classNames(styles.wrapper, className)} hidden={hidden}>
       <input
         className={classNames(
           sizeToStyle[size],

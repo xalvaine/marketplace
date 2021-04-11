@@ -1,12 +1,12 @@
 import { ReactNode } from 'react'
 import { Typography } from '@/components'
-import styles from './tab.module.scss'
+import styles from './item.module.scss'
 
 interface Props {
   children?: ReactNode
 }
 
-const Tab = (props: Props) => {
+const Item = (props: Props) => {
   const { children } = props
   return (
     <li className={styles.wrapper}>
@@ -15,4 +15,4 @@ const Tab = (props: Props) => {
   )
 }
 
-export default Tab
+export default Item

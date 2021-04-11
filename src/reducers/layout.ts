@@ -1,18 +1,24 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface InitialState {
-  showSearch: boolean
+  showSearch?: boolean
+  showCategories?: boolean
+  showCatalog?: boolean
 }
 
 const layoutSlice = createSlice({
   name: `layout`,
   initialState: {} as InitialState,
   reducers: {
-    setShowSearch: (state, action) => {
-      state.showSearch = action.payload
+    setLayoutParams: (state, action: PayloadAction<InitialState>) => {
+      state.showSearch = action.payload?.showSearch
+      state.showCategories = action.payload?.showCategories
+    },
+    setShowCatalog: (state, action) => {
+      state.showCatalog = action.payload
     },
   },
 })
 
-export const { setShowSearch } = layoutSlice.actions
+export const { setLayoutParams, setShowCatalog } = layoutSlice.actions
 export const reducer = layoutSlice.reducer

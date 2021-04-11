@@ -1,23 +1,23 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useMediaQuery } from '@/utils'
-import { BxBell, BxSearch, BxMenu } from '@/icons'
+import { BxBell, BxMenu, BxSearch } from '@/icons'
 import { Badge, Button, Input, Link } from '@/components'
+import { layout } from '@/reducers'
 import { PATH } from '@/config'
 import { RootState } from '@/pages/_app'
-import { useEffect, useState } from 'react'
 import Additional from './Additional'
 import Logo from './assets/logo-small.svg'
-import styles from './header.module.scss'
 import Icons from './Icons'
+import styles from './header.module.scss'
+import Categories from './Categories'
+import Catalog from './Catalog'
 
 const Header = () => {
-  const { showSearch } = useSelector((state: RootState) => state.layout)
+  const dispatch = useDispatch()
+  const { showSearch, showCategories, showCatalog } = useSelector(
+    (state: RootState) => state.layout,
+  )
   const isDesktop = useMediaQuery(`(min-width: 1024px)`)
-  const [showInput, setShowInput] = useState(false)
-
-  useEffect(() => {
-    setShowInput(!isDesktop && !showSearch)
-  }, [isDesktop, showSearch])
 
   return (
     <>
@@ -30,14 +30,18 @@ const Header = () => {
         <Link href={PATH.HOME}>
           <Logo className={styles.logo} />
         </Link>
-        <Link className={styles.catalogLink} href={PATH.CATALOG}>
-          <Button icon={BxMenu} size="large" type="primary">
-            Каталог
-          </Button>
-        </Link>
+        <Button
+          className={styles.button}
+          icon={BxMenu}
+          size="large"
+          type="primary"
+          onClick={() => dispatch(layout.setShowCatalog(!showCatalog))}
+        >
+          Каталог
+        </Button>
         <Input
           className={styles.search}
-          hidden={showInput}
+          hidden={!isDesktop && !showSearch}
           leftIcon={BxSearch}
           placeholder="Поиск по товарам"
           search={isDesktop}
@@ -45,6 +49,8 @@ const Header = () => {
         />
         <Icons />
       </header>
+      {isDesktop && <Catalog />}
+      {(isDesktop || !!showCategories) && <Categories />}
     </>
   )
 }
