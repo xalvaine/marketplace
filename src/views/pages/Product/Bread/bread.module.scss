@@ -1,0 +1,10 @@
+.back {
+  width: fit-content;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 1024px) {
+  .back {
+    margin-bottom: 0;
+  }
+}

@@ -34,7 +34,10 @@ const Group = () => {
         <List.Item>Коллекция</List.Item>
         <List.Item>Коллекция</List.Item>
       </List>
-      <Products products={products} />
+      <div className={styles.productsWrapper}>
+        <div className={styles.filters}>Фильтры</div>
+        <Products products={products} />
+      </div>
     </div>
   )
 }

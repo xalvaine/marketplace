@@ -1,5 +1,22 @@
+@import 'src/styles/colors';
+
 .products {
   display: grid;
   grid-gap: 32px 10px;
   grid-template-columns: repeat(2, 1fr);
+}
+
+.line {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .products {
+    grid-gap: 48px 32px;
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .line {
+    display: flex;
+  }
 }
