@@ -1,9 +1,10 @@
 import { Product as ProductType } from '@/interfaces'
-import AddToCart from './AddToCart'
 import styles from './product.module.scss'
 import Picture from './Picture'
 import Params from './Params'
 import Bread from './Bread'
+import Description from './Description'
+import AddToCart from './AddToCart'
 
 interface Props {
   product: ProductType
@@ -14,9 +15,10 @@ const Product = (props: Props) => {
 
   return (
     <div className={styles.wrapper}>
-      <Bread className={styles.bread} />
+      <Bread className={styles.bread} product={product} />
       <Picture className={styles.picture} images={product.images} />
       <Params className={styles.params} product={product} />
+      <Description className={styles.description} product={product} />
       <AddToCart />
     </div>
   )

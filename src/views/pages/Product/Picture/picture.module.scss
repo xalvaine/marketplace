@@ -20,3 +20,9 @@
 .slide {
   border-radius: 4px;
 }
+
+@media (min-width: 1024px) {
+  .sliderWrapper {
+    margin: 0;
+  }
+}

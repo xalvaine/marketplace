@@ -20,12 +20,6 @@ const Params = (props: Props) => {
       >
         {product.name}
       </Typography.Title>
-      <Typography.Title className={styles.descriptionTitle} level={5}>
-        Описание
-      </Typography.Title>
-      <Typography.Text className={styles.descriptionText}>
-        {product.description}
-      </Typography.Text>
     </>
   )
 }

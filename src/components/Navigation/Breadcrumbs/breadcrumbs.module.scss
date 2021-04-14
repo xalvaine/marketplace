@@ -1,0 +1,15 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 8px;
+  align-items: center;
+  justify-content: start;
+}
+
+.icon {
+  width: 12px;
+  height: 12px;
+  fill: $disabled;
+}

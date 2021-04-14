@@ -6,7 +6,9 @@
   .wrapper {
     display: grid;
     grid-gap: 54px 30px;
-    grid-template-areas: 'b b' 'i p';
+    grid-template-areas: 'b b' 'i p' 'd d';
+    grid-template-columns: 1fr 1fr;
+    padding-top: 20px;
   }
 
   .bread {
@@ -19,5 +21,9 @@
 
   .params {
     grid-area: p;
+  }
+
+  .description {
+    grid-area: d;
   }
 }
