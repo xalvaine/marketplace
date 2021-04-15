@@ -23,13 +23,13 @@
 
 @media (min-width: 1024px) {
   .sliderWrapper {
+    flex-grow: 1;
     height: 370px;
     margin: 0;
     padding: 0;
   }
 
   .wrapper {
-    grid-gap: 30px;
-    grid-template-columns: auto 1fr;
+    display: flex;
   }
 }
