@@ -10,7 +10,6 @@ interface Props {
 
 const Description = (props: Props) => {
   const { product, className } = props
-  console.log(product)
 
   return (
     <div className={classNames(styles.wrapper, className)}>

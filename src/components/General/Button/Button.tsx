@@ -3,6 +3,7 @@ import {
   DetailedHTMLProps,
   FunctionComponent,
   SVGProps,
+  forwardRef,
 } from 'react'
 import classNames from 'classnames'
 
@@ -29,7 +30,7 @@ const sizeToClass = {
   large: styles.buttonLarge,
 }
 
-const Button = (props: Props) => {
+const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
   const {
     children,
     type = `secondary`,
@@ -40,6 +41,7 @@ const Button = (props: Props) => {
   } = props
   return (
     <button
+      ref={ref}
       className={classNames(sizeToClass[size], typeToClass[type], className)}
       type="button"
       {...rest}
@@ -48,6 +50,7 @@ const Button = (props: Props) => {
       {children && <span className={styles.content}>{children}</span>}
     </button>
   )
-}
+})
 
+Button.displayName = `Button`
 export default Button

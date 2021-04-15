@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, ImgHTMLAttributes, forwardRef } from 'react'
+import { DetailedHTMLProps, ImgHTMLAttributes } from 'react'
 import classNames from 'classnames'
 import { Typography } from '@/components'
 import styles from './image.module.scss'
@@ -11,11 +11,11 @@ interface Props
   label?: string
 }
 
-const Image = forwardRef<HTMLDivElement, Props>((props, ref) => {
+const Image = (props: Props) => {
   const { label, alt = ``, className, src = ``, ...rest } = props
 
   return (
-    <div ref={ref} className={styles.wrapper}>
+    <div className={styles.wrapper}>
       <div className={styles.imageWrapper}>
         <img
           {...rest}
@@ -29,6 +29,6 @@ const Image = forwardRef<HTMLDivElement, Props>((props, ref) => {
       </Typography.Text>
     </div>
   )
-})
+}
 
 export default Image

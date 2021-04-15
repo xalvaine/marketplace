@@ -14,3 +14,5 @@ export { default as BxRightArrow } from './assets/bx-right-arrow-alt.svg'
 
 //BXS
 export { default as BxsRightArrow } from './assets/bxs-right-arrow.svg'
+export { default as BxsDownArrow } from './assets/bxs-down-arrow.svg'
+export { default as BxsUpArrow } from './assets/bxs-up-arrow.svg'

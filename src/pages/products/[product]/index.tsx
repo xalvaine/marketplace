@@ -36,7 +36,7 @@ const ProductPage = (props: Props) => {
   return (
     <Layout>
       <Head>
-        <title>Арахисовая паста</title>
+        <title>{product.name}</title>
       </Head>
       <Product product={product} />
     </Layout>

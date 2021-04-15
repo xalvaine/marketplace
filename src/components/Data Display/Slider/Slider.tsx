@@ -17,7 +17,15 @@ interface Props extends Swiper {
 }
 
 const Slider = (props: Props) => {
-  const { children, className, controls, ...rest } = props
+  const {
+    children,
+    className,
+    spaceBetween = 8,
+    loop = true,
+    controls,
+    onSwiper,
+    ...rest
+  } = props
   const [page, setPage] = useState(0)
   const [slider, setSlider] = useState<SwiperClass>()
 
@@ -29,16 +37,23 @@ const Slider = (props: Props) => {
     if (delta < 0) slider?.slidePrev()
   }
 
+  const handleSwiper = (swiper: SwiperClass) => {
+    setSlider(swiper)
+    if (onSwiper) {
+      onSwiper(swiper)
+    }
+  }
+
   return (
     <Swiper
       {...rest}
-      loop
       allowSlideNext={pagesCount > 1}
       allowSlidePrev={pagesCount > 1}
       className={classNames(styles.slider, className)}
-      spaceBetween={8}
+      loop={loop}
+      spaceBetween={spaceBetween}
       onSlideChange={(event) => setPage(event.realIndex)}
-      onSwiper={setSlider}
+      onSwiper={handleSwiper}
     >
       {slides.map((props, index) => (
         <SwiperSlide key={index}>
@@ -53,7 +68,7 @@ const Slider = (props: Props) => {
           />
         </SwiperSlide>
       ))}
-      {pagesCount > 1 && (
+      {pagesCount > 1 && props.direction === `horizontal` && (
         <>
           <Pages current={page} total={pagesCount} />
           {controls && <Chevrons handlePageSwitch={handlePageSwitch} />}

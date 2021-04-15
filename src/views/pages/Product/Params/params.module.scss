@@ -1,3 +1,44 @@
-.name {
+@import 'src/styles/colors';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+}
+
+.title {
   margin-bottom: 16px;
+}
+
+.price {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 4px;
+  align-items: start;
+  justify-content: start;
+  margin-bottom: 32px;
+}
+
+.newPrice {
+  color: $default;
+  font-size: 32px;
+  line-height: 38px;
+}
+
+.oldPrice {
+  color: $disabled;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+@media (min-width: 1024px) {
+  .title {
+    margin-bottom: 32px;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .wrapper {
+    margin: 0;
+  }
 }

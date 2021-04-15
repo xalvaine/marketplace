@@ -4,7 +4,6 @@ import Picture from './Picture'
 import Params from './Params'
 import Bread from './Bread'
 import Description from './Description'
-import AddToCart from './AddToCart'
 
 interface Props {
   product: ProductType
@@ -19,7 +18,6 @@ const Product = (props: Props) => {
       <Picture className={styles.picture} images={product.images} />
       <Params className={styles.params} product={product} />
       <Description className={styles.description} product={product} />
-      <AddToCart />
     </div>
   )
 }
