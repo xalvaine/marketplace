@@ -1,10 +1,23 @@
 import { Menu } from '@/components'
+import { Catalog } from '@/interfaces'
+import { Dispatch } from 'react'
 
-const Options = () => {
+interface Props {
+  catalogs?: Catalog[]
+  selected?: string
+  setSelected: Dispatch<string>
+}
+
+const Options = (props: Props) => {
+  const { catalogs, selected, setSelected } = props
+
   return (
-    <Menu value="1">
-      <Menu.Item key="1">Продукты питания</Menu.Item>
-      <Menu.Item key="2">Витамины/БАДы</Menu.Item>
+    <Menu value={selected} onSelect={setSelected}>
+      {catalogs?.map((catalog) => (
+        <Menu.Item key={catalog.id} disabled={!catalog.catalogs.length}>
+          {catalog.name}
+        </Menu.Item>
+      ))}
     </Menu>
   )
 }

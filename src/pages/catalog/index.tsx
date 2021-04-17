@@ -1,27 +1,26 @@
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
-import api from '@/api'
-import { CatalogItem } from '@/interfaces'
+import { Catalog as CatalogType } from '@/interfaces'
 import Catalog from '@/views/pages/Catalog'
 import { useDispatch } from 'react-redux'
 import { layout } from '@/reducers'
-import Layout from '@/views/common/Layout'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useMediaQuery } from '@/utils'
 import { PATH } from '@/config'
+import { getCatalogs } from '@/hooks'
 
 interface Props {
-  catalog: CatalogItem[]
+  catalogs: CatalogType[]
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const { data } = await api.get(`/catalog`)
-  return { props: { catalog: data.items }, revalidate: 60 }
+  const catalogs = await getCatalogs()
+  return { props: { catalogs }, revalidate: 60 }
 }
 
 const CatalogPage = (props: Props) => {
-  const { catalog } = props
+  const { catalogs } = props
   const dispatch = useDispatch()
   const router = useRouter()
   const isDesktop = useMediaQuery(`(min-width: 1024px)`)
@@ -33,12 +32,12 @@ const CatalogPage = (props: Props) => {
   ])
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>Каталог</title>
       </Head>
-      <Catalog catalog={catalog} />
-    </Layout>
+      <Catalog catalogs={catalogs} />
+    </>
   )
 }
 

@@ -1,0 +1,28 @@
+.descriptionTitle {
+  margin-bottom: 8px;
+}
+
+.descriptionText {
+  margin-bottom: 32px;
+}
+
+@media (min-width: 1024px) {
+  .wrapper {
+    display: grid;
+    grid-gap: 24px 30px;
+    grid-template-areas: 'd s' 'd c' 'd e';
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .description {
+    grid-area: d;
+  }
+
+  .conditions {
+    grid-area: c;
+  }
+
+  .expiration {
+    grid-area: e;
+  }
+}

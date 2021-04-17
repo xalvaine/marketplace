@@ -1,16 +1,16 @@
-export interface CatalogItem {
-  id: 0
+export interface Catalog<T = undefined> {
+  id: number
   name: 'string'
   description: 'string'
   slug: 'string'
   default_image: 'string'
   collections: [
     {
-      id: 0
+      id: number
       name: 'string'
       description: 'string'
       slug: 'string'
     },
   ]
-  catalogs: [null]
+  catalogs: T[]
 }

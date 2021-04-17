@@ -1,36 +1,44 @@
-import { Typography } from '@/components'
+import { Link, Typography } from '@/components'
+import { Catalog } from '@/interfaces'
+import { PATH } from '@/config'
 import styles from './content.module.scss'
 import Brands from './Brands'
 
-const Content = () => {
+interface Props {
+  catalog?: Catalog<Catalog>
+  onSelect: () => void
+}
+
+const Content = (props: Props) => {
+  const { catalog, onSelect } = props
+
   return (
     <div className={styles.wrapper}>
-      <Typography.Title className={styles.title} level={5}>
-        Продукты питания
-      </Typography.Title>
+      <Link
+        href={{ pathname: PATH.CATEGORY, query: { category: catalog?.id } }}
+        onClick={onSelect}
+      >
+        <Typography.Title className={styles.title} level={5}>
+          {catalog?.name}
+        </Typography.Title>
+      </Link>
       <ul className={styles.list}>
-        <li className={styles.item}>
-          <Typography.Title className={styles.subtitle} level={6}>
-            Чай, кофе и какао
-          </Typography.Title>
-          <Typography.Text>Чай</Typography.Text>
-          <Typography.Text>Кофе</Typography.Text>
-        </li>
-        <li className={styles.item}>
-          <Typography.Title className={styles.subtitle} level={6}>
-            Не чай
-          </Typography.Title>
-          <Typography.Text>Не чай</Typography.Text>
-          <Typography.Text>Не кофе</Typography.Text>
-          <Typography.Text>Не какао</Typography.Text>
-        </li>
-        <li className={styles.item}>
-          <Typography.Title className={styles.subtitle} level={6}>
-            Чай, кофе и какао
-          </Typography.Title>
-          <Typography.Text>Чай</Typography.Text>
-          <Typography.Text>Кофе</Typography.Text>
-        </li>
+        {catalog?.catalogs.map((subCatalog) => (
+          <li key={subCatalog.id} className={styles.item}>
+            <Link
+              href={{
+                pathname: PATH.GROUP,
+                query: { category: catalog?.id, group: subCatalog.id },
+              }}
+              onClick={onSelect}
+            >
+              <Typography.Title className={styles.subtitle} level={6}>
+                {subCatalog.name}
+              </Typography.Title>
+            </Link>
+            <Typography.Text>Не подкатегория</Typography.Text>
+          </li>
+        ))}
       </ul>
       <Brands />
     </div>

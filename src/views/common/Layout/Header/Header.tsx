@@ -27,7 +27,10 @@ const Header = () => {
           <BxBell className={styles.icon} />
           <p />
         </Badge>
-        <Link href={PATH.HOME}>
+        <Link
+          href={PATH.HOME}
+          onClick={() => dispatch(layout.setShowCatalog(false))}
+        >
           <Logo className={styles.logo} />
         </Link>
         <Button

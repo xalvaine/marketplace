@@ -1,24 +1,25 @@
-import { Link, Image } from '@/components'
+import { Link } from '@/components'
 import { PATH, mockSrc } from '@/config'
-import { CatalogItem } from '@/interfaces'
+import { Catalog as CatalogType } from '@/interfaces'
+import Image from './Image'
 import styles from './catalog.module.scss'
 
 interface Props {
-  catalog: CatalogItem[]
+  catalogs: CatalogType[]
 }
 
 const Catalog = (props: Props) => {
-  const { catalog } = props
+  const { catalogs } = props
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.images}>
-        {catalog?.map((item) => (
+        {catalogs?.map((item) => (
           <Link
             key={item.id}
-            href={{ pathname: PATH.CATEGORY, query: { category: item.slug } }}
+            href={{ pathname: PATH.CATEGORY, query: { category: item.id } }}
           >
-            <Image label={item.name} src={mockSrc} />
+            <Image label={item.name} src={item.default_image || mockSrc} />
           </Link>
         ))}
       </div>

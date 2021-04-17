@@ -18,21 +18,26 @@ interface Props {
   strikethrough?: boolean
 }
 
-const Typography = <T extends Props>(
-  Component: FunctionComponent<Omit<T, keyof Props> & { className: string }>,
-): FunctionComponent<T & Props> => (props) => {
-  const { className, strikethrough, underline, weight, ...rest } = props
-  return (
-    <Component
-      {...rest}
-      className={classNames(
-        className,
-        styles.typography,
-        strikethrough && styles.strikethrough,
-        underline && styles.underline,
-        weight && weightToClass[weight],
-      )}
-    />
+function Typography<T>(
+  Component: FunctionComponent<Omit<T, keyof Props> & { className?: string }>,
+) {
+  return Object.assign(
+    (props: T & Props) => {
+      const { className, strikethrough, underline, weight, ...rest } = props
+      return (
+        <Component
+          {...rest}
+          className={classNames(
+            className,
+            styles.typography,
+            strikethrough && styles.strikethrough,
+            underline && styles.underline,
+            weight && weightToClass[weight],
+          )}
+        />
+      )
+    },
+    { displayName: `Typography` },
   )
 }
 

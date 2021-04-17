@@ -11,42 +11,34 @@
   padding: 0 15px;
   background: $monoWhite;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
-}
 
-.tabBarExpansion {
-  grid-column: 1 / 5;
-}
-
-.icon {
-  width: 26px;
-  height: 26px;
-  fill: $disabled;
-}
-
-.item {
-  display: grid;
-  justify-items: center;
-  padding: 8px 0;
-
-  .text {
-    transition: color 0.3s;
+  .tabBarExpansion {
+    grid-column: 1 / 5;
   }
 
   .icon {
-    transition: fill 0.3s;
+    width: 26px;
+    height: 26px;
+    fill: $disabled;
   }
 
-  //&:hover {
-  //  .text {
-  //    color: $hover;
-  //  }
-  //
-  //  .icon {
-  //    fill: $hover;
-  //  }
-  //}
+  .item {
+    display: grid;
+    justify-items: center;
+    padding: 8px 0;
 
-  &:active {
+    &:active {
+      .text {
+        color: $default;
+      }
+
+      .icon {
+        fill: $default;
+      }
+    }
+  }
+
+  .itemSelected {
     .text {
       color: $default;
     }
@@ -54,18 +46,6 @@
     .icon {
       fill: $default;
     }
-  }
-}
-
-.itemSelected {
-  composes: item;
-
-  .text {
-    color: $default;
-  }
-
-  .icon {
-    fill: $default;
   }
 }
 

@@ -1,11 +1,4 @@
-import { Variant } from '@/interfaces/variant'
-
-interface Image {
-  id: string
-  pos: string
-  url: string
-  success: boolean
-}
+import { Variant, Image } from '@/interfaces'
 
 export type Products = {
   brand_name: string

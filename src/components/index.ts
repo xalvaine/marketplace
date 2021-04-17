@@ -14,3 +14,4 @@ export { default as Input } from './Data Entry/Input'
 
 //Navigation
 export { default as Menu } from './Navigation/Menu'
+export { default as Breadcrumbs } from './Navigation/Breadcrumbs'

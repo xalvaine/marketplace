@@ -26,7 +26,6 @@
     ],
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
-    "react/display-name": "off",
     "import/order": "error",
     "import/no-unresolved": "off",
     "@typescript-eslint/interface-name-prefix": "off",

@@ -1,6 +1,4 @@
-import { PATH } from '@/config'
 import { Products as ProductsType } from '@/interfaces'
-import { Link } from '@/components'
 import ProductCard from './ProductCard'
 import styles from './products.module.scss'
 
@@ -16,19 +14,7 @@ const Products = (props: Props) => {
     <>
       <div className={styles.products}>
         {products.map((product) => (
-          <Link
-            key={product.id}
-            href={{
-              pathname: PATH.PRODUCT,
-              query: {
-                product: product.id,
-                category: `food`,
-                group: `sweets`,
-              },
-            }}
-          >
-            <ProductCard product={product} />
-          </Link>
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
     </>

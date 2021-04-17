@@ -4,9 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN yarn install
+RUN yarn install --production
 RUN yarn build
-
-ENV NODE_ENV production
 
 RUN npx next telemetry disable

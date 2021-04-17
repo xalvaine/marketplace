@@ -1,0 +1,72 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  display: flex;
+  width: fit-content;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, border 0.3s;
+
+  &.disabled {
+    background: $background !important;
+    border: 2px solid $disabled !important;
+
+    .text {
+      color: $disabled !important;
+    }
+  }
+}
+
+.gray {
+  composes: wrapper;
+  border: 2px solid $default500;
+
+  .text {
+    color: $default500;
+  }
+}
+
+.green {
+  composes: wrapper;
+  border: 2px solid $hover;
+
+  .text {
+    color: $default;
+  }
+}
+
+.normal {
+  padding: 2px 10px;
+}
+
+.large {
+  padding: 5px 10px;
+}
+
+.checked {
+  .text {
+    color: $monoWhite;
+  }
+
+  &.gray {
+    background: $default500;
+  }
+
+  &.green {
+    background: $hover;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gray:not(.checked) {
+    &:hover {
+      background: $default100;
+    }
+  }
+
+  .green:not(.checked) {
+    &:hover {
+      background: $selected;
+    }
+  }
+}
