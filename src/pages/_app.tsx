@@ -9,6 +9,7 @@ import { layout } from '@/reducers'
 import '@/styles/fonts.scss'
 import '@/styles/globals.scss'
 import 'swiper/swiper.scss'
+import Layout from '@/views/common/Layout'
 
 export const store = configureStore({
   reducer: { layout: layout.reducer },
@@ -33,7 +34,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
             name="viewport"
           />
         </Head>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </Provider>
       <ReactQueryDevtools />
     </QueryClientProvider>

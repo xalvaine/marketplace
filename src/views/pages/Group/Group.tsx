@@ -4,9 +4,15 @@ import { PATH } from '@/config'
 import { useProducts } from '@/hooks'
 import { useMediaQuery } from '@/utils'
 import Products from '@/views/common/Products'
+// import { Catalog } from '@/interfaces'
 import styles from './group.module.scss'
 
+// interface Props {
+//   catalog: Catalog
+// }
+
 const Group = () => {
+  // const { catalog } = props
   const { data: products } = useProducts()
   const isDesktop = useMediaQuery(`(min-width: 1024px)`)
 

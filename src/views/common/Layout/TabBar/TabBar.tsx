@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { Link, Badge, Typography } from '@/components'
+import classNames from 'classnames'
 
 import { BxHeart, BxHomeAlt, BxMenu, BxShoppingBag } from '@/icons'
 
@@ -58,7 +59,10 @@ const TabBar = () => {
       {tabs.map((tab) => (
         <Link key={tab.path} href={tab.path}>
           <div
-            className={page === tab.path ? styles.itemSelected : styles.item}
+            className={classNames(
+              styles.item,
+              page === tab.path && styles.itemSelected,
+            )}
           >
             <Badge count={tab.notificationsCount} size="small" theme="selected">
               <tab.icon className={styles.icon} />

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { Key, ReactNode } from 'react'
 import { Typography } from '@/components'
 import { BxsRightArrow } from '@/icons'
 import classNames from 'classnames'
@@ -6,12 +6,14 @@ import styles from './item.module.scss'
 
 export interface ExternalProps {
   children: ReactNode
-  key: string
+  key: Key
+  disabled?: boolean
 }
 
 interface Props extends ExternalProps {
   size?: keyof typeof sizeToClass
   selected: boolean
+  onClick: () => void
 }
 
 const sizeToClass = {
@@ -20,10 +22,17 @@ const sizeToClass = {
 }
 
 const Item = (props: Props) => {
-  const { children, selected, size = `normal` } = props
+  const { children, selected, size = `normal`, onClick, disabled } = props
 
   return (
-    <div className={classNames(sizeToClass[size], selected && styles.selected)}>
+    <div
+      className={classNames(
+        sizeToClass[size],
+        selected && styles.selected,
+        disabled && styles.disabled,
+      )}
+      onClick={disabled ? undefined : onClick}
+    >
       <Typography.Text className={styles.text}>{children}</Typography.Text>
       <BxsRightArrow className={styles.icon} />
     </div>

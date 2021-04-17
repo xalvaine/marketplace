@@ -14,7 +14,6 @@ interface Props {
 const Picture = (props: Props) => {
   const { images, className } = props
   const [imageIndex, setImageIndex] = useState(0)
-  console.log(images)
 
   return (
     <div className={classNames(styles.wrapper, className)}>
