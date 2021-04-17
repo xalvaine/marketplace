@@ -19,6 +19,10 @@
 }
 
 @media (min-width: 1024px) {
+  .wrapper {
+    margin-bottom: 100px;
+  }
+
   .productsWrapper {
     display: grid;
     grid-gap: 30px;
