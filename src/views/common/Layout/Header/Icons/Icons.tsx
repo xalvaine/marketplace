@@ -4,6 +4,7 @@ import { useCart } from '@/hooks/useCart'
 import { PATH } from '@/config'
 import { layout } from '@/reducers'
 import { useDispatch } from 'react-redux'
+import classNames from 'classnames'
 import styles from './icons.module.scss'
 
 const Icons = () => {
@@ -15,11 +16,15 @@ const Icons = () => {
   return (
     <div className={styles.wrapper}>
       <BxUserCircle className={styles.icon} />
-      <BxPackage className={styles.pcIcon} />
-      <BxHeart className={styles.pcIcon} />
-      <Link href={PATH.CART} onClick={hideCatalog}>
+      <BxPackage className={classNames(styles.icon, styles.pcOnly)} />
+      <BxHeart className={classNames(styles.icon, styles.pcOnly)} />
+      <Link
+        className={classNames(styles.pcOnly)}
+        href={PATH.CART}
+        onClick={hideCatalog}
+      >
         <Badge
-          className={styles.pcIcon}
+          className={styles.icon}
           count={cart?.items.length}
           size="small"
           theme="selected"
