@@ -5,13 +5,11 @@ import {
   ComponentProps,
   FunctionComponent,
   ReactElement,
-  useEffect,
   useRef,
   useState,
 } from 'react'
-import { createPortal } from 'react-dom'
 import Option, { ExternalProps } from './Option'
-import styles from './select.module.scss'
+import Options from './Options'
 
 type Props = Omit<ComponentProps<typeof Input>, 'onSelect' | 'children'> & {
   children?: ReactElement<ExternalProps> | ReactElement<ExternalProps>[]
@@ -23,26 +21,9 @@ type Props = Omit<ComponentProps<typeof Input>, 'onSelect' | 'children'> & {
 const Select = (props: Props) => {
   const { children, onSelect, onChange, placeholder, value, ...rest } = props
   const [open, setOpen] = useState(false)
-  const [optionsWrapper, setOptionsWrapper] = useState<HTMLElement | null>(null)
   const [focused, setFocused] = useState(false)
   const [searchValue, setSearchValue] = useState(``)
-  const [optionsPosition, setOptionsPosition] = useState({
-    top: 0,
-    left: 0,
-    width: 0,
-  })
   const optionsRef = useRef<HTMLInputElement>(null)
-
-  const handlePlaceOptions = () => {
-    if (optionsRef.current) {
-      const rect = optionsRef.current.getBoundingClientRect()
-      setOptionsPosition({
-        left: rect.x,
-        top: rect.y + rect.height,
-        width: rect.width,
-      })
-    }
-  }
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value)
@@ -56,14 +37,11 @@ const Select = (props: Props) => {
     setSearchValue(``)
   }
 
-  useEffect(() => setOptionsWrapper(document.getElementById(`options`)), [])
-  useEffect(() => void (open && handlePlaceOptions()), [open])
-
   const options =
     children &&
     Children.map(children, ({ props, key }) => ({
       ...props,
-      key,
+      key: key as string,
     }))
 
   const displayedValue: string | undefined = options
@@ -87,26 +65,13 @@ const Select = (props: Props) => {
         onClick={() => setOpen(true)}
         onFocus={() => setFocused(true)}
       />
-      {optionsWrapper &&
-        createPortal(
-          open && (
-            <>
-              <span className={styles.shadow} onClick={() => setOpen(false)} />
-              <div className={styles.options} style={optionsPosition}>
-                {options?.map(({ key, ...props }) => (
-                  <Option
-                    {...props}
-                    key={key as string}
-                    onClick={(value) => onSelect && onSelect(value as never)}
-                  >
-                    {props.children}
-                  </Option>
-                ))}
-              </div>
-            </>
-          ),
-          optionsWrapper,
-        )}
+      <Options
+        open={open}
+        options={options}
+        optionsRef={optionsRef}
+        setOpen={setOpen}
+        onSelect={onSelect}
+      />
     </>
   )
 }
