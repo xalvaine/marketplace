@@ -37,6 +37,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <Layout>
           <Component {...pageProps} />
         </Layout>
+        <div id="options" />
       </Provider>
       <ReactQueryDevtools />
     </QueryClientProvider>

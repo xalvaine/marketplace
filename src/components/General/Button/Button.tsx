@@ -33,7 +33,7 @@ const sizeToClass = {
 const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
   const {
     children,
-    type = `secondary`,
+    type = `primary`,
     size = `normal`,
     className,
     icon: Icon,

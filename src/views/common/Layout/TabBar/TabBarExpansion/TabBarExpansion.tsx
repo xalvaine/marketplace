@@ -16,9 +16,10 @@ const TabBarExpansion = (props: Props) => {
   const [height, setHeight] = useState<number>()
   const contentRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    setTabBar(document.getElementById(`tab-bar-extension-root`))
-  }, [])
+  useEffect(
+    () => setTabBar(document.getElementById(`tab-bar-extension-root`)),
+    [],
+  )
 
   useEffect(() => {
     if (children) {

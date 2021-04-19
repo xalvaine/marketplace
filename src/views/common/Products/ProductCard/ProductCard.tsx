@@ -53,11 +53,7 @@ const ProductCard = (props: Props) => {
         </Typography.Text>
       </div>
       <Typography.Text className={styles.name}>{product.name}</Typography.Text>
-      <Button
-        className={styles.button}
-        type="primary"
-        onClick={handleAddToCart}
-      >
+      <Button className={styles.button} onClick={handleAddToCart}>
         В корзину
       </Button>
     </Link>

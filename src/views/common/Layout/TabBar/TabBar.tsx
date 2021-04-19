@@ -13,28 +13,28 @@ const tabs = {
     keys: [PATH.HOME],
     path: PATH.HOME,
     name: `Главная`,
-    notificationsCount: 0,
+    noticesCount: 0,
   },
   catalog: {
     icon: BxMenu,
     keys: [PATH.CATALOG, PATH._PRODUCTS],
     path: PATH.CATALOG,
     name: `Каталог`,
-    notificationsCount: 0,
+    noticesCount: 0,
   },
   favourites: {
     icon: BxHeart,
     keys: [PATH.FAVOURITES],
     path: PATH.FAVOURITES,
     name: `Избранное`,
-    notificationsCount: 0,
+    noticesCount: 0,
   },
   cart: {
     icon: BxShoppingBag,
     keys: [PATH.CART],
     path: PATH.CART,
     name: `Корзина`,
-    notificationsCount: 0,
+    noticesCount: 0,
   },
 }
 
@@ -42,11 +42,9 @@ const TabBar = () => {
   const { pathname } = useRouter()
   const [page, setPage] = useState<string>()
   const { data: cart } = useCart()
+  const [cartNotices, setCartNotices] = useState(0)
 
-  useEffect(
-    () => void (cart && (tabs.cart.notificationsCount = cart.items.length)),
-    [cart],
-  )
+  useEffect(() => setCartNotices(cart?.items.length || 0), [cart?.items.length])
 
   useEffect(
     () =>
@@ -57,6 +55,8 @@ const TabBar = () => {
       ),
     [pathname],
   )
+
+  tabs.cart.noticesCount = cartNotices
 
   return (
     <section className={styles.wrapper}>
@@ -69,7 +69,7 @@ const TabBar = () => {
               page === tab.path && styles.itemSelected,
             )}
           >
-            <Badge count={tab.notificationsCount} size="small" theme="selected">
+            <Badge count={tab.noticesCount} size="small" theme="selected">
               <tab.icon className={styles.icon} />
             </Badge>
             <Typography.Text disabled secondary className={styles.text}>

@@ -3,7 +3,7 @@ export interface CartItem {
   quantity: number
   name: string
   is_available: boolean
-  price: string | null
+  price: string
 }
 
 export interface Cart {

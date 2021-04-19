@@ -43,19 +43,14 @@ const AddToCart = (props: Props) => {
   return (
     <>
       <div className={styles.wrapper}>
-        <Button
-          ref={buttonRef}
-          size="large"
-          type="primary"
-          onClick={handleAddToCart}
-        >
+        <Button ref={buttonRef} size="large" onClick={handleAddToCart}>
           Добавить в корзину
         </Button>
         <BxHeart className={styles.heart} />
       </div>
       <Layout.TabBarExpansion visible={visible}>
         <div className={styles.fixedWrapper}>
-          <Button size="large" type="primary" onClick={handleAddToCart}>
+          <Button size="large" onClick={handleAddToCart}>
             Добавить в корзину
           </Button>
           <Typography.Text className={styles.price} weight="bold">

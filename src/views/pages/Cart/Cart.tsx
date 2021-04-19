@@ -1,6 +1,7 @@
-import { Typography } from '@/components'
+import { Button, Link, Typography } from '@/components'
 import { useCart } from '@/hooks/useCart'
 import { declareNumber } from '@/utils'
+import { PATH } from '@/config'
 import styles from './cart.module.scss'
 import Items from './Items'
 
@@ -16,6 +17,10 @@ const Cart = () => {
           declareNumber(cart?.items.length, [`товар`, `товара`, `товаров`])}
       </Typography.Text>
       <Items items={cart?.items} />
+      <Typography.Text>Итого {cart?.total_price} ₽</Typography.Text>
+      <Link href={PATH.CHECKOUT}>
+        <Button size="large">Перейти к оформлению</Button>
+      </Link>
     </div>
   )
 }

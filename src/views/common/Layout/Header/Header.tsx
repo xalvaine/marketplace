@@ -37,7 +37,6 @@ const Header = () => {
           className={styles.button}
           icon={BxMenu}
           size="large"
-          type="primary"
           onClick={() => dispatch(layout.setShowCatalog(!showCatalog))}
         >
           Каталог

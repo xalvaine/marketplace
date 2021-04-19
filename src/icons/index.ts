@@ -11,6 +11,8 @@ export { default as BxChevronLeft } from './assets/bx-chevron-left.svg'
 export { default as BxChevronRight } from './assets/bx-chevron-right.svg'
 export { default as BxPackage } from './assets/bx-package.svg'
 export { default as BxRightArrow } from './assets/bx-right-arrow-alt.svg'
+export { default as BxMinus } from './assets/bx-minus.svg'
+export { default as BxPlus } from './assets/bx-plus.svg'
 
 //BXS
 export { default as BxsRightArrow } from './assets/bxs-right-arrow.svg'

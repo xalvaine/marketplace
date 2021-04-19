@@ -1,0 +1,63 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  display: grid;
+  grid-gap: 16px;
+  padding-top: 16px;
+}
+
+.item {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-areas: 'l r';
+  grid-template-columns: 1fr 1fr;
+}
+
+.left {
+  display: grid;
+  grid-area: l;
+  grid-gap: 10px;
+  grid-template-columns: 16px 1fr;
+}
+
+.right {
+  grid-area: r;
+}
+
+.checkboxWrapper {
+  /* something */
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  padding: 50% 0;
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.price {
+  margin-bottom: 8px;
+  color: $title;
+}
+
+.name {
+  margin-bottom: 8px;
+  color: $primary;
+}
+
+.count {
+  margin-right: 56px;
+
+  input {
+    text-align: center;
+  }
+}
