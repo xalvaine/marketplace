@@ -1,9 +1,9 @@
 import { useQuery } from 'react-query'
-import api from '@/api'
+import { showcaseAPI } from '@/api'
 import { Catalog } from '@/interfaces'
 
 const getCatalogs = async () => {
-  const { data } = await api.get(`/catalogs`)
+  const { data } = await showcaseAPI.get(`/catalogs`)
   return data.items
 }
 

@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
-import api from '@/api'
+import { showcaseAPI } from '@/api'
 import Product from '@/views/pages/Product'
 import { Product as ProductType } from '@/interfaces'
 import { useDispatch } from 'react-redux'
@@ -19,7 +19,7 @@ export const getStaticPaths: GetStaticPaths = async () => ({
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
   if (!context.params) return { notFound: true }
   const { product } = context.params
-  const { data } = await api.get(`/products/${product}`)
+  const { data } = await showcaseAPI.get(`/products/${product}`)
 
   return {
     revalidate: 60,

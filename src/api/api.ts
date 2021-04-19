@@ -1,5 +1,9 @@
 import axios from 'axios'
 
-const api = axios.create({ baseURL: process.env.NEXT_PUBLIC_HOSTNAME })
+export const showcaseAPI = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_HOSTNAME_SHOWCASE,
+})
 
-export default api
+export const cartAPI = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_HOSTNAME_CART,
+})

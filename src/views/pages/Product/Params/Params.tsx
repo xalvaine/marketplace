@@ -35,7 +35,7 @@ const Params = (props: Props) => {
           550 ₽
         </Typography.Text>
       </div>
-      <AddToCart />
+      <AddToCart product={product} />
     </div>
   )
 }
