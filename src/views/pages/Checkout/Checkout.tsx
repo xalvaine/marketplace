@@ -30,7 +30,6 @@ const Checkout = () => {
       desired_time_period_end: '23:00',
       promocode: 'test_promo',
       comment: 'asap',
-      items: [],
     })
   }
 
