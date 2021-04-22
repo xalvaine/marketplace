@@ -17,6 +17,8 @@ type Props = Omit<
   search?: boolean
   leftIcon?: FunctionComponent<SVGProps<SVGSVGElement>>
   rightIcon?: FunctionComponent<SVGProps<SVGSVGElement>>
+  onLeftIconClick?: () => void
+  onRightIconClick?: () => void
 }
 
 const sizeToStyle = {
@@ -32,6 +34,8 @@ const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
     rightIcon: RightIcon,
     search,
     hidden,
+    onLeftIconClick,
+    onRightIconClick,
     ...rest
   } = props
 
@@ -47,8 +51,12 @@ const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
         )}
         {...rest}
       />
-      {LeftIcon && <LeftIcon className={styles.leftIcon} />}
-      {RightIcon && <RightIcon className={styles.rightIcon} />}
+      {LeftIcon && (
+        <LeftIcon className={styles.leftIcon} onClick={onLeftIconClick} />
+      )}
+      {RightIcon && (
+        <RightIcon className={styles.rightIcon} onClick={onLeftIconClick} />
+      )}
       {search && (
         <Button className={styles.searchButton} size={size}>
           Найти

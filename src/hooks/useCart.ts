@@ -14,11 +14,11 @@ const postCart = async (values: unknown) => {
   return data as Cart
 }
 
-const useCartMutation = () => {
+const useCartPost = () => {
   const queryClient = useQueryClient()
   return useMutation<Cart, unknown, unknown>(postCart, {
     onSuccess: (data) => void queryClient.setQueryData([`cart`], data),
   })
 }
 
-export { useCart, useCartMutation }
+export { useCart, useCartPost }

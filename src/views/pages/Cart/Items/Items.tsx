@@ -1,20 +1,22 @@
 import { Cart } from '@/interfaces'
-import { Checkbox, Input, Typography } from '@/components'
 import { useFormik } from 'formik'
 import { useEffect } from 'react'
-import { mockSrc } from '@/config'
-import { BxMinus, BxPlus } from '@/icons'
 import styles from './items.module.scss'
+import Item from './Item'
 
 interface Props {
   items?: Cart['items']
-  values: boolean[] | []
-  setFieldValue: (field: string, value: unknown) => void
+  checks: boolean[] | []
+  setCheckValue: (field: string, value: unknown) => void
 }
 
 const Items = (props: Props) => {
-  const { items, setFieldValue, values } = props
-  const { values: leftovers, setValues } = useFormik({
+  const { items, setCheckValue, checks } = props
+  const {
+    values: itemsCount,
+    setValues,
+    setFieldValue: setCountValue,
+  } = useFormik({
     initialValues: [] as number[],
     onSubmit: (values) => console.log(values),
   })
@@ -26,36 +28,19 @@ const Items = (props: Props) => {
 
   return (
     <ul className={styles.wrapper}>
-      {items?.map((item, index) => (
-        <li key={index} className={styles.item}>
-          <div
-            className={styles.left}
-            onClick={() => setFieldValue(index.toString(), !values[index])}
-          >
-            <div className={styles.checkboxWrapper}>
-              <Checkbox checked={!!values[index]} />
-            </div>
-            <div className={styles.imageWrapper}>
-              <img alt="" className={styles.image} src={mockSrc} />
-            </div>
-          </div>
-          <div className={styles.right}>
-            <Typography.Text className={styles.price} weight="bold">
-              {parseFloat(item.price)} ₽
-            </Typography.Text>
-            <Typography.Text secondary className={styles.name} weight="medium">
-              {item.name || `Без названия`}
-            </Typography.Text>
-            <Input
-              readOnly
-              className={styles.count}
-              leftIcon={BxMinus}
-              rightIcon={BxPlus}
-              value={leftovers[index] || 0}
-            />
-          </div>
-        </li>
-      ))}
+      {items
+        ?.sort((a, b) => a.id - b.id)
+        .map((item, index) => (
+          <Item
+            key={index.toString()}
+            checks={checks}
+            index={index}
+            item={item}
+            itemsCount={itemsCount}
+            setCheckValue={setCheckValue}
+            setCountValue={setCountValue}
+          />
+        ))}
     </ul>
   )
 }

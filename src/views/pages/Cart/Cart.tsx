@@ -4,23 +4,42 @@ import { declareNumber } from '@/utils'
 import { PATH } from '@/config'
 import { useFormik } from 'formik'
 import { useCallback, useEffect } from 'react'
+import { useCartItemDelete } from '@/hooks'
+import { useQueryClient } from 'react-query'
 import styles from './cart.module.scss'
 import Items from './Items'
 
 const Cart = () => {
   const { data: cart } = useCart()
+  const { mutateAsync: deleteCartItem } = useCartItemDelete()
+  const queryClient = useQueryClient()
 
-  const { values, setFieldValue, setValues } = useFormik({
+  const {
+    values: checks,
+    setFieldValue: setCheckValue,
+    setValues: setChecks,
+  } = useFormik({
     initialValues: [] as boolean[],
     onSubmit: () => void null,
   })
 
   const handleChangeAll = useCallback(
     (value: boolean) => {
-      cart && setValues(cart.items.map(() => value))
+      cart && setChecks(cart.items.map(() => value))
     },
-    [cart, setValues],
+    [cart, setChecks],
   )
+
+  const handleDeleteMany = async () => {
+    if (!cart) return
+    await Promise.all(
+      checks.map(
+        async (checked, index) =>
+          checked && (await deleteCartItem(cart.items[index].id)),
+      ),
+    )
+    await queryClient.invalidateQueries(`cart`)
+  }
 
   useEffect(() => {
     handleChangeAll(false)
@@ -38,20 +57,20 @@ const Cart = () => {
       </Typography.Text>
       <div className={styles.selection}>
         <Checkbox
-          checked={!!(values.length && !values.includes(false))}
-          indeterminate={values.includes(true)}
+          checked={!!(checks.length && !checks.includes(false))}
+          indeterminate={checks.includes(true)}
           onChange={(event) => handleChangeAll(event.target.checked)}
         >
           Выбрать все
         </Checkbox>
-        <Typography.Text className={styles.deletion}>
+        <Typography.Text className={styles.deletion} onClick={handleDeleteMany}>
           Удалить выбранное
         </Typography.Text>
       </div>
       <Items
+        checks={checks}
         items={cart?.items}
-        setFieldValue={setFieldValue}
-        values={values}
+        setCheckValue={setCheckValue}
       />
       <Typography.Text>Итого {cart?.total_price} ₽</Typography.Text>
       <Link href={PATH.CHECKOUT}>

@@ -1,6 +1,6 @@
 import { Button, Select, Typography } from '@/components'
 import { ChangeEvent, useState } from 'react'
-import Debouncer from '@/utils/debouncer'
+import { Debouncer } from '@/utils'
 import { cartAPI } from '@/api'
 import { Address } from '@/interfaces'
 

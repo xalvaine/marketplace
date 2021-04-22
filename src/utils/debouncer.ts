@@ -1,4 +1,4 @@
-export default class Debouncer {
+export class Debouncer {
   private timeout?: number
 
   public debounce = (func: () => void, timeout: number) => {

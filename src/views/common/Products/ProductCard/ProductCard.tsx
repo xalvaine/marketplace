@@ -2,7 +2,7 @@ import { Products } from '@/interfaces'
 import { Button, Link, Slider, Typography } from '@/components'
 import { mockSrc, PATH } from '@/config'
 import classNames from 'classnames'
-import { useCartMutation } from '@/hooks/useCart'
+import { useCartPost } from '@/hooks/useCart'
 import React from 'react'
 import styles from './product-card.module.scss'
 
@@ -13,7 +13,7 @@ interface Props {
 
 const ProductCard = (props: Props) => {
   const { product, className } = props
-  const { mutateAsync: mutateCart } = useCartMutation()
+  const { mutateAsync: mutateCart } = useCartPost()
 
   const handleAddToCart = async (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
