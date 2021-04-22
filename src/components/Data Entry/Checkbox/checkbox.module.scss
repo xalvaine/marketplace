@@ -1,0 +1,88 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  display: flex;
+}
+
+.icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  transition: fill 0.3s;
+  fill: transparent;
+}
+
+.check {
+  composes: icon;
+  width: 10px;
+  height: 8px;
+}
+
+.square {
+  composes: icon;
+  width: 10px;
+  height: 10px;
+}
+
+.checkbox {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  background: $monoWhite;
+  border: 1px solid $border;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.3s, background-color 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    border-color: $hover;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  &.indeterminate {
+    .check {
+      fill: transparent;
+    }
+
+    .square {
+      fill: $hover;
+    }
+  }
+}
+
+.withChildren {
+  margin: 2px 8px 2px 0;
+}
+
+.input {
+  display: none;
+
+  &:checked ~ .checkbox {
+    background: $hover;
+    border-color: $hover;
+
+    .check {
+      fill: $monoWhite;
+    }
+
+    .square {
+      fill: transparent;
+    }
+  }
+
+  &:disabled ~ .checkbox {
+    background: $background;
+    border-color: $border;
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+
+  &:disabled:checked ~ .checkbox {
+    .check {
+      fill: $disabled;
+    }
+  }
+}

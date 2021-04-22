@@ -13,10 +13,9 @@ import Options from './Options'
 
 type Props = Omit<ComponentProps<typeof Input>, 'onSelect' | 'children'> & {
   children?: ReactElement<ExternalProps> | ReactElement<ExternalProps>[]
-} & (
-    | { onSelect?: (value: string) => void; value?: string }
-    | { onSelect?: (value: number) => void; value?: number }
-  )
+  onSelect?: (value: any) => void
+  value?: string | number
+}
 
 const Select = (props: Props) => {
   const { children, onSelect, onChange, placeholder, value, ...rest } = props
@@ -35,6 +34,13 @@ const Select = (props: Props) => {
   const handleBlur = () => {
     setFocused(false)
     setSearchValue(``)
+  }
+
+  const handleSelect = (value: any) => {
+    setOpen(false)
+    if (onSelect) {
+      onSelect(value)
+    }
   }
 
   const options =
@@ -70,7 +76,7 @@ const Select = (props: Props) => {
         options={options}
         optionsRef={optionsRef}
         setOpen={setOpen}
-        onSelect={onSelect}
+        onSelect={handleSelect}
       />
     </>
   )

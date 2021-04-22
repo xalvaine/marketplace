@@ -12,7 +12,7 @@ const Checkout = () => {
 
   const handleGetAddress = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value
-    if (!value) return
+    if (value.length < 3) return
     debouncer.debounce(async () => {
       const { data } = await cartAPI.get(`/address`, {
         params: { query: value },

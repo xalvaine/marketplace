@@ -13,6 +13,7 @@ export { default as BxPackage } from './assets/bx-package.svg'
 export { default as BxRightArrow } from './assets/bx-right-arrow-alt.svg'
 export { default as BxMinus } from './assets/bx-minus.svg'
 export { default as BxPlus } from './assets/bx-plus.svg'
+export { default as BxsSquare } from './assets/bxs-square.svg'
 
 //BXS
 export { default as BxsRightArrow } from './assets/bxs-right-arrow.svg'

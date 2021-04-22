@@ -12,6 +12,7 @@ export { default as List } from './Data Display/List'
 //Data entry
 export { default as Input } from './Data Entry/Input'
 export { default as Select } from './Data Entry/Select'
+export { default as Checkbox } from './Data Entry/Checkbox'
 
 //Navigation
 export { default as Menu } from './Navigation/Menu'

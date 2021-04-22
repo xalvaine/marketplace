@@ -1,3 +1,26 @@
+@import 'src/styles/colors';
+
 .wrapper {
   padding: 16px 0 32px;
+}
+
+.title {
+  margin-bottom: 4px;
+}
+
+.count {
+  margin-bottom: 16px;
+  color: $disabled;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.selection {
+  display: flex;
+  justify-content: space-between;
+}
+
+.deletion {
+  margin-bottom: 16px;
+  color: $error500;
 }
