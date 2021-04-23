@@ -8,6 +8,7 @@ import { useCartItemDelete } from '@/hooks'
 import { useQueryClient } from 'react-query'
 import styles from './cart.module.scss'
 import Items from './Items'
+import Totals from './Totals'
 
 const Cart = () => {
   const { data: cart } = useCart()
@@ -72,10 +73,15 @@ const Cart = () => {
         items={cart?.items}
         setCheckValue={setCheckValue}
       />
-      <Typography.Text>Итого {cart?.total_price} ₽</Typography.Text>
+      <Totals cart={cart} />
       <Link href={PATH.CHECKOUT}>
-        <Button size="large">Перейти к оформлению</Button>
+        <Button block size="large">
+          Перейти к оформлению
+        </Button>
       </Link>
+      <Typography.Text disabled className={styles.comment}>
+        Способы доставки и оплаты можно выбрать при оформлении заказа
+      </Typography.Text>
     </div>
   )
 }

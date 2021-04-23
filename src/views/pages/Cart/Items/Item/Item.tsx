@@ -1,9 +1,9 @@
 import styles from '@/views/pages/Cart/Items/items.module.scss'
 import { Checkbox, Input, Typography } from '@/components'
 import { mockSrc } from '@/config'
-import { BxMinus, BxPlus } from '@/icons'
+import { BxMinus, BxPlus, BxsTrashAlt } from '@/icons'
 import { CartItem } from '@/interfaces'
-import { useCartItemPatch } from '@/hooks'
+import { useCartItemDelete, useCartItemPatch } from '@/hooks'
 import { Debouncer } from '@/utils'
 
 interface Props {
@@ -26,12 +26,13 @@ const Item = (props: Props) => {
     item,
     setCountValue,
   } = props
-  const { mutateAsync: patchCart } = useCartItemPatch()
+  const { mutateAsync: patchCartItem } = useCartItemPatch()
+  const { mutateAsync: deleteCartItem } = useCartItemDelete()
 
   const handleChangeItemsCount = async (quantity: number) => {
     setCountValue(index.toString(), quantity)
     await debouncer.debounce(
-      () => patchCart({ id: item.id, quantity, productId: item.id }),
+      () => patchCartItem({ id: item.id, quantity, productId: item.id }),
       300,
     )
   }
@@ -61,15 +62,25 @@ const Item = (props: Props) => {
         <Typography.Text secondary className={styles.name} weight="medium">
           {item.name || `Без названия`}
         </Typography.Text>
-        <Input
-          readOnly
-          className={styles.count}
-          leftIcon={BxMinus}
-          rightIcon={BxPlus}
-          value={itemsCount[index] || 0}
-          onLeftIconClick={() => handleChangeItemsCount(itemsCount[index] - 1)}
-          onRightIconClick={() => handleChangeItemsCount(itemsCount[index] + 1)}
-        />
+        <div className={styles.amount}>
+          <Input
+            readOnly
+            className={styles.count}
+            leftIcon={BxMinus}
+            rightIcon={BxPlus}
+            value={itemsCount[index] || 0}
+            onLeftIconClick={() =>
+              handleChangeItemsCount(itemsCount[index] - 1)
+            }
+            onRightIconClick={() =>
+              handleChangeItemsCount(itemsCount[index] + 1)
+            }
+          />
+          <BxsTrashAlt
+            className={styles.trash}
+            onClick={() => deleteCartItem(item.id)}
+          />
+        </div>
       </div>
     </li>
   )

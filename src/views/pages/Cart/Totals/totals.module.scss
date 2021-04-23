@@ -1,0 +1,21 @@
+@import 'src/styles/colors';
+
+.right {
+  margin-left: auto;
+}
+
+.weight {
+  margin-bottom: 32px;
+}
+
+.text {
+  margin-bottom: 8px;
+}
+
+.total {
+  margin-bottom: 32px;
+  color: $title;
+  font-size: 16px;
+  line-height: 22px;
+  text-transform: uppercase;
+}

@@ -3,7 +3,9 @@
 .wrapper {
   display: grid;
   grid-gap: 16px;
-  padding-top: 16px;
+  margin-bottom: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid $dividers;
 }
 
 .item {
@@ -55,10 +57,21 @@
   color: $primary;
 }
 
-.count {
-  margin-right: 56px;
+.amount {
+  display: flex;
+  align-items: center;
+}
 
+.count {
   input {
     text-align: center;
   }
+}
+
+.trash {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin-left: 24px;
+  fill: $disabled;
 }

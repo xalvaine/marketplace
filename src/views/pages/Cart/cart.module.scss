@@ -1,7 +1,7 @@
 @import 'src/styles/colors';
 
 .wrapper {
-  padding: 16px 0 32px;
+  padding-top: 16px;
 }
 
 .title {
@@ -23,4 +23,9 @@
 .deletion {
   margin-bottom: 16px;
   color: $error500;
+}
+
+.comment {
+  padding-top: 8px;
+  text-align: center;
 }
