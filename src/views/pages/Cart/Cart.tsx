@@ -9,6 +9,7 @@ import { useQueryClient } from 'react-query'
 import styles from './cart.module.scss'
 import Items from './Items'
 import Totals from './Totals'
+import Delivery from './Delivery'
 
 const Cart = () => {
   const { data: cart } = useCart()
@@ -48,6 +49,7 @@ const Cart = () => {
 
   return (
     <div className={styles.wrapper}>
+      <Delivery cart={cart} />
       <Typography.Title className={styles.title} level={4}>
         Корзина
       </Typography.Title>

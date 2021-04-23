@@ -53,12 +53,12 @@ const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
       />
       {LeftIcon && (
         <div className={styles.leftIconWrapper} onClick={onLeftIconClick}>
-          <LeftIcon className={styles.leftIcon} />
+          <LeftIcon className={styles.icon} />
         </div>
       )}
       {RightIcon && (
         <div className={styles.rightIconWrapper} onClick={onRightIconClick}>
-          <RightIcon className={styles.rightIcon} />
+          <RightIcon className={styles.icon} />
         </div>
       )}
       {search && (

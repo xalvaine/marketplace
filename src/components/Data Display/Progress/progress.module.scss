@@ -1,0 +1,14 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  display: flex;
+  height: 6px;
+  overflow: hidden;
+  background: $background;
+  border-radius: 3px;
+}
+
+.progress {
+  background: $hover;
+  border-radius: 3px;
+}

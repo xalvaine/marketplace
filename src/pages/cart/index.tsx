@@ -6,7 +6,7 @@ import Cart from '@/views/pages/Cart'
 
 const CartPage = () => {
   const dispatch = useDispatch()
-  useEffect(() => void dispatch(layout.setLayoutParams({ showSearch: true })))
+  useEffect(() => void dispatch(layout.setLayoutParams({})))
 
   return (
     <>
