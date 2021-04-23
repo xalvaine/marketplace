@@ -67,7 +67,7 @@ const Item = (props: Props) => {
           leftIcon={BxMinus}
           rightIcon={BxPlus}
           value={itemsCount[index] || 0}
-          onLeftIconClick={() => handleChangeItemsCount(itemsCount[index] + 1)}
+          onLeftIconClick={() => handleChangeItemsCount(itemsCount[index] - 1)}
           onRightIconClick={() => handleChangeItemsCount(itemsCount[index] + 1)}
         />
       </div>
