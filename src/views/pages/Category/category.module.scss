@@ -1,17 +1,8 @@
-.wrapper {
-  margin-bottom: 24px;
-}
-
-.images {
-  display: grid;
-  grid-gap: 8px 10px;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.title {
-  margin-bottom: 4px;
-}
-
-.count {
-  margin-bottom: 16px;
+@media (min-width: 1024px) {
+  .wrapper {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: 130px 1fr;
+    padding-top: 20px;
+  }
 }

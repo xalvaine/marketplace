@@ -13,8 +13,13 @@ interface Props {
 
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
   if (!context.params?.category) return { revalidate: 60, notFound: true }
-  const catalog = await getCatalog(context.params.category as string)
-  return { props: { catalog }, revalidate: 60 }
+  try {
+    const catalog = await getCatalog(context.params.category as string)
+    return { props: { catalog }, revalidate: 60 }
+  } catch (error) {
+    console.error(error)
+    return { notFound: true, revalidate: true }
+  }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {

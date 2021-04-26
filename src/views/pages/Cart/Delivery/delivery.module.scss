@@ -1,0 +1,42 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid $dividers;
+}
+
+.progressWrapper {
+  display: grid;
+  grid-gap: 4px;
+  grid-template-columns: 24px 1fr 24px;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.leftIcon {
+  fill: $disabled;
+}
+
+.rightIcon {
+  fill: $hover;
+}
+
+.text {
+  color: $primary;
+  text-align: center;
+}
+
+.activeText {
+  composes: text;
+  color: $hover;
+}
+
+.price {
+  color: $title;
+}

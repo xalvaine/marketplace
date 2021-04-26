@@ -2,6 +2,8 @@ import { Products } from '@/interfaces'
 import { Button, Link, Slider, Typography } from '@/components'
 import { mockSrc, PATH } from '@/config'
 import classNames from 'classnames'
+import { useCartPost } from '@/hooks/useCart'
+import React from 'react'
 import styles from './product-card.module.scss'
 
 interface Props {
@@ -11,6 +13,19 @@ interface Props {
 
 const ProductCard = (props: Props) => {
   const { product, className } = props
+  const { mutateAsync: mutateCart } = useCartPost()
+
+  const handleAddToCart = async (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    event.preventDefault()
+    await mutateCart({
+      product_id: product.id,
+      quantity: 1,
+      name: product.name,
+      price: null,
+    })
+  }
 
   return (
     <Link
@@ -19,8 +34,8 @@ const ProductCard = (props: Props) => {
         pathname: PATH.PRODUCT,
         query: {
           product: product.id,
-          category: `food`,
-          group: `sweets`,
+          category: 4,
+          group: 6,
         },
       }}
     >
@@ -38,7 +53,7 @@ const ProductCard = (props: Props) => {
         </Typography.Text>
       </div>
       <Typography.Text className={styles.name}>{product.name}</Typography.Text>
-      <Button className={styles.button} type="primary">
+      <Button className={styles.button} onClick={handleAddToCart}>
         В корзину
       </Button>
     </Link>

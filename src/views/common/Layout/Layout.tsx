@@ -1,3 +1,4 @@
+import React from 'react'
 import Header from './Header'
 import TabBar from './TabBar'
 import Footer from './Footer'

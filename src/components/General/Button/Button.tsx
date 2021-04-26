@@ -16,6 +16,7 @@ type Props = Omit<
   type?: keyof typeof typeToClass
   size?: keyof typeof sizeToClass
   icon?: FunctionComponent<SVGProps<SVGSVGElement>>
+  block?: boolean
 }
 
 const typeToClass = {
@@ -33,16 +34,22 @@ const sizeToClass = {
 const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
   const {
     children,
-    type = `secondary`,
+    type = `primary`,
     size = `normal`,
     className,
     icon: Icon,
+    block,
     ...rest
   } = props
   return (
     <button
       ref={ref}
-      className={classNames(sizeToClass[size], typeToClass[type], className)}
+      className={classNames(
+        sizeToClass[size],
+        typeToClass[type],
+        block && styles.block,
+        className,
+      )}
       type="button"
       {...rest}
     >

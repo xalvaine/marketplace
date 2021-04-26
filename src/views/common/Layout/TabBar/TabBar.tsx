@@ -2,50 +2,53 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { Link, Badge, Typography } from '@/components'
 import classNames from 'classnames'
-
 import { BxHeart, BxHomeAlt, BxMenu, BxShoppingBag } from '@/icons'
-
 import { PATH } from '@/config'
+import { useCart } from '@/hooks/useCart'
 import styles from './tab-bar.module.scss'
 
-const tabs = [
-  {
+const tabs = {
+  home: {
     icon: BxHomeAlt,
     keys: [PATH.HOME],
     path: PATH.HOME,
     name: `Главная`,
-    notificationsCount: 0,
+    noticesCount: 0,
   },
-  {
+  catalog: {
     icon: BxMenu,
     keys: [PATH.CATALOG, PATH._PRODUCTS],
     path: PATH.CATALOG,
     name: `Каталог`,
-    notificationsCount: 0,
+    noticesCount: 0,
   },
-  {
+  favourites: {
     icon: BxHeart,
     keys: [PATH.FAVOURITES],
     path: PATH.FAVOURITES,
     name: `Избранное`,
-    notificationsCount: 9,
+    noticesCount: 0,
   },
-  {
+  cart: {
     icon: BxShoppingBag,
     keys: [PATH.CART],
     path: PATH.CART,
     name: `Корзина`,
-    notificationsCount: 99,
+    noticesCount: 0,
   },
-]
+}
 
 const TabBar = () => {
   const { pathname } = useRouter()
   const [page, setPage] = useState<string>()
+  const { data: cart } = useCart()
+  const [cartNotices, setCartNotices] = useState(0)
+
+  useEffect(() => setCartNotices(cart?.items.length || 0), [cart?.items.length])
 
   useEffect(
     () =>
-      tabs.forEach(
+      Object.values(tabs).forEach(
         (tab) =>
           tab.keys.filter((key) => pathname.includes(key)).length &&
           setPage(tab.path),
@@ -53,10 +56,12 @@ const TabBar = () => {
     [pathname],
   )
 
+  tabs.cart.noticesCount = cartNotices
+
   return (
     <section className={styles.wrapper}>
       <div className={styles.tabBarExpansion} id="tab-bar-extension-root" />
-      {tabs.map((tab) => (
+      {Object.values(tabs).map((tab) => (
         <Link key={tab.path} href={tab.path}>
           <div
             className={classNames(
@@ -64,7 +69,7 @@ const TabBar = () => {
               page === tab.path && styles.itemSelected,
             )}
           >
-            <Badge count={tab.notificationsCount} size="small" theme="selected">
+            <Badge count={tab.noticesCount} size="small" theme="selected">
               <tab.icon className={styles.icon} />
             </Badge>
             <Typography.Text disabled secondary className={styles.text}>

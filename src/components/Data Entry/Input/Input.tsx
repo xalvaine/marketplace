@@ -1,5 +1,6 @@
 import {
   DetailedHTMLProps,
+  forwardRef,
   FunctionComponent,
   InputHTMLAttributes,
   SVGProps,
@@ -16,6 +17,8 @@ type Props = Omit<
   search?: boolean
   leftIcon?: FunctionComponent<SVGProps<SVGSVGElement>>
   rightIcon?: FunctionComponent<SVGProps<SVGSVGElement>>
+  onLeftIconClick?: () => void
+  onRightIconClick?: () => void
 }
 
 const sizeToStyle = {
@@ -23,7 +26,7 @@ const sizeToStyle = {
   large: styles.largeInput,
 }
 
-const Input = (props: Props) => {
+const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const {
     className,
     size = 'normal',
@@ -31,12 +34,15 @@ const Input = (props: Props) => {
     rightIcon: RightIcon,
     search,
     hidden,
+    onLeftIconClick,
+    onRightIconClick,
     ...rest
   } = props
 
   return (
     <label className={classNames(styles.wrapper, className)} hidden={hidden}>
       <input
+        ref={ref}
         className={classNames(
           sizeToStyle[size],
           LeftIcon && styles.withLeftIcon,
@@ -45,15 +51,24 @@ const Input = (props: Props) => {
         )}
         {...rest}
       />
-      {LeftIcon && <LeftIcon className={styles.leftIcon} />}
-      {RightIcon && <RightIcon className={styles.rightIcon} />}
+      {LeftIcon && (
+        <div className={styles.leftIconWrapper} onClick={onLeftIconClick}>
+          <LeftIcon className={styles.icon} />
+        </div>
+      )}
+      {RightIcon && (
+        <div className={styles.rightIconWrapper} onClick={onRightIconClick}>
+          <RightIcon className={styles.icon} />
+        </div>
+      )}
       {search && (
-        <Button className={styles.searchButton} size={size} type="primary">
+        <Button className={styles.searchButton} size={size}>
           Найти
         </Button>
       )}
     </label>
   )
-}
+})
 
+Input.displayName = `Input`
 export default Input

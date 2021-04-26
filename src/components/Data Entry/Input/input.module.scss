@@ -9,12 +9,41 @@
   }
 }
 
-.icon {
+.iconWrapper {
   position: absolute;
   top: 0;
   bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: auto;
+  padding: 5px;
+}
+
+.icon {
   fill: $disabled;
+}
+
+.leftIconWrapper {
+  composes: iconWrapper;
+  left: 7px;
+}
+
+.rightIconWrapper {
+  composes: iconWrapper;
+  right: 7px;
+}
+
+.searchButton {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.search {
+  border: 1px solid $default;
 }
 
 .input {
@@ -46,10 +75,6 @@
   }
 }
 
-.search {
-  border: 1px solid $default;
-}
-
 .normalInput {
   composes: input;
   padding: 6px 12px;
@@ -68,9 +93,9 @@
     padding-right: 92px;
   }
 
-  + .icon {
-    width: 14px;
-    height: 14px;
+  ~ .iconWrapper {
+    width: 24px;
+    height: 24px;
   }
 }
 
@@ -92,26 +117,8 @@
     padding-right: 92px;
   }
 
-  + .icon {
-    width: 16px;
-    height: 16px;
+  ~ .iconWrapper {
+    width: 26px;
+    height: 26px;
   }
-}
-
-.leftIcon {
-  composes: icon;
-  left: 12px;
-}
-
-.rightIcon {
-  composes: icon;
-  right: 12px;
-}
-
-.searchButton {
-  position: absolute;
-  right: 0;
-  height: 100%;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
 }
