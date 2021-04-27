@@ -6,9 +6,12 @@ import Check from './assets/check.svg'
 import styles from './checkbox.module.scss'
 
 interface Props
-  extends React.DetailedHTMLProps<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement
+  extends Omit<
+    React.DetailedHTMLProps<
+      React.InputHTMLAttributes<HTMLInputElement>,
+      HTMLInputElement
+    >,
+    'type'
   > {
   indeterminate?: boolean
 }

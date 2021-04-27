@@ -1,0 +1,34 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  position: relative;
+  display: block;
+  margin-bottom: 32px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid $dividers;
+}
+
+.title {
+  margin-bottom: 16px;
+}
+
+.pointName {
+  margin-bottom: 4px;
+  color: $primary;
+}
+
+.schedule {
+  display: block;
+  color: $disabled;
+}
+
+.arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  margin: auto;
+  fill: $secondary;
+}

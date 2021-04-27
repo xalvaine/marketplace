@@ -1,0 +1,11 @@
+.horizontal {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 16px;
+  justify-content: start;
+}
+
+.vertical {
+  display: grid;
+  grid-gap: 8px;
+}

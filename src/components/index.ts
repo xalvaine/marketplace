@@ -14,6 +14,7 @@ export { default as Progress } from './Data Display/Progress'
 export { default as Input } from './Data Entry/Input'
 export { default as Select } from './Data Entry/Select'
 export { default as Checkbox } from './Data Entry/Checkbox'
+export { default as Radio } from './Data Entry/Radio'
 
 //Navigation
 export { default as Menu } from './Navigation/Menu'
