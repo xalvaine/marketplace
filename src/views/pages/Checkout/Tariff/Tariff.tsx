@@ -5,7 +5,7 @@ import styles from './tariff.module.scss'
 
 const Tariff = () => {
   return (
-    <Link className={styles.wrapper} href={PATH.TARIFFS}>
+    <Link className={styles.wrapper} href={PATH.ADDRESSES}>
       <Typography.Title className={styles.title} level={5}>
         Способ получения
       </Typography.Title>

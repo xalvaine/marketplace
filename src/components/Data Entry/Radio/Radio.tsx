@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { FunctionComponent, ReactNode, SVGProps } from 'react'
 import classNames from 'classnames'
 import { Typography } from '@/components'
 import Group from './Group'
@@ -14,21 +14,33 @@ interface Props
   > {
   label?: ReactNode
   labelClassName?: string
+  icon?: FunctionComponent<SVGProps<SVGSVGElement>>
 }
 
 const Radio = (props: Props) => {
-  const { className, children, label, labelClassName, ...rest } = props
+  const {
+    className,
+    children,
+    label,
+    labelClassName,
+    icon: Icon,
+    ...rest
+  } = props
 
   return (
-    <label className={classNames(styles.wrapper, className)}>
+    <label className={classNames(styles.wrapper, styles.withIcon, className)}>
       <input className={classNames(styles.input)} type="radio" {...rest} />
       <span className={styles.radio} />
-      <Typography.Text className={classNames(styles.label, labelClassName)}>
+      <Typography.Text
+        className={classNames(styles.label, labelClassName)}
+        weight="semibold"
+      >
         {label}
       </Typography.Text>
       <Typography.Text disabled className={styles.description}>
         {children}
       </Typography.Text>
+      {Icon && <Icon className={styles.icon} />}
     </label>
   )
 }

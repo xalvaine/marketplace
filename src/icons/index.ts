@@ -15,6 +15,7 @@ export { default as BxMinus } from './assets/bx-minus.svg'
 export { default as BxPlus } from './assets/bx-plus.svg'
 export { default as BxTrashAlt } from './assets/bx-trash-alt.svg'
 export { default as BxNavigation } from './assets/bx-navigation.svg'
+export { default as BxEditAlt } from './assets/bx-edit-alt.svg'
 
 //BXS
 export { default as BxsRightArrow } from './assets/bxs-right-arrow.svg'
@@ -23,3 +24,4 @@ export { default as BxsUpArrow } from './assets/bxs-up-arrow.svg'
 export { default as BxsGift } from './assets/bxs-gift.svg'
 export { default as BxsTruck } from './assets/bxs-truck.svg'
 export { default as BxsSquare } from './assets/bxs-square.svg'
+export { default as BxsCheckCircle } from './assets/bxs-check-circle.svg'

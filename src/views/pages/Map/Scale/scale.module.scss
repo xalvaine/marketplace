@@ -1,0 +1,25 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: grid;
+  grid-gap: 1px;
+  overflow: hidden;
+  background: $dividers;
+  border: 1px solid $dividers;
+  border-radius: 4px;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
+}
+
+.button {
+  display: flex;
+  padding: 7px;
+  background: white;
+}
+
+.icon {
+  width: 12px;
+  height: 12px;
+}

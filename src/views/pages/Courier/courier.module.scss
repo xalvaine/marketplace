@@ -1,0 +1,48 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.content {
+  position: relative;
+  padding: 16px;
+}
+
+.form {
+  display: grid;
+  grid-gap: 8px;
+  margin-bottom: 16px;
+}
+
+.pair {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.choose {
+  position: fixed;
+  bottom: 16px;
+  width: calc(100% - 32px);
+}
+
+.sectionTitleWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 28px;
+  margin-bottom: 16px;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  fill: $disabled;
+}

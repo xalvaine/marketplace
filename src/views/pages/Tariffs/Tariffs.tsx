@@ -26,9 +26,9 @@ const Tariffs = () => {
       <Typography.Text disabled className={styles.text}>
         Выберете подходящий способ доставки
       </Typography.Text>
+      <Variant href={PATH.COURIER} />
       <Variant href={PATH.MAP} />
-      <Variant href={PATH.MAP} />
-      <Variant href={PATH.MAP} />
+      <Variant href={PATH.RUSSIAN_POST} />
     </div>
   )
 }
