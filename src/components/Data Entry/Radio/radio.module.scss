@@ -8,6 +8,11 @@
   cursor: pointer;
 }
 
+.description {
+  font-size: 12px;
+  line-height: 14px;
+}
+
 .radio {
   position: absolute;
   top: 2px;
@@ -52,9 +57,21 @@
       background: $hover;
     }
   }
-}
 
-.description {
-  font-size: 12px;
-  line-height: 14px;
+  &:disabled ~ .radio {
+    background: $background;
+    border-color: $border;
+    box-shadow: none;
+  }
+
+  &:disabled ~ .label,
+  &:disabled ~ .description {
+    color: $disabled;
+  }
+
+  &:disabled:checked ~ .radio {
+    &::after {
+      background: $disabled;
+    }
+  }
 }

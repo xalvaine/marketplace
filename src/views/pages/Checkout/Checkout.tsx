@@ -4,6 +4,8 @@ import { PATH } from '@/config'
 import styles from './checkout.module.scss'
 import Tariff from './Tariff'
 import Payment from './Payment'
+import Promocode from './Promocode'
+import Totals from './Totals'
 
 const Checkout = () => {
   return (
@@ -18,9 +20,15 @@ const Checkout = () => {
       </Typography.Title>
       <Tariff />
       <Payment />
-      <Button block size="large">
+      <Promocode />
+      <Totals />
+      <Button block className={styles.submit} size="large">
         Оплатить заказ
       </Button>
+      <Typography.Text className={styles.comment}>
+        Нажимая на кнопку, вы соглашаетесь с <a>условиями обработки</a>{' '}
+        персональных данных и <a>условиями</a> продажи товаров
+      </Typography.Text>
     </div>
   )
 }

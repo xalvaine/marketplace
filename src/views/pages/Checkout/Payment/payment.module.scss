@@ -1,9 +1,15 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  margin-bottom: 32px;
+  border-bottom: 1px solid $dividers;
+}
+
 .title {
   margin-bottom: 16px;
 }
 
 .radioGroup {
-  margin-bottom: 32px;
   padding-bottom: 32px;
 }
 

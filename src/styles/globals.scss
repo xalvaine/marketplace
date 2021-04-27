@@ -1,5 +1,7 @@
+@import './colors';
+
 a {
-  color: inherit;
+  color: $default;
   text-decoration: none;
 }
 

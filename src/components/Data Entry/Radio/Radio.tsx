@@ -23,7 +23,9 @@ const Radio = (props: Props) => {
     <label className={classNames(styles.wrapper, className)}>
       <input className={classNames(styles.input)} type="radio" {...rest} />
       <span className={styles.radio} />
-      <Typography.Text className={labelClassName}>{label}</Typography.Text>
+      <Typography.Text className={classNames(styles.label, labelClassName)}>
+        {label}
+      </Typography.Text>
       <Typography.Text disabled className={styles.description}>
         {children}
       </Typography.Text>
