@@ -14,10 +14,21 @@ import Catalog from './Catalog'
 
 const Header = () => {
   const dispatch = useDispatch()
-  const { showSearch, showCategories, showCatalog } = useSelector(
-    (state: RootState) => state.layout,
-  )
+  const {
+    showSearch,
+    showCategories,
+    showCatalog,
+    simplifyLayout,
+  } = useSelector((state: RootState) => state.layout)
   const isDesktop = useMediaQuery(`(min-width: 1024px)`)
+
+  if (simplifyLayout) {
+    return (
+      <header className={styles.simpleHeader}>
+        <Logo className={styles.logo} />
+      </header>
+    )
+  }
 
   return (
     <>
@@ -25,7 +36,6 @@ const Header = () => {
       <header className={styles.header}>
         <Badge dot className={styles.bellBadge} color="#1890ff" count={1}>
           <BxBell className={styles.icon} />
-          <p />
         </Badge>
         <Link
           href={PATH.HOME}

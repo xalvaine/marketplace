@@ -1,7 +1,7 @@
 import styles from '@/views/pages/Cart/Items/items.module.scss'
 import { Checkbox, Input, Typography } from '@/components'
 import { mockSrc } from '@/config'
-import { BxMinus, BxPlus, BxsTrashAlt } from '@/icons'
+import { BxMinus, BxPlus, BxTrashAlt } from '@/icons'
 import { CartItem } from '@/interfaces'
 import { useCartItemDelete, useCartItemPatch } from '@/hooks'
 import { Debouncer } from '@/utils'
@@ -76,7 +76,7 @@ const Item = (props: Props) => {
               handleChangeItemsCount(itemsCount[index] + 1)
             }
           />
-          <BxsTrashAlt
+          <BxTrashAlt
             className={styles.trash}
             onClick={() => deleteCartItem(item.id)}
           />

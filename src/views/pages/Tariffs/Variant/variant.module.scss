@@ -1,0 +1,33 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  display: grid;
+  grid-gap: 4px;
+  grid-template-areas: 'n p' 't p';
+  grid-template-columns: 1fr auto;
+  padding: 9px 12px;
+  border-bottom: 1px solid $dividers;
+}
+
+.name {
+  grid-area: n;
+  color: $primary;
+}
+
+.terms {
+  grid-area: t;
+}
+
+.price {
+  display: flex;
+  grid-area: p;
+  align-items: center;
+  color: $primary;
+}
+
+.icon {
+  width: 10px;
+  height: 10px;
+  margin-left: 16px;
+  fill: $secondary;
+}

@@ -1,26 +1,10 @@
-import { Select } from '@/components'
-import { ChangeEvent, useState } from 'react'
-import { Address } from '@/interfaces'
-import { cartAPI } from '@/api'
-import { Debouncer } from '@/utils'
-
-const debouncer = new Debouncer()
+import { Typography } from '@/components'
+import { PATH } from '@/config'
+import Search from './Search'
+import Variant from './Variant'
+import styles from './tariffs.module.scss'
 
 const Tariffs = () => {
-  const [value, setValue] = useState<number>()
-  const [address, setAddress] = useState<Address[]>()
-
-  const handleGetAddress = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value
-    if (value.length < 3) return
-    debouncer.debounce(async () => {
-      const { data } = await cartAPI.get(`/address`, {
-        params: { query: value },
-      })
-      setAddress(data.data)
-    }, 300)
-  }
-
   // const handleCheckout = async () => {
   //   await cartAPI.post(`/orders`, {
   //     address: address && value !== undefined && address[value],
@@ -34,18 +18,18 @@ const Tariffs = () => {
   // }
 
   return (
-    <Select
-      placeholder="Введите адрес"
-      value={value}
-      onChange={handleGetAddress}
-      onSelect={setValue}
-    >
-      {address?.slice(0, 5).map((item, index) => (
-        <Select.Option key={index} value={index}>
-          {[item.country, item.city].filter((element) => !!element).join(`, `)}
-        </Select.Option>
-      ))}
-    </Select>
+    <div className={styles.wrapper}>
+      <Typography.Title className={styles.title} level={5}>
+        Куда доставить заказ?
+      </Typography.Title>
+      <Search />
+      <Typography.Text disabled className={styles.text}>
+        Выберете подходящий способ доставки
+      </Typography.Text>
+      <Variant href={PATH.MAP} />
+      <Variant href={PATH.MAP} />
+      <Variant href={PATH.MAP} />
+    </div>
   )
 }
 
