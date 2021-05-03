@@ -15,6 +15,8 @@ export { default as Input } from './Data Entry/Input'
 export { default as Select } from './Data Entry/Select'
 export { default as Checkbox } from './Data Entry/Checkbox'
 export { default as Radio } from './Data Entry/Radio'
+export { default as Form } from './Data Entry/Form'
+export type { FormInstance } from './Data Entry/Form/formInstance'
 
 //Navigation
 export { default as Menu } from './Navigation/Menu'
