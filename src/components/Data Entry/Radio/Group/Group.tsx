@@ -7,7 +7,7 @@ interface Props {
   className?: string
   name: string
   orientation?: keyof typeof orientationToClassName
-  children:
+  children?:
     | ReactElement<ComponentProps<typeof Radio>>
     | ReactElement<ComponentProps<typeof Radio>>[]
 }
@@ -20,6 +20,7 @@ const orientationToClassName = {
 const Group = (props: Props) => {
   const { children, orientation = `vertical`, name, className } = props
 
+  if (!children) return null
   return (
     <div className={classNames(orientationToClassName[orientation], className)}>
       {Children.map(children, ({ props, key }) => (

@@ -1,4 +1,4 @@
-import Receiver from '@/views/pages/Reciever'
+import Receiver from '@/views/pages/Receiver'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { layout } from '@/reducers'

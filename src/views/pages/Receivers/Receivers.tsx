@@ -2,20 +2,28 @@ import CheckoutHeader from '@/views/common/CheckoutHeader'
 import { PATH } from '@/config'
 import { Button, Link, Radio, Typography } from '@/components'
 import { BxEditAlt, BxPlus } from '@/icons'
+import { useReceivers } from '@/hooks'
 import styles from './receivers.module.scss'
 
 const Receivers = () => {
+  const { data: receivers } = useReceivers()
+
   return (
     <div className={styles.wrapper}>
-      <CheckoutHeader backLink={PATH.CHECKOUT} title="Получатель" />
+      <CheckoutHeader backLink={PATH.CHECKOUT} title="Получатели" />
       <div className={styles.content}>
         <Radio.Group name="address">
-          <Radio className={styles.radio} icon={BxEditAlt} label="Петров Иван">
-            <Typography.Text inline>+79872357525</Typography.Text>
-          </Radio>
-          <Radio className={styles.radio} icon={BxEditAlt} label="Петров Иван">
-            <Typography.Text inline>+79872357525</Typography.Text>
-          </Radio>
+          {receivers?.map((receiver) => (
+            <Radio
+              key={receiver.phone}
+              className={styles.radio}
+              defaultChecked={receiver.is_primary}
+              icon={BxEditAlt}
+              label={receiver.full_name}
+            >
+              <Typography.Text inline>{receiver.phone}</Typography.Text>
+            </Radio>
+          ))}
         </Radio.Group>
         <Link href={PATH.NEW_RECEIVER}>
           <Button block icon={BxPlus} type="link">
