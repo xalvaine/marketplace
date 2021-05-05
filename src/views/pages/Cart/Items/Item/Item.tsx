@@ -1,10 +1,10 @@
-import styles from '@/views/pages/Cart/Items/items.module.scss'
 import { Checkbox, Input, Typography } from '@/components'
 import { mockSrc } from '@/config'
 import { BxMinus, BxPlus, BxTrashAlt } from '@/icons'
 import { CartItem } from '@/interfaces'
 import { useCartItemDelete, useCartItemPatch } from '@/hooks'
 import { Debouncer } from '@/utils'
+import styles from './item.module.scss'
 
 interface Props {
   item: CartItem
@@ -56,12 +56,24 @@ const Item = (props: Props) => {
         </div>
       </div>
       <div className={styles.right}>
-        <Typography.Text className={styles.price} weight="bold">
-          {parseFloat(item.price)} ₽
-        </Typography.Text>
-        <Typography.Text secondary className={styles.name} weight="medium">
-          {item.name || `Без названия`}
-        </Typography.Text>
+        <div className={styles.prices}>
+          <Typography.Text className={styles.price} weight="bold">
+            {parseFloat(item.price)} ₽
+          </Typography.Text>
+          <Typography.Text
+            secondary
+            className={styles.deleteText}
+            weight="medium"
+            onClick={() => deleteCartItem(item.id)}
+          >
+            Удалить
+          </Typography.Text>
+        </div>
+        <div className={styles.info}>
+          <Typography.Text secondary className={styles.name} weight="medium">
+            {item.name || `Без названия`}
+          </Typography.Text>
+        </div>
         <div className={styles.amount}>
           <Input
             readOnly

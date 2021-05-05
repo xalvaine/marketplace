@@ -3,31 +3,43 @@
 .wrapper {
   margin-bottom: 16px;
   padding-bottom: 16px;
-  border-bottom: 1px solid $dividers;
 }
 
-.progressWrapper {
+.iconWrapper {
   display: grid;
+  grid-auto-flow: column;
   grid-gap: 4px;
-  grid-template-columns: 24px 1fr 24px;
-  align-items: center;
-  margin-bottom: 4px;
 }
 
 .icon {
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
+}
+
+.point {
+  color: $title;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
 }
 
 .leftIcon {
+  composes: icon;
   fill: $disabled;
 }
 
 .rightIcon {
+  composes: icon;
   fill: $hover;
 }
 
 .text {
+  margin-top: 8px;
   color: $primary;
   text-align: center;
 }
@@ -39,4 +51,23 @@
 
 .price {
   color: $title;
+  font-weight: 500;
+}
+
+@media (min-width: 1024px) {
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .point {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .text {
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 20px;
+  }
 }

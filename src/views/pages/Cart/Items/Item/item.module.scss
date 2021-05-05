@@ -1,0 +1,109 @@
+@import 'src/styles/colors';
+
+.item {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-areas: 'l r';
+  grid-template-columns: 1fr 1fr;
+}
+
+.left {
+  display: grid;
+  grid-area: l;
+  grid-gap: 10px;
+  grid-template-columns: 16px 1fr;
+}
+
+.right {
+  grid-area: r;
+}
+
+.checkboxWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  padding: 50% 0;
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.price {
+  margin-bottom: 8px;
+  color: $title;
+}
+
+.name {
+  margin-bottom: 8px;
+  color: $primary;
+}
+
+.amount {
+  display: flex;
+  align-items: center;
+}
+
+.count {
+  input {
+    text-align: center;
+  }
+}
+
+.trash {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin-left: 24px;
+  fill: $disabled;
+}
+
+.deleteText {
+  color: $default;
+  cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+  .item {
+    grid-gap: 12px;
+    grid-template-columns: 116px 1fr;
+    padding: 16px 0;
+    border-bottom: 1px solid $dividers;
+  }
+
+  .right {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: 1fr 90px 90px;
+  }
+
+  .prices {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    order: 1;
+  }
+
+  .name {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .trash {
+    display: none;
+  }
+
+  .amount {
+    align-items: flex-start;
+  }
+}
