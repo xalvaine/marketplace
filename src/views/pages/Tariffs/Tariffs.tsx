@@ -1,5 +1,6 @@
 import { Typography } from '@/components'
 import { PATH } from '@/config'
+import { useTariffs } from '@/hooks/useTariff'
 import Search from './Search'
 import Variant from './Variant'
 import styles from './tariffs.module.scss'
@@ -16,6 +17,7 @@ const Tariffs = () => {
   //     comment: 'asap',
   //   })
   // }
+  const { data: tariffs } = useTariffs()
 
   return (
     <div className={styles.wrapper}>
@@ -26,9 +28,9 @@ const Tariffs = () => {
       <Typography.Text disabled className={styles.text}>
         Выберете подходящий способ доставки
       </Typography.Text>
-      <Variant href={PATH.COURIER} />
-      <Variant href={PATH.MAP} />
-      <Variant href={PATH.RUSSIAN_POST} />
+      <Variant href={PATH.COURIER} tariffs={tariffs} type="COURIER" />
+      <Variant href={PATH.MAP} tariffs={tariffs} type="PVZ" />
+      <Variant href={PATH.RUSSIAN_POST} tariffs={tariffs} type="RUSSIAN_POST" />
     </div>
   )
 }

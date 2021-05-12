@@ -7,7 +7,7 @@ import styles from './addresses.module.scss'
 const Addresses = () => {
   return (
     <div className={styles.wrapper}>
-      <CheckoutHeader backLink={PATH.CHECKOUT} title="Адрес получения" />
+      <CheckoutHeader backLink={PATH.CHECKOUT} title="Способ доставки" />
       <div className={styles.content}>
         <Radio.Group name="address">
           <Radio

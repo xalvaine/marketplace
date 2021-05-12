@@ -7,7 +7,7 @@ const Tariff = () => {
   return (
     <Link className={styles.wrapper} href={PATH.ADDRESSES}>
       <Typography.Title className={styles.title} level={5}>
-        Способ получения
+        Способ доставки
       </Typography.Title>
       <Typography.Title
         className={styles.pointName}

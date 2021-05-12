@@ -40,3 +40,11 @@
 .link {
   width: 100%;
 }
+
+@media (min-width: 1024px) {
+  .wrapper {
+    width: 290px;
+    margin: 0 auto;
+    padding-top: 120px;
+  }
+}

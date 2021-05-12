@@ -33,3 +33,10 @@
   line-height: 28px;
   text-transform: uppercase;
 }
+
+@media (min-width: 1024px) {
+  .wrapper {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}
