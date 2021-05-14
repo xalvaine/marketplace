@@ -14,12 +14,8 @@ import Catalog from './Catalog'
 
 const Header = () => {
   const dispatch = useDispatch()
-  const {
-    showSearch,
-    showCategories,
-    showCatalog,
-    simplifyLayout,
-  } = useSelector((state: RootState) => state.layout)
+  const { showSearch, showCategories, showCatalog, simplifyLayout } =
+    useSelector((state: RootState) => state.layout)
   const isDesktop = useMediaQuery(`(min-width: 1024px)`)
 
   if (simplifyLayout) {

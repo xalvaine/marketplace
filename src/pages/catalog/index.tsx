@@ -26,10 +26,10 @@ const CatalogPage = (props: Props) => {
   const isDesktop = useMediaQuery(`(min-width: 1024px)`)
 
   useEffect(() => void dispatch(layout.setLayoutParams({ showSearch: true })))
-  useEffect(() => void (isDesktop && router.push(PATH.HOME)), [
-    isDesktop,
-    router,
-  ])
+  useEffect(
+    () => void (isDesktop && router.push(PATH.HOME)),
+    [isDesktop, router],
+  )
 
   return (
     <>

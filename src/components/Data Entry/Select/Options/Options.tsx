@@ -32,11 +32,14 @@ const Options = (props: Props) => {
     }
   }, [optionsRef])
 
-  useEffect(() => setOptionsWrapper(document.getElementById(`options`)), [])
-  useEffect(() => void (open && handlePlaceOptions()), [
-    handlePlaceOptions,
-    open,
-  ])
+  useEffect(
+    () => setOptionsWrapper(document.getElementById(`select-options`)),
+    [],
+  )
+  useEffect(
+    () => void (open && handlePlaceOptions()),
+    [handlePlaceOptions, open],
+  )
 
   if (!optionsWrapper) return null
   return createPortal(

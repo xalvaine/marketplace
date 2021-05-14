@@ -2,11 +2,11 @@ import { Button, Link, Typography } from '@/components'
 import { BxArrowBack } from '@/icons'
 import { PATH } from '@/config'
 import styles from './checkout.module.scss'
-import Tariff from './Tariff'
+import Tariff from './TariffBlock'
 import Payment from './Payment'
 import Promocode from './Promocode'
 import Totals from './Totals'
-import Receiver from './Receiver'
+import Receiver from './ReceiverBlock'
 
 const Checkout = () => {
   return (

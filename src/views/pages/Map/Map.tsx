@@ -3,13 +3,14 @@ import { BxNavigation } from '@/icons'
 import { PATH } from '@/config'
 import CheckoutHeader from '@/views/common/CheckoutHeader'
 import { useDeliveryPoints } from '@/hooks/useDeliveryPoints'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import styles from './map.module.scss'
 import Panel from './Panel'
 import Scale from './Scale'
 
 const Map = () => {
   const { data: externalPoints } = useDeliveryPoints({})
+  const [zoom, setZoom] = useState(10)
 
   const points = useMemo(
     () =>
@@ -39,8 +40,8 @@ const Map = () => {
       <div className={styles.content}>
         <YMaps>
           <YMap
-            defaultState={{ center: [55.75, 37.57], zoom: 10 }}
             height="100%"
+            state={{ center: [55.75, 37.57], zoom }}
             width="100%"
           >
             {points && (
@@ -55,7 +56,7 @@ const Map = () => {
             )}
           </YMap>
         </YMaps>
-        <Scale />
+        <Scale setZoom={setZoom} zoom={zoom} />
         <Panel />
       </div>
     </div>

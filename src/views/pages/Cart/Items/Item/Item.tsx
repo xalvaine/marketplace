@@ -18,14 +18,8 @@ interface Props {
 const debouncer = new Debouncer()
 
 const Item = (props: Props) => {
-  const {
-    checks,
-    index,
-    itemsCount,
-    setCheckValue,
-    item,
-    setCountValue,
-  } = props
+  const { checks, index, itemsCount, setCheckValue, item, setCountValue } =
+    props
   const { mutateAsync: patchCartItem } = useCartItemPatch()
   const { mutateAsync: deleteCartItem } = useCartItemDelete()
 

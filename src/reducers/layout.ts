@@ -6,6 +6,7 @@ interface InitialState {
   showCatalog?: boolean
   simplifyLayout?: boolean
   hideLayout?: boolean
+  hideBodyOverflow?: boolean
 }
 
 const layoutSlice = createSlice({
@@ -13,16 +14,20 @@ const layoutSlice = createSlice({
   initialState: {} as InitialState,
   reducers: {
     setLayoutParams: (state, action: PayloadAction<InitialState>) => {
-      state.showSearch = action.payload?.showSearch
-      state.showCategories = action.payload?.showCategories
-      state.simplifyLayout = action.payload?.simplifyLayout
-      state.hideLayout = action.payload?.hideLayout
+      state.showSearch = action.payload.showSearch
+      state.showCategories = action.payload.showCategories
+      state.simplifyLayout = action.payload.simplifyLayout
+      state.hideLayout = action.payload.hideLayout
     },
     setShowCatalog: (state, action) => {
       state.showCatalog = action.payload
     },
+    setHideBodyOverflow: (state, action: PayloadAction<boolean>) => {
+      state.hideBodyOverflow = action.payload
+    },
   },
 })
 
-export const { setLayoutParams, setShowCatalog } = layoutSlice.actions
+export const { setLayoutParams, setShowCatalog, setHideBodyOverflow } =
+  layoutSlice.actions
 export const reducer = layoutSlice.reducer

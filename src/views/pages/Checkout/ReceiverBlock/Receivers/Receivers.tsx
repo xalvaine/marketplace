@@ -1,21 +1,22 @@
-import CheckoutHeader from '@/views/common/CheckoutHeader'
 import { PATH } from '@/config'
-import { Button, Link, Radio, Typography } from '@/components'
+import { Button, Link, Modal, Radio, Typography } from '@/components'
 import { BxEditAlt, BxPlus } from '@/icons'
 import { useReceivers } from '@/hooks'
+import { useState } from 'react'
+import Receiver from '@/views/pages/Checkout/ReceiverBlock/Receiver'
 import styles from './receivers.module.scss'
 
 const Receivers = () => {
   const { data: receivers } = useReceivers()
+  const [visible, setVisible] = useState(false)
 
   return (
-    <div className={styles.wrapper}>
-      <CheckoutHeader backLink={PATH.CHECKOUT} title="Получатели" />
+    <>
       <div className={styles.content}>
-        <Radio.Group name="address">
-          {receivers?.map((receiver) => (
+        <Radio.Group className={styles.group} name="address">
+          {receivers?.map((receiver, index) => (
             <Radio
-              key={receiver.phone}
+              key={index}
               className={styles.radio}
               defaultChecked={receiver.is_primary}
               icon={BxEditAlt}
@@ -25,18 +26,29 @@ const Receivers = () => {
             </Radio>
           ))}
         </Radio.Group>
-        <Link href={PATH.NEW_RECEIVER}>
-          <Button block icon={BxPlus} type="link">
-            Добавить получателя
-          </Button>
-        </Link>
+        <Button
+          block
+          className={styles.add}
+          icon={BxPlus}
+          type="link"
+          onClick={() => setVisible(true)}
+        >
+          Добавить получателя
+        </Button>
         <Link href={PATH.CHECKOUT}>
           <Button block className={styles.choose} size="large">
             Выбрать
           </Button>
         </Link>
       </div>
-    </div>
+      <Modal
+        title="Получатель"
+        visible={visible}
+        onClose={() => setVisible(false)}
+      >
+        <Receiver onClose={() => setVisible(false)} />
+      </Modal>
+    </>
   )
 }
 

@@ -1,0 +1,47 @@
+@import 'src/styles/colors';
+
+.content {
+  position: relative;
+  max-height: calc(100% - 60px);
+  padding-bottom: 48px;
+  overflow-y: auto;
+}
+
+.radio {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid $dividers;
+}
+
+.choose {
+  position: fixed;
+  bottom: 16px;
+  width: calc(100% - 32px);
+}
+
+.schedule {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
+    padding: 0;
+  }
+
+  .group {
+    margin-bottom: auto;
+  }
+
+  .add {
+    margin: 32px 0 16px;
+  }
+
+  .choose {
+    position: static;
+    width: 100%;
+  }
+}
