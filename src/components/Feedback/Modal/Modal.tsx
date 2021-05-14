@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react'
+import { ReactNode, useCallback, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Typography } from '@/components'
 import { BxArrowBack, BxX } from '@/icons'
@@ -19,15 +19,18 @@ const Modal = (props: Props) => {
   const { title, children, visible, footer, onClose } = props
   const [modalWrapper, setModalWrapper] = useState<HTMLElement | null>()
   const dispatch = useDispatch()
+  const handleVisibilityChange = useCallback(() => {
+    if (!modalWrapper) return
+    dispatch(
+      layout.setHideBodyOverflow(!!(modalWrapper.childElementCount - +visible)),
+    )
+  }, [dispatch, modalWrapper, visible])
 
   useEffect(() => {
     setModalWrapper(document.getElementById(`modals`))
   }, [])
 
-  useEffect(() => {
-    if (!modalWrapper) return
-    dispatch(layout.setHideBodyOverflow(!!modalWrapper.childElementCount))
-  }, [dispatch, modalWrapper, visible])
+  useEffect(() => handleVisibilityChange, [handleVisibilityChange])
 
   if (!modalWrapper) return null
   return createPortal(
