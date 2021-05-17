@@ -1,3 +1,5 @@
+@import 'src/styles/colors';
+
 .wrapper {
   position: absolute;
   top: 0;
@@ -15,4 +17,35 @@
 
 .map {
   height: 100%;
+}
+
+.simpleHeader {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .wrapper {
+    overflow: hidden;
+  }
+
+  .content {
+    padding-left: 420px;
+  }
+
+  .simpleHeader {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 20px 48px;
+    border-bottom: 1px solid $dividers;
+  }
+
+  .logo {
+    width: auto;
+    height: 20px;
+  }
+
+  .back {
+    width: fit-content;
+  }
 }

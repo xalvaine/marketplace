@@ -5,7 +5,10 @@ import { layout } from '@/reducers'
 
 const MapPage = () => {
   const dispatch = useDispatch()
-  useEffect(() => void dispatch(layout.setLayoutParams({ hideLayout: true })))
+  useEffect(
+    () => void dispatch(layout.setLayoutParams({ hideLayout: true })),
+    [],
+  )
   return <Map />
 }
 

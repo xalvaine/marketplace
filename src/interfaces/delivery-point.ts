@@ -3,6 +3,7 @@ import { Address } from '@/interfaces/address'
 export interface DeliveryPoint {
   address: Address
   code: string
+  id: string
   courier: string
   courierCode: string
   courierPostamatType: string

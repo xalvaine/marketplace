@@ -27,6 +27,7 @@ export interface Address {
   country?: string
   country_iso_code?: string
   entrance?: string
+  fullAddress?: string
   federal_district?: string
   fias_actuality_state?: string
   fias_code?: string
