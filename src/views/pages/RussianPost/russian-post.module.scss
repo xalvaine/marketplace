@@ -32,3 +32,30 @@
   bottom: 16px;
   width: calc(100% - 32px);
 }
+
+.sectionTitleWrapper {
+  display: grid;
+  grid-template-columns: 1fr 16px;
+  align-items: center;
+  height: 28px;
+  margin-bottom: 16px;
+}
+
+.icon {
+  fill: $disabled;
+}
+
+@media (min-width: 1024px) {
+  .wrapper {
+    position: static;
+    width: 482px;
+    margin: 0 auto;
+    padding-top: 90px;
+  }
+
+  .choose {
+    position: static;
+    width: 100%;
+    margin-top: 32px;
+  }
+}

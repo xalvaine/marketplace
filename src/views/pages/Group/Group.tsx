@@ -14,11 +14,11 @@ import styles from './group.module.scss'
 const Group = () => {
   // const { catalog } = props
   const { data: products } = useProducts()
-  const isDesktop = useMediaQuery(`(min-width: 1024px)`)
+  const { matches } = useMediaQuery(`(min-width: 1024px)`)
 
   return (
     <div className={styles.wrapper}>
-      {isDesktop ? (
+      {matches ? (
         <Breadcrumbs className={styles.breadcrumbs}>
           <Breadcrumbs.Item
             href={{

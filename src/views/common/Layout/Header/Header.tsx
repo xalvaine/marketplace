@@ -16,7 +16,7 @@ const Header = () => {
   const dispatch = useDispatch()
   const { showSearch, showCategories, showCatalog, simplifyLayout } =
     useSelector((state: RootState) => state.layout)
-  const isDesktop = useMediaQuery(`(min-width: 1024px)`)
+  const { matches } = useMediaQuery(`(min-width: 1024px)`)
 
   if (simplifyLayout) {
     return (
@@ -49,16 +49,16 @@ const Header = () => {
         </Button>
         <Input
           className={styles.search}
-          hidden={!isDesktop && !showSearch}
-          leftIcon={!isDesktop ? BxSearch : undefined}
+          hidden={!matches && !showSearch}
+          leftIcon={!matches ? BxSearch : undefined}
           placeholder="Поиск по товарам"
-          search={isDesktop}
+          search={matches}
           size="large"
         />
         <Icons />
       </header>
-      {isDesktop && <Catalog />}
-      {(isDesktop || !!showCategories) && <Categories />}
+      {matches && <Catalog />}
+      {(matches || !!showCategories) && <Categories />}
     </>
   )
 }

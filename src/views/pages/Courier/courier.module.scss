@@ -46,3 +46,18 @@
   height: 16px;
   fill: $disabled;
 }
+
+@media (min-width: 1024px) {
+  .wrapper {
+    position: static;
+    width: 482px;
+    margin: 0 auto;
+    padding-top: 90px;
+  }
+
+  .choose {
+    position: static;
+    width: 100%;
+    margin-top: 32px;
+  }
+}

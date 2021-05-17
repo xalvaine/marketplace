@@ -12,3 +12,11 @@
   padding-top: 24px;
   text-align: center;
 }
+
+@media (min-width: 1024px) {
+  .wrapper {
+    width: 450px;
+    margin: auto;
+    padding-top: 90px;
+  }
+}
