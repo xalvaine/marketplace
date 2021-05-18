@@ -30,7 +30,7 @@ const TariffBlock = () => {
         visible={visible}
         onClose={() => setVisible(false)}
       >
-        <Addresses />
+        <Addresses onClose={() => setVisible(false)} />
       </Modal>
     </>
   )
