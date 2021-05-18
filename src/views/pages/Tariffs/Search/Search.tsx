@@ -1,6 +1,6 @@
 import { Select } from '@/components'
 import { ChangeEvent, useState } from 'react'
-import { Address } from '@/interfaces'
+import { City } from '@/interfaces'
 import { cartAPI } from '@/api'
 import { Debouncer } from '@/utils'
 
@@ -8,7 +8,7 @@ const debouncer = new Debouncer()
 
 const Search = () => {
   const [value, setValue] = useState<number>()
-  const [address, setAddress] = useState<Address[]>()
+  const [cities, setCities] = useState<City[]>()
 
   const handleGetAddress = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value
@@ -17,7 +17,7 @@ const Search = () => {
       const { data } = await cartAPI.get(`/address`, {
         params: { query: value },
       })
-      setAddress(data.data)
+      setCities(data.suggestions)
     }, 300)
   }
 
@@ -29,9 +29,9 @@ const Search = () => {
       onChange={handleGetAddress}
       onSelect={setValue}
     >
-      {address?.slice(0, 5).map((item, index) => (
+      {cities?.slice(0, 5).map((item, index) => (
         <Select.Option key={index} value={index}>
-          {[item.country, item.city].filter((element) => !!element).join(`, `)}
+          {item.unrestricted_value}
         </Select.Option>
       ))}
     </Select>

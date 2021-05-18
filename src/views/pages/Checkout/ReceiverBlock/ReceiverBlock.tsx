@@ -23,7 +23,7 @@ const ReceiverBlock = () => {
         visible={visible}
         onClose={() => setVisible(false)}
       >
-        <Receivers />
+        <Receivers onClose={() => setVisible(false)} />
       </Modal>
     </>
   )

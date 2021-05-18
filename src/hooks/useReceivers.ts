@@ -21,4 +21,16 @@ const usePostReceiver = () => {
   })
 }
 
-export { useReceivers, usePostReceiver }
+const patchReceiver = async (values: Receiver) => {
+  const { data } = await cartAPI.patch(`/receivers/${values.id}`, values)
+  return data
+}
+
+const usePatchReceiver = () => {
+  const queryClient = useQueryClient()
+  return useMutation(patchReceiver, {
+    onSuccess: () => void queryClient.invalidateQueries([`receivers`]),
+  })
+}
+
+export { useReceivers, usePostReceiver, usePatchReceiver }

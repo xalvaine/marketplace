@@ -1,10 +1,15 @@
 import { Button, Input, Typography } from '@/components'
 import { BxsDownArrow } from '@/icons'
 import { useState } from 'react'
+import { cartAPI } from '@/api'
 import styles from './promocode.module.scss'
 
 const Promocode = () => {
   const [open, setOpen] = useState(false)
+
+  const handleUsePromocode = async () => {
+    await cartAPI.post(`/promocode`, {})
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -20,7 +25,7 @@ const Promocode = () => {
           placeholder="Введите код"
           size="large"
         />
-        <Button block size="large">
+        <Button block size="large" onClick={handleUsePromocode}>
           Применить промокод
         </Button>
       </div>

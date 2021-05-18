@@ -1,9 +1,9 @@
-import { Children, ComponentProps, ReactElement } from 'react'
+import { Children, ComponentProps, HTMLAttributes, ReactElement } from 'react'
 import classNames from 'classnames'
 import Radio from '../'
 import styles from './group.module.scss'
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLDivElement> {
   className?: string
   name: string
   orientation?: keyof typeof orientationToClassName

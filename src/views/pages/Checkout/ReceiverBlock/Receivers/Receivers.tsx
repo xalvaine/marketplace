@@ -1,14 +1,42 @@
-import { PATH } from '@/config'
-import { Button, Link, Modal, Radio, Typography } from '@/components'
+import { Button, Form, Modal, Radio, Typography } from '@/components'
 import { BxEditAlt, BxPlus } from '@/icons'
-import { useReceivers } from '@/hooks'
-import { useState } from 'react'
+import { usePatchReceiver, useReceivers } from '@/hooks'
+import { useEffect, useState } from 'react'
 import Receiver from '@/views/pages/Checkout/ReceiverBlock/Receiver'
+import { Receiver as ReceiverType } from '@/interfaces'
 import styles from './receivers.module.scss'
 
-const Receivers = () => {
+interface Props {
+  onClose: () => void
+}
+
+const Receivers = (props: Props) => {
+  const { onClose } = props
   const { data: receivers } = useReceivers()
   const [visible, setVisible] = useState(false)
+  const { mutateAsync: patchReceiver } = usePatchReceiver()
+
+  const form = Form.useForm({
+    initialValues: receivers?.find(
+      (receiver) => receiver.is_primary,
+    ) as ReceiverType,
+    onSubmit: async (values) => {
+      try {
+        await patchReceiver(values)
+        onClose()
+      } catch (error) {
+        console.error(error)
+      }
+    },
+  })
+
+  useEffect(
+    () =>
+      void receivers &&
+      form.setValues(
+        receivers?.find((receiver) => receiver.is_primary) as ReceiverType,
+      ),
+  )
 
   return (
     <>
@@ -21,6 +49,9 @@ const Receivers = () => {
               defaultChecked={receiver.is_primary}
               icon={BxEditAlt}
               label={receiver.full_name}
+              onChange={(event) =>
+                event.target.checked && form.setValues(receiver)
+              }
             >
               <Typography.Text inline>{receiver.phone}</Typography.Text>
             </Radio>
@@ -35,11 +66,14 @@ const Receivers = () => {
         >
           Добавить получателя
         </Button>
-        <Link href={PATH.CHECKOUT}>
-          <Button block className={styles.choose} size="large">
-            Выбрать
-          </Button>
-        </Link>
+        <Button
+          block
+          className={styles.choose}
+          size="large"
+          onClick={form.submitForm}
+        >
+          Выбрать
+        </Button>
       </div>
       <Modal
         title="Получатель"
