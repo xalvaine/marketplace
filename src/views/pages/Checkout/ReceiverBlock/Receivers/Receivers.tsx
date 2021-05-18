@@ -22,7 +22,7 @@ const Receivers = (props: Props) => {
     ) as ReceiverType,
     onSubmit: async (values) => {
       try {
-        await patchReceiver(values)
+        await patchReceiver({ ...values, is_primary: true })
         onClose()
       } catch (error) {
         console.error(error)
