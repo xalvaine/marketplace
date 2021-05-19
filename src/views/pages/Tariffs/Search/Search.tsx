@@ -1,24 +1,21 @@
 import { Select } from '@/components'
-import { ChangeEvent, useState } from 'react'
-import { City } from '@/interfaces'
-import { cartAPI } from '@/api'
-import { Debouncer } from '@/utils'
+import { Dispatch, useState } from 'react'
+import { Address } from '@/interfaces'
+import { useCities } from '@/hooks'
 
-const debouncer = new Debouncer()
+interface Props {
+  setAddress?: Dispatch<Address>
+}
 
-const Search = () => {
+const Search = (props: Props) => {
+  const { setAddress } = props
   const [value, setValue] = useState<number>()
-  const [cities, setCities] = useState<City[]>()
+  const [query, setQuery] = useState<string>(``)
+  const { data: cities } = useCities(query)
 
-  const handleGetAddress = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value
-    if (value.length < 3) return
-    debouncer.debounce(async () => {
-      const { data } = await cartAPI.get(`/address`, {
-        params: { query: value },
-      })
-      setCities(data.suggestions)
-    }, 300)
+  const handleSelect = (value: number) => {
+    setValue(value)
+    if (cities && setAddress) setAddress(cities[value].data)
   }
 
   return (
@@ -26,8 +23,8 @@ const Search = () => {
       placeholder="Введите адрес"
       size="large"
       value={value}
-      onChange={handleGetAddress}
-      onSelect={setValue}
+      onChange={(event) => setQuery(event.target.value)}
+      onSelect={handleSelect}
     >
       {cities?.slice(0, 5).map((item, index) => (
         <Select.Option key={index} value={index}>
