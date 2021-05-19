@@ -38,6 +38,7 @@ const ProductCard = (props: Props) => {
           group: 6,
         },
       }}
+      prefetch={false}
     >
       <div className={styles.imageWrapper}>
         <Slider className={styles.slider}>
