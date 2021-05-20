@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 const debouncer = new Debouncer()
 
 const getCities = async (address: string) => {
-  if (address.length < 3) return
+  if (address.length < 3) return []
   const { data } = await cartAPI.get(`/address`, {
     params: { query: address },
   })
@@ -24,9 +24,7 @@ const useCities = (value: string) => {
     [value],
   )
 
-  return useQuery<City[]>([`cities`], () => getCities(address), {
-    enabled: !!address,
-  })
+  return useQuery<City[]>([`cities`, address], () => getCities(address))
 }
 
 export { useCities }

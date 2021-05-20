@@ -5,14 +5,14 @@ import Head from 'next/head'
 import { useRef } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
-import { layout } from '@/reducers'
+import { layout, checkout } from '@/reducers'
 import '@/styles/fonts.scss'
 import '@/styles/globals.scss'
 import 'swiper/swiper.scss'
 import Layout from '@/views/common/Layout'
 
 export const store = configureStore({
-  reducer: { layout: layout.reducer },
+  reducer: { layout: layout.reducer, checkout: checkout.reducer },
 })
 
 const MyApp = ({ Component, pageProps }: AppProps) => {

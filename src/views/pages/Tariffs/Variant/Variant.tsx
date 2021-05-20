@@ -19,6 +19,8 @@ const Variant = (props: Props) => {
   const { href, tariffs: externalTariffs, type } = props
 
   const tariffs = externalTariffs?.filter((tariff) => tariff.type === type)
+  if (!tariffs?.length) return null
+
   const minDeliveryTime = tariffs?.reduce(
     (time, tariff) => Math.min(tariff.minDeliveryTime, time),
     Infinity,

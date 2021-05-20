@@ -2,15 +2,19 @@ import CheckoutHeader from '@/views/common/CheckoutHeader'
 import { Button, Input, Typography, Link } from '@/components'
 import { BxsDownArrow } from '@/icons'
 import { PATH } from '@/config'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/pages/_app'
 import styles from './russian-post.module.scss'
 
 const RussianPost = () => {
+  const city = useSelector((state: RootState) => state.checkout.city)
+
   return (
     <div className={styles.wrapper}>
       <CheckoutHeader backLink={PATH.CHECKOUT} title="Адрес получения" />
       <div className={styles.content}>
         <div className={styles.form}>
-          <Input disabled size="large" value="Казань" />
+          <Input disabled size="large" value={city?.unrestricted_value} />
           <Input placeholder="*Улица" size="large" />
           <div className={styles.pair}>
             <Input placeholder="*Дом" size="large" />

@@ -6,11 +6,11 @@ import CheckoutHeader from '@/views/common/CheckoutHeader'
 import { useDeliveryPoints } from '@/hooks/useDeliveryPoints'
 import { useMemo, useState } from 'react'
 import { useMediaQuery } from '@/utils'
+import Logo from '@/views/common/Layout/Header/assets/logo-small.svg'
+import { Button, Link } from '@/components'
 import styles from './map.module.scss'
 import Panel from './Panel'
 import Scale from './Scale'
-import Logo from '@/views/common/Layout/Header/assets/logo-small.svg'
-import { Button, Link } from '@/components'
 
 const Map = () => {
   const { data: externalPoints } = useDeliveryPoints({})

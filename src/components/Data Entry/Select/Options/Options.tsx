@@ -1,18 +1,18 @@
 import { createPortal } from 'react-dom'
-import { Dispatch, RefObject, useCallback, useEffect, useState } from 'react'
+import { RefObject, useCallback, useEffect, useState } from 'react'
 import Option, { ExternalProps } from '../Option'
 import styles from './options.module.scss'
 
 interface Props {
   open: boolean
-  setOpen: Dispatch<boolean>
+  onClose: () => void
   onSelect?: (value: any) => void
   options?: ExternalProps[]
   optionsRef: RefObject<HTMLInputElement>
 }
 
 const Options = (props: Props) => {
-  const { open, setOpen, onSelect, options, optionsRef } = props
+  const { open, onClose, onSelect, options, optionsRef } = props
 
   const [optionsWrapper, setOptionsWrapper] = useState<HTMLElement | null>(null)
   const [optionsPosition, setOptionsPosition] = useState({
@@ -45,7 +45,7 @@ const Options = (props: Props) => {
   return createPortal(
     open && (
       <>
-        <span className={styles.shadow} onClick={() => setOpen(false)} />
+        <span className={styles.shadow} onClick={onClose} />
         <div className={styles.options} style={optionsPosition}>
           {options?.map(({ key, ...props }) => (
             <Option

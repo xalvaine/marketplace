@@ -1,7 +1,9 @@
 import { Select } from '@/components'
 import { Dispatch, useState } from 'react'
-import { Address } from '@/interfaces'
+import { Address, City } from '@/interfaces'
 import { useCities } from '@/hooks'
+import { checkout } from '@/reducers'
+import { useDispatch } from 'react-redux'
 
 interface Props {
   setAddress?: Dispatch<Address>
@@ -9,13 +11,20 @@ interface Props {
 
 const Search = (props: Props) => {
   const { setAddress } = props
-  const [value, setValue] = useState<number>()
+  const dispatch = useDispatch()
+  const [value, setValue] = useState<string>()
   const [query, setQuery] = useState<string>(``)
   const { data: cities } = useCities(query)
 
-  const handleSelect = (value: number) => {
+  const handleSelect = (value: string) => {
+    const city = cities?.find((city) => city.unrestricted_value === value)
+    if (!cities || !city || !setAddress) return
+    dispatch(checkout.setCity(city))
     setValue(value)
-    if (cities && setAddress) setAddress(cities[value].data)
+    setAddress(
+      cities.find((city) => city.unrestricted_value === value)
+        ?.data as City['data'],
+    )
   }
 
   return (
@@ -27,7 +36,7 @@ const Search = (props: Props) => {
       onSelect={handleSelect}
     >
       {cities?.slice(0, 5).map((item, index) => (
-        <Select.Option key={index} value={index}>
+        <Select.Option key={index} value={item.unrestricted_value}>
           {item.unrestricted_value}
         </Select.Option>
       ))}
