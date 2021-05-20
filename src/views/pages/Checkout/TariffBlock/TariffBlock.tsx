@@ -1,11 +1,16 @@
 import { Modal, Typography } from '@/components'
 import { BxsRightArrow } from '@/icons'
 import { useState } from 'react'
+import { useUserAddresses } from '@/hooks'
 import styles from './tariffBlock.module.scss'
 import Addresses from './Addresses'
 
 const TariffBlock = () => {
+  const { data: addresses } = useUserAddresses()
   const [visible, setVisible] = useState(false)
+
+  // const tariff = addresses?.find((address) => address.is_primary)
+
   return (
     <>
       <div className={styles.wrapper} onClick={() => setVisible(true)}>
@@ -30,7 +35,7 @@ const TariffBlock = () => {
         visible={visible}
         onClose={() => setVisible(false)}
       >
-        <Addresses onClose={() => setVisible(false)} />
+        <Addresses addresses={addresses} onClose={() => setVisible(false)} />
       </Modal>
     </>
   )

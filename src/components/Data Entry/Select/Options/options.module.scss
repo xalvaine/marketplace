@@ -14,7 +14,30 @@
   z-index: 2;
   display: grid;
   grid-template-columns: 100%;
+  margin-top: 1px;
+  padding: 4px 0;
+  overflow: hidden;
   background: $monoWhite;
+  border: 1px solid $border;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
+  will-change: opacity, height;
+}
+
+.entering {
+  opacity: 1;
+  transition: height 0.2s, opacity 0.3s;
+}
+
+.entered {
+  opacity: 1;
+}
+
+.exiting {
+  opacity: 0;
+  transition: opacity 0.3s, height 0.1s 0.2s;
+}
+
+.exited {
+  opacity: 0;
 }

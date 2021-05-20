@@ -11,7 +11,7 @@ const RussianPost = () => {
 
   return (
     <div className={styles.wrapper}>
-      <CheckoutHeader backLink={PATH.CHECKOUT} title="Адрес получения" />
+      <CheckoutHeader backLink={PATH.TARIFFS} title="Адрес получения" />
       <div className={styles.content}>
         <div className={styles.form}>
           <Input disabled size="large" value={city?.unrestricted_value} />

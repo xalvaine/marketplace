@@ -1,6 +1,6 @@
 import { Button, Form, Modal, Radio, Typography } from '@/components'
 import { BxEditAlt, BxPlus } from '@/icons'
-import { usePatchReceiver, useReceivers } from '@/hooks'
+import { usePatchReceiver } from '@/hooks'
 import { useEffect, useState } from 'react'
 import Receiver from '@/views/pages/Checkout/ReceiverBlock/Receiver'
 import { Receiver as ReceiverType } from '@/interfaces'
@@ -8,11 +8,11 @@ import styles from './receivers.module.scss'
 
 interface Props {
   onClose: () => void
+  receivers?: ReceiverType[]
 }
 
 const Receivers = (props: Props) => {
-  const { onClose } = props
-  const { data: receivers } = useReceivers()
+  const { onClose, receivers } = props
   const [visible, setVisible] = useState(false)
   const { mutateAsync: patchReceiver } = usePatchReceiver()
 

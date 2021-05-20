@@ -76,6 +76,7 @@ const Select = (props: Props) => {
         open={open}
         options={options}
         optionsRef={optionsRef}
+        value={value}
         onClose={handleClose}
         onSelect={handleSelect}
       />

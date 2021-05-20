@@ -2,16 +2,15 @@ import { PATH } from '@/config'
 import { Button, Form, Link, Radio, Typography } from '@/components'
 import { BxEditAlt, BxPlus } from '@/icons'
 import { UserAddress } from '@/interfaces'
-import { useUserAddresses } from '@/hooks'
 import styles from './addresses.module.scss'
 
 interface Props {
   onClose: () => void
+  addresses?: UserAddress[]
 }
 
 const Addresses = (props: Props) => {
-  const { onClose } = props
-  const { data: addresses } = useUserAddresses()
+  const { onClose, addresses } = props
 
   const form = Form.useForm({
     initialValues: addresses?.find(
