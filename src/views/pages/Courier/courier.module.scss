@@ -34,16 +34,14 @@
 }
 
 .sectionTitleWrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 16px;
   align-items: center;
-  justify-content: space-between;
   height: 28px;
   margin-bottom: 16px;
 }
 
 .icon {
-  width: 16px;
-  height: 16px;
   fill: $disabled;
 }
 
