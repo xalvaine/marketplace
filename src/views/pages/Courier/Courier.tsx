@@ -1,24 +1,45 @@
 import CheckoutHeader from '@/views/common/CheckoutHeader'
-import { Button, Input, Typography, Link } from '@/components'
+import { Button, Input, Typography, Form } from '@/components'
 import { BxsDownArrow } from '@/icons'
 import { PATH } from '@/config'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/pages/_app'
+import { usePostUserAddress } from '@/hooks'
+import { useRouter } from 'next/router'
 import styles from './courier.module.scss'
 
 const Courier = () => {
   const city = useSelector((state: RootState) => state.checkout.city)
+  const { mutateAsync: postUserAddress } = usePostUserAddress()
+  const router = useRouter()
+  const form = Form.useForm({
+    initialValues: {},
+    onSubmit: async (values) => {
+      await postUserAddress({
+        address: city?.data,
+        additional_addr: values,
+        is_primary: true,
+      })
+      await router.push(PATH.CHECKOUT)
+    },
+  })
 
   return (
     <div className={styles.wrapper}>
       <CheckoutHeader backLink={PATH.TARIFFS} title="Адрес получения" />
-      <div className={styles.content}>
+      <Form className={styles.content} form={form}>
         <div className={styles.form}>
           <Input disabled size="large" value={city?.unrestricted_value} />
-          <Input placeholder="*Улица" size="large" />
+          <Form.Item name="street">
+            <Input placeholder="*Улица" size="large" />
+          </Form.Item>
           <div className={styles.pair}>
-            <Input placeholder="*Дом" size="large" />
-            <Input placeholder="*Квартира" size="large" />
+            <Form.Item name="house">
+              <Input placeholder="*Дом" size="large" />
+            </Form.Item>
+            <Form.Item name="flat">
+              <Input placeholder="*Квартира" size="large" />
+            </Form.Item>
           </div>
         </div>
         <div className={styles.sectionTitleWrapper}>
@@ -26,16 +47,25 @@ const Courier = () => {
           <BxsDownArrow className={styles.icon} />
         </div>
         <div className={styles.form}>
-          <Input placeholder="Подъезд" size="large" />
-          <Input placeholder="Этаж" size="large" />
-          <Input placeholder="Домофон" size="large" />
+          <Form.Item name="entrance">
+            <Input placeholder="Подъезд" size="large" />
+          </Form.Item>
+          <Form.Item name="floor">
+            <Input placeholder="Этаж" size="large" />
+          </Form.Item>
+          <Form.Item name="intercom">
+            <Input placeholder="Домофон" size="large" />
+          </Form.Item>
         </div>
-        <Link href={PATH.CHECKOUT}>
-          <Button block className={styles.choose} size="large">
-            Сохранить и продолжить
-          </Button>
-        </Link>
-      </div>
+        <Button
+          block
+          className={styles.choose}
+          size="large"
+          onClick={form.submitForm}
+        >
+          Сохранить и продолжить
+        </Button>
+      </Form>
     </div>
   )
 }

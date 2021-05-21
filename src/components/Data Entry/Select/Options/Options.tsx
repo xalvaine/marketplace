@@ -68,7 +68,7 @@ const Options = (props: Props) => {
           {props.children}
         </Option>
       )),
-    [onSelect, options],
+    [onSelect, options, value],
   )
 
   useEffect(() => {
@@ -87,7 +87,6 @@ const Options = (props: Props) => {
     >
       {(state) => (
         <>
-          {console.log(state)}
           <span className={styles.shadow} onClick={onClose} />
           <div
             ref={contentRef}

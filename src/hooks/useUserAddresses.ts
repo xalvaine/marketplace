@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 import { cartAPI } from '@/api'
-import { UserAddress } from '@/interfaces'
+import { Address, UserAddress } from '@/interfaces'
 
 const getUserAddresses = async () => {
   const { data } = await cartAPI.get(`/user-address`)
@@ -10,7 +10,13 @@ const getUserAddresses = async () => {
 const useUserAddresses = () =>
   useQuery<UserAddress[]>(`userAddresses`, getUserAddresses)
 
-const postUserAddress = async (values: UserAddress) => {
+interface PostUserAddressParams {
+  address?: Address
+  additional_addr: Record<string, unknown>
+  is_primary: boolean
+}
+
+const postUserAddress = async (values: PostUserAddressParams) => {
   const { data } = await cartAPI.post(`/user-address`, values)
   return data
 }
