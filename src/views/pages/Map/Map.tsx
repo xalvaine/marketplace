@@ -1,4 +1,4 @@
-import { YMaps, Map as YMap, ObjectManager } from 'react-yandex-maps'
+import { YMaps, Map as YMap, Clusterer, Placemark } from 'react-yandex-maps'
 import { BxNavigation, BxArrowBack } from '@/icons'
 import { PATH } from '@/config'
 import { DeliveryPoint } from '@/interfaces'
@@ -19,20 +19,21 @@ const Map = () => {
   const [point, setPoint] = useState<DeliveryPoint>()
   const { matches } = useMediaQuery(`(min-width: 1024px)`)
   const city = useSelector((state: RootState) => state.checkout.city)
-  const { data: externalPoints } = useDeliveryPoints(city?.data)
+  const { data: points } = useDeliveryPoints(city?.data)
 
-  const points = useMemo(
-    () =>
-      externalPoints?.map(({ code, latitude, longitude, ...rest }) => ({
-        ...rest,
-        id: code,
-        type: 'Feature' as const,
-        geometry: {
-          type: 'Point',
-          coordinates: [parseFloat(latitude), parseFloat(longitude)],
-        },
-      })),
-    [externalPoints],
+  const content = useMemo(
+    () => (
+      <Clusterer gridSize={128}>
+        {points?.map((point) => (
+          <Placemark
+            key={point.code}
+            geometry={[parseFloat(point.latitude), parseFloat(point.longitude)]}
+            onClick={() => setPoint(point)}
+          />
+        ))}
+      </Clusterer>
+    ),
+    [points],
   )
 
   return (
@@ -61,25 +62,7 @@ const Map = () => {
             height="100%"
             width="100%"
           >
-            {points && (
-              <ObjectManager
-                features={points}
-                instanceRef={(ref: any) => {
-                  const listener = (event: { get: (arg0: string) => any }) => {
-                    const objectId = event.get(`objectId`)
-                    setPoint(ref?.objects?.getById(objectId))
-                  }
-                  if (!ref?.objects?.events?.types?.click?.length) {
-                    ref?.objects?.events.add(`click`, listener)
-                  }
-                }}
-                objects={{ openBalloonOnClick: true }}
-                options={{
-                  clusterize: true,
-                  gridSize: 128,
-                }}
-              />
-            )}
+            {content}
           </YMap>
         </YMaps>
         <Scale setZoom={setZoom} zoom={zoom} />
