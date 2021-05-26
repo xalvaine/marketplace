@@ -29,16 +29,25 @@ const Addresses = (props: Props) => {
   return (
     <div className={styles.content}>
       <Radio.Group className={styles.group} name="address">
-        {addresses?.map((_address, index) => (
+        {addresses?.map((address, index) => (
           <Radio
             key={index.toString()}
             className={styles.radio}
+            defaultChecked={address.is_primary}
             icon={BxEditAlt}
-            label="Постамат X5 1270"
+            label={address.name}
           >
-            <Typography.Text inline>Казань, ул. Короленко 35а</Typography.Text>
+            <Typography.Text inline>
+              {[
+                address.address?.city_with_type,
+                address.additional_addr?.street,
+                address.additional_addr?.entrance,
+              ]
+                .filter((word) => !!word)
+                .join(`, `)}
+            </Typography.Text>
             <Typography.Text disabled inline className={styles.schedule}>
-              Ежедневно 08:00 – 22:00
+              {address.work_time}
             </Typography.Text>
           </Radio>
         ))}

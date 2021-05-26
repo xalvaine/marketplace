@@ -9,7 +9,7 @@ const TariffBlock = () => {
   const { data: addresses } = useUserAddresses()
   const [visible, setVisible] = useState(false)
 
-  // const tariff = addresses?.find((address) => address.is_primary)
+  const tariff = addresses?.find((address) => address.is_primary)
 
   return (
     <>
@@ -22,11 +22,17 @@ const TariffBlock = () => {
           level={6}
           weight="semibold"
         >
-          Постамат X5 1270
+          {tariff?.name}
         </Typography.Title>
         <Typography.Text>
-          Казань, ул. Короленко 35а
-          <span className={styles.schedule}>Ежедневно 08:00 – 22:00</span>
+          {[
+            tariff?.address?.city_with_type,
+            tariff?.additional_addr?.street,
+            tariff?.additional_addr?.entrance,
+          ]
+            .filter((word) => !!word)
+            .join(`, `)}
+          <span className={styles.schedule}>{tariff?.work_time}</span>
         </Typography.Text>
         <BxsRightArrow className={styles.arrow} />
       </div>
