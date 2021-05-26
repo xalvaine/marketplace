@@ -28,6 +28,11 @@ const Map = () => {
           <Placemark
             key={point.code}
             geometry={[parseFloat(point.latitude), parseFloat(point.longitude)]}
+            options={{
+              iconLayout: `default#imageWithContent`,
+              iconImageHref: `https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/SVG_Logo.svg/1200px-SVG_Logo.svg.png`,
+            }}
+            properties={{ iconContent: `132₽` }}
             onClick={() => setPoint(point)}
           />
         ))}
@@ -60,6 +65,7 @@ const Map = () => {
           <YMap
             defaultState={{ center: [55.75, 37.57], zoom: 10 }}
             height="100%"
+            modules={[`templateLayoutFactory`, `layout.ImageWithContent`]}
             width="100%"
           >
             {content}
