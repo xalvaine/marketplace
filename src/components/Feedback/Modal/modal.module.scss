@@ -1,14 +1,12 @@
 @import 'src/styles/colors';
 
 .shadow {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: -1;
-  width: 100%;
-  height: 100%;
   background: rgba(0, 0, 0, 0.65);
 }
 
@@ -21,7 +19,7 @@
   overflow: auto;
 }
 
-.overlay {
+.inner {
   background: $monoWhite;
 }
 
@@ -67,7 +65,7 @@
     opacity: 0;
   }
 
-  .overlay {
+  .inner {
     transform: scale(0.8);
     opacity: 0;
   }
@@ -78,41 +76,33 @@
     opacity: 1;
   }
 
-  .overlay {
+  .inner {
     transform: scale(1);
     opacity: 1;
   }
 }
 
 @media (min-width: 1024px) {
-  .wrapper {
-    padding-bottom: 24px;
-    text-align: center;
-  }
-
   .shadow {
     transition: opacity 0.2s;
   }
 
   .overlay {
     position: relative;
-    top: 100px;
-    display: inline-block;
-    width: 450px;
-    height: auto;
-    margin-bottom: 100px;
-    vertical-align: middle;
-    border-radius: 8px;
-    transition: opacity 0.2s, transform 0.2s;
+    z-index: -1;
+    min-height: 100%;
+    padding: 100px 0 24px;
   }
 
   .inner {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    width: 450px;
     min-height: 500px;
+    margin: 0 auto;
     padding: 32px;
-    text-align: left;
+    border-radius: 8px;
+    transition: opacity 0.2s, transform 0.2s;
   }
 
   .header {

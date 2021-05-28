@@ -1,6 +1,7 @@
 import { Address } from '@/interfaces/address'
 
 export interface UserAddress {
+  id: number
   additional_addr?: {
     flat: string
     floor: string

@@ -14,6 +14,7 @@ interface Props {
 const Receivers = (props: Props) => {
   const { onClose, receivers } = props
   const [visible, setVisible] = useState(false)
+  const [receiver, setReceiver] = useState<ReceiverType>()
   const { mutateAsync: patchReceiver } = usePatchReceiver()
 
   const form = Form.useForm({
@@ -38,13 +39,23 @@ const Receivers = (props: Props) => {
       ),
   )
 
+  const handleEdit = (receiver: ReceiverType) => {
+    setReceiver(receiver)
+    setVisible(true)
+  }
+
+  const handleCreate = () => {
+    setReceiver(undefined)
+    setVisible(true)
+  }
+
   return (
     <>
       <div className={styles.content}>
         <Radio.Group className={styles.group} name="address">
-          {receivers?.map((receiver, index) => (
+          {receivers?.map((receiver) => (
             <Radio
-              key={index}
+              key={receiver.id}
               className={styles.radio}
               defaultChecked={receiver.is_primary}
               icon={BxEditAlt}
@@ -52,6 +63,7 @@ const Receivers = (props: Props) => {
               onChange={(event) =>
                 event.target.checked && form.setValues(receiver)
               }
+              onIconClick={() => handleEdit(receiver)}
             >
               <Typography.Text inline>{receiver.phone}</Typography.Text>
             </Radio>
@@ -62,7 +74,7 @@ const Receivers = (props: Props) => {
           className={styles.add}
           icon={BxPlus}
           type="link"
-          onClick={() => setVisible(true)}
+          onClick={handleCreate}
         >
           Добавить получателя
         </Button>
@@ -80,7 +92,7 @@ const Receivers = (props: Props) => {
         visible={visible}
         onClose={() => setVisible(false)}
       >
-        <Receiver onClose={() => setVisible(false)} />
+        <Receiver initialValues={receiver} onClose={() => setVisible(false)} />
       </Modal>
     </>
   )

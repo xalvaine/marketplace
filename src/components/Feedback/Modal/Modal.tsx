@@ -32,6 +32,13 @@ const Modal = (props: Props) => {
 
   useEffect(() => handleVisibilityChange, [handleVisibilityChange])
 
+  useEffect(() => {
+    const close = (event: KeyboardEvent) =>
+      onClose && event.key === `Escape` && onClose()
+    window.addEventListener('keydown', close)
+    return () => window.removeEventListener('keydown', close)
+  }, [onClose])
+
   if (!modalWrapper) return null
   return createPortal(
     <CSSTransition
@@ -46,8 +53,8 @@ const Modal = (props: Props) => {
       timeout={300}
     >
       <section className={styles.wrapper}>
-        <span className={styles.shadow} onClick={onClose} />
         <div className={styles.overlay}>
+          <span className={styles.shadow} onClick={onClose} />
           <div className={styles.inner}>
             <header className={styles.header}>
               <BxArrowBack className={styles.mobileIcon} onClick={onClose} />

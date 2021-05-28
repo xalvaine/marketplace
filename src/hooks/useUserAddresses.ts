@@ -28,4 +28,16 @@ const usePostUserAddress = () => {
   })
 }
 
-export { useUserAddresses, usePostUserAddress }
+const patchUserAddress = async (values: UserAddress) => {
+  const { data } = await cartAPI.patch(`/user-address/${values.id}`, values)
+  return data
+}
+
+const usePatchUserAddress = () => {
+  const queryClient = useQueryClient()
+  return useMutation(patchUserAddress, {
+    onSuccess: () => void queryClient.invalidateQueries([`userAddresses`]),
+  })
+}
+
+export { useUserAddresses, usePostUserAddress, usePatchUserAddress }

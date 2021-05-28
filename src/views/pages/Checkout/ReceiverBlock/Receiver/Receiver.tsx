@@ -5,14 +5,15 @@ import styles from './receiver.module.scss'
 
 interface Props {
   onClose: () => void
+  initialValues?: ReceiverType
 }
 
 const Receiver = (props: Props) => {
-  const { onClose } = props
+  const { onClose, initialValues } = props
   const { mutateAsync: postReceiver } = usePostReceiver()
 
   const form = Form.useForm({
-    initialValues: {},
+    initialValues: initialValues || {},
     onSubmit: async (values: unknown) => {
       try {
         await postReceiver({

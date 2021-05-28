@@ -1,7 +1,8 @@
 import { PATH } from '@/config'
 import { Button, Form, Link, Radio, Typography } from '@/components'
-import { BxEditAlt, BxPlus } from '@/icons'
+import { BxTrashAlt, BxPlus } from '@/icons'
 import { UserAddress } from '@/interfaces'
+import { usePatchUserAddress } from '@/hooks'
 import styles from './addresses.module.scss'
 
 interface Props {
@@ -11,14 +12,15 @@ interface Props {
 
 const Addresses = (props: Props) => {
   const { onClose, addresses } = props
+  const { mutateAsync: patchReceiver } = usePatchUserAddress()
 
   const form = Form.useForm({
     initialValues: addresses?.find(
       (address) => address.is_primary,
     ) as UserAddress,
-    onSubmit: async () => {
+    onSubmit: async (values) => {
       try {
-        //await patchReceiver(values)
+        await patchReceiver(values)
         onClose()
       } catch (error) {
         console.error(error)
@@ -29,13 +31,16 @@ const Addresses = (props: Props) => {
   return (
     <div className={styles.content}>
       <Radio.Group className={styles.group} name="address">
-        {addresses?.map((address, index) => (
+        {addresses?.map((address) => (
           <Radio
-            key={index.toString()}
+            key={address.id}
             className={styles.radio}
             defaultChecked={address.is_primary}
-            icon={BxEditAlt}
+            icon={BxTrashAlt}
             label={address.name}
+            onChange={(event) =>
+              event.target.checked && form.setValues(address)
+            }
           >
             <Typography.Text inline>
               {[

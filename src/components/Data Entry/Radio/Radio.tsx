@@ -15,6 +15,7 @@ interface Props
   label?: ReactNode
   labelClassName?: string
   icon?: FunctionComponent<SVGProps<SVGSVGElement>>
+  onIconClick?: () => void
 }
 
 const Radio = (props: Props) => {
@@ -24,8 +25,16 @@ const Radio = (props: Props) => {
     label,
     labelClassName,
     icon: Icon,
+    onIconClick,
     ...rest
   } = props
+
+  const handleIconClick = (
+    event: React.MouseEvent<SVGSVGElement, MouseEvent>,
+  ) => {
+    event.preventDefault()
+    if (onIconClick) onIconClick()
+  }
 
   return (
     <label className={classNames(styles.wrapper, styles.withIcon, className)}>
@@ -40,7 +49,7 @@ const Radio = (props: Props) => {
       <Typography.Text disabled className={styles.description}>
         {children}
       </Typography.Text>
-      {Icon && <Icon className={styles.icon} />}
+      {Icon && <Icon className={styles.icon} onClick={handleIconClick} />}
     </label>
   )
 }
