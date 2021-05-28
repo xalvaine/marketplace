@@ -6,13 +6,14 @@ import CheckoutHeader from '@/views/common/CheckoutHeader'
 import { useDeliveryPoints } from '@/hooks/useDeliveryPoints'
 import { useMemo, useState } from 'react'
 import { useMediaQuery } from '@/utils'
-import Logo from '@/views/common/Layout/Header/assets/logo-small.svg'
+import { ReactComponent as Logo } from '@/views/common/Layout/Header/assets/logo-small.svg'
 import { Button, Link } from '@/components'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/pages/_app'
 import styles from './map.module.scss'
 import Panel from './Panel'
 import Scale from './Scale'
+import Icon from './assets/icon.svg'
 
 const Map = () => {
   const [zoom, setZoom] = useState(10)
@@ -30,7 +31,7 @@ const Map = () => {
             geometry={[parseFloat(point.latitude), parseFloat(point.longitude)]}
             options={{
               iconLayout: `default#imageWithContent`,
-              iconImageHref: `https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/SVG_Logo.svg/1200px-SVG_Logo.svg.png`,
+              iconImageHref: `${Icon}`,
             }}
             properties={{ iconContent: `132₽` }}
             onClick={() => setPoint(point)}

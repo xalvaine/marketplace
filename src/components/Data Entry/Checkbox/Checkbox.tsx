@@ -2,7 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import { BxsSquare } from '@/icons'
 import { Typography } from '@/components'
-import Check from './assets/check.svg'
+import { ReactComponent as Check } from './assets/check.svg'
 import styles from './checkbox.module.scss'
 
 interface Props
