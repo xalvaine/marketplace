@@ -40,4 +40,21 @@ const usePatchUserAddress = () => {
   })
 }
 
-export { useUserAddresses, usePostUserAddress, usePatchUserAddress }
+const deleteUserAddress = async (id: number) => {
+  const { data } = await cartAPI.delete(`/user-address/${id}`)
+  return data
+}
+
+const useDeleteUserAddress = () => {
+  const queryClient = useQueryClient()
+  return useMutation(deleteUserAddress, {
+    onSuccess: () => void queryClient.invalidateQueries([`userAddresses`]),
+  })
+}
+
+export {
+  useUserAddresses,
+  usePostUserAddress,
+  usePatchUserAddress,
+  useDeleteUserAddress,
+}

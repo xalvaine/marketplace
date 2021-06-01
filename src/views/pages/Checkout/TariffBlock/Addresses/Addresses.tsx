@@ -2,7 +2,7 @@ import { PATH } from '@/config'
 import { Button, Form, Link, Radio, Typography } from '@/components'
 import { BxTrashAlt, BxPlus } from '@/icons'
 import { UserAddress } from '@/interfaces'
-import { usePatchUserAddress } from '@/hooks'
+import { useDeleteUserAddress, usePatchUserAddress } from '@/hooks'
 import styles from './addresses.module.scss'
 
 interface Props {
@@ -12,7 +12,8 @@ interface Props {
 
 const Addresses = (props: Props) => {
   const { onClose, addresses } = props
-  const { mutateAsync: patchReceiver } = usePatchUserAddress()
+  const { mutateAsync: patchAddress } = usePatchUserAddress()
+  const { mutateAsync: deleteAddress } = useDeleteUserAddress()
 
   const form = Form.useForm({
     initialValues: addresses?.find(
@@ -20,7 +21,7 @@ const Addresses = (props: Props) => {
     ) as UserAddress,
     onSubmit: async (values) => {
       try {
-        await patchReceiver(values)
+        await patchAddress(values)
         onClose()
       } catch (error) {
         console.error(error)
@@ -39,8 +40,10 @@ const Addresses = (props: Props) => {
             icon={BxTrashAlt}
             label={address.name}
             onChange={(event) =>
-              event.target.checked && form.setValues(address)
+              event.target.checked &&
+              form.setValues({ ...address, is_primary: true })
             }
+            onIconClick={() => deleteAddress(address.id)}
           >
             <Typography.Text inline>
               {[
