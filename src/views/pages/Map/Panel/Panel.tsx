@@ -1,7 +1,7 @@
 import { Button, Typography } from '@/components'
 import { BxNavigation, BxX } from '@/icons'
 import { DeliveryPoint } from '@/interfaces'
-import { Dispatch } from 'react'
+import { Dispatch, useState } from 'react'
 import { useMediaQuery } from '@/utils'
 import styles from './panel.module.scss'
 
@@ -13,7 +13,7 @@ interface Props {
 const Panel = (props: Props) => {
   const { point, setPoint } = props
   const { matches } = useMediaQuery(`(min-width: 1024px)`)
-  //const [extended, setExtended] = useState(false)
+  const [extended, setExtended] = useState(false)
 
   return (
     <div className={styles.wrapper}>
@@ -48,7 +48,7 @@ const Panel = (props: Props) => {
               Постамат
             </Typography.Text>
             <Typography.Title className={styles.id} level={5}>
-              {point.id}
+              {point.code}
             </Typography.Title>
             <Typography.Title className={styles.price} level={5}>
               148₽
@@ -57,13 +57,36 @@ const Panel = (props: Props) => {
           <Typography.Text className={styles.address} weight="semibold">
             {point.address.fullAddress}
           </Typography.Text>
-          <Typography.Text>{point.workTime}</Typography.Text>
+          <Typography.Text className={styles.text}>
+            {point.workTime}
+          </Typography.Text>
           <Typography.Title className={styles.pcPrice} level={5}>
             148₽
           </Typography.Title>
+          {(extended || matches) && (
+            <>
+              <Typography.Text className={styles.subtitle} weight="bold">
+                Как добраться
+              </Typography.Text>
+              <Typography.Text className={styles.text}>
+                {point.description || `Информация отсутствует`}
+              </Typography.Text>
+              <Typography.Text className={styles.subtitle} weight="bold">
+                Как добраться
+              </Typography.Text>
+              <Typography.Text className={styles.text}>
+                {point.description || `Информация отсутствует`}
+              </Typography.Text>
+            </>
+          )}
           <div className={styles.buttons}>
-            <Button className={styles.more} size="large" type="secondary">
-              Подробнее
+            <Button
+              className={styles.more}
+              size="large"
+              type="secondary"
+              onClick={() => setExtended(!extended)}
+            >
+              {extended ? `Скрыть` : `Подробнее`}
             </Button>
             <Button className={styles.select} size="large">
               Выбрать

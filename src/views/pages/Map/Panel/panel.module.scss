@@ -48,12 +48,21 @@
   line-height: 20px;
 }
 
+.subtitle {
+  margin-bottom: 4px;
+  color: $title;
+  font-size: 16px;
+}
+
+.text {
+  margin-bottom: 24px;
+}
+
 .buttons {
   display: grid;
   grid-auto-flow: column;
   grid-gap: 8px;
   grid-template-columns: 1fr 1fr;
-  margin-top: 24px;
 }
 
 .label {
@@ -136,5 +145,9 @@
 
   .locate {
     justify-content: flex-start;
+  }
+
+  .text {
+    margin-bottom: 12px;
   }
 }

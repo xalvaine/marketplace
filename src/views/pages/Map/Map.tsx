@@ -68,7 +68,7 @@ const Map = () => {
       <div className={styles.content}>
         <YMaps>
           <YMap
-            defaultState={{ center: [55.75, 37.57], zoom: 10, controls: [] }}
+            defaultState={{ center: [55.75, 37.57], zoom: 10 }}
             height="100%"
             modules={[`layout.ImageWithContent`]}
             width="100%"
