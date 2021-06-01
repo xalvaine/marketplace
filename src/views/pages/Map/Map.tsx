@@ -1,4 +1,10 @@
-import { YMaps, Map as YMap, Clusterer, Placemark } from 'react-yandex-maps'
+import {
+  YMaps,
+  Map as YMap,
+  Clusterer,
+  Placemark,
+  ZoomControl,
+} from 'react-yandex-maps'
 import { BxNavigation, BxArrowBack } from '@/icons'
 import { PATH } from '@/config'
 import { DeliveryPoint } from '@/interfaces'
@@ -12,11 +18,9 @@ import { useSelector } from 'react-redux'
 import { RootState } from '@/pages/_app'
 import styles from './map.module.scss'
 import Panel from './Panel'
-import Scale from './Scale'
 import Icon from './assets/icon.svg'
 
 const Map = () => {
-  const [zoom, setZoom] = useState(10)
   const [point, setPoint] = useState<DeliveryPoint>()
   const { matches } = useMediaQuery(`(min-width: 1024px)`)
   const city = useSelector((state: RootState) => state.checkout.city)
@@ -64,15 +68,24 @@ const Map = () => {
       <div className={styles.content}>
         <YMaps>
           <YMap
-            defaultState={{ center: [55.75, 37.57], zoom: 10 }}
+            defaultState={{ center: [55.75, 37.57], zoom: 10, controls: [] }}
             height="100%"
-            modules={[`templateLayoutFactory`, `layout.ImageWithContent`]}
+            modules={[`layout.ImageWithContent`]}
             width="100%"
           >
             {content}
+            <ZoomControl
+              options={{
+                position: {
+                  top: matches ? 108 : 48,
+                  right: 16,
+                  bottom: `auto`,
+                  left: `auto`,
+                },
+              }}
+            />
           </YMap>
         </YMaps>
-        <Scale setZoom={setZoom} zoom={zoom} />
         <Panel point={point} setPoint={setPoint} />
       </div>
     </div>
