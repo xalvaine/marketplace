@@ -2,20 +2,24 @@ import { useState, useEffect } from 'react'
 
 const useMediaQuery = (query: string) => {
   const [matches, setMatches] = useState(false)
+  const [rendered, setRendered] = useState(false)
+  const [calculated, setCalculated] = useState(false)
+
+  useEffect(() => setRendered(true), [])
 
   useEffect(() => {
+    if (!rendered) return
     const media = window.matchMedia(query)
-    if (media.matches !== matches) {
-      setMatches(media.matches)
-    }
     const listener = () => {
       setMatches(media.matches)
     }
-    media.addEventListener(`change`, listener)
+    media.addEventListener(`change`, listener, { once: true })
+    listener()
+    setCalculated(true)
     return () => media.removeEventListener(`change`, listener)
-  }, [matches, query])
+  }, [query, rendered])
 
-  return matches
+  return { matches, rendered: rendered && calculated }
 }
 
 export { useMediaQuery }

@@ -1,19 +1,34 @@
 import { createPortal } from 'react-dom'
-import { Dispatch, RefObject, useCallback, useEffect, useState } from 'react'
+import React, {
+  RefObject,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
+import { Transition } from 'react-transition-group'
+import classNames from 'classnames'
 import Option, { ExternalProps } from '../Option'
 import styles from './options.module.scss'
 
 interface Props {
   open: boolean
-  setOpen: Dispatch<boolean>
+  onClose: () => void
   onSelect?: (value: any) => void
   options?: ExternalProps[]
   optionsRef: RefObject<HTMLInputElement>
+  value?: string | number
 }
 
-const Options = (props: Props) => {
-  const { open, setOpen, onSelect, options, optionsRef } = props
+const activeStates = [`entering`, `entered`]
+const exitedStates = [`exited`]
 
+const Options = (props: Props) => {
+  const { open, onClose, onSelect, options, optionsRef, value } = props
+
+  const [height, setHeight] = useState<number>()
+  const contentRef = useRef<HTMLDivElement>(null)
   const [optionsWrapper, setOptionsWrapper] = useState<HTMLElement | null>(null)
   const [optionsPosition, setOptionsPosition] = useState({
     top: 0,
@@ -32,30 +47,64 @@ const Options = (props: Props) => {
     }
   }, [optionsRef])
 
-  useEffect(() => setOptionsWrapper(document.getElementById(`options`)), [])
-  useEffect(() => void (open && handlePlaceOptions()), [
-    handlePlaceOptions,
-    open,
-  ])
+  useEffect(
+    () => setOptionsWrapper(document.getElementById(`select-options`)),
+    [],
+  )
+  useEffect(
+    () => void (open && handlePlaceOptions()),
+    [handlePlaceOptions, open],
+  )
+
+  const layout = useMemo(
+    () =>
+      options?.map(({ key, ...props }) => (
+        <Option
+          {...props}
+          key={key as string}
+          active={props.value === value}
+          onClick={(value) => onSelect && onSelect(value as never)}
+        >
+          {props.children}
+        </Option>
+      )),
+    [onSelect, options, value],
+  )
+
+  useEffect(() => {
+    if (layout && contentRef.current) {
+      setHeight(contentRef.current.scrollHeight + 2)
+    }
+  }, [layout])
 
   if (!optionsWrapper) return null
   return createPortal(
-    open && (
-      <>
-        <span className={styles.shadow} onClick={() => setOpen(false)} />
-        <div className={styles.options} style={optionsPosition}>
-          {options?.map(({ key, ...props }) => (
-            <Option
-              {...props}
-              key={key as string}
-              onClick={(value) => onSelect && onSelect(value as never)}
-            >
-              {props.children}
-            </Option>
-          ))}
-        </div>
-      </>
-    ),
+    <Transition
+      mountOnEnter
+      unmountOnExit
+      in={open && !!options?.length}
+      timeout={300}
+    >
+      {(state) => (
+        <>
+          <span className={styles.shadow} onClick={onClose} />
+          <div
+            ref={contentRef}
+            className={classNames(styles.options, styles[state])}
+            style={{
+              ...optionsPosition,
+              height:
+                height &&
+                ((activeStates.includes(state) && height) ||
+                  (exitedStates.includes(state) && height * 0.4) ||
+                  0),
+            }}
+          >
+            {layout}
+          </div>
+        </>
+      )}
+    </Transition>,
     optionsWrapper,
   )
 }

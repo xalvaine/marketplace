@@ -70,6 +70,8 @@
   }
 
   &:disabled {
+    color: $disabled;
+    background: $background;
     border: 1px solid $border;
     box-shadow: unset;
   }
@@ -121,4 +123,8 @@
     width: 26px;
     height: 26px;
   }
+}
+
+.pointer {
+  cursor: pointer;
 }

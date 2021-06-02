@@ -49,41 +49,50 @@ const Cart = () => {
 
   return (
     <div className={styles.wrapper}>
-      <Delivery cart={cart} />
-      <Typography.Title className={styles.title} level={4}>
-        Корзина
-      </Typography.Title>
-      <Typography.Text className={styles.count}>
-        {cart?.items.length}{' '}
-        {cart &&
-          declareNumber(cart?.items.length, [`товар`, `товара`, `товаров`])}
-      </Typography.Text>
-      <div className={styles.selection}>
-        <Checkbox
-          checked={!!(checks.length && !checks.includes(false))}
-          indeterminate={checks.includes(true)}
-          onChange={(event) => handleChangeAll(event.target.checked)}
-        >
-          Выбрать все
-        </Checkbox>
-        <Typography.Text className={styles.deletion} onClick={handleDeleteMany}>
-          Удалить выбранное
+      <div className={styles.top}>
+        <Typography.Title className={styles.title} level={4}>
+          Корзина
+        </Typography.Title>
+        <Typography.Text className={styles.count}>
+          {cart?.items.length}{' '}
+          {cart &&
+            declareNumber(cart?.items.length, [`товар`, `товара`, `товаров`])}
         </Typography.Text>
       </div>
-      <Items
-        checks={checks}
-        items={cart?.items}
-        setCheckValue={setCheckValue}
-      />
-      <Totals cart={cart} />
-      <Link href={PATH.CHECKOUT}>
-        <Button block size="large">
-          Перейти к оформлению
-        </Button>
-      </Link>
-      <Typography.Text disabled className={styles.comment}>
-        Способы доставки и оплаты можно выбрать при оформлении заказа
-      </Typography.Text>
+      <div className={styles.left}>
+        <Delivery cart={cart} />
+        <div className={styles.selection}>
+          <Checkbox
+            checked={!!(checks.length && !checks.includes(false))}
+            indeterminate={checks.includes(true)}
+            onChange={(event) => handleChangeAll(event.target.checked)}
+          >
+            Выбрать все
+          </Checkbox>
+          <Typography.Text
+            className={styles.deletion}
+            onClick={handleDeleteMany}
+          >
+            Удалить выбранное
+          </Typography.Text>
+        </div>
+        <Items
+          checks={checks}
+          items={cart?.items}
+          setCheckValue={setCheckValue}
+        />
+      </div>
+      <div className={styles.right}>
+        <Totals cart={cart} />
+        <Link href={PATH.CHECKOUT}>
+          <Button block size="large">
+            Перейти к оформлению
+          </Button>
+        </Link>
+        <Typography.Text disabled className={styles.comment}>
+          Способы доставки и оплаты можно выбрать при оформлении заказа
+        </Typography.Text>
+      </div>
     </div>
   )
 }

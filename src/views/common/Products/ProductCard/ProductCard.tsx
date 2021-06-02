@@ -20,7 +20,7 @@ const ProductCard = (props: Props) => {
   ) => {
     event.preventDefault()
     await mutateCart({
-      product_id: product.id,
+      product_id: product.variants[0]?.id,
       quantity: 1,
       name: product.name,
       price: null,
@@ -38,6 +38,7 @@ const ProductCard = (props: Props) => {
           group: 6,
         },
       }}
+      prefetch={false}
     >
       <div className={styles.imageWrapper}>
         <Slider className={styles.slider}>

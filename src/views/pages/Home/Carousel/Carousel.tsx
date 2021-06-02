@@ -4,9 +4,9 @@ import { useMediaQuery } from '@/utils'
 import styles from './carousel.module.scss'
 
 const Carousel = () => {
-  const isDesktop = useMediaQuery(`(min-width: 1024px)`)
+  const { matches } = useMediaQuery(`(min-width: 1024px)`)
   return (
-    <Slider className={styles.slider} controls={isDesktop}>
+    <Slider className={styles.slider} controls={matches}>
       <Slider.Slide image={mockSrc} />
       <Slider.Slide image={mockSrc} />
       <Slider.Slide image={mockSrc} />

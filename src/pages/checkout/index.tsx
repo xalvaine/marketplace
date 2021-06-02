@@ -5,7 +5,9 @@ import { layout } from '@/reducers'
 
 const CheckoutPage = () => {
   const dispatch = useDispatch()
-  useEffect(() => void dispatch(layout.setLayoutParams({})))
+  useEffect(
+    () => void dispatch(layout.setLayoutParams({ simplifyLayout: true })),
+  )
 
   return <Checkout />
 }

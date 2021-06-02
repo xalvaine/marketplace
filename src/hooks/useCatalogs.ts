@@ -3,8 +3,13 @@ import { showcaseAPI } from '@/api'
 import { Catalog } from '@/interfaces'
 
 const getCatalogs = async () => {
-  const { data } = await showcaseAPI.get(`/catalogs`)
-  return data.items
+  try {
+    const { data } = await showcaseAPI.get(`/catalogs`)
+    return data.items
+  } catch (error) {
+    console.error(error)
+    return []
+  }
 }
 
 const useCatalogs = () =>

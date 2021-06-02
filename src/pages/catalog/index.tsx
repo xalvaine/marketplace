@@ -23,13 +23,10 @@ const CatalogPage = (props: Props) => {
   const { catalogs } = props
   const dispatch = useDispatch()
   const router = useRouter()
-  const isDesktop = useMediaQuery(`(min-width: 1024px)`)
+  const { matches } = useMediaQuery(`(min-width: 1024px)`)
 
   useEffect(() => void dispatch(layout.setLayoutParams({ showSearch: true })))
-  useEffect(() => void (isDesktop && router.push(PATH.HOME)), [
-    isDesktop,
-    router,
-  ])
+  useEffect(() => void (matches && router.push(PATH.HOME)), [matches, router])
 
   return (
     <>

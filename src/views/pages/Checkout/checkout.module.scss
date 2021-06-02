@@ -1,0 +1,58 @@
+@import 'src/styles/colors';
+
+.back {
+  display: block;
+  width: fit-content;
+  margin: 16px 0;
+}
+
+.title {
+  margin-bottom: 32px;
+}
+
+.submit {
+  margin-bottom: 16px;
+}
+
+.comment {
+  color: $disabled;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .wrapper {
+    display: grid;
+    grid-gap: 0 30px;
+    grid-template-areas: 'h h' 'i a';
+    grid-template-columns: 1fr 370px;
+  }
+
+  .back {
+    margin-top: 0;
+  }
+
+  .head {
+    grid-area: h;
+  }
+
+  .info {
+    grid-area: i;
+  }
+
+  .aside {
+    display: grid;
+    grid-area: a;
+    grid-gap: 16px;
+    align-content: start;
+  }
+
+  .promocode {
+    order: 1;
+  }
+
+  .totals {
+    padding: 16px;
+    background: $tableHeader;
+    border-radius: 8px;
+  }
+}

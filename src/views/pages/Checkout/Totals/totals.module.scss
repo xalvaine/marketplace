@@ -1,0 +1,42 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid $dividers;
+}
+
+.titleWrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.text {
+  display: flex;
+  margin-bottom: 8px;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.right {
+  margin-left: auto;
+  font-weight: 700;
+}
+
+.total {
+  display: flex;
+  margin-bottom: 32px;
+  color: $title;
+  font-size: 20px;
+  line-height: 28px;
+  text-transform: uppercase;
+}
+
+@media (min-width: 1024px) {
+  .wrapper {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}

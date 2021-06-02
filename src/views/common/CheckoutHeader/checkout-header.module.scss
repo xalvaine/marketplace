@@ -1,0 +1,31 @@
+@import 'src/styles/colors';
+
+.header {
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: 24px 1fr 24px;
+  align-items: center;
+  padding: 8px 16px;
+}
+
+.bordered {
+  border-bottom: 1px solid $dividers;
+}
+
+.short {
+  padding: 16px;
+}
+
+.link {
+  display: flex;
+}
+
+.central {
+  display: grid;
+  grid-gap: 4px;
+  text-align: center;
+}
+
+.icon {
+  fill: $disabled;
+}

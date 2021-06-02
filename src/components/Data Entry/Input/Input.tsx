@@ -52,12 +52,24 @@ const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
         {...rest}
       />
       {LeftIcon && (
-        <div className={styles.leftIconWrapper} onClick={onLeftIconClick}>
+        <div
+          className={classNames(
+            styles.leftIconWrapper,
+            onLeftIconClick && styles.pointer,
+          )}
+          onClick={onLeftIconClick}
+        >
           <LeftIcon className={styles.icon} />
         </div>
       )}
       {RightIcon && (
-        <div className={styles.rightIconWrapper} onClick={onRightIconClick}>
+        <div
+          className={classNames(
+            styles.rightIconWrapper,
+            onLeftIconClick && styles.pointer,
+          )}
+          onClick={onRightIconClick}
+        >
           <RightIcon className={styles.icon} />
         </div>
       )}

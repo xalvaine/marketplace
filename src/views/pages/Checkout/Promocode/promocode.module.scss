@@ -1,0 +1,67 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  display: grid;
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid $dividers;
+}
+
+.titleWrapper {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 24px;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  transform: rotate(-90deg);
+  transition: transform 0.3s 0.3s;
+  fill: $disabled;
+}
+
+.iconRotated {
+  composes: icon;
+  transform: rotate(0deg);
+  transition: transform 0.3s;
+}
+
+.input {
+  margin-bottom: 16px;
+  padding-top: 16px;
+}
+
+.overflow {
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.3s, height 0.3s 0.3s, margin-bottom 0.3s 0.3s;
+  will-change: height;
+}
+
+.overflowOpen {
+  composes: overflow;
+  height: 112px;
+  opacity: 1;
+  transition: opacity 0.3s 0.3s, height 0.3s;
+}
+
+@media (min-width: 1024px) {
+  .wrapper {
+    margin: 0;
+    padding: 16px;
+    background: $tableHeader;
+    border-bottom: none;
+    border-radius: 8px;
+  }
+
+  .title {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}

@@ -1,8 +1,8 @@
 import { Typography } from '@/components'
 import Column from './Column'
-import VK from './assets/bxl-vk.svg'
-import Facebook from './assets/bxl-facebook-circle.svg'
-import Instagram from './assets/bxl-instagram-alt.svg'
+import { ReactComponent as VK } from './assets/bxl-vk.svg'
+import { ReactComponent as Facebook } from './assets/bxl-facebook-circle.svg'
+import { ReactComponent as Instagram } from './assets/bxl-instagram-alt.svg'
 import styles from './footer.module.scss'
 
 const Footer = () => {

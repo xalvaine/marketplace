@@ -1,4 +1,5 @@
 export interface Variant {
+  id: number
   article: unknown
   default_image: unknown
   dimensions: { depth: number; width: number; height: number }

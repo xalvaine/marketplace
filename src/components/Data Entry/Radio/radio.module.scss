@@ -1,0 +1,90 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  position: relative;
+  display: block;
+  min-height: 20px;
+  padding: 0 8px 0 24px;
+  cursor: pointer;
+}
+
+.description {
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.withIcon {
+  padding-right: 50px;
+}
+
+.icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  fill: $disabled;
+}
+
+.radio {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: $monoWhite;
+  border: 1px solid $border;
+  border-radius: 50%;
+  transition: border 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    border-color: $hover;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 8px;
+    height: 8px;
+    margin: auto;
+    background: transparent;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    content: '';
+  }
+}
+
+.input {
+  display: none;
+
+  &:checked ~ .radio {
+    border-color: $hover;
+
+    &::after {
+      background: $hover;
+    }
+  }
+
+  &:disabled ~ .radio {
+    background: $background;
+    border-color: $border;
+    box-shadow: none;
+  }
+
+  &:disabled ~ .label,
+  &:disabled ~ .description {
+    color: $disabled;
+  }
+
+  &:disabled:checked ~ .radio {
+    &::after {
+      background: $disabled;
+    }
+  }
+}

@@ -31,11 +31,11 @@ interface Props {
 const Bread = (props: Props) => {
   const { className, product } = props
   const { query } = useRouter()
-  const isDesktop = useMediaQuery(`(min-width: 1024px)`)
+  const { matches } = useMediaQuery(`(min-width: 1024px)`)
 
   return (
     <div className={classNames(styles.back, className)}>
-      {isDesktop ? (
+      {matches ? (
         <Breadcrumbs>
           <Breadcrumbs.Item
             href={{

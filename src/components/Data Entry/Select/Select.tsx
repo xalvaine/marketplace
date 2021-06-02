@@ -14,33 +14,35 @@ import Options from './Options'
 type Props = Omit<ComponentProps<typeof Input>, 'onSelect' | 'children'> & {
   children?: ReactElement<ExternalProps> | ReactElement<ExternalProps>[]
   onSelect?: (value: any) => void
+  onClose?: () => void
   value?: string | number
 }
 
 const Select = (props: Props) => {
-  const { children, onSelect, onChange, placeholder, value, ...rest } = props
+  const { children, onSelect, onChange, placeholder, value, onClose, ...rest } =
+    props
   const [open, setOpen] = useState(false)
-  const [focused, setFocused] = useState(false)
   const [searchValue, setSearchValue] = useState(``)
   const optionsRef = useRef<HTMLInputElement>(null)
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value)
-    if (onChange) {
-      onChange(event)
-    }
+    if (onChange) onChange(event)
   }
 
-  const handleBlur = () => {
-    setFocused(false)
+  const handleClose = () => {
+    setOpen(false)
     setSearchValue(``)
+    if (onClose) onClose()
   }
 
   const handleSelect = (value: any) => {
-    setOpen(false)
-    if (onSelect) {
-      onSelect(value)
-    }
+    if (onSelect) onSelect(value)
+    handleClose()
+  }
+
+  const handleFocus = () => {
+    setOpen(true)
   }
 
   const options =
@@ -60,22 +62,22 @@ const Select = (props: Props) => {
         {...rest}
         ref={optionsRef}
         placeholder={
-          focused
+          open
             ? displayedValue || value?.toString() || placeholder
             : placeholder
         }
         readOnly={!onChange}
-        value={focused ? searchValue : displayedValue || ``}
-        onBlur={handleBlur}
+        style={{ zIndex: 2 }}
+        value={open ? searchValue : displayedValue || ``}
         onChange={handleChange}
-        onClick={() => setOpen(true)}
-        onFocus={() => setFocused(true)}
+        onFocus={handleFocus}
       />
       <Options
         open={open}
         options={options}
         optionsRef={optionsRef}
-        setOpen={setOpen}
+        value={value}
+        onClose={handleClose}
         onSelect={handleSelect}
       />
     </>

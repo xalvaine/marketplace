@@ -1,56 +1,48 @@
-import { Button, Select, Typography } from '@/components'
-import { ChangeEvent, useState } from 'react'
-import { Debouncer } from '@/utils'
-import { cartAPI } from '@/api'
-import { Address } from '@/interfaces'
-
-const debouncer = new Debouncer()
+import { Button, Link, Typography } from '@/components'
+import { BxArrowBack } from '@/icons'
+import { PATH } from '@/config'
+import styles from './checkout.module.scss'
+import Tariff from './TariffBlock'
+import Payment from './Payment'
+import Promocode from './Promocode'
+import Totals from './Totals'
+import Receiver from './ReceiverBlock'
 
 const Checkout = () => {
-  const [value, setValue] = useState<number>()
-  const [address, setAddress] = useState<Address[]>()
-
-  const handleGetAddress = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value
-    if (value.length < 3) return
-    debouncer.debounce(async () => {
-      const { data } = await cartAPI.get(`/address`, {
-        params: { query: value },
-      })
-      setAddress(data.data)
-    }, 300)
-  }
-
-  const handleCheckout = async () => {
-    await cartAPI.post(`/orders`, {
-      address: address && value !== undefined && address[value],
-      pickup_point_id: '2201-001',
-      desired_date: '2020-01-01',
-      desired_time_period_start: '22:00',
-      desired_time_period_end: '23:00',
-      promocode: 'test_promo',
-      comment: 'asap',
-    })
-  }
-
   return (
-    <div>
-      <Typography.Title level={4}>Чекаут</Typography.Title>
-      <Select
-        placeholder="Введите адрес"
-        value={value}
-        onChange={handleGetAddress}
-        onSelect={setValue}
-      >
-        {address?.slice(0, 5).map((item, index) => (
-          <Select.Option key={index} value={index}>
-            {[item.country, item.city]
-              .filter((element) => !!element)
-              .join(`, `)}
-          </Select.Option>
-        ))}
-      </Select>
-      <Button onClick={handleCheckout}>Оформить заказ</Button>
+    <div className={styles.wrapper}>
+      <div className={styles.head}>
+        <Link className={styles.back} href={PATH.CART}>
+          <Button icon={BxArrowBack} type="link">
+            В корзину
+          </Button>
+        </Link>
+        <Typography.Title className={styles.title} level={4}>
+          Оформление заказа
+        </Typography.Title>
+      </div>
+      <div className={styles.info}>
+        <Tariff />
+        <Receiver />
+        <Payment />
+      </div>
+      <div className={styles.aside}>
+        <div className={styles.promocode}>
+          <Promocode />
+        </div>
+        <div className={styles.totals}>
+          <Totals />
+          <Link href={PATH.RESULT}>
+            <Button block className={styles.submit} size="large">
+              Оплатить заказ
+            </Button>
+          </Link>
+          <Typography.Text className={styles.comment}>
+            Нажимая на кнопку, вы соглашаетесь с <a>условиями обработки</a>{' '}
+            персональных данных и <a>условиями</a> продажи товаров
+          </Typography.Text>
+        </div>
+      </div>
     </div>
   )
 }

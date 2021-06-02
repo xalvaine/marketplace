@@ -30,19 +30,17 @@ const TabBarExpansion = (props: Props) => {
   return (
     tabBar &&
     createPortal(
-      <>
-        <Transition mountOnEnter unmountOnExit in={visible} timeout={600}>
-          {(state) => (
-            <div
-              ref={contentRef}
-              className={styles[state]}
-              style={{ height: activeStates.includes(state) ? height : 0 }}
-            >
-              {children}
-            </div>
-          )}
-        </Transition>
-      </>,
+      <Transition mountOnEnter unmountOnExit in={visible} timeout={600}>
+        {(state) => (
+          <div
+            ref={contentRef}
+            className={styles[state]}
+            style={{ height: activeStates.includes(state) ? height : 0 }}
+          >
+            {children}
+          </div>
+        )}
+      </Transition>,
       tabBar,
     )
   )

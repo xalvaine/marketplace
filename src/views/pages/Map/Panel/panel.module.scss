@@ -1,0 +1,153 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px;
+  background: $monoWhite;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.title {
+  margin-bottom: 16px;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  fill: $disabled;
+}
+
+.name {
+  grid-column: 1 / 3;
+}
+
+.mainInfo {
+  position: relative;
+  display: grid;
+  grid-gap: 4px 8px;
+  grid-template-rows: auto auto;
+  justify-content: start;
+  margin-bottom: 24px;
+}
+
+.id {
+  color: $default;
+}
+
+.address {
+  margin-bottom: 4px;
+  color: $title;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.subtitle {
+  margin-bottom: 4px;
+  color: $title;
+  font-size: 16px;
+}
+
+.text {
+  margin-bottom: 24px;
+}
+
+.buttons {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 8px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.label {
+  display: none;
+}
+
+.city {
+  display: none;
+}
+
+.pcPrice {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    width: 420px;
+    padding: 48px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .label {
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .city {
+    display: block;
+    margin-bottom: 32px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .mainInfo {
+    grid-gap: 0 4px;
+    margin-bottom: 12px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $dividers;
+  }
+
+  .name {
+    grid-column: 1;
+    color: $title;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .id {
+    grid-column: 2;
+  }
+
+  .price {
+    display: none;
+  }
+
+  .pcPrice {
+    display: block;
+    margin: 12px 0 48px;
+  }
+
+  .buttons {
+    margin-top: auto;
+  }
+
+  .more {
+    display: none;
+  }
+
+  .select {
+    grid-column: 1 / 3;
+  }
+
+  .locate {
+    justify-content: flex-start;
+  }
+
+  .text {
+    margin-bottom: 12px;
+  }
+}
