@@ -12,8 +12,11 @@ const useUserAddresses = () =>
 
 interface PostUserAddressParams {
   address?: Address
-  additional_addr: Record<string, unknown>
+  additional_addr?: Record<string, unknown>
   is_primary: boolean
+  type?: string
+  name?: string
+  work_time?: string
 }
 
 const postUserAddress = async (values: PostUserAddressParams) => {

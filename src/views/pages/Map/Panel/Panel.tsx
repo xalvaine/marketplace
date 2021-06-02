@@ -3,6 +3,9 @@ import { BxNavigation, BxX } from '@/icons'
 import { DeliveryPoint } from '@/interfaces'
 import { Dispatch, useState } from 'react'
 import { useMediaQuery } from '@/utils'
+import { usePostUserAddress } from '@/hooks'
+import { PATH } from '@/config'
+import { useRouter } from 'next/router'
 import styles from './panel.module.scss'
 
 interface Props {
@@ -14,6 +17,20 @@ const Panel = (props: Props) => {
   const { point, setPoint } = props
   const { matches } = useMediaQuery(`(min-width: 1024px)`)
   const [extended, setExtended] = useState(false)
+  const { mutateAsync: postUserAddress } = usePostUserAddress()
+  const router = useRouter()
+
+  const handleSubmit = async () => {
+    if (!point) return
+    await postUserAddress({
+      address: point.address,
+      is_primary: true,
+      type: `pickpoint`,
+      name: point.code,
+      work_time: point.workTime,
+    })
+    await router.push(PATH.CHECKOUT)
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -88,7 +105,11 @@ const Panel = (props: Props) => {
             >
               {extended ? `Скрыть` : `Подробнее`}
             </Button>
-            <Button className={styles.select} size="large">
+            <Button
+              className={styles.select}
+              size="large"
+              onClick={handleSubmit}
+            >
               Выбрать
             </Button>
           </div>
