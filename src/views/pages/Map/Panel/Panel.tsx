@@ -89,7 +89,7 @@ const Panel = (props: Props) => {
                 {point.description || `Информация отсутствует`}
               </Typography.Text>
               <Typography.Text className={styles.subtitle} weight="bold">
-                Как добраться
+                Дополнительно
               </Typography.Text>
               <Typography.Text className={styles.text}>
                 {point.description || `Информация отсутствует`}
