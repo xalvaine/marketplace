@@ -46,6 +46,8 @@ const Map = () => {
     [points],
   )
 
+  if (!city) return null
+
   return (
     <div className={styles.wrapper}>
       <header className={styles.simpleHeader}>
@@ -68,7 +70,13 @@ const Map = () => {
       <div className={styles.content}>
         <YMaps>
           <YMap
-            defaultState={{ center: [55.75, 37.57], zoom: 10 }}
+            defaultState={{
+              center: [
+                parseFloat(city.data.geo_lat as string),
+                parseFloat(city.data.geo_lon as string),
+              ],
+              zoom: 10,
+            }}
             height="100%"
             modules={[`layout.ImageWithContent`]}
             width="100%"

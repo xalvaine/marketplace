@@ -6,6 +6,8 @@ import { useMediaQuery } from '@/utils'
 import { usePostUserAddress } from '@/hooks'
 import { PATH } from '@/config'
 import { useRouter } from 'next/router'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/pages/_app'
 import styles from './panel.module.scss'
 
 interface Props {
@@ -18,6 +20,7 @@ const Panel = (props: Props) => {
   const { matches } = useMediaQuery(`(min-width: 1024px)`)
   const [extended, setExtended] = useState(false)
   const { mutateAsync: postUserAddress } = usePostUserAddress()
+  const city = useSelector((state: RootState) => state.checkout.city)
   const router = useRouter()
 
   const handleSubmit = async () => {
@@ -37,7 +40,7 @@ const Panel = (props: Props) => {
       <Typography.Title className={styles.label} level={4}>
         Самовывоз
       </Typography.Title>
-      <Typography.Text className={styles.city}>Казань</Typography.Text>
+      <Typography.Text className={styles.city}>{city?.value}</Typography.Text>
       {!point && (
         <>
           <Typography.Title className={styles.title} level={6}>
