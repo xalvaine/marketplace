@@ -44,7 +44,7 @@ const Cart = () => {
   }
 
   useEffect(() => {
-    handleChangeAll(false)
+    handleChangeAll(true)
   }, [handleChangeAll])
 
   return (
@@ -70,7 +70,9 @@ const Cart = () => {
             Выбрать все
           </Checkbox>
           <Typography.Text
-            className={styles.deletion}
+            className={
+              checks.includes(true) ? styles.deletion : styles.deletionHidden
+            }
             onClick={handleDeleteMany}
           >
             Удалить выбранное

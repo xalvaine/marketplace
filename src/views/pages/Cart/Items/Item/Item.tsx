@@ -24,9 +24,15 @@ const Item = (props: Props) => {
   const { mutateAsync: deleteCartItem } = useCartItemDelete()
 
   const handleChangeItemsCount = async (quantity: number) => {
-    setCountValue(index.toString(), quantity)
+    const validQuantity = Math.max(0, quantity)
+    setCountValue(index.toString(), validQuantity)
     await debouncer.debounce(
-      () => patchCartItem({ id: item.id, quantity, productId: item.id }),
+      () =>
+        patchCartItem({
+          id: item.id,
+          quantity: validQuantity,
+          productId: item.id,
+        }),
       300,
     )
   }
