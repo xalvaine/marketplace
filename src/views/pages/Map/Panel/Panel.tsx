@@ -68,7 +68,7 @@ const Panel = (props: Props) => {
               Постамат
             </Typography.Text>
             <Typography.Title className={styles.id} level={5}>
-              {point.code}
+              {point.courier} {point.code}
             </Typography.Title>
             <Typography.Title className={styles.price} level={5}>
               148₽
