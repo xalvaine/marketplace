@@ -1,16 +1,9 @@
-import {
-  YMaps,
-  Map as YMap,
-  Clusterer,
-  Placemark,
-  ZoomControl,
-} from 'react-yandex-maps'
+import { YMaps, Map as YMap, ZoomControl } from 'react-yandex-maps'
 import { BxNavigation, BxArrowBack } from '@/icons'
 import { PATH } from '@/config'
 import { DeliveryPoint } from '@/interfaces'
 import CheckoutHeader from '@/views/common/CheckoutHeader'
-import { useDeliveryPoints } from '@/hooks/useDeliveryPoints'
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { useMediaQuery } from '@/utils'
 import { ReactComponent as Logo } from '@/views/common/Layout/Header/assets/logo-small.svg'
 import { Button, Link } from '@/components'
@@ -18,36 +11,14 @@ import { useSelector } from 'react-redux'
 import { RootState } from '@/pages/_app'
 import styles from './map.module.scss'
 import Panel from './Panel'
-import Icon from './assets/icon.svg'
+import Points from './Points'
 
 const Map = () => {
   const [point, setPoint] = useState<DeliveryPoint>()
   const { matches } = useMediaQuery(`(min-width: 1024px)`)
   const city = useSelector((state: RootState) => state.checkout.city)
-  const { data: points } = useDeliveryPoints(city?.data)
-
-  const content = useMemo(
-    () => (
-      <Clusterer gridSize={128}>
-        {points?.map((point) => (
-          <Placemark
-            key={point.code}
-            geometry={[parseFloat(point.latitude), parseFloat(point.longitude)]}
-            options={{
-              iconLayout: `default#imageWithContent`,
-              iconImageHref: `${Icon}`,
-            }}
-            properties={{ iconContent: `132₽` }}
-            onClick={() => setPoint(point)}
-          />
-        ))}
-      </Clusterer>
-    ),
-    [points],
-  )
 
   if (!city) return null
-
   return (
     <div className={styles.wrapper}>
       <header className={styles.simpleHeader}>
@@ -70,18 +41,22 @@ const Map = () => {
       <div className={styles.content}>
         <YMaps>
           <YMap
-            defaultState={{
+            height="100%"
+            modules={[`layout.ImageWithContent`]}
+            state={{
               center: [
-                parseFloat(city.data.geo_lat as string),
-                parseFloat(city.data.geo_lon as string),
+                point
+                  ? parseFloat(point.latitude)
+                  : parseFloat(city.data.geo_lat as string),
+                point
+                  ? parseFloat(point.longitude)
+                  : parseFloat(city.data.geo_lon as string),
               ],
               zoom: 10,
             }}
-            height="100%"
-            modules={[`layout.ImageWithContent`]}
             width="100%"
           >
-            {content}
+            <Points setPoint={setPoint} />
             <ZoomControl
               options={{
                 position: {
