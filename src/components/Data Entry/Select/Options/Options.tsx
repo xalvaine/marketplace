@@ -72,10 +72,10 @@ const Options = (props: Props) => {
   )
 
   useEffect(() => {
-    if (layout && contentRef.current) {
-      setHeight(contentRef.current.scrollHeight + 2)
+    if (layout && contentRef.current && options) {
+      setHeight(contentRef.current.scrollHeight + 10)
     }
-  }, [layout])
+  }, [layout, options])
 
   if (!optionsWrapper) return null
   return createPortal(
@@ -89,7 +89,6 @@ const Options = (props: Props) => {
         <>
           <span className={styles.shadow} onClick={onClose} />
           <div
-            ref={contentRef}
             className={classNames(styles.options, styles[state])}
             style={{
               ...optionsPosition,
@@ -100,7 +99,7 @@ const Options = (props: Props) => {
                   0),
             }}
           >
-            {layout}
+            <div ref={contentRef}>{layout}</div>
           </div>
         </>
       )}
