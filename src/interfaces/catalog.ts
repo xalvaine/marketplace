@@ -1,4 +1,4 @@
-export interface Catalog<T = undefined> {
+export interface Catalog<T = never> {
   id: number
   name: 'string'
   description: 'string'

@@ -8,15 +8,20 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useMediaQuery } from '@/utils'
 import { PATH } from '@/config'
-import { getCatalogs } from '@/hooks'
+import { showcaseAPI } from '@/api'
 
 interface Props {
   catalogs: CatalogType[]
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const catalogs = await getCatalogs()
-  return { props: { catalogs }, revalidate: 60 }
+  try {
+    const { data } = await showcaseAPI.get(`/catalogs`)
+    return { props: { catalogs: data.items }, revalidate: 60 }
+  } catch (error) {
+    console.error(error)
+    return { props: { catalogs: [] }, revalidate: 60 }
+  }
 }
 
 const CatalogPage = (props: Props) => {
