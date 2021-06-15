@@ -1,6 +1,5 @@
 export * from './useProducts'
 export * from './useCategories'
-export * from './useCatalog'
 export * from './useCartItem'
 export * from './useReceivers'
 export * from './useTariff'
