@@ -1,0 +1,21 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  display: grid;
+  grid-gap: 24px;
+  padding-top: 32px;
+  text-align: center;
+}
+
+.highlighting {
+  display: block;
+  color: $default;
+}
+
+.link {
+  margin: auto;
+}
+
+.linkText {
+  color: $default;
+}

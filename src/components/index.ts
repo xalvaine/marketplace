@@ -12,7 +12,6 @@ export { default as Tag } from './Data Display/Tag'
 //Data entry
 export { default as Checkbox } from './Data Entry/Checkbox'
 export { default as Form } from './Data Entry/Form'
-export type { FormInstance } from './Data Entry/Form/formInstance'
 export { default as Input } from './Data Entry/Input'
 export { default as Radio } from './Data Entry/Radio'
 export { default as Select } from './Data Entry/Select'
