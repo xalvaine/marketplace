@@ -10,83 +10,84 @@
   grid-template-rows: auto 1fr;
 
   :global([class*='clusterSmallIcon']) {
-    top: -15px !important;
-    left: -15px !important;
-    width: 26px !important;
-    height: 26px !important;
+    top: -19px !important;
+    left: -19px !important;
+    width: 34px !important;
+    height: 34px !important;
     background: $monoWhite;
     border: 2px solid $hover;
     border-radius: 50%;
 
     :global([class$='svg-icon-content']) {
-      top: 7px !important;
-      width: 26px !important;
-      height: 12px !important;
+      top: 9px !important;
+      width: 34px !important;
+      height: 16px !important;
       font-weight: bold !important;
-      font-size: 12px !important;
+      font-size: 16px !important;
       font-family: Inter, sans-serif !important;
-      line-height: 12px !important;
+      line-height: 16px !important;
       font-feature-settings: 'tnum' on, 'lnum' on;
     }
   }
 
   :global([class*='clusterMediumIcon']) {
-    top: -18px !important;
-    left: -18px !important;
-    width: 32px !important;
-    height: 32px !important;
+    top: -22px !important;
+    left: -22px !important;
+    width: 40px !important;
+    height: 40px !important;
     background: $monoWhite;
     border: 2px solid $hover;
     border-radius: 50%;
 
     :global([class$='svg-icon-content']) {
-      top: 10px !important;
-      width: 32px !important;
-      height: 12px !important;
+      top: 12px !important;
+      width: 40px !important;
+      height: 16px !important;
       font-weight: bold !important;
-      font-size: 12px !important;
+      font-size: 16px !important;
       font-family: Inter, sans-serif !important;
-      line-height: 12px !important;
+      line-height: 16px !important;
       font-feature-settings: 'tnum' on, 'lnum' on;
     }
   }
 
   :global([class*='clusterLargeIcon']) {
-    top: -23px !important;
-    left: -23px !important;
-    width: 40px !important;
-    height: 40px !important;
+    top: -27px !important;
+    left: -27px !important;
+    width: 48px !important;
+    height: 48px !important;
     background: $monoWhite;
     border: 3px solid $hover;
     border-radius: 50%;
 
     :global([class$='svg-icon-content']) {
-      top: 13px !important;
-      width: 40px !important;
-      height: 14px !important;
+      top: 15px !important;
+      width: 48px !important;
+      height: 18px !important;
       font-weight: bold !important;
-      font-size: 14px !important;
+      font-size: 18px !important;
       font-family: Inter, sans-serif !important;
-      line-height: 14px !important;
+      line-height: 18px !important;
       font-feature-settings: 'tnum' on, 'lnum' on;
     }
   }
 
   :global([class$='image-with-content']) {
-    top: -28px !important;
+    top: -34px !important;
     display: flex;
     align-items: center;
     box-sizing: border-box !important;
     width: auto !important;
-    height: 24px !important;
-    padding: 0 6px 0 20px;
+    height: 30px !important;
+    padding: 0 8px 0 22px;
     background-color: $monoWhite;
     background-repeat: no-repeat;
-    background-position: 6px 50% !important;
-    background-size: 10px !important;
+    background-position: 8px 50% !important;
+    background-size: 12px !important;
     border: 2px solid $hover;
-    border-radius: 12px;
+    border-radius: 15px;
     transform: translateX(-50%);
+    transition: background-color 0.3s;
 
     &::after {
       position: absolute;
@@ -103,15 +104,34 @@
     :global([class$='image-with-content-content']) {
       position: static !important;
       width: auto !important;
-      height: 12px !important;
+      height: 16px !important;
       color: $title;
       font-weight: 600 !important;
-      font-size: 12px !important;
+      font-size: 16px !important;
       font-family: Inter, sans-serif !important;
-      line-height: 12px !important;
+      line-height: 16px !important;
       font-feature-settings: 'tnum' on, 'lnum' on;
+      transition: color 0.3s;
     }
   }
+
+  //:global([style^='z-index: 700']) {
+  //  :global([class$='image-with-content']) {
+  //    background-color: $hover;
+  //
+  //    &::before {
+  //      content: none;
+  //    }
+  //
+  //    &::after {
+  //      content: '';
+  //    }
+  //
+  //    :global([class$='image-with-content-content']) {
+  //      color: $monoWhite;
+  //    }
+  //  }
+  //}
 }
 
 .content {

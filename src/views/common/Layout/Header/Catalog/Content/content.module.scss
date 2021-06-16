@@ -19,10 +19,12 @@
     break-inside: avoid-column;
     display: grid;
     grid-gap: 8px;
+    margin-bottom: 24px;
   }
 
   .subtitle {
+    padding: 6px 0;
     font-size: 14px;
-    line-height: 32px;
+    line-height: 20px;
   }
 }

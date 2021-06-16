@@ -27,11 +27,16 @@
   }
 
   .group {
+    grid-gap: 16px;
     margin-bottom: auto;
   }
 
   .add {
     margin: 32px 0 16px;
+  }
+
+  .radio {
+    margin-bottom: 0;
   }
 
   .choose {

@@ -1,42 +1,53 @@
 import { Link, Typography } from '@/components'
-import { Catalog } from '@/interfaces'
+import { Category } from '@/interfaces'
 import { PATH } from '@/config'
 import styles from './content.module.scss'
 import Brands from './Brands'
 
 interface Props {
-  catalog?: Catalog<Catalog>
+  category?: Category<Category<Category>>
   onSelect: () => void
 }
 
 const Content = (props: Props) => {
-  const { catalog, onSelect } = props
+  const { category, onSelect } = props
 
   return (
     <div className={styles.wrapper}>
       <Link
-        href={{ pathname: PATH.CATEGORY, query: { category: catalog?.id } }}
+        href={{ pathname: PATH.CATEGORY, query: { category: category?.id } }}
         onClick={onSelect}
       >
         <Typography.Title className={styles.title} level={5}>
-          {catalog?.name}
+          {category?.name}
         </Typography.Title>
       </Link>
       <ul className={styles.list}>
-        {catalog?.catalogs.map((subCatalog) => (
-          <li key={subCatalog.id} className={styles.item}>
+        {category?.categories.map((subCategory) => (
+          <li key={subCategory.id} className={styles.item}>
             <Link
               href={{
                 pathname: PATH.GROUP,
-                query: { category: catalog?.id, group: subCatalog.id },
+                query: { category: category?.id, group: subCategory.id },
               }}
               onClick={onSelect}
             >
               <Typography.Title className={styles.subtitle} level={6}>
-                {subCatalog.name}
+                {subCategory.name}
               </Typography.Title>
             </Link>
-            <Typography.Text>Не подкатегория</Typography.Text>
+            {subCategory.categories.map((group) => (
+              <Link
+                key={group.id}
+                href={{
+                  pathname: PATH.GROUP,
+                  query: { category: category?.id, group: group.id },
+                }}
+                onClick={onSelect}
+              >
+                <Typography.Text>{group.name}</Typography.Text>
+              </Link>
+            ))}
           </li>
         ))}
       </ul>

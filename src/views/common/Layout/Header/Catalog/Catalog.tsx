@@ -1,9 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { CSSTransition } from 'react-transition-group'
-import { Catalog as CatalogType } from '@/interfaces'
 import { layout } from '@/reducers'
 import { RootState } from '@/pages/_app'
-import { useCatalogs } from '@/hooks'
+import { useCategories } from '@/hooks'
 import { useEffect, useState } from 'react'
 import Options from './Options'
 import styles from './catalog.module.scss'
@@ -12,16 +11,18 @@ import Content from './Content'
 const Catalog = () => {
   const dispatch = useDispatch()
   const { showCatalog } = useSelector((state: RootState) => state.layout)
-  const { data: catalogs } = useCatalogs()
+  const { data: categories } = useCategories()
   const [selected, setSelected] = useState<string>()
 
   useEffect(
     () =>
-      catalogs &&
+      categories &&
       setSelected(
-        catalogs.find((catalog) => !!catalog.catalogs.length)?.id.toString(),
+        categories
+          .find((category) => !!category.categories.length)
+          ?.id.toString(),
       ),
-    [catalogs],
+    [categories],
   )
 
   return (
@@ -43,17 +44,17 @@ const Catalog = () => {
         />
         <div className={styles.dropdown}>
           <Options
-            catalogs={catalogs as CatalogType[] | undefined}
+            categories={categories}
             selected={selected}
             setSelected={setSelected}
           />
           <Content
-            catalog={
-              (catalogs &&
-                selected &&
-                catalogs.find(
-                  (catalog) => catalog.id === parseInt(selected),
-                )) as CatalogType<CatalogType> | undefined
+            category={
+              categories && selected
+                ? categories.find(
+                    (category) => category.id === parseInt(selected),
+                  )
+                : undefined
             }
             onSelect={() => dispatch(layout.setShowCatalog(false))}
           />

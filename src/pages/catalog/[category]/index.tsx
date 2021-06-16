@@ -4,8 +4,8 @@ import { useDispatch } from 'react-redux'
 import { layout } from '@/reducers'
 import { useEffect } from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { getCatalog } from '@/hooks'
 import { Catalog } from '@/interfaces'
+import { showcaseAPI } from '@/api'
 
 interface Props {
   catalog: Catalog<Catalog>
@@ -14,8 +14,10 @@ interface Props {
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
   if (!context.params?.category) return { revalidate: 60, notFound: true }
   try {
-    const catalog = await getCatalog(context.params.category as string)
-    return { props: { catalog }, revalidate: 60 }
+    const { data } = await showcaseAPI.get(
+      `/catalogs/${context.params.category}`,
+    )
+    return { props: { catalog: data.items[0] }, revalidate: 60 }
   } catch (error) {
     console.error(error)
     return { notFound: true, revalidate: true }
