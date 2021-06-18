@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import Group from '@/views/pages/Group'
+import Group from '@/views/pages/showcase/Group'
 import { layout } from '@/reducers'
 
 // interface Props {

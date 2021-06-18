@@ -1,4 +1,4 @@
-import Checkout from '@/views/pages/Checkout'
+import Checkout from '@/views/pages/checkout/Checkout'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { layout } from '@/reducers'

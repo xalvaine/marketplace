@@ -1,4 +1,4 @@
-import Courier from '@/views/pages/Courier'
+import Courier from '@/views/pages/checkout/Courier'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { layout } from '@/reducers'

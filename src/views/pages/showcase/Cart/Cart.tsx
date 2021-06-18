@@ -1,5 +1,5 @@
 import { Button, Checkbox, Link, Typography } from '@/components'
-import { useCart } from '@/hooks/useCart'
+import { useCart } from '@/hooks/showcase/useCart'
 import { declareNumber } from '@/utils'
 import { PATH } from '@/config'
 import { useFormik } from 'formik'

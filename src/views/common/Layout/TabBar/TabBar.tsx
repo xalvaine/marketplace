@@ -4,7 +4,7 @@ import { Link, Badge, Typography } from '@/components'
 import classNames from 'classnames'
 import { BxHeart, BxHomeAlt, BxMenu, BxShoppingBag } from '@/icons'
 import { PATH } from '@/config'
-import { useCart } from '@/hooks/useCart'
+import { useCart } from '@/hooks/showcase/useCart'
 import styles from './tab-bar.module.scss'
 
 const tabs = {

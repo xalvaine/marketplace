@@ -1,4 +1,4 @@
-import Tariffs from '@/views/pages/Tariffs'
+import Tariffs from '@/views/pages/checkout/Tariffs'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { layout } from '@/reducers'

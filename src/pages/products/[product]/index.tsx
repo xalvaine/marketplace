@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import { showcaseAPI } from '@/api'
-import Product from '@/views/pages/Product'
+import Product from '@/views/pages/showcase/Product'
 import { Product as ProductType } from '@/interfaces'
 import { useDispatch } from 'react-redux'
 import { layout } from '@/reducers'

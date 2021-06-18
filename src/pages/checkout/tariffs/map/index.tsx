@@ -1,4 +1,4 @@
-import Map from '@/views/pages/Map'
+import Map from '@/views/pages/checkout/Map'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { layout } from '@/reducers'

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
 import { Catalog as CatalogType } from '@/interfaces'
-import Catalog from '@/views/pages/Catalog'
+import Catalog from '@/views/pages/showcase/Catalog'
 import { useDispatch } from 'react-redux'
 import { layout } from '@/reducers'
 import { useEffect } from 'react'

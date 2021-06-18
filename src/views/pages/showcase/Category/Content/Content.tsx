@@ -1,7 +1,7 @@
 import { Link, Typography } from '@/components'
 import { declareNumber } from '@/utils'
 import { mockSrc, PATH } from '@/config'
-import Image from '@/views/pages/Category/Image'
+import Image from '@/views/pages/showcase/Category/Image'
 import { Catalog } from '@/interfaces'
 import styles from './content.module.scss'
 

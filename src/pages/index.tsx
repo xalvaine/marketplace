@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Products from '@/views/pages/Home'
+import Products from '@/views/pages/showcase/Home'
 import { useDispatch } from 'react-redux'
 import { layout } from '@/reducers'
 import { useEffect } from 'react'

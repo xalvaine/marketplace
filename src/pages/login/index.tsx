@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { layout } from '@/reducers'
-import Login from '@/views/pages/Login'
+import Login from '@/views/pages/authorization/Login'
 
 const LoginPage = () => {
   const dispatch = useDispatch()

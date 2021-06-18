@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { layout } from '@/reducers'
-import Data from '@/views/pages/Data'
+import Data from '@/views/pages/authorization/Data'
 import { useAuthorization } from '@/utils'
 
 const DataPage = () => {

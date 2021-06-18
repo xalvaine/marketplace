@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Category from '@/views/pages/Category'
+import Category from '@/views/pages/showcase/Category'
 import { useDispatch } from 'react-redux'
 import { layout } from '@/reducers'
 import { useEffect } from 'react'

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Button, Typography } from '@/components'
 import Layout from '@/views/common/Layout'
 import { BxHeart } from '@/icons'
-import { useCartPost } from '@/hooks/useCart'
+import { useCartPost } from '@/hooks/showcase/useCart'
 import { Product } from '@/interfaces'
 import styles from './add-to-cart.module.scss'
 

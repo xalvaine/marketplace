@@ -1,6 +1,6 @@
 import { Typography } from '@/components'
 import { PATH } from '@/config'
-import { useTariffs } from '@/hooks/useTariff'
+import { useTariffs } from '@/hooks/checkout/useTariff'
 import { useState } from 'react'
 import { Address } from '@/interfaces'
 import CheckoutHeader from '@/views/common/CheckoutHeader'

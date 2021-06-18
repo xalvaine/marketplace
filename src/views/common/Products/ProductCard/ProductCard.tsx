@@ -2,7 +2,7 @@ import { Products } from '@/interfaces'
 import { Button, Link, Slider, Typography } from '@/components'
 import { mockSrc, PATH } from '@/config'
 import classNames from 'classnames'
-import { useCartPost } from '@/hooks/useCart'
+import { useCartPost } from '@/hooks/showcase/useCart'
 import React from 'react'
 import styles from './product-card.module.scss'
 

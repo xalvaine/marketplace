@@ -1,4 +1,4 @@
-import { Address } from '@/interfaces/address'
+import { Address } from '@/interfaces'
 
 export interface DeliveryPoint {
   address: Address
