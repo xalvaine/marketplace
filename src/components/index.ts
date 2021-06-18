@@ -27,3 +27,4 @@ export { default as Typography } from './General/Typography'
 //Navigation
 export { default as Breadcrumbs } from './Navigation/Breadcrumbs'
 export { default as Menu } from './Navigation/Menu'
+export { default as Steps } from './Navigation/Steps'

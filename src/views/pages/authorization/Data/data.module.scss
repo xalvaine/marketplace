@@ -9,3 +9,20 @@
   display: grid;
   grid-gap: 12px;
 }
+
+.steps {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .wrapper {
+    width: 290px;
+    margin: 0 auto;
+  }
+
+  .steps {
+    display: flex;
+    margin: auto;
+    padding: 24px 0 16px;
+  }
+}
