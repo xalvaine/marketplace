@@ -1,12 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { layout } from '@/reducers'
-import { useMediaQuery } from '@/utils'
+import { useMediaQuery, useAuthorization } from '@/utils'
 import RussianPost from '@/views/pages/RussianPost'
 import { PATH } from '@/config'
 import { useRouter } from 'next/router'
 import { RootState } from '@/pages/_app'
-import { useAuthorization } from '@/utils'
 
 const CourierPage = () => {
   const authorized = useAuthorization()
@@ -27,7 +26,8 @@ const CourierPage = () => {
 
   useEffect(() => void (!city && router.push(PATH.TARIFFS)), [city, router])
 
-  return authorized && <RussianPost />
+  if (!authorized) return null
+  return <RussianPost />
 }
 
 export default CourierPage

@@ -10,7 +10,9 @@ const DataPage = () => {
   useEffect(
     () => void dispatch(layout.setLayoutParams({ simplifyLayout: true })),
   )
-  return authorized && <Data />
+
+  if (!authorized) return null
+  return <Data />
 }
 
 export default DataPage

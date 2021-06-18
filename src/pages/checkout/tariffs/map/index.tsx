@@ -19,7 +19,8 @@ const MapPage = () => {
   )
   useEffect(() => void (!city && router.push(PATH.TARIFFS)), [city, router])
 
-  return authorized && <Map />
+  if (!authorized) return null
+  return <Map />
 }
 
 export default MapPage

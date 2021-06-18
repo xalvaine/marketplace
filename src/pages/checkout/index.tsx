@@ -11,7 +11,8 @@ const CheckoutPage = () => {
     () => void dispatch(layout.setLayoutParams({ simplifyLayout: true })),
   )
 
-  return authorized && <Checkout />
+  if (!authorized) return null
+  return <Checkout />
 }
 
 export default CheckoutPage

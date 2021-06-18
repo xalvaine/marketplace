@@ -10,7 +10,8 @@ const TariffsPage = () => {
   useEffect(
     () => void dispatch(layout.setLayoutParams({ simplifyLayout: true })),
   )
-  return authorized && <Tariffs />
+  if (!authorized) return null
+  return <Tariffs />
 }
 
 export default TariffsPage

@@ -10,7 +10,8 @@ const ResultPage = () => {
   useEffect(
     () => void dispatch(layout.setLayoutParams({ simplifyLayout: true })),
   )
-  return authorized && <Result />
+  if (!authorized) return null
+  return <Result />
 }
 
 export default ResultPage
