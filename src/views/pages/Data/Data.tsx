@@ -1,17 +1,21 @@
 import { Button, Form, Input, Typography } from '@/components'
-import styles from './data.module.scss'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/pages/_app'
 import { authorizationAPI } from '@/api'
+import { useRouter } from 'next/router'
+import { PATH } from '@/config'
+import styles from './data.module.scss'
 
 const Data = () => {
   const { userdata } = useSelector((state: RootState) => state.authorization)
+  const router = useRouter()
   const form = Form.useForm({
     initialValues: userdata,
     onSubmit: async (values) => {
       await authorizationAPI.patch(`/profile/${values.id}`, values, {
         withCredentials: true,
       })
+      await router.push(PATH.CHECKOUT)
     },
   })
 

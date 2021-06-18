@@ -6,8 +6,10 @@ import RussianPost from '@/views/pages/RussianPost'
 import { PATH } from '@/config'
 import { useRouter } from 'next/router'
 import { RootState } from '@/pages/_app'
+import { useAuthorization } from '@/utils'
 
 const CourierPage = () => {
+  const authorized = useAuthorization()
   const dispatch = useDispatch()
   const router = useRouter()
   const city = useSelector((state: RootState) => state.checkout.city)
@@ -25,7 +27,7 @@ const CourierPage = () => {
 
   useEffect(() => void (!city && router.push(PATH.TARIFFS)), [city, router])
 
-  return <RussianPost />
+  return authorized && <RussianPost />
 }
 
 export default CourierPage

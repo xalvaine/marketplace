@@ -17,9 +17,11 @@
 
 .code {
   display: grid !important;
-  grid-gap: calc(20% - 45.6px);
-  grid-template-columns: repeat(6, 1fr);
-  margin-bottom: 12px;
+  grid-gap: 16px;
+  grid-template-columns: repeat(4, 38px);
+  width: fit-content;
+  margin: 0 auto;
+  padding-bottom: 12px;
 
   input {
     width: 38px;

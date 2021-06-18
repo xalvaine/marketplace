@@ -12,8 +12,15 @@ const Login = () => {
   const form = Form.useForm({
     initialValues: { username: `` },
     onSubmit: async (values) => {
-      await authorizationAPI.post(`/signup`, values)
       dispatch(authorization.setUsername(values.username))
+      try {
+        await authorizationAPI.post(`/signup`, values)
+      } catch (error) {
+        if (error.response.status === 409) {
+          await authorizationAPI.post(`/signin`, values)
+          dispatch(authorization.setAuthorized(true))
+        }
+      }
       await router.push(PATH.CODE)
     },
   })

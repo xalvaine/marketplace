@@ -6,8 +6,10 @@ import { useMediaQuery } from '@/utils'
 import { RootState } from '@/pages/_app'
 import { useRouter } from 'next/router'
 import { PATH } from '@/config'
+import { useAuthorization } from '@/utils'
 
 const CourierPage = () => {
+  const authorized = useAuthorization()
   const dispatch = useDispatch()
   const router = useRouter()
   const { matches, rendered } = useMediaQuery(`(min-width: 1024px)`)
@@ -25,7 +27,7 @@ const CourierPage = () => {
 
   useEffect(() => void (!city && router.push(PATH.TARIFFS)), [city, router])
 
-  return <Courier />
+  return authorized && <Courier />
 }
 
 export default CourierPage
