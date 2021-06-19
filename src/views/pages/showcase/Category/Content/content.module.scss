@@ -5,7 +5,7 @@
 .images {
   display: grid;
   grid-gap: 8px 10px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, calc((100% - 20px) / 3));
 }
 
 .title {
