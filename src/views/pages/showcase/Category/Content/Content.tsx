@@ -2,39 +2,40 @@ import { Link, Typography } from '@/components'
 import { declareNumber } from '@/utils'
 import { mockSrc, PATH } from '@/config'
 import Image from '@/views/pages/showcase/Category/Image'
-import { Catalog } from '@/interfaces'
+import { Category as CategoryType } from '@/interfaces'
 import styles from './content.module.scss'
 
 interface Props {
-  catalog: Catalog<Catalog>
+  category: CategoryType<CategoryType>
 }
 
 const Content = (props: Props) => {
-  const { catalog } = props
+  const { category } = props
 
   return (
     <div className={styles.wrapper}>
       <Typography.Title className={styles.title} level={4}>
-        {catalog.name}
+        {category.name}
       </Typography.Title>
       <Typography.Text disabled className={styles.count}>
-        {catalog.catalogs.length}{' '}
-        {declareNumber(catalog.catalogs.length, [`товар`, `товара`, `товаров`])}
+        {category.categories.length}{' '}
+        {declareNumber(category.categories.length, [
+          `товар`,
+          `товара`,
+          `товаров`,
+        ])}
       </Typography.Text>
 
       <div className={styles.images}>
-        {catalog.catalogs.map((subCatalog) => (
+        {category.categories.map((subCategory) => (
           <Link
-            key={subCatalog.id}
+            key={subCategory.id}
             href={{
               pathname: PATH.GROUP,
-              query: { category: catalog.id, group: subCatalog.id },
+              query: { category: category.id, group: subCategory.id },
             }}
           >
-            <Image
-              label={subCatalog.name}
-              src={subCatalog.default_image || mockSrc}
-            />
+            <Image label={subCategory.name} src={mockSrc} />
           </Link>
         ))}
       </div>

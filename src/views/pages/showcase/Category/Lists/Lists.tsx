@@ -1,26 +1,26 @@
-import { Catalog } from '@/interfaces'
+import { Category as CategoryType } from '@/interfaces'
 import { Link, Typography } from '@/components'
 import { PATH } from '@/config'
 import styles from './lists.module.scss'
 
 interface Props {
-  catalog: Catalog<Catalog>
+  category: CategoryType<CategoryType>
 }
 
 const Lists = (props: Props) => {
-  const { catalog } = props
+  const { category } = props
   return (
     <ul className={styles.wrapper}>
-      {catalog.catalogs.map((subCatalog) => (
-        <li key={subCatalog.id} className={styles.item}>
+      {category.categories.map((subCategory) => (
+        <li key={subCategory.id} className={styles.item}>
           <Link
             href={{
               pathname: PATH.GROUP,
-              query: { category: catalog.id, group: subCatalog.id },
+              query: { category: category.id, group: subCategory.id },
             }}
           >
             <Typography.Title className={styles.title} level={6}>
-              {subCatalog.name}
+              {subCategory.name}
             </Typography.Title>
           </Link>
           {/*{subCatalog.catalogs.map((subSubCatalog) => (*/}

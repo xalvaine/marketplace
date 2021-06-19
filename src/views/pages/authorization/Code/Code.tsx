@@ -32,7 +32,7 @@ const Code = () => {
       )
       dispatch(authorization.setUserdata(data))
       dispatch(authorization.setAuthorized(true))
-      await router.push(PATH.DATA)
+      await router.push(registered ? PATH.CHECKOUT : PATH.DATA)
     },
   })
 

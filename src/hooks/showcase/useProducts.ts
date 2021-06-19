@@ -2,11 +2,17 @@ import { useQuery } from 'react-query'
 import { showcaseAPI } from '@/api'
 import { Products } from '@/interfaces'
 
-const getProducts = async () => {
-  const { data } = await showcaseAPI.get(`/products`)
+interface Params {
+  category_id: string
+  limit?: number
+}
+
+const getProducts = async (params: Params) => {
+  const { data } = await showcaseAPI.get(`/products`, { params })
   return data.items
 }
 
-const useProducts = () => useQuery<Products>(`products`, getProducts)
+const useProducts = (params: Params) =>
+  useQuery<Products>([`products`, params], () => getProducts(params))
 
 export { getProducts, useProducts }
