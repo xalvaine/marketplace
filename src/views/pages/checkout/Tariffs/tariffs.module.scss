@@ -1,4 +1,5 @@
 .wrapper {
+  position: relative;
   padding-top: 32px;
 }
 
@@ -13,10 +14,23 @@
   text-align: center;
 }
 
+.steps {
+  display: none;
+}
+
 @media (min-width: 1024px) {
   .wrapper {
     width: 450px;
     margin: auto;
     padding-top: 90px;
+  }
+
+  .steps {
+    position: absolute;
+    top: 24px;
+    right: 0;
+    left: 0;
+    display: flex;
+    margin: auto;
   }
 }

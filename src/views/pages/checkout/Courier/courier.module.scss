@@ -45,9 +45,13 @@
   fill: $disabled;
 }
 
+.steps {
+  display: none;
+}
+
 @media (min-width: 1024px) {
   .wrapper {
-    position: static;
+    position: relative;
     width: 482px;
     margin: 0 auto;
     padding-top: 90px;
@@ -57,5 +61,14 @@
     position: static;
     width: 100%;
     margin-top: 32px;
+  }
+
+  .steps {
+    position: absolute;
+    top: 24px;
+    right: 0;
+    left: 0;
+    display: flex;
+    margin: auto;
   }
 }

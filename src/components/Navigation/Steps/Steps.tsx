@@ -21,7 +21,7 @@ const Steps = (props: Props) => {
     <ul className={classNames(styles.wrapper, className)}>
       {items.map((props, index) => (
         <Step
-          key={props.key}
+          key={index}
           number={index + 1}
           state={
             signToState[

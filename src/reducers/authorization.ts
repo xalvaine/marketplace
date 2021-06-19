@@ -5,6 +5,7 @@ interface InitialState {
   username?: string
   userdata: UserData
   authorized?: boolean
+  registered?: boolean
 }
 
 const checkoutSlice = createSlice({
@@ -20,8 +21,12 @@ const checkoutSlice = createSlice({
     setAuthorized: (state, action: PayloadAction<boolean>) => {
       state.authorized = action.payload
     },
+    setRegistered: (state, action: PayloadAction<boolean>) => {
+      state.registered = action.payload
+    },
   },
 })
 
-export const { setUsername, setUserdata, setAuthorized } = checkoutSlice.actions
+export const { setUsername, setUserdata, setAuthorized, setRegistered } =
+  checkoutSlice.actions
 export const reducer = checkoutSlice.reducer

@@ -1,5 +1,5 @@
 import CheckoutHeader from '@/views/common/CheckoutHeader'
-import { Button, Input, Typography, Form } from '@/components'
+import { Button, Input, Typography, Form, Steps } from '@/components'
 import { BxsDownArrow } from '@/icons'
 import { PATH } from '@/config'
 import { useSelector } from 'react-redux'
@@ -26,6 +26,11 @@ const Courier = () => {
 
   return (
     <div className={styles.wrapper}>
+      <Steps className={styles.steps} current={1}>
+        <Steps.Step title="Авторизация" />
+        <Steps.Step title="Доставка" />
+        <Steps.Step title="Оформление заказа" />
+      </Steps>
       <CheckoutHeader backLink={PATH.TARIFFS} title="Адрес получения" />
       <Form className={styles.content} form={form}>
         <div className={styles.form}>

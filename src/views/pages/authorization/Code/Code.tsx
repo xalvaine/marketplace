@@ -12,7 +12,7 @@ import styles from './code.module.scss'
 const Code = () => {
   const dispatch = useDispatch()
   const router = useRouter()
-  const { username, authorized } = useSelector(
+  const { username, registered } = useSelector(
     (state: RootState) => state.authorization,
   )
 
@@ -23,7 +23,7 @@ const Code = () => {
     },
     onSubmit: async (values) => {
       const { data } = await authorizationAPI.post(
-        authorized ? `/signin/finish` : `/signup/finish`,
+        registered ? `/signin/finish` : `/signup/finish`,
         {
           username,
           pincode: values.code,

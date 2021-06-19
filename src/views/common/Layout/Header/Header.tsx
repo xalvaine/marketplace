@@ -21,7 +21,9 @@ const Header = () => {
   if (simplifyLayout) {
     return (
       <header className={styles.simpleHeader}>
-        <Logo className={styles.logo} />
+        <Link href={PATH.CHECKOUT}>
+          <Logo className={styles.logo} />
+        </Link>
       </header>
     )
   }

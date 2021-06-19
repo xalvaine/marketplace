@@ -7,7 +7,9 @@ import { PATH } from '@/config'
 import styles from './data.module.scss'
 
 const Data = () => {
-  const { userdata } = useSelector((state: RootState) => state.authorization)
+  const { userdata, registered } = useSelector(
+    (state: RootState) => state.authorization,
+  )
   const router = useRouter()
   const form = Form.useForm({
     initialValues: userdata,
@@ -15,7 +17,7 @@ const Data = () => {
       await authorizationAPI.patch(`/profile/${values.id}`, values, {
         withCredentials: true,
       })
-      await router.push(PATH.CHECKOUT)
+      await router.push(registered ? PATH.CHECKOUT : PATH.TARIFFS)
     },
   })
 

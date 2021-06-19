@@ -15,10 +15,11 @@ const Login = () => {
       dispatch(authorization.setUsername(values.username))
       try {
         await authorizationAPI.post(`/signup`, values)
+        dispatch(authorization.setUsername(values.username))
       } catch (error) {
         if (error.response.status === 409) {
           await authorizationAPI.post(`/signin`, values)
-          dispatch(authorization.setAuthorized(true))
+          dispatch(authorization.setRegistered(true))
         }
       }
       await router.push(PATH.CODE)

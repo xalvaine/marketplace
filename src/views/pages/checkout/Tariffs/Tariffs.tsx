@@ -1,4 +1,4 @@
-import { Typography } from '@/components'
+import { Steps, Typography } from '@/components'
 import { PATH } from '@/config'
 import { useTariffs } from '@/hooks/checkout/useTariff'
 import { useState } from 'react'
@@ -16,6 +16,11 @@ const Tariffs = () => {
 
   return (
     <div className={styles.wrapper}>
+      <Steps className={styles.steps} current={1}>
+        <Steps.Step title="Авторизация" />
+        <Steps.Step title="Доставка" />
+        <Steps.Step title="Оформление заказа" />
+      </Steps>
       {matches ? (
         <CheckoutHeader backLink={PATH.CHECKOUT} title="Способ доставки" />
       ) : (
