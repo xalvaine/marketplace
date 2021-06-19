@@ -41,7 +41,12 @@ const Login = () => {
           чтобы продолжить
         </Typography.Title>
         <Form.Item name="username">
-          <Input placeholder="Номер телефона" size="large" />
+          <Input
+            className={styles.number}
+            placeholder="Номер телефона"
+            size="large"
+            type="number"
+          />
         </Form.Item>
         <Button block size="large" onClick={form.submitForm}>
           Получить код

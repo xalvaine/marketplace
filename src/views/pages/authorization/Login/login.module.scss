@@ -24,6 +24,18 @@
   display: none;
 }
 
+.number {
+  input {
+    -moz-appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      margin: 0;
+      -webkit-appearance: none;
+    }
+  }
+}
+
 @media (min-width: 1024px) {
   .wrapper {
     width: 290px;

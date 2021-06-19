@@ -7,6 +7,7 @@ import { RootState } from '@/pages/_app'
 import { authorizationAPI } from '@/api'
 import { authorization } from '@/reducers'
 import { useRouter } from 'next/router'
+import Timer from './Timer'
 import styles from './code.module.scss'
 
 const Code = () => {
@@ -68,11 +69,7 @@ const Code = () => {
             type="number"
           />
         </Form.Item>
-        <Typography.Text disabled secondary>
-          Получить новый код можно через
-          <br />
-          00:59
-        </Typography.Text>
+        <Timer />
         <Form.Item name="agree" valuePropName="checked">
           <Checkbox className={styles.checkbox}>
             Согласен с <span className={styles.link}>обработкой</span>{' '}
