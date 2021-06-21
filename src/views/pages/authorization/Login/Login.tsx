@@ -33,7 +33,11 @@ const Login = () => {
         <Steps.Step title="Доставка" />
         <Steps.Step title="Оформление заказа" />
       </Steps>
-      <Form className={styles.wrapper} form={form}>
+      <Form
+        className={styles.wrapper}
+        form={form}
+        onSubmit={(event) => event.preventDefault()}
+      >
         <Typography.Title level={5}>
           <span className={styles.highlighting}>
             Войдите или зарегистрируйтесь,
