@@ -54,7 +54,7 @@ const Code = () => {
         <Typography.Text>
           Мы отправили проверочный код на номер{' '}
           <Typography.Text inline weight="semibold">
-            +79872357527
+            {username}
           </Typography.Text>
         </Typography.Text>
         <Link className={styles.changeNumber} href={PATH.LOGIN}>
