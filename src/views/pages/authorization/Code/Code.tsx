@@ -29,7 +29,6 @@ const Code = () => {
           username,
           pincode: values.code,
         },
-        { withCredentials: true },
       )
       dispatch(authorization.setUserdata(data))
       dispatch(authorization.setAuthorized(true))
@@ -84,7 +83,7 @@ const Code = () => {
           size="large"
           onClick={form.submitForm}
         >
-          Зарегистрироваться
+          {registered ? `Войти` : `Зарегистрироваться`}
         </Button>
         <Typography.Text className={styles.link} weight="medium">
           Не приходит смс?
