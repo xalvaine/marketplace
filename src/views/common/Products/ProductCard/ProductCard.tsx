@@ -42,7 +42,10 @@ const ProductCard = (props: Props) => {
     >
       <div className={styles.imageWrapper}>
         <Slider className={styles.slider}>
-          <Slider.Slide image={product.images[0]?.url || mockSrc} />
+          <Slider.Slide
+            className={styles.slide}
+            image={product.images[0]?.url || mockSrc}
+          />
         </Slider>
       </div>
       <div className={styles.prices}>

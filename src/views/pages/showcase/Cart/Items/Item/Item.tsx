@@ -52,13 +52,17 @@ const Item = (props: Props) => {
           className={styles.imageWrapper}
           onClick={() => handleCheck(!checks[index])}
         >
-          <img alt="" className={styles.image} src={mockSrc} />
+          <img
+            alt=""
+            className={styles.image}
+            src={item.default_image || mockSrc}
+          />
         </div>
       </div>
       <div className={styles.right}>
         <div className={styles.prices}>
           <Typography.Text className={styles.price} weight="bold">
-            {parseFloat(item.price)} ₽
+            {Number(item.price)} ₽
           </Typography.Text>
           <Typography.Text
             secondary
@@ -92,6 +96,9 @@ const Item = (props: Props) => {
             className={styles.trash}
             onClick={() => deleteCartItem(item.id)}
           />
+          <Typography.Text className={styles.singleItemPrice}>
+            {Number(item.price) / item.quantity} ₽ / шт.
+          </Typography.Text>
         </div>
       </div>
     </li>

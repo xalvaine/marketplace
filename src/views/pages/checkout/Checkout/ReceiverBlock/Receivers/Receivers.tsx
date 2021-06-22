@@ -81,6 +81,7 @@ const Receivers = (props: Props) => {
         <Button
           block
           className={styles.choose}
+          disabled={!receivers?.length}
           size="large"
           onClick={form.submitForm}
         >

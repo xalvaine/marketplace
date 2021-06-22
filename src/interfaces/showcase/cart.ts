@@ -4,6 +4,7 @@ export interface CartItem {
   name: string
   is_available: boolean
   price: string
+  default_image?: string
 }
 
 export interface Cart {

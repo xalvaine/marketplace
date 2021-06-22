@@ -68,6 +68,7 @@ const Addresses = (props: Props) => {
       <Button
         block
         className={styles.choose}
+        disabled={!addresses?.length}
         size="large"
         onClick={form.submitForm}
       >

@@ -68,6 +68,13 @@
   fill: $disabled;
 }
 
+.singleItemPrice {
+  margin-top: 8px;
+  color: $secondary;
+  font-size: 12px;
+  line-height: 18px;
+}
+
 .deleteText {
   color: $default;
   cursor: pointer;
@@ -104,6 +111,12 @@
   }
 
   .amount {
+    flex-direction: column;
     align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .count {
+    display: block;
   }
 }
