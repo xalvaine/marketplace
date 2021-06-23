@@ -27,7 +27,6 @@ const Points = (props: Props) => {
               iconImageHref: `${Icon}`,
               state: { hover: true },
             }}
-            properties={{ iconContent: `132₽` }}
             onClick={() => setPoint(point)}
           />
         ))}

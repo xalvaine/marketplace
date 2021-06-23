@@ -27,6 +27,7 @@ export const useAuthorization = () => {
         .get(`/me`)
         .then(() => {
           dispatch(authorization.setAuthorized(true))
+          dispatch(authorization.setRegistered(true))
           dispatch(setPending(false))
         })
         .catch((error) => {

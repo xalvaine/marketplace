@@ -73,65 +73,44 @@
   }
 
   :global([class$='image-with-content']) {
-    top: -34px !important;
+    top: -42px !important;
     display: flex;
-    align-items: center;
     box-sizing: border-box !important;
-    width: auto !important;
-    height: 30px !important;
-    padding: 0 8px 0 22px;
+    width: 36px !important;
+    height: 36px !important;
     background-color: $monoWhite;
     background-repeat: no-repeat;
-    background-position: 8px 50% !important;
-    background-size: 12px !important;
-    border: 2px solid $hover;
-    border-radius: 15px;
+    background-position: 50% 50% !important;
+    background-size: 20px !important;
+    border: 2px solid $default;
+    border-radius: 50%;
     transform: translateX(-50%);
-    transition: background-color 0.3s;
+    transition: border 0.3s;
 
     &::after {
       position: absolute;
       right: 0;
-      bottom: -6px;
+      bottom: -8px;
       left: 0;
-      width: 7px;
+      width: 4px;
       height: 4px;
       margin: auto;
-      background: url('assets/arrow.svg') no-repeat 50% 0;
+      background: $default;
+      border-radius: 50%;
+      transition: background-color 0.3s;
       content: '';
-    }
-
-    :global([class$='image-with-content-content']) {
-      position: static !important;
-      width: auto !important;
-      height: 16px !important;
-      color: $title;
-      font-weight: 600 !important;
-      font-size: 16px !important;
-      font-family: Inter, sans-serif !important;
-      line-height: 16px !important;
-      font-feature-settings: 'tnum' on, 'lnum' on;
-      transition: color 0.3s;
     }
   }
 
-  //:global([style^='z-index: 700']) {
-  //  :global([class$='image-with-content']) {
-  //    background-color: $hover;
-  //
-  //    &::before {
-  //      content: none;
-  //    }
-  //
-  //    &::after {
-  //      content: '';
-  //    }
-  //
-  //    :global([class$='image-with-content-content']) {
-  //      color: $monoWhite;
-  //    }
-  //  }
-  //}
+  :global([style^='z-index: 700']) {
+    :global([class$='image-with-content']) {
+      border: 2px solid $hover;
+
+      &::after {
+        background: $hover;
+      }
+    }
+  }
 }
 
 .content {

@@ -9,6 +9,9 @@ import styles from './russian-post.module.scss'
 
 const RussianPost = () => {
   const city = useSelector((state: RootState) => state.checkout.city)
+  const registered = useSelector(
+    (state: RootState) => state.authorization.registered,
+  )
   const { mutateAsync: postUserAddress } = usePostUserAddress()
   const router = useRouter()
   const form = Form.useForm({
@@ -25,11 +28,13 @@ const RussianPost = () => {
 
   return (
     <div className={styles.wrapper}>
-      <Steps className={styles.steps} current={1}>
-        <Steps.Step title="Авторизация" />
-        <Steps.Step title="Доставка" />
-        <Steps.Step title="Оформление заказа" />
-      </Steps>
+      {!registered && (
+        <Steps className={styles.steps} current={1}>
+          <Steps.Step title="Авторизация" />
+          <Steps.Step title="Доставка" />
+          <Steps.Step title="Оформление заказа" />
+        </Steps>
+      )}
       <CheckoutHeader backLink={PATH.TARIFFS} title="Адрес получения" />
       <Form className={styles.content} form={form}>
         <div className={styles.form}>

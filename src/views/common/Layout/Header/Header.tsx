@@ -44,7 +44,6 @@ const Header = () => {
         <Button
           className={styles.button}
           icon={BxMenu}
-          size="large"
           onClick={() => dispatch(layout.setShowCatalog(!showCatalog))}
         >
           Каталог
@@ -55,7 +54,6 @@ const Header = () => {
           leftIcon={!matches ? BxSearch : undefined}
           placeholder="Поиск по товарам"
           search={matches}
-          size="large"
         />
         <Icons />
       </header>

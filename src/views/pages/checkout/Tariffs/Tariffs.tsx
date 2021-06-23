@@ -5,6 +5,8 @@ import { useState } from 'react'
 import { Address } from '@/interfaces'
 import CheckoutHeader from '@/views/common/CheckoutHeader'
 import { useMediaQuery } from '@/utils'
+import { RootState } from '@/pages/_app'
+import { useSelector } from 'react-redux'
 import Search from './Search'
 import Variant from './Variant'
 import styles from './tariffs.module.scss'
@@ -13,14 +15,19 @@ const Tariffs = () => {
   const [address, setAddress] = useState<Address>()
   const { data: tariffs } = useTariffs(address)
   const { matches } = useMediaQuery(`(min-width: 1024px)`)
+  const registered = useSelector(
+    (state: RootState) => state.authorization.registered,
+  )
 
   return (
     <div className={styles.wrapper}>
-      <Steps className={styles.steps} current={1}>
-        <Steps.Step title="Авторизация" />
-        <Steps.Step title="Доставка" />
-        <Steps.Step title="Оформление заказа" />
-      </Steps>
+      {!registered && (
+        <Steps className={styles.steps} current={1}>
+          <Steps.Step title="Авторизация" />
+          <Steps.Step title="Доставка" />
+          <Steps.Step title="Оформление заказа" />
+        </Steps>
+      )}
       {matches ? (
         <CheckoutHeader backLink={PATH.CHECKOUT} title="Способ доставки" />
       ) : (

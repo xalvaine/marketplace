@@ -8,7 +8,7 @@ const getTariffs = async (address?: Address) => {
 }
 
 const useTariffs = (address?: Address) =>
-  useQuery<Tariff[]>([`tariffs`], () => getTariffs(address), {
+  useQuery<Tariff[]>([`tariffs`, address], () => getTariffs(address), {
     enabled: !!address,
   })
 
