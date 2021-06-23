@@ -4,6 +4,7 @@ import { mockSrc, PATH } from '@/config'
 import classNames from 'classnames'
 import { useCartPost } from '@/hooks/showcase/useCart'
 import React from 'react'
+import { useRouter } from 'next/router'
 import styles from './product-card.module.scss'
 
 interface Props {
@@ -12,6 +13,7 @@ interface Props {
 }
 
 const ProductCard = (props: Props) => {
+  const { query } = useRouter()
   const { product, className } = props
   const { mutateAsync: mutateCart } = useCartPost()
 
@@ -34,8 +36,8 @@ const ProductCard = (props: Props) => {
         pathname: PATH.PRODUCT,
         query: {
           product: product.id,
-          category: 4,
-          group: 6,
+          category: query.category,
+          group: query.group,
         },
       }}
       prefetch={false}

@@ -8,7 +8,7 @@ export interface Product {
   description: string
   images: Image[]
   variants: Variant[]
-  attributes: [
+  attributes?: [
     {
       code: string
       value: string

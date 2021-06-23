@@ -13,6 +13,8 @@ const getProducts = async (params: Params) => {
 }
 
 const useProducts = (params: Params) =>
-  useQuery<Products>([`products`, params], () => getProducts(params))
+  useQuery<Products>([`products`, params], () => getProducts(params), {
+    enabled: !!params.category_id,
+  })
 
 export { getProducts, useProducts }
