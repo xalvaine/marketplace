@@ -1,4 +1,4 @@
-import { Image } from '@/interfaces'
+import { Image, Variant } from '@/interfaces'
 
 export interface Product {
   id: number
@@ -7,7 +7,7 @@ export interface Product {
   origin: string
   description: string
   images: Image[]
-  variants: []
+  variants: Variant[]
   attributes: [
     {
       code: string

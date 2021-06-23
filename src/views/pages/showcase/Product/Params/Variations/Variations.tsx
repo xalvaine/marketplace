@@ -1,14 +1,22 @@
 import { Typography, Tag } from '@/components'
+import { Variant } from '@/interfaces'
 import styles from './variations.module.scss'
 
-const Variations = () => {
+interface Props {
+  variants: Variant[]
+}
+
+const Variations = (props: Props) => {
+  const { variants } = props
   return (
     <div className={styles.wrapper}>
       <Typography.Text className={styles.text}>Вес товара:</Typography.Text>
       <Tag.Group>
-        <Tag checked>325</Tag>
-        <Tag>650</Tag>
-        <Tag disabled>1000</Tag>
+        {variants.map((variant, index) => (
+          <Tag key={variant.id} checked={!index}>
+            {variant.weight}
+          </Tag>
+        ))}
       </Tag.Group>
     </div>
   )

@@ -5,7 +5,7 @@ import { layout, authorization } from '@/reducers'
 import { useAuthorization } from '@/utils'
 
 const CheckoutPage = () => {
-  const authorized = useAuthorization()
+  const { authorized, pending } = useAuthorization()
   const dispatch = useDispatch()
   useEffect(
     () => void dispatch(layout.setLayoutParams({ simplifyLayout: true })),
@@ -15,7 +15,7 @@ const CheckoutPage = () => {
     () => void (authorized && dispatch(authorization.setRegistered(true))),
   )
 
-  if (!authorized) return null
+  if (pending) return null
   return <Checkout />
 }
 

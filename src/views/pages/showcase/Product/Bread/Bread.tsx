@@ -1,7 +1,6 @@
 import { Button, Link, Breadcrumbs } from '@/components'
 import { BxArrowBack } from '@/icons'
 import { PATH } from '@/config'
-import { Product } from '@/interfaces'
 import { useMediaQuery } from '@/utils'
 import { useRouter } from 'next/router'
 import classNames from 'classnames'
@@ -25,11 +24,10 @@ const getURLObject = (query: Query) => {
 
 interface Props {
   className?: string
-  product: Product
 }
 
 const Bread = (props: Props) => {
-  const { className, product } = props
+  const { className } = props
   const { query } = useRouter()
   const { matches } = useMediaQuery(`(min-width: 1024px)`)
 
@@ -41,7 +39,7 @@ const Bread = (props: Props) => {
             href={{
               pathname: PATH.CATEGORY,
               query: {
-                category: `food`,
+                category: query.category,
               },
             }}
             text="Продукты питания"
@@ -50,13 +48,12 @@ const Bread = (props: Props) => {
             href={{
               pathname: PATH.GROUP,
               query: {
-                category: `food`,
-                group: `sweets`,
+                category: query.category,
+                group: query.group,
               },
             }}
             text="Сладости"
           />
-          <Breadcrumbs.Item text={product.name} />
         </Breadcrumbs>
       ) : (
         <Link href={getURLObject(query) as URL}>

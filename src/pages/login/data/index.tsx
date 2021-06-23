@@ -5,13 +5,13 @@ import Data from '@/views/pages/authorization/Data'
 import { useAuthorization } from '@/utils'
 
 const DataPage = () => {
-  const authorized = useAuthorization()
+  const { pending } = useAuthorization()
   const dispatch = useDispatch()
   useEffect(
     () => void dispatch(layout.setLayoutParams({ simplifyLayout: true })),
   )
 
-  if (!authorized) return null
+  if (pending) return null
   return <Data />
 }
 

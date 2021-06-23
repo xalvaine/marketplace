@@ -14,7 +14,7 @@ const Product = (props: Props) => {
 
   return (
     <div className={styles.wrapper}>
-      <Bread className={styles.bread} product={product} />
+      <Bread className={styles.bread} />
       <Picture className={styles.picture} images={product.images} />
       <Params className={styles.params} product={product} />
       <Description className={styles.description} product={product} />

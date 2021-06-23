@@ -4,15 +4,18 @@
 #
 base="store-frontend" # force directory name to avoid duplicates
 
-cd ..
+yarn build
 
-tar --exclude="node_modules" --exclude=".next" --exclude=".husky" --exclude=".git" --exclude=".idea" -czvf $base.tar.gz $base
-rsync --archive --verbose --progress $base.tar.gz dev@178.154.232.196:~/face/
+echo Creating the archive...
+tar -czf $base.tar.gz .next nginx dockerfile docker-compose.yml .env yarn.lock node_modules
+rsync --archive --verbose --progress $base.tar.gz dev@178.154.232.196:~/face/$base
+rm $base.tar.gz -f
 
 ssh dev@178.154.232.196 "docker system prune -f
 cd face
-rm $base -rf
-tar -xzvf $base.tar.gz
-rm $base.tar.gz -rf
 cd $base
+rm .next -rf
+echo Unpacking the archive...
+tar -xzf $base.tar.gz
+rm $base.tar.gz -rf
 docker-compose up -d --build"

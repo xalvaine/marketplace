@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 import { PATH } from '@/config'
 
 const CourierPage = () => {
-  const authorized = useAuthorization()
+  const { pending } = useAuthorization()
   const dispatch = useDispatch()
   const router = useRouter()
   const { matches, rendered } = useMediaQuery(`(min-width: 1024px)`)
@@ -26,7 +26,7 @@ const CourierPage = () => {
 
   useEffect(() => void (!city && router.push(PATH.TARIFFS)), [city, router])
 
-  if (!authorized) return null
+  if (pending) return null
   return <Courier />
 }
 

@@ -5,12 +5,12 @@ import { layout } from '@/reducers'
 import { useAuthorization } from '@/utils'
 
 const TariffsPage = () => {
-  const authorized = useAuthorization()
+  const { pending } = useAuthorization()
   const dispatch = useDispatch()
   useEffect(
     () => void dispatch(layout.setLayoutParams({ simplifyLayout: true })),
   )
-  if (!authorized) return null
+  if (pending) return null
   return <Tariffs />
 }
 

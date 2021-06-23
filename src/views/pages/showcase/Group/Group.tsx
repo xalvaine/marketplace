@@ -22,7 +22,7 @@ const Group = () => {
             href={{
               pathname: PATH.CATEGORY,
               query: {
-                category: `food`,
+                category: router.query.category,
               },
             }}
             text="Продукты питания"
@@ -33,7 +33,7 @@ const Group = () => {
         <Link
           href={{
             pathname: PATH.CATEGORY,
-            query: { category: `food` },
+            query: { category: router.query.category },
           }}
         >
           <Button icon={BxArrowBack} type="link">

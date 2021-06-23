@@ -49,11 +49,18 @@ const ProductCard = (props: Props) => {
         </Slider>
       </div>
       <div className={styles.prices}>
-        <Typography.Text className={styles.newPrice} weight="bold">
-          575 ₽
+        <Typography.Text
+          className={
+            product.variants[0].prices?.[1] ? styles.newPrice : styles.price
+          }
+          weight="bold"
+        >
+          {product.variants[0].prices?.[0] &&
+            `${parseFloat(product.variants[0].prices[0].value)} ₽`}
         </Typography.Text>
         <Typography.Text strikethrough className={styles.oldPrice}>
-          790 ₽
+          {product.variants[0].prices?.[1] &&
+            `${parseFloat(product.variants[0].prices[1].value)} ₽`}
         </Typography.Text>
       </div>
       <Typography.Text className={styles.name}>{product.name}</Typography.Text>
