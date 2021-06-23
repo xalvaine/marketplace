@@ -6,5 +6,11 @@ export interface Variant {
     name: string
     value: string
   }[]
+  options?: {
+    code: string
+    title: string
+    type: string
+    value: string
+  }[]
   weight: number
 }

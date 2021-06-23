@@ -3,26 +3,17 @@
 }
 
 .descriptionText {
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 @media (min-width: 1024px) {
   .wrapper {
-    display: grid;
-    grid-gap: 24px 30px;
-    grid-template-areas: 'd s' 'd c' 'd e';
-    grid-template-columns: 1fr 1fr;
+    margin-bottom: -24px;
+    column-count: 2;
+    column-gap: 30px;
   }
 
-  .description {
-    grid-area: d;
-  }
-
-  .conditions {
-    grid-area: c;
-  }
-
-  .expiration {
-    grid-area: e;
+  .block {
+    break-inside: avoid-column;
   }
 }

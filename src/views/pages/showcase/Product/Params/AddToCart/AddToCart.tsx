@@ -8,10 +8,11 @@ import styles from './add-to-cart.module.scss'
 
 interface Props {
   product: Product
+  variantId: number
 }
 
 const AddToCart = (props: Props) => {
-  const { product } = props
+  const { product, variantId } = props
   const [visible, setVisible] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
   const { mutateAsync: mutateCart } = useCartPost()
@@ -33,7 +34,7 @@ const AddToCart = (props: Props) => {
 
   const handleAddToCart = async () => {
     await mutateCart({
-      product_id: product.id,
+      product_id: variantId,
       quantity: 1,
       name: product.name,
       price: null,

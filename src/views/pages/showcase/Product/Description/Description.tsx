@@ -13,14 +13,16 @@ const Description = (props: Props) => {
 
   return (
     <div className={classNames(styles.wrapper, className)}>
-      <div className={styles.description}>
-        <Typography.Title className={styles.descriptionTitle} level={5}>
-          Описание
-        </Typography.Title>
-        <Typography.Text className={styles.descriptionText}>
-          {product.description || `Описание отсутствует`}
-        </Typography.Text>
-      </div>
+      {product.attributes?.map((attribute) => (
+        <div key={attribute.code} className={styles.block}>
+          <Typography.Title className={styles.descriptionTitle} level={5}>
+            {attribute.title}
+          </Typography.Title>
+          <Typography.Text className={styles.descriptionText}>
+            {attribute.value}
+          </Typography.Text>
+        </div>
+      ))}
     </div>
   )
 }

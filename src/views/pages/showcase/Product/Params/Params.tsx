@@ -1,7 +1,7 @@
 import { Typography } from '@/components'
 import { Product } from '@/interfaces'
 import classNames from 'classnames'
-import React from 'react'
+import React, { Dispatch } from 'react'
 import styles from './params.module.scss'
 import Variations from './Variations'
 import AddToCart from './AddToCart'
@@ -9,11 +9,16 @@ import AddToCart from './AddToCart'
 interface Props {
   product: Product
   className?: string
+  selectedVariant: number
+  setSelectedVariant: Dispatch<number>
 }
 
 const Params = (props: Props) => {
-  const { product, className } = props
-  console.log(product)
+  const { product, className, selectedVariant, setSelectedVariant } = props
+  const currentVariant = product.variants.find(
+    (variant) => variant.id === selectedVariant,
+  )
+
   return (
     <div className={styles.wrapper}>
       <Typography.Title
@@ -23,29 +28,31 @@ const Params = (props: Props) => {
       >
         {product.name}
       </Typography.Title>
-      <Variations variants={product.variants} />
+      <Variations
+        selectedVariant={selectedVariant}
+        setSelectedVariant={setSelectedVariant}
+        variants={product.variants}
+      />
       <div className={styles.price}>
         <Typography.Text
           className={
-            product.variants[0].prices?.[1]
-              ? styles.newPrice
-              : styles.defaultPrice
+            currentVariant?.prices?.[1] ? styles.newPrice : styles.defaultPrice
           }
           weight="bold"
         >
-          {product.variants[0].prices?.[0] &&
-            `${parseFloat(product.variants[0].prices[0].value)} ₽`}
+          {currentVariant?.prices?.[0] &&
+            `${parseFloat(currentVariant.prices[0].value)} ₽`}
         </Typography.Text>
         <Typography.Text
           strikethrough
           className={styles.oldPrice}
           weight="semibold"
         >
-          {product.variants[0].prices?.[1] &&
-            `${parseFloat(product.variants[0].prices[1]?.value)} ₽`}
+          {currentVariant?.prices?.[1] &&
+            `${parseFloat(currentVariant.prices[1].value)} ₽`}
         </Typography.Text>
       </div>
-      <AddToCart product={product} />
+      <AddToCart product={product} variantId={selectedVariant} />
     </div>
   )
 }
