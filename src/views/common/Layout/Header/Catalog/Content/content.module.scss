@@ -2,29 +2,29 @@
   display: grid;
   grid-template-areas: 't t' 'l b';
   grid-template-columns: 570px 90px;
+}
 
-  .title {
-    grid-area: t;
-    margin-bottom: 24px;
-  }
+.title {
+  grid-area: t;
+  margin-bottom: 24px;
+}
 
-  .list {
-    grid-area: l;
-    column-count: 3;
-    column-gap: 30px;
-    column-width: 170px;
-  }
+.list {
+  grid-area: l;
+  column-count: 3;
+  column-gap: 30px;
+  column-width: 170px;
+}
 
-  .item {
-    break-inside: avoid-column;
-    display: grid;
-    grid-gap: 8px;
-    margin-bottom: 24px;
-  }
+.item {
+  break-inside: avoid-column;
+  display: grid;
+  grid-gap: 8px;
+  margin-bottom: 24px;
+}
 
-  .subtitle {
-    padding: 6px 0;
-    font-size: 14px;
-    line-height: 20px;
-  }
+.subtitle {
+  padding: 6px 0;
+  font-size: 14px;
+  line-height: 20px;
 }
