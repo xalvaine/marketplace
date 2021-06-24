@@ -48,6 +48,7 @@ const Addresses = (props: Props) => {
             <Typography.Text inline>
               {[
                 address.address?.city_with_type,
+                address.type === `pickpoint` && address.address?.fullAddress,
                 address.additional_addr?.street,
                 address.additional_addr?.entrance,
               ]
