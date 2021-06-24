@@ -21,6 +21,8 @@ const RussianPost = () => {
         address: city?.data,
         additional_addr: values,
         is_primary: true,
+        name: `Курьер`,
+        type: `post`,
       })
       await router.push(PATH.CHECKOUT)
     },

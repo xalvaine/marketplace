@@ -1,11 +1,7 @@
-import { Button, Checkbox, Link, Typography } from '@/components'
+import { Button, Link, Typography } from '@/components'
 import { useCart } from '@/hooks/showcase/useCart'
 import { declareNumber } from '@/utils'
 import { PATH } from '@/config'
-import { useFormik } from 'formik'
-import { useCallback, useEffect } from 'react'
-import { useCartItemDelete } from '@/hooks'
-import { useQueryClient } from 'react-query'
 import styles from './cart.module.scss'
 import Items from './Items'
 import Totals from './Totals'
@@ -13,39 +9,6 @@ import Delivery from './Delivery'
 
 const Cart = () => {
   const { data: cart } = useCart()
-  const { mutateAsync: deleteCartItem } = useCartItemDelete()
-  const queryClient = useQueryClient()
-
-  const {
-    values: checks,
-    setFieldValue: setCheckValue,
-    setValues: setChecks,
-  } = useFormik({
-    initialValues: [] as boolean[],
-    onSubmit: () => void null,
-  })
-
-  const handleChangeAll = useCallback(
-    (value: boolean) => {
-      cart && setChecks(cart.items.map(() => value))
-    },
-    [cart, setChecks],
-  )
-
-  const handleDeleteMany = async () => {
-    if (!cart) return
-    await Promise.all(
-      checks.map(
-        async (checked, index) =>
-          checked && (await deleteCartItem(cart.items[index].id)),
-      ),
-    )
-    await queryClient.invalidateQueries(`cart`)
-  }
-
-  useEffect(() => {
-    handleChangeAll(true)
-  }, [handleChangeAll])
 
   return (
     <div className={styles.wrapper}>
@@ -61,28 +24,8 @@ const Cart = () => {
       </div>
       <div className={styles.left}>
         <Delivery cart={cart} />
-        <div className={styles.selection}>
-          <Checkbox
-            checked={!!(checks.length && !checks.includes(false))}
-            indeterminate={checks.includes(true)}
-            onChange={(event) => handleChangeAll(event.target.checked)}
-          >
-            Выбрать все
-          </Checkbox>
-          <Typography.Text
-            className={
-              checks.includes(true) ? styles.deletion : styles.deletionHidden
-            }
-            onClick={handleDeleteMany}
-          >
-            Удалить выбранное
-          </Typography.Text>
-        </div>
-        <Items
-          checks={checks}
-          items={cart?.items}
-          setCheckValue={setCheckValue}
-        />
+        <span className={styles.selection} />
+        <Items items={cart?.items} />
       </div>
       <div className={styles.right}>
         <Totals cart={cart} />

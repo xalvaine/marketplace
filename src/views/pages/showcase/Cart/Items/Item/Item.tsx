@@ -1,4 +1,4 @@
-import { Checkbox, Input, Typography } from '@/components'
+import { Input, Typography } from '@/components'
 import { mockSrc } from '@/config'
 import { BxMinus, BxPlus, BxTrashAlt } from '@/icons'
 import { CartItem } from '@/interfaces'
@@ -9,17 +9,14 @@ import styles from './item.module.scss'
 interface Props {
   item: CartItem
   index: number
-  checks: boolean[] | []
   itemsCount: number[]
-  setCheckValue: (field: string, value: unknown) => void
   setCountValue: (field: string, value: unknown) => void
 }
 
 const debouncer = new Debouncer()
 
 const Item = (props: Props) => {
-  const { checks, index, itemsCount, setCheckValue, item, setCountValue } =
-    props
+  const { index, itemsCount, item, setCountValue } = props
   const { mutateAsync: patchCartItem } = useCartItemPatch()
   const { mutateAsync: deleteCartItem } = useCartItemDelete()
 
@@ -37,27 +34,14 @@ const Item = (props: Props) => {
     )
   }
 
-  const handleCheck = (value: boolean) => setCheckValue(index.toString(), value)
-
   return (
     <li className={styles.item}>
-      <div className={styles.left}>
-        <div className={styles.checkboxWrapper}>
-          <Checkbox
-            checked={!!checks[index]}
-            onChange={(event) => handleCheck(event.target.checked)}
-          />
-        </div>
-        <div
-          className={styles.imageWrapper}
-          onClick={() => handleCheck(!checks[index])}
-        >
-          <img
-            alt=""
-            className={styles.image}
-            src={item.default_image || mockSrc}
-          />
-        </div>
+      <div className={styles.imageWrapper}>
+        <img
+          alt=""
+          className={styles.image}
+          src={item.default_image || mockSrc}
+        />
       </div>
       <div className={styles.right}>
         <div className={styles.prices}>

@@ -22,6 +22,8 @@ const Courier = () => {
         address: city?.data,
         additional_addr: values,
         is_primary: true,
+        name: `Курьер`,
+        type: `delivery`,
       })
       await router.push(PATH.CHECKOUT)
     },

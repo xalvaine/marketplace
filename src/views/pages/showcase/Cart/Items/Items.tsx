@@ -6,12 +6,10 @@ import Item from './Item'
 
 interface Props {
   items?: Cart['items']
-  checks: boolean[] | []
-  setCheckValue: (field: string, value: unknown) => void
 }
 
 const Items = (props: Props) => {
-  const { items, setCheckValue, checks } = props
+  const { items } = props
   const {
     values: itemsCount,
     setValues,
@@ -33,11 +31,9 @@ const Items = (props: Props) => {
         .map((item, index) => (
           <Item
             key={index.toString()}
-            checks={checks}
             index={index}
             item={item}
             itemsCount={itemsCount}
-            setCheckValue={setCheckValue}
             setCountValue={setCountValue}
           />
         ))}

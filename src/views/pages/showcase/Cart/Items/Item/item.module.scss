@@ -7,24 +7,9 @@
   grid-template-columns: 1fr 1fr;
 }
 
-.left {
-  display: grid;
-  grid-area: l;
-  grid-gap: 10px;
-  grid-template-columns: 16px 1fr;
-}
-
-.right {
-  grid-area: r;
-}
-
-.checkboxWrapper {
-  display: flex;
-  align-items: center;
-}
-
 .imageWrapper {
   position: relative;
+  grid-area: l;
   width: 100%;
   padding: 50% 0;
 }
@@ -37,6 +22,10 @@
   height: 100%;
   object-fit: contain;
   border-radius: 4px;
+}
+
+.right {
+  grid-area: r;
 }
 
 .price {
