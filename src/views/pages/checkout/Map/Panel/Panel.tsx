@@ -29,7 +29,7 @@ const Panel = (props: Props) => {
       address: point.address,
       is_primary: true,
       type: `pickpoint`,
-      name: `Постамат - ${point.code}`,
+      name: `Постамат ${point.courier} ${point.code}`,
       work_time: point.workTime,
     })
     await router.push(PATH.CHECKOUT)

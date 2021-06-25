@@ -40,6 +40,12 @@
 
 .amount {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.quantity {
+  display: flex;
   align-items: center;
 }
 

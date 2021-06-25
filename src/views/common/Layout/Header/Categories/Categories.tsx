@@ -14,7 +14,7 @@ const Categories = () => {
             key={category.id}
             href={{ pathname: PATH.CATEGORY, query: { category: category.id } }}
           >
-            <List.Item>{category.name}</List.Item>
+            <List.Item className={styles.item}>{category.name}</List.Item>
           </Link>
         ))}
       </List>
