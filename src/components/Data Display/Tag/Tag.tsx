@@ -1,6 +1,6 @@
-import { ReactNode } from 'react'
 import { Typography } from '@/components'
 import classNames from 'classnames'
+import { ReactNode } from 'react'
 import styles from './tag.module.scss'
 import Group from './Group'
 
@@ -11,6 +11,8 @@ interface Props {
   children?: ReactNode
   className?: string
   disabled?: boolean
+  value: any
+  onClick?: (value: any) => void
 }
 
 const colorToStyle = { gray: styles.gray, green: styles.green }
@@ -24,6 +26,8 @@ const Tag = (props: Props) => {
     className,
     checked,
     disabled,
+    value,
+    onClick,
   } = props
   return (
     <div
@@ -34,6 +38,7 @@ const Tag = (props: Props) => {
         disabled && styles.disabled,
         className,
       )}
+      onClick={() => onClick && onClick(value)}
     >
       <Typography.Text className={styles.text}>{children}</Typography.Text>
     </div>

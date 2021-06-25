@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
-import { Catalog as CatalogType } from '@/interfaces'
-import Catalog from '@/views/pages/Catalog'
+import { Category } from '@/interfaces'
+import Catalog from '@/views/pages/showcase/Catalog'
 import { useDispatch } from 'react-redux'
 import { layout } from '@/reducers'
 import { useEffect } from 'react'
@@ -11,21 +11,21 @@ import { PATH } from '@/config'
 import { showcaseAPI } from '@/api'
 
 interface Props {
-  catalogs: CatalogType[]
+  categories: Category<Category<Category>>[]
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   try {
-    const { data } = await showcaseAPI.get(`/catalogs`)
-    return { props: { catalogs: data.items }, revalidate: 60 }
+    const { data } = await showcaseAPI.get(`/categories`)
+    return { props: { categories: data.items }, revalidate: 60 }
   } catch (error) {
     console.error(error)
-    return { props: { catalogs: [] }, revalidate: 60 }
+    return { props: { categories: [] }, revalidate: 60 }
   }
 }
 
 const CatalogPage = (props: Props) => {
-  const { catalogs } = props
+  const { categories } = props
   const dispatch = useDispatch()
   const router = useRouter()
   const { matches } = useMediaQuery(`(min-width: 1024px)`)
@@ -38,7 +38,7 @@ const CatalogPage = (props: Props) => {
       <Head>
         <title>Каталог</title>
       </Head>
-      <Catalog catalogs={catalogs} />
+      <Catalog categories={categories} />
     </>
   )
 }

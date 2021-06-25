@@ -1,6 +1,6 @@
 import { BxHeart, BxPackage, BxShoppingBag, BxUserCircle } from '@/icons'
 import { Badge, Link } from '@/components'
-import { useCart } from '@/hooks/useCart'
+import { useCart } from '@/hooks/showcase/useCart'
 import { PATH } from '@/config'
 import { layout } from '@/reducers'
 import { useDispatch } from 'react-redux'

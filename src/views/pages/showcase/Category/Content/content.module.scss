@@ -1,0 +1,29 @@
+.wrapper {
+  margin-bottom: 24px;
+}
+
+.images {
+  display: grid;
+  grid-gap: 8px 10px;
+  grid-template-columns: repeat(3, calc((100% - 20px) / 3));
+}
+
+.title {
+  margin-bottom: 4px;
+}
+
+.count {
+  margin-bottom: 16px;
+}
+
+@media (min-width: 1024px) {
+  .count {
+    margin-bottom: 32px;
+  }
+
+  .images {
+    display: grid;
+    grid-gap: 32px 30px;
+    grid-template-columns: repeat(5, calc(20% - 30px));
+  }
+}

@@ -1,23 +1,23 @@
 import Head from 'next/head'
-import Category from '@/views/pages/Category'
+import Category from '@/views/pages/showcase/Category'
 import { useDispatch } from 'react-redux'
 import { layout } from '@/reducers'
 import { useEffect } from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { Catalog } from '@/interfaces'
+import { Category as CategoryType } from '@/interfaces'
 import { showcaseAPI } from '@/api'
 
 interface Props {
-  catalog: Catalog<Catalog>
+  category: CategoryType<CategoryType>
 }
 
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
   if (!context.params?.category) return { revalidate: 60, notFound: true }
   try {
     const { data } = await showcaseAPI.get(
-      `/catalogs/${context.params.category}`,
+      `/categories/${context.params.category}`,
     )
-    return { props: { catalog: data.items[0] }, revalidate: 60 }
+    return { props: { category: data.items[0] }, revalidate: 60 }
   } catch (error) {
     console.error(error)
     return { notFound: true, revalidate: true }
@@ -29,7 +29,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 const CategoryPage = (props: Props) => {
-  const { catalog } = props
+  const { category } = props
 
   const dispatch = useDispatch()
   useEffect(() => void dispatch(layout.setLayoutParams({ showSearch: true })))
@@ -37,9 +37,9 @@ const CategoryPage = (props: Props) => {
   return (
     <>
       <Head>
-        <title>{catalog.name}</title>
+        <title>{category.name}</title>
       </Head>
-      <Category catalog={catalog} />
+      <Category category={category} />
     </>
   )
 }

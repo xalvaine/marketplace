@@ -5,6 +5,7 @@
 //BX
 export { ReactComponent as BxArrowBack } from './assets/bx-arrow-back.svg'
 export { ReactComponent as BxBell } from './assets/bx-bell.svg'
+export { ReactComponent as BxCheck } from './assets/bx-check.svg'
 export { ReactComponent as BxChevronLeft } from './assets/bx-chevron-left.svg'
 export { ReactComponent as BxChevronRight } from './assets/bx-chevron-right.svg'
 export { ReactComponent as BxEditAlt } from './assets/bx-edit-alt.svg'

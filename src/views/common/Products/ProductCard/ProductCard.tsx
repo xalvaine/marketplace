@@ -2,8 +2,9 @@ import { Products } from '@/interfaces'
 import { Button, Link, Slider, Typography } from '@/components'
 import { mockSrc, PATH } from '@/config'
 import classNames from 'classnames'
-import { useCartPost } from '@/hooks/useCart'
+import { useCartPost } from '@/hooks/showcase/useCart'
 import React from 'react'
+import { useRouter } from 'next/router'
 import styles from './product-card.module.scss'
 
 interface Props {
@@ -12,6 +13,7 @@ interface Props {
 }
 
 const ProductCard = (props: Props) => {
+  const { query } = useRouter()
   const { product, className } = props
   const { mutateAsync: mutateCart } = useCartPost()
 
@@ -34,23 +36,33 @@ const ProductCard = (props: Props) => {
         pathname: PATH.PRODUCT,
         query: {
           product: product.id,
-          category: 4,
-          group: 6,
+          category: query.category,
+          group: query.group,
         },
       }}
       prefetch={false}
     >
       <div className={styles.imageWrapper}>
         <Slider className={styles.slider}>
-          <Slider.Slide image={product.images[0]?.url || mockSrc} />
+          <Slider.Slide
+            className={styles.slide}
+            image={product.images[0]?.url || mockSrc}
+          />
         </Slider>
       </div>
       <div className={styles.prices}>
-        <Typography.Text className={styles.newPrice} weight="bold">
-          575 ₽
+        <Typography.Text
+          className={
+            product.variants[0].prices?.[1] ? styles.newPrice : styles.price
+          }
+          weight="bold"
+        >
+          {product.variants[0].prices?.[0] &&
+            `${parseFloat(product.variants[0].prices[0].value)} ₽`}
         </Typography.Text>
         <Typography.Text strikethrough className={styles.oldPrice}>
-          790 ₽
+          {product.variants[0].prices?.[1] &&
+            `${parseFloat(product.variants[0].prices[1].value)} ₽`}
         </Typography.Text>
       </div>
       <Typography.Text className={styles.name}>{product.name}</Typography.Text>

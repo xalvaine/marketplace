@@ -1,0 +1,50 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  display: grid;
+  grid-gap: 24px;
+  padding-top: 32px;
+  text-align: center;
+}
+
+.highlighting {
+  display: block;
+  color: $default;
+}
+
+.link {
+  margin: auto;
+}
+
+.linkText {
+  color: $default;
+}
+
+.steps {
+  display: none;
+}
+
+.number {
+  input {
+    -moz-appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      margin: 0;
+      -webkit-appearance: none;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .wrapper {
+    width: 290px;
+    margin: 0 auto;
+  }
+
+  .steps {
+    display: flex;
+    margin: auto;
+    padding: 24px 0 16px;
+  }
+}

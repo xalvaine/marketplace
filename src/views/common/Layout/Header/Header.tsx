@@ -21,7 +21,9 @@ const Header = () => {
   if (simplifyLayout) {
     return (
       <header className={styles.simpleHeader}>
-        <Logo className={styles.logo} />
+        <Link href={PATH.CHECKOUT}>
+          <Logo className={styles.logo} />
+        </Link>
       </header>
     )
   }
@@ -42,7 +44,6 @@ const Header = () => {
         <Button
           className={styles.button}
           icon={BxMenu}
-          size="large"
           onClick={() => dispatch(layout.setShowCatalog(!showCatalog))}
         >
           Каталог
@@ -53,7 +54,6 @@ const Header = () => {
           leftIcon={!matches ? BxSearch : undefined}
           placeholder="Поиск по товарам"
           search={matches}
-          size="large"
         />
         <Icons />
       </header>

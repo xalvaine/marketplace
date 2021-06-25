@@ -1,6 +1,6 @@
 import { DetailedHTMLProps, FormHTMLAttributes } from 'react'
 import { FormikProvider, useFormik } from 'formik'
-import { FormInstance } from '@/components'
+import { FormInstance } from './formInstance'
 import Item from './Item'
 
 interface Props
@@ -8,14 +8,14 @@ interface Props
     FormHTMLAttributes<HTMLFormElement>,
     HTMLFormElement
   > {
-  form: FormInstance
+  form: unknown
 }
 
 const Form = (props: Props) => {
   const { children, form, ...rest } = props
 
   return (
-    <FormikProvider value={form}>
+    <FormikProvider value={form as unknown as FormInstance}>
       <form {...rest}>{children}</form>
     </FormikProvider>
   )

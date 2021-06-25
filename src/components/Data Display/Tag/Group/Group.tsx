@@ -7,10 +7,11 @@ interface Props {
   children:
     | ReactElement<ComponentProps<typeof Tag>>
     | ReactElement<ComponentProps<typeof Tag>>[]
+  onChange?: (value: any) => void
 }
 
 const Group = (props: Props) => {
-  const { children } = props
+  const { children, onChange } = props
 
   return (
     <div className={styles.overflow}>
@@ -19,6 +20,7 @@ const Group = (props: Props) => {
           <Tag
             key={key}
             className={classNames(className, styles.tag)}
+            onClick={onChange}
             {...rest}
           />
         ))}

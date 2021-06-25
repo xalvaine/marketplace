@@ -1,0 +1,12 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  display: grid;
+  grid-gap: 16px;
+  margin-bottom: 32px;
+}
+
+.text {
+  margin-bottom: 8px;
+  color: $title;
+}

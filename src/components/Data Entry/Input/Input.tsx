@@ -13,17 +13,12 @@ type Props = Omit<
   DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
   'size'
 > & {
-  size?: keyof typeof sizeToStyle
+  size?: 'normal' | 'large'
   search?: boolean
   leftIcon?: FunctionComponent<SVGProps<SVGSVGElement>>
   rightIcon?: FunctionComponent<SVGProps<SVGSVGElement>>
   onLeftIconClick?: () => void
   onRightIconClick?: () => void
-}
-
-const sizeToStyle = {
-  normal: styles.normalInput,
-  large: styles.largeInput,
 }
 
 const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
@@ -44,7 +39,9 @@ const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
       <input
         ref={ref}
         className={classNames(
-          sizeToStyle[size],
+          styles.input,
+          styles.normalInput,
+          size === `large` && styles.largeInput,
           LeftIcon && styles.withLeftIcon,
           RightIcon && styles.withRightIcon,
           search && styles.search,
@@ -54,6 +51,7 @@ const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
       {LeftIcon && (
         <div
           className={classNames(
+            styles.iconWrapper,
             styles.leftIconWrapper,
             onLeftIconClick && styles.pointer,
           )}
@@ -65,6 +63,7 @@ const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
       {RightIcon && (
         <div
           className={classNames(
+            styles.iconWrapper,
             styles.rightIconWrapper,
             onLeftIconClick && styles.pointer,
           )}

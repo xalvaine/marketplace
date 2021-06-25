@@ -1,0 +1,53 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &:not(:first-of-type) {
+    padding-left: 52px;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 8px;
+      width: 36px;
+      height: 0;
+      margin: auto;
+      border-bottom: 1px solid $disabled;
+      opacity: 0.2;
+      content: '';
+    }
+  }
+}
+
+.number {
+  display: flex;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  margin: 0 6px 0 2px;
+  color: $monoWhite;
+  font-weight: bold;
+  font-size: 10px;
+  font-feature-settings: 'tnum' on, 'lnum' on;
+  line-height: 14px;
+  background: $disabled;
+  border-radius: 50%;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  fill: $monoWhite;
+}
+
+.activeNumber {
+  background: $default;
+}
+
+.activeTitle {
+  color: $title;
+}

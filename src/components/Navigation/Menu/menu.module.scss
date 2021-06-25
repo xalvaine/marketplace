@@ -1,5 +1,6 @@
 .wrapper {
   display: grid;
+  grid-gap: 4px;
   grid-template-columns: 100%;
   align-content: start;
 }

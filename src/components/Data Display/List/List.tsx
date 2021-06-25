@@ -1,12 +1,10 @@
-import { ComponentProps, ReactElement } from 'react'
+import { ReactNode } from 'react'
 import classNames from 'classnames'
 import Item from './Item'
 import styles from './item.module.scss'
 
 interface Props {
-  children?:
-    | ReactElement<ComponentProps<typeof Item>>
-    | ReactElement<ComponentProps<typeof Item>>[]
+  children?: ReactNode
   className?: string
 }
 
