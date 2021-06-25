@@ -11,31 +11,31 @@
 .wrapper {
   z-index: 2;
   transition: opacity 0.3s;
+}
 
-  .button {
-    display: flex;
-  }
+.button {
+  display: flex;
+}
 
-  .shadow {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.15);
-    cursor: pointer;
-  }
+.shadow {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
 
-  .dropdown {
-    position: absolute;
-    top: 106px;
-    right: 0;
-    left: 0;
-    display: grid;
-    grid-gap: 30px;
-    grid-template-columns: 210px 1fr;
-    margin: auto;
-    padding: 12px calc(50% - 465px) 32px;
-    background: $monoWhite;
-  }
+.dropdown {
+  position: absolute;
+  top: 106px;
+  right: 0;
+  left: 0;
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: 210px 1fr;
+  margin: auto;
+  padding: 12px calc(50% - 465px) 32px;
+  background: $monoWhite;
 }
