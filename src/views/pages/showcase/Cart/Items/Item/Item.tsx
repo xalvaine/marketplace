@@ -39,6 +39,7 @@ const Item = (props: Props) => {
       <Link
         className={styles.imageWrapper}
         href={{ pathname: PATH.PRODUCT, query: { product: item.id } }}
+        prefetch={false}
       >
         <img
           alt=""
