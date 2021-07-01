@@ -38,6 +38,7 @@ const ProductCard = (props: Props) => {
           product: product.id,
           category: query.category,
           group: query.group,
+          subcategory: query.subcategory,
         },
       }}
       prefetch={false}

@@ -42,7 +42,7 @@ const Bread = (props: Props) => {
                 category: query.category,
               },
             }}
-            text="Продукты питания"
+            text={`Категория с id ${query.category}`}
           />
           <Breadcrumbs.Item
             href={{
@@ -52,7 +52,18 @@ const Bread = (props: Props) => {
                 group: query.group,
               },
             }}
-            text="Сладости"
+            text={`Группа с id ${query.group}`}
+          />
+          <Breadcrumbs.Item
+            href={{
+              pathname: PATH.SUBCATEGORY,
+              query: {
+                category: query.category,
+                group: query.group,
+                subcategory: query.subcategory,
+              },
+            }}
+            text={`Подкатегория с id ${query.subcategory}`}
           />
         </Breadcrumbs>
       ) : (

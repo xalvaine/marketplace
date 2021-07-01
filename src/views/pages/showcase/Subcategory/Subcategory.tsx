@@ -1,4 +1,4 @@
-import { Link, Button, List, Typography, Breadcrumbs } from '@/components'
+import { Link, Button, Typography, Breadcrumbs } from '@/components'
 import { BxArrowBack } from '@/icons'
 import { PATH } from '@/config'
 import { useProducts } from '@/hooks'
@@ -6,17 +6,17 @@ import { declareNumber, useMediaQuery } from '@/utils'
 import Products from '@/views/common/Products'
 import { useRouter } from 'next/router'
 import { Category } from '@/interfaces'
-import styles from './group.module.scss'
+import styles from './subcategory.module.scss'
 
 interface Props {
-  group: Category<Category>
+  subcategory: Category<Category>
 }
 
-const Group = (props: Props) => {
-  const { group } = props
+const Subcategory = (props: Props) => {
+  const { subcategory } = props
   const router = useRouter()
   const { data: products } = useProducts({
-    category_id: router.query.group as string,
+    category_id: router.query.subcategory as string,
   })
   const { matches } = useMediaQuery(`(min-width: 1024px)`)
 
@@ -33,7 +33,17 @@ const Group = (props: Props) => {
             }}
             text={`Категория с id ${router.query.category}`}
           />
-          <Breadcrumbs.Item text={group.name} />
+          <Breadcrumbs.Item
+            href={{
+              pathname: PATH.GROUP,
+              query: {
+                category: router.query.category,
+                group: router.query.group,
+              },
+            }}
+            text={`Группа с id ${router.query.group}`}
+          />
+          <Breadcrumbs.Item text={subcategory.name} />
         </Breadcrumbs>
       ) : (
         <Link
@@ -49,30 +59,13 @@ const Group = (props: Props) => {
       )}
 
       <Typography.Title className={styles.title} level={4}>
-        {group.name}
+        {subcategory.name}
       </Typography.Title>
       <Typography.Text disabled className={styles.count}>
         {products?.total}{' '}
         {products &&
           declareNumber(products?.total, [`товар`, `товара`, `товаров`])}
       </Typography.Text>
-      <List className={styles.tabs} type={matches ? `tile` : `text`}>
-        {group.categories.map((subCategory) => (
-          <List.Item
-            key={subCategory.id}
-            href={{
-              pathname: PATH.SUBCATEGORY,
-              query: {
-                category: router.query.category,
-                group: router.query.group,
-                subcategory: subCategory.id,
-              },
-            }}
-          >
-            {subCategory.name}
-          </List.Item>
-        ))}
-      </List>
       <div className={styles.productsWrapper}>
         <div className={styles.filters}>Фильтры</div>
         <Products products={products?.items} />
@@ -81,4 +74,4 @@ const Group = (props: Props) => {
   )
 }
 
-export default Group
+export default Subcategory

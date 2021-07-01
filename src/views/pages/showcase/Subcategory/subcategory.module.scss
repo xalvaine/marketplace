@@ -15,10 +15,6 @@
   margin-bottom: 16px;
 }
 
-.tabs {
-  margin-bottom: 16px;
-}
-
 @media (min-width: 1024px) {
   .wrapper {
     margin-bottom: 100px;
@@ -29,10 +25,6 @@
     display: grid;
     grid-gap: 30px;
     grid-template-columns: 130px 1fr;
-  }
-
-  .tabs {
-    //display: none;
   }
 
   .filters {
