@@ -57,16 +57,14 @@ const Checkout = () => {
         </div>
         <div className={styles.totals}>
           <Totals />
-          <Link href={PATH.RESULT}>
-            <Button
-              block
-              className={styles.submit}
-              size="large"
-              onClick={handleSubmit}
-            >
-              Оплатить заказ
-            </Button>
-          </Link>
+          <Button
+            block
+            className={styles.submit}
+            size="large"
+            onClick={handleSubmit}
+          >
+            Оплатить заказ
+          </Button>
           <Typography.Text className={styles.comment}>
             Нажимая на кнопку, вы соглашаетесь с <a>условиями обработки</a>{' '}
             персональных данных и <a>условиями</a> продажи товаров

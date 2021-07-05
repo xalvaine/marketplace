@@ -26,12 +26,14 @@ const Panel = (props: Props) => {
   const handleSubmit = async () => {
     if (!point) return
     await postUserAddress({
-      ...point,
+      code: point.code,
+      courier_code: point.courierCode,
       address: point.address,
       is_primary: true,
       type: `pickpoint`,
       name: `Постамат ${point.courier} ${point.code}`,
       work_time: point.workTime,
+      payment_methods: point.paymentMethods,
     })
     await router.push(PATH.CHECKOUT)
   }
