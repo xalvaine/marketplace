@@ -1,6 +1,11 @@
 import { Button, Link, Typography } from '@/components'
 import { BxArrowBack } from '@/icons'
 import { PATH } from '@/config'
+import { usePostOrders } from '@/hooks'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/pages/_app'
+import { useRouter } from 'next/router'
+import moment from 'moment'
 import styles from './checkout.module.scss'
 import Tariff from './TariffBlock'
 import Payment from './Payment'
@@ -9,6 +14,26 @@ import Totals from './Totals'
 import Receiver from './ReceiverBlock'
 
 const Checkout = () => {
+  const { mutateAsync: postOrders } = usePostOrders()
+  const order = useSelector((state: RootState) => state.checkout.order)
+  const router = useRouter()
+
+  const handleSubmit = async () => {
+    try {
+      await postOrders({
+        ...order,
+        desired_time_period_start: `12:00`,
+        desired_time_period_end: `23:00`,
+        payment_method: `CODE_CASH`,
+        delivery_code: `self_pickup`,
+        desired_date: moment().subtract(10, `days`).format(`YYYY-MM-DD`),
+      })
+      await router.push({ pathname: PATH.RESULT, query: { result: `success` } })
+    } catch {
+      await router.push({ pathname: PATH.RESULT, query: { result: `failure` } })
+    }
+  }
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.head}>
@@ -33,7 +58,12 @@ const Checkout = () => {
         <div className={styles.totals}>
           <Totals />
           <Link href={PATH.RESULT}>
-            <Button block className={styles.submit} size="large">
+            <Button
+              block
+              className={styles.submit}
+              size="large"
+              onClick={handleSubmit}
+            >
               Оплатить заказ
             </Button>
           </Link>

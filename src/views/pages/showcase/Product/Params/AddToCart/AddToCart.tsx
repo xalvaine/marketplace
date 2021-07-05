@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Button, Typography } from '@/components'
 import Layout from '@/views/common/Layout'
 import { BxHeart } from '@/icons'
-import { useCartPost } from '@/hooks/showcase/useCart'
+import { usePostCart } from '@/hooks/showcase/useCart'
 import { Product } from '@/interfaces'
 import styles from './add-to-cart.module.scss'
 
@@ -15,7 +15,7 @@ const AddToCart = (props: Props) => {
   const { product, variantId } = props
   const [visible, setVisible] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
-  const { mutateAsync: mutateCart } = useCartPost()
+  const { mutateAsync: mutateCart } = usePostCart()
 
   const handleScroll = () => {
     if (buttonRef.current) {

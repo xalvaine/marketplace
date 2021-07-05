@@ -26,6 +26,7 @@ const Panel = (props: Props) => {
   const handleSubmit = async () => {
     if (!point) return
     await postUserAddress({
+      ...point,
       address: point.address,
       is_primary: true,
       type: `pickpoint`,
