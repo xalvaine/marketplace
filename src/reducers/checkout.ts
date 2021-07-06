@@ -3,7 +3,7 @@ import { City, Order } from '@/interfaces'
 
 interface InitialState {
   city?: City
-  order?: Partial<Order>
+  order: Partial<Order>
 }
 
 const checkoutSlice = createSlice({

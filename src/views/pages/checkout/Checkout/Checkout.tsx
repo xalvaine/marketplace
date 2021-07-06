@@ -24,7 +24,7 @@ const Checkout = () => {
         ...order,
         desired_time_period_start: `12:00`,
         desired_time_period_end: `23:00`,
-        payment_method: `CODE_CASH`,
+        payment_method: order.payment_method,
         delivery_code: `self_pickup`,
         desired_date: moment().subtract(10, `days`).format(`YYYY-MM-DD`),
       })
@@ -60,6 +60,9 @@ const Checkout = () => {
           <Button
             block
             className={styles.submit}
+            disabled={
+              !(order.payment_method && order.receiver && order.address)
+            }
             size="large"
             onClick={handleSubmit}
           >

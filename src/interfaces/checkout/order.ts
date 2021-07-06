@@ -10,6 +10,7 @@ export interface Order {
   desired_date: string
   desired_time_period_start: string
   desired_time_period_end: string
+  payment_method: string
   comment: string
   receiver: Receiver
   address: UserAddress
