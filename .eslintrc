@@ -16,6 +16,7 @@
   ],
   "root": true,
   "rules": {
+    "@typescript-eslint/quotes": ["error", "backtick"],
     "react/jsx-sort-props": [
       "error",
       {

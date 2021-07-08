@@ -1,0 +1,77 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  background: $monoWhite;
+}
+
+.priceMobile {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.priceDesktop {
+  display: none;
+}
+
+.image {
+  display: none;
+}
+
+.title {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .wrapper {
+    justify-content: flex-start;
+    padding: 11px 47px;
+  }
+
+  .image {
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin-right: 16px;
+    object-fit: contain;
+    border-radius: 4px;
+  }
+
+  .title {
+    display: block;
+    margin-right: auto;
+  }
+
+  .priceMobile {
+    display: none;
+  }
+
+  .priceDesktop {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 4px;
+    align-items: start;
+    justify-content: start;
+    margin-right: 16px;
+  }
+
+  .defaultPrice {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .newPrice {
+    color: $default;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .oldPrice {
+    color: $disabled;
+    font-size: 16px;
+    line-height: 28px;
+  }
+}

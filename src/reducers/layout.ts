@@ -7,6 +7,7 @@ interface InitialState {
   simplifyLayout?: boolean
   hideLayout?: boolean
   hideBodyOverflow?: boolean
+  expandDesktopHeader?: boolean
 }
 
 const layoutSlice = createSlice({
@@ -25,9 +26,16 @@ const layoutSlice = createSlice({
     setHideBodyOverflow: (state, action: PayloadAction<boolean>) => {
       state.hideBodyOverflow = action.payload
     },
+    setExpandDesktopHeader: (state, action: PayloadAction<boolean>) => {
+      state.expandDesktopHeader = action.payload
+    },
   },
 })
 
-export const { setLayoutParams, setShowCatalog, setHideBodyOverflow } =
-  layoutSlice.actions
+export const {
+  setLayoutParams,
+  setShowCatalog,
+  setHideBodyOverflow,
+  setExpandDesktopHeader,
+} = layoutSlice.actions
 export const reducer = layoutSlice.reducer

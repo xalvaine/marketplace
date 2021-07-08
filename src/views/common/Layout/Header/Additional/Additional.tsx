@@ -1,9 +1,10 @@
 import { Typography } from '@/components'
+import { ForwardedRef, forwardRef } from 'react'
 import styles from './additional.module.scss'
 
-const Additional = () => {
+const Additional = forwardRef((_, ref: ForwardedRef<HTMLDivElement>) => {
   return (
-    <section className={styles.wrapper}>
+    <section ref={ref} className={styles.wrapper}>
       <ul className={styles.list}>
         <li className={styles.item}>
           <Typography.Text secondary weight="medium">
@@ -28,6 +29,7 @@ const Additional = () => {
       </ul>
     </section>
   )
-}
+})
+Additional.displayName = `Additional`
 
 export default Additional
