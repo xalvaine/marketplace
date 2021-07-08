@@ -9,6 +9,11 @@
   margin: 0 15px;
   padding-top: 16px;
   background: $monoWhite;
+  transition: box-shadow 0.3s;
+}
+
+.headerShadowed {
+  composes: header;
 }
 
 .button {
@@ -42,13 +47,39 @@
 @media (min-width: 1024px) {
   .header {
     position: sticky;
-    top: 0;
+    top: -1px;
     z-index: 3;
     grid-auto-flow: column;
     grid-gap: 16px;
     grid-template-columns: auto auto 1fr auto;
     margin: 0;
     padding: 16px calc(50% - 465px);
+    transition: box-shadow 0.3s, transform 0.15s 0.15s;
+  }
+
+  .headerHidden {
+    transform: translateY(-100%);
+    transition: box-shadow 0.3s, transform 0.15s;
+  }
+
+  .headerShadowed {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  }
+
+  .headerExpansion {
+    position: fixed;
+    top: 0;
+    z-index: 4;
+    width: 100%;
+    background: $monoWhite;
+    transform: translateY(-100%);
+    transition: box-shadow 0.3s, transform 0.15s;
+  }
+
+  .headerExpansionShown {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transform: translateY(0);
+    transition: box-shadow 0.3s, transform 0.15s 0.15s;
   }
 
   .button {

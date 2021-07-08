@@ -28,7 +28,7 @@ const Delivery = (props: Props) => {
       <Progress maxValue={3000} value={cart?.total_price} />
       {cart && cart?.total_price < 3000 ? (
         <Typography.Text secondary className={styles.text}>
-          До бесплатной доставки:{' '}
+          До бесплатной доставки:{` `}
           <span className={styles.price}>{3000 - cart.total_price} ₽</span>
         </Typography.Text>
       ) : (

@@ -51,7 +51,7 @@ const Code = () => {
           Введите код
         </Typography.Title>
         <Typography.Text>
-          Мы отправили проверочный код на номер{' '}
+          Мы отправили проверочный код на номер{` `}
           <Typography.Text inline weight="semibold">
             {username}
           </Typography.Text>
@@ -71,8 +71,10 @@ const Code = () => {
         <Timer />
         <Form.Item name="agree" valuePropName="checked">
           <Checkbox className={styles.checkbox}>
-            Согласен с <span className={styles.link}>обработкой</span>{' '}
-            персональных данных и <span className={styles.link}>условиями</span>{' '}
+            Согласен с <span className={styles.link}>обработкой</span>
+            {` `}
+            персональных данных и <span className={styles.link}>условиями</span>
+            {` `}
             продажи товаров
           </Checkbox>
         </Form.Item>

@@ -15,7 +15,7 @@ const Totals = (props: Props) => {
         Вес заказа: <span className={styles.right}>1, 20 кг.</span>
       </Typography.Text>
       <Typography.Text className={styles.text} weight="medium">
-        Товаров ({cart?.items.length}){' '}
+        Товаров ({cart?.items.length}){` `}
         <span className={styles.right}>{cart?.total_price} ₽</span>
       </Typography.Text>
       <Typography.Text className={styles.total} weight="bold">

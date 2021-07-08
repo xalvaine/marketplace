@@ -35,8 +35,8 @@ const Modal = (props: Props) => {
   useEffect(() => {
     const close = (event: KeyboardEvent) =>
       onClose && event.key === `Escape` && onClose()
-    window.addEventListener('keydown', close)
-    return () => window.removeEventListener('keydown', close)
+    window.addEventListener(`keydown`, close)
+    return () => window.removeEventListener(`keydown`, close)
   }, [onClose])
 
   if (!modalWrapper) return null

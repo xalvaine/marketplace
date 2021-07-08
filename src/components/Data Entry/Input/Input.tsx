@@ -24,7 +24,7 @@ type Props = Omit<
 const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const {
     className,
-    size = 'normal',
+    size = `normal`,
     leftIcon: LeftIcon,
     rightIcon: RightIcon,
     search,

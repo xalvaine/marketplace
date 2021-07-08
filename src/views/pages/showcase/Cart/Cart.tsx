@@ -17,7 +17,8 @@ const Cart = () => {
           Корзина
         </Typography.Title>
         <Typography.Text className={styles.count}>
-          {cart?.items.length}{' '}
+          {cart?.items.length}
+          {` `}
           {cart &&
             declareNumber(cart?.items.length, [`товар`, `товара`, `товаров`])}
         </Typography.Text>

@@ -52,7 +52,8 @@ const Group = (props: Props) => {
         {group.name}
       </Typography.Title>
       <Typography.Text disabled className={styles.count}>
-        {products?.total}{' '}
+        {products?.total}
+        {` `}
         {products &&
           declareNumber(products?.total, [`товар`, `товара`, `товаров`])}
       </Typography.Text>

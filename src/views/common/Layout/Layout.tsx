@@ -5,6 +5,7 @@ import Header from './Header'
 import TabBar from './TabBar'
 import Footer from './Footer'
 import TabBarExpansion from './TabBar/TabBarExpansion'
+import HeaderExpansion from './Header/HeaderExpansion'
 import styles from './layout.module.scss'
 
 interface Props {
@@ -44,5 +45,6 @@ const Layout = (props: Props) => {
   )
 }
 
+Layout.HeaderExpansion = HeaderExpansion
 Layout.TabBarExpansion = TabBarExpansion
 export default Layout
