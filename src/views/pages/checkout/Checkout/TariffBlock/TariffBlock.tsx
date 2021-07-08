@@ -15,7 +15,8 @@ const TariffBlock = () => {
   const tariff = addresses?.find((address) => address.is_primary)
 
   useEffect(
-    () => void (tariff && dispatch(checkout.patchOrder({ address: tariff }))),
+    () =>
+      void (tariff && dispatch(checkout.patchOrder({ user_address: tariff }))),
     [dispatch, tariff],
   )
 

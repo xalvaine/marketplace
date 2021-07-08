@@ -61,7 +61,7 @@ const Checkout = () => {
             block
             className={styles.submit}
             disabled={
-              !(order.payment_method && order.receiver && order.address)
+              !(order.payment_method && order.receiver && order.user_address)
             }
             size="large"
             onClick={handleSubmit}

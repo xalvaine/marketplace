@@ -47,7 +47,7 @@ const Panel = (props: Props) => {
       {!point && (
         <>
           <Typography.Title className={styles.title} level={6}>
-            Выберете пункт <br /> самовывоза на карте
+            Выберите пункт <br /> самовывоза на карте
           </Typography.Title>
           <Button
             block

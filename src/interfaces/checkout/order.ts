@@ -13,6 +13,6 @@ export interface Order {
   payment_method: string
   comment: string
   receiver: Receiver
-  address: UserAddress
+  user_address: UserAddress
   created_at: string
 }

@@ -29,8 +29,8 @@ const Payment = () => {
             key={radio.value}
             checked={order.payment_method === radio.value}
             disabled={
-              order.address?.type === `pickpoint` &&
-              !order.address.payment_methods.includes(radio.value)
+              order.user_address?.type === `pickpoint` &&
+              !order.user_address.payment_methods.includes(radio.value)
             }
             label={radio.label}
             labelClassName={styles.radioLabel}
