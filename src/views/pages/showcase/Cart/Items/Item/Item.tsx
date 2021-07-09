@@ -77,6 +77,9 @@ const Item = (props: Props) => {
           <Typography.Text secondary className={styles.name} weight="medium">
             {item.name || `Без названия`}
           </Typography.Text>
+          <Typography.Text disabled secondary>
+            {item.weight} г.
+          </Typography.Text>
         </div>
         <div className={styles.amount}>
           <div className={styles.quantity}>
