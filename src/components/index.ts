@@ -6,7 +6,7 @@
 export { default as Badge } from './Data Display/Badge'
 export { default as List } from './Data Display/List'
 export { default as Progress } from './Data Display/Progress'
-export { default as Slider } from './Data Display/Slider'
+export { default as Carousel } from './Data Display/Carousel'
 export { default as Tag } from './Data Display/Tag'
 
 //Data entry
@@ -15,6 +15,8 @@ export { default as Form } from './Data Entry/Form'
 export { default as Input } from './Data Entry/Input'
 export { default as Radio } from './Data Entry/Radio'
 export { default as Select } from './Data Entry/Select'
+export { default as Slider } from './Data Entry/Slider'
+export { default as Switch } from './Data Entry/Switch'
 
 //Feedback
 export { default as Modal } from './Feedback/Modal'

@@ -1,0 +1,40 @@
+@import 'src/styles/colors';
+
+.label {
+  display: flex;
+  cursor: pointer;
+}
+
+.input {
+  display: none;
+}
+
+.switch {
+  position: relative;
+  width: 28px;
+  height: 16px;
+  padding: 2px;
+  background: $disabled;
+  border-radius: 16px;
+  transition: background 0.3s;
+
+  &::before {
+    position: absolute;
+    left: 2px;
+    width: 12px;
+    height: 12px;
+    background: $monoWhite;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s;
+    content: '';
+  }
+}
+
+.input:checked ~ .switch {
+  background: $hover;
+
+  &::before {
+    left: 14px;
+  }
+}

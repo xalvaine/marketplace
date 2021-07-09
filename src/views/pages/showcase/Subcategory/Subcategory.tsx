@@ -6,6 +6,7 @@ import { declareNumber, useMediaQuery } from '@/utils'
 import Products from '@/views/common/Products'
 import { useRouter } from 'next/router'
 import { Category } from '@/interfaces'
+import Filters from '@/views/common/Filters'
 import styles from './subcategory.module.scss'
 
 interface Props {
@@ -68,7 +69,9 @@ const Subcategory = (props: Props) => {
           declareNumber(products?.total, [`товар`, `товара`, `товаров`])}
       </Typography.Text>
       <div className={styles.productsWrapper}>
-        <div className={styles.filters}>Фильтры</div>
+        <div className={styles.filters}>
+          <Filters />
+        </div>
         <Products products={products?.items} />
       </div>
     </div>

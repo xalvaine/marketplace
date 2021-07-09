@@ -1,0 +1,15 @@
+@import 'src/styles/colors';
+
+.wrapper {
+  display: grid;
+  grid-gap: 8px;
+}
+
+.title {
+  padding-bottom: 8px;
+}
+
+.more {
+  color: $default;
+  cursor: pointer;
+}

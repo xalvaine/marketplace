@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Slider } from '@/components'
+import { Carousel } from '@/components'
 import { mockSrc } from '@/config'
 import { Product } from '@/interfaces'
 import classNames from 'classnames'
@@ -19,12 +19,12 @@ const Picture = (props: Props) => {
     <div className={classNames(styles.wrapper, className)}>
       <PicturesList images={images} setImage={setImageIndex} />
       <div className={styles.sliderWrapper}>
-        <Slider className={styles.slider}>
-          <Slider.Slide
+        <Carousel className={styles.slider}>
+          <Carousel.Slide
             className={styles.slide}
             image={images[imageIndex]?.url || mockSrc}
           />
-        </Slider>
+        </Carousel>
       </div>
     </div>
   )

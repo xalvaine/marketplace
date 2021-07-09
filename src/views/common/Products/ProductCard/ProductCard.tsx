@@ -1,5 +1,5 @@
 import { Products } from '@/interfaces'
-import { Button, Link, Slider, Typography } from '@/components'
+import { Button, Link, Carousel, Typography } from '@/components'
 import { mockSrc, PATH } from '@/config'
 import classNames from 'classnames'
 import { usePostCart } from '@/hooks/showcase/useCart'
@@ -44,12 +44,12 @@ const ProductCard = (props: Props) => {
       prefetch={false}
     >
       <div className={styles.imageWrapper}>
-        <Slider className={styles.slider}>
-          <Slider.Slide
+        <Carousel className={styles.slider}>
+          <Carousel.Slide
             className={styles.slide}
             image={product.images[0]?.url || mockSrc}
           />
-        </Slider>
+        </Carousel>
       </div>
       <div className={styles.prices}>
         <Typography.Text
