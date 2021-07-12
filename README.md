@@ -1,34 +1,81 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Описание
 
-## Getting Started
+[Next.js-приложение](https://nextjs.org/) созданное с помощью [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-First, run the development server:
+Версия Next.js - 11.
+
+## Запуск
+
+Команда для запуска dev-сервера:
 
 ```bash
 npm run dev
-# or
+# или
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Сервер будет запущен на [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Структура проекта
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Корневой каталог
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+[`.husky/pre-commit`](.husky/pre-commit) - git hooks.
 
-## Learn More
+[`next/types/global.d.ts`](next/types/global.d.ts) - глобальные типы.
 
-To learn more about Next.js, take a look at the following resources:
+[`.env`](.env) - описываются переменные среды. Правила для их наименования можно почитать [здесь](https://nextjs.org/docs/basic-features/environment-variables).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+[`.babel.config.js`](.babel.config.js) - конфиг babel (возможно потребуется редактировать для тестов).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+[`jest.config.js`](jest.config.js) - конфиг jest.
 
-## Deploy on Vercel
+[`next.config.js`](next.config.js) - конфиг next.js, редактируемый, как правило, для добавления новых модулей сборщика.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[`.eslintrc`](.eslintrc) - конфиг линтера js/ts.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[`.prettierrc`](.prettierrc) - конфиг форматтера.
+
+[`.stylelintrc`](.stylelintrc) - конфиг линтера css.
+
+[`tsconfig.json`](tsconfig.json) - конфиг typescript.
+
+[`deploy.sh`](deploy.sh) - скрипт для деплоя.
+
+### Папка src
+
+[`api`](src/api) - конфиги для axios.
+
+[`components`](src/components) - универсальные и переиспользуемые компоненты. Их наименования и разделение на категории в основном совпадает с [компонентами ant-design](https://ant.design/components/overview/).
+
+[`hooks`](src/hooks) - хуки react-query.
+
+[`icons`](src/icons) - иконки. При экспорте иконки из figma важно стереть у неё все поля fill, width и height, дабы иконку потом можно было перекрасить с помощью CSS.
+
+[`interfaces`](src/interfaces) - интерфейсы.
+
+[`pages`](src/pages) - роутинг от Next.js. Подробнее о нём [здесь](https://nextjs.org/docs/routing/introduction) и [здесь](https://nextjs.org/docs/routing/dynamic-routes). О функциях фетчинга можно почитать [тут](https://nextjs.org/docs/basic-features/pages) и [тут](https://nextjs.org/docs/basic-features/data-fetching). Также в файлах внутри [`pages`](src/pages) по возможности расположены различные функции, вызывающиеся при открытии конкретной страницы.
+
+[`reducers`](src/reducers) - всё, что связано с redux расположено здесь.
+
+[`styles`](src/styles) - глобальные CSS-стили.
+
+[`utils`](src/utils) - полезные и универсальные хуки/функции/классы. Вероятно эту папку стоит нормально структурировать.
+
+[`views`](src/views) - неуниверсальные UI-компоненты. Внутри [`views/common`](src/views/common) расположены переиспользуемые компоненты, внутри [`views/pages`](src/views/pages) - непереиспользуемые. Структура последних соответствует их вложенности друг в друга на страницах.
+
+[`config.ts`](src/config.ts) - конфиг.
+
+Поскольку back-end разделен на три отдельных сервиса: публичную витрину, оформление заказа и модуль авторизации, во фронте имеется аналогичное разделение на showcase, checkout и authorization соответственно.
+
+## Развертка
+
+Ради экономии ресурсов сервера, который однажды был намертво положен сборкой фронта, Next.js предварительно собирается локально.
+
+Команда для деплоя:
+
+```bash
+npm run deploy
+# или
+yarn deploy
+```
