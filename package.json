@@ -10,7 +10,8 @@
     "test:watch": "jest --watch",
     "stylelint": "npx stylelint \"**/*.scss\" --fix",
     "eslint": "eslint \"src/**/*.{js,ts,jsx,tsx}\" --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "deploy": "bash deploy.sh"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.0",
