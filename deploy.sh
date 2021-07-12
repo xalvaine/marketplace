@@ -13,8 +13,9 @@ rm $base.tar.gz -f
 
 ssh dev@178.154.232.196 "docker system prune -f
 cd face
-cd $base
-rm .next -rf
+cd store-frontend
+docker-compose stop
+sudo rm .next -rf
 echo Unpacking the archive...
 tar -xzf $base.tar.gz
 rm $base.tar.gz -rf
