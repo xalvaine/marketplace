@@ -1,4 +1,4 @@
-import { Link, List } from '@/components'
+import { List } from '@/components'
 import { useCategories } from '@/hooks'
 import { PATH } from '@/config'
 import styles from './categories.module.scss'
@@ -10,12 +10,13 @@ const Categories = () => {
     <section className={styles.wrapper}>
       <List className={styles.list}>
         {categories?.map((category) => (
-          <Link
+          <List.Item
             key={category.id}
+            className={styles.item}
             href={{ pathname: PATH.CATEGORY, query: { category: category.id } }}
           >
-            <List.Item>{category.name}</List.Item>
-          </Link>
+            {category.name}
+          </List.Item>
         ))}
       </List>
     </section>

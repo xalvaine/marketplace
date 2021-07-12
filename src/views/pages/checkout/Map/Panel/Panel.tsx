@@ -26,11 +26,14 @@ const Panel = (props: Props) => {
   const handleSubmit = async () => {
     if (!point) return
     await postUserAddress({
+      code: point.code,
+      courier_code: point.courierCode,
       address: point.address,
       is_primary: true,
       type: `pickpoint`,
-      name: `Постамат - ${point.code}`,
+      name: `Постамат ${point.courier} ${point.code}`,
       work_time: point.workTime,
+      payment_methods: point.paymentMethods,
     })
     await router.push(PATH.CHECKOUT)
   }
@@ -44,7 +47,7 @@ const Panel = (props: Props) => {
       {!point && (
         <>
           <Typography.Title className={styles.title} level={6}>
-            Выберете пункт <br /> самовывоза на карте
+            Выберите пункт <br /> самовывоза на карте
           </Typography.Title>
           <Button
             block

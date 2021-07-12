@@ -1,0 +1,14 @@
+.slider {
+  margin: 12px 0;
+}
+
+.inputs {
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: 1fr 1fr;
+
+  input {
+    height: 24px;
+    padding: 2px 14px;
+  }
+}

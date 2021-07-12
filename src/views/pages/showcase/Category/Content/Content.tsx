@@ -18,7 +18,8 @@ const Content = (props: Props) => {
         {category.name}
       </Typography.Title>
       <Typography.Text disabled className={styles.count}>
-        {category.categories.length}{' '}
+        {category.categories.length}
+        {` `}
         {declareNumber(category.categories.length, [
           `товар`,
           `товара`,

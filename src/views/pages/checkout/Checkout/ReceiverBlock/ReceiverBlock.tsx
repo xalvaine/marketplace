@@ -1,15 +1,23 @@
 import { Modal, Typography } from '@/components'
 import { BxsRightArrow } from '@/icons'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useReceivers } from '@/hooks'
+import { useDispatch } from 'react-redux'
+import { checkout } from '@/reducers'
 import styles from './receiverBlock.module.scss'
 import Receivers from './Receivers'
 
 const ReceiverBlock = () => {
+  const dispatch = useDispatch()
   const { data: receivers } = useReceivers()
   const [visible, setVisible] = useState(false)
 
   const receiver = receivers?.find((receiver) => receiver.is_primary)
+
+  useEffect(
+    () => void (receiver && dispatch(checkout.patchOrder({ receiver }))),
+    [dispatch, receiver],
+  )
 
   return (
     <>

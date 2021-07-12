@@ -5,6 +5,7 @@ export const PATH = {
   CATALOG: `/catalog`,
   CATEGORY: `/catalog/[category]`,
   GROUP: `/catalog/[category]/[group]`,
+  SUBCATEGORY: `/catalog/[category]/[group]/[subcategory]`,
   PRODUCT: `/products/[product]`,
   FAVOURITES: `/favorites`,
   CART: `/cart`,

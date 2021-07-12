@@ -7,4 +7,12 @@
 
 .text {
   color: $title;
+  white-space: nowrap;
+}
+
+.tile {
+  margin-right: 8px;
+  margin-bottom: 8px;
+  background: $selected;
+  border-radius: 10px;
 }

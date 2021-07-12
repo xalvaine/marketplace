@@ -16,7 +16,7 @@ interface Props extends Swiper {
     | ReactElement<ComponentProps<typeof Slide>>[]
 }
 
-const Slider = (props: Props) => {
+const Carousel = (props: Props) => {
   const {
     children,
     className,
@@ -78,5 +78,5 @@ const Slider = (props: Props) => {
   )
 }
 
-Slider.Slide = Slide
-export default Slider
+Carousel.Slide = Slide
+export default Carousel

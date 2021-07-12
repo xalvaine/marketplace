@@ -9,73 +9,96 @@
   margin: 0 15px;
   padding-top: 16px;
   background: $monoWhite;
+  transition: box-shadow 0.3s;
+}
 
-  .button {
-    display: none;
-  }
+.headerShadowed {
+  composes: header;
+}
 
-  .icon {
-    width: 24px;
-    height: 24px;
-    fill: $disabled;
-  }
+.button {
+  display: none;
+}
 
-  .logo {
-    display: flex;
-    width: auto;
-    height: 16px;
-  }
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: $disabled;
+}
 
-  .search {
-    grid-column: 1 / 4;
-    order: 1;
-    width: 100%;
-  }
+.logo {
+  display: flex;
+  width: auto;
+  height: 16px;
+}
+
+.search {
+  grid-column: 1 / 4;
+  order: 1;
+  width: 100%;
 }
 
 .simpleHeader {
   display: flex;
   justify-content: center;
   padding: 16px 0 8px;
-
-  .logo {
-    display: flex;
-    width: auto;
-    height: 16px;
-  }
 }
 
 @media (min-width: 1024px) {
   .header {
+    position: sticky;
+    top: -1px;
     z-index: 3;
     grid-auto-flow: column;
     grid-gap: 16px;
     grid-template-columns: auto auto 1fr auto;
     margin: 0;
     padding: 16px calc(50% - 465px);
+    transition: box-shadow 0.3s, transform 0.15s 0.15s;
+  }
 
-    .button {
-      display: flex;
-    }
+  .headerHidden {
+    transform: translateY(-100%);
+    transition: box-shadow 0.3s, transform 0.15s;
+  }
 
-    .logo {
-      height: 20px;
-    }
+  .headerShadowed {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  }
 
-    .bellBadge {
-      display: none;
-    }
+  .headerExpansion {
+    position: fixed;
+    top: 0;
+    z-index: 4;
+    width: 100%;
+    background: $monoWhite;
+    transform: translateY(-100%);
+    transition: box-shadow 0.3s, transform 0.15s;
+  }
 
-    .search {
-      grid-column: 3;
-    }
+  .headerExpansionShown {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transform: translateY(0);
+    transition: box-shadow 0.3s, transform 0.15s 0.15s;
+  }
+
+  .button {
+    display: flex;
+  }
+
+  .logo {
+    height: 20px;
+  }
+
+  .bellBadge {
+    display: none;
+  }
+
+  .search {
+    grid-column: 3;
   }
 
   .simpleHeader {
     padding: 26px 0;
-
-    .logo {
-      height: 20px;
-    }
   }
 }

@@ -11,34 +11,24 @@
   padding: 0 15px;
   background: $monoWhite;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+}
 
-  .tabBarExpansion {
-    grid-column: 1 / 5;
-  }
+.tabBarExpansion {
+  grid-column: 1 / 5;
+}
 
-  .icon {
-    width: 26px;
-    height: 26px;
-    fill: $disabled;
-  }
+.icon {
+  width: 26px;
+  height: 26px;
+  fill: $disabled;
+}
 
-  .item {
-    display: grid;
-    justify-items: center;
-    padding: 8px 0;
+.item {
+  display: grid;
+  justify-items: center;
+  padding: 8px 0;
 
-    &:active {
-      .text {
-        color: $default;
-      }
-
-      .icon {
-        fill: $default;
-      }
-    }
-  }
-
-  .itemSelected {
+  &:active {
     .text {
       color: $default;
     }
@@ -46,6 +36,16 @@
     .icon {
       fill: $default;
     }
+  }
+}
+
+.itemSelected {
+  .text {
+    color: $default;
+  }
+
+  .icon {
+    fill: $default;
   }
 }
 

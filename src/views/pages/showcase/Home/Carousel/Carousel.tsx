@@ -1,18 +1,18 @@
-import { Slider } from '@/components'
+import { Carousel } from '@/components'
 import { mockSrc } from '@/config'
 import { useMediaQuery } from '@/utils'
 import styles from './carousel.module.scss'
 
-const Carousel = () => {
+const CarouselView = () => {
   const { matches } = useMediaQuery(`(min-width: 1024px)`)
   return (
-    <Slider className={styles.slider} controls={matches}>
-      <Slider.Slide image={mockSrc} />
-      <Slider.Slide image={mockSrc} />
-      <Slider.Slide image={mockSrc} />
-      <Slider.Slide image={mockSrc} />
-    </Slider>
+    <Carousel className={styles.slider} controls={matches}>
+      <Carousel.Slide image={mockSrc} />
+      <Carousel.Slide image={mockSrc} />
+      <Carousel.Slide image={mockSrc} />
+      <Carousel.Slide image={mockSrc} />
+    </Carousel>
   )
 }
 
-export default Carousel
+export default CarouselView

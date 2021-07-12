@@ -1,8 +1,8 @@
 import { Products } from '@/interfaces'
-import { Button, Link, Slider, Typography } from '@/components'
+import { Button, Link, Carousel, Typography } from '@/components'
 import { mockSrc, PATH } from '@/config'
 import classNames from 'classnames'
-import { useCartPost } from '@/hooks/showcase/useCart'
+import { usePostCart } from '@/hooks/showcase/useCart'
 import React from 'react'
 import { useRouter } from 'next/router'
 import styles from './product-card.module.scss'
@@ -15,7 +15,7 @@ interface Props {
 const ProductCard = (props: Props) => {
   const { query } = useRouter()
   const { product, className } = props
-  const { mutateAsync: mutateCart } = useCartPost()
+  const { mutateAsync: mutateCart } = usePostCart()
 
   const handleAddToCart = async (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -38,17 +38,18 @@ const ProductCard = (props: Props) => {
           product: product.id,
           category: query.category,
           group: query.group,
+          subcategory: query.subcategory,
         },
       }}
       prefetch={false}
     >
       <div className={styles.imageWrapper}>
-        <Slider className={styles.slider}>
-          <Slider.Slide
+        <Carousel className={styles.slider}>
+          <Carousel.Slide
             className={styles.slide}
             image={product.images[0]?.url || mockSrc}
           />
-        </Slider>
+        </Carousel>
       </div>
       <div className={styles.prices}>
         <Typography.Text

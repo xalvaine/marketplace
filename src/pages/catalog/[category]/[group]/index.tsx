@@ -2,26 +2,34 @@ import Head from 'next/head'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import Group from '@/views/pages/showcase/Group'
+import { Category } from '@/interfaces'
 import { layout } from '@/reducers'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { showcaseAPI } from '@/api'
 
-// interface Props {
-//   catalog: Catalog
-// }
-//
-// export const getStaticProps: GetStaticProps<Props> = async (context) => {
-//   console.log(context)
-//   if (!context.params?.group) return { revalidate: 60, notFound: true }
-//   const catalog = await getCatalog(context.params.group as string)
-//   console.log(catalog)
-//   return { props: { catalog }, revalidate: 60 }
-// }
-//
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   return { paths: [], fallback: `blocking` }
-// }
+interface Props {
+  group: Category<Category>
+}
 
-const GroupPage = () => {
-  // const { catalog } = props
+export const getStaticProps: GetStaticProps<Props> = async (context) => {
+  if (!context.params?.category) return { revalidate: 60, notFound: true }
+  try {
+    const { data } = await showcaseAPI.get(
+      `/categories/${context.params.group}`,
+    )
+    return { props: { group: data.items[0] }, revalidate: 60 }
+  } catch (error) {
+    console.error(error)
+    return { notFound: true, revalidate: true }
+  }
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return { paths: [], fallback: `blocking` }
+}
+
+const GroupPage = (props: Props) => {
+  const { group } = props
   const dispatch = useDispatch()
 
   useEffect(() => void dispatch(layout.setLayoutParams({ showSearch: true })))
@@ -31,7 +39,7 @@ const GroupPage = () => {
       <Head>
         <title>Сладости</title>
       </Head>
-      <Group />
+      <Group group={group} />
     </>
   )
 }

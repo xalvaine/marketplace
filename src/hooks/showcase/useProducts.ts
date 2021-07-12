@@ -9,12 +9,16 @@ interface Params {
 
 const getProducts = async (params: Params) => {
   const { data } = await showcaseAPI.get(`/products`, { params })
-  return data.items
+  return data
 }
 
 const useProducts = (params: Params) =>
-  useQuery<Products>([`products`, params], () => getProducts(params), {
-    enabled: !!params.category_id,
-  })
+  useQuery<{ items: Products; total: number }>(
+    [`products`, params],
+    () => getProducts(params),
+    {
+      enabled: !!params.category_id,
+    },
+  )
 
 export { getProducts, useProducts }

@@ -23,29 +23,33 @@ const Content = (props: Props) => {
         </Typography.Title>
       </Link>
       <ul className={styles.list}>
-        {category?.categories.map((subCategory) => (
-          <li key={subCategory.id} className={styles.item}>
+        {category?.categories.map((group) => (
+          <li key={group.id} className={styles.item}>
             <Link
               href={{
                 pathname: PATH.GROUP,
-                query: { category: category?.id, group: subCategory.id },
+                query: { category: category?.id, group: group.id },
               }}
               onClick={onSelect}
             >
               <Typography.Title className={styles.subtitle} level={6}>
-                {subCategory.name}
+                {group.name}
               </Typography.Title>
             </Link>
-            {subCategory.categories.map((group) => (
+            {group.categories.map((subCategory) => (
               <Link
-                key={group.id}
+                key={subCategory.id}
                 href={{
-                  pathname: PATH.GROUP,
-                  query: { category: category?.id, group: group.id },
+                  pathname: PATH.SUBCATEGORY,
+                  query: {
+                    category: category?.id,
+                    group: group.id,
+                    subcategory: subCategory.id,
+                  },
                 }}
                 onClick={onSelect}
               >
-                <Typography.Text>{group.name}</Typography.Text>
+                <Typography.Text>{subCategory.name}</Typography.Text>
               </Link>
             ))}
           </li>

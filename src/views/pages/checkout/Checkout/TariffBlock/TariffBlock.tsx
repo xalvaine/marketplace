@@ -1,15 +1,24 @@
 import { Modal, Typography } from '@/components'
 import { BxsRightArrow } from '@/icons'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useUserAddresses } from '@/hooks'
+import { checkout } from '@/reducers'
+import { useDispatch } from 'react-redux'
 import styles from './tariffBlock.module.scss'
 import Addresses from './Addresses'
 
 const TariffBlock = () => {
+  const dispatch = useDispatch()
   const { data: addresses } = useUserAddresses()
   const [visible, setVisible] = useState(false)
 
   const tariff = addresses?.find((address) => address.is_primary)
+
+  useEffect(
+    () =>
+      void (tariff && dispatch(checkout.patchOrder({ user_address: tariff }))),
+    [dispatch, tariff],
+  )
 
   return (
     <>

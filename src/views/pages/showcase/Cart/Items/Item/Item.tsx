@@ -1,9 +1,10 @@
-import { Input, Typography } from '@/components'
-import { mockSrc } from '@/config'
+import { Input, Link, Typography } from '@/components'
+import { mockSrc, PATH } from '@/config'
 import { BxMinus, BxPlus, BxTrashAlt } from '@/icons'
 import { CartItem } from '@/interfaces'
 import { useCartItemDelete, useCartItemPatch } from '@/hooks'
 import { Debouncer } from '@/utils'
+import classNames from 'classnames'
 import styles from './item.module.scss'
 
 interface Props {
@@ -35,15 +36,27 @@ const Item = (props: Props) => {
   }
 
   return (
-    <li className={styles.item}>
-      <div className={styles.imageWrapper}>
+    <li
+      className={classNames(
+        styles.item,
+        !item.is_available && styles.itemOutOfStock,
+      )}
+    >
+      <Link
+        className={styles.imageWrapper}
+        href={{ pathname: PATH.PRODUCT, query: { product: item.id } }}
+        prefetch={false}
+      >
         <img
           alt=""
           className={styles.image}
           src={item.default_image || mockSrc}
         />
-      </div>
+      </Link>
       <div className={styles.right}>
+        <Typography.Text className={styles.outOfStockMobile}>
+          Товар закончился
+        </Typography.Text>
         <div className={styles.prices}>
           <Typography.Text className={styles.price} weight="bold">
             {Number(item.price)} ₽
@@ -58,28 +71,36 @@ const Item = (props: Props) => {
           </Typography.Text>
         </div>
         <div className={styles.info}>
+          <Typography.Text className={styles.outOfStockPC}>
+            Товар закончился
+          </Typography.Text>
           <Typography.Text secondary className={styles.name} weight="medium">
             {item.name || `Без названия`}
           </Typography.Text>
+          <Typography.Text disabled secondary>
+            {item.weight} г.
+          </Typography.Text>
         </div>
         <div className={styles.amount}>
-          <Input
-            readOnly
-            className={styles.count}
-            leftIcon={BxMinus}
-            rightIcon={BxPlus}
-            value={itemsCount[index] || 0}
-            onLeftIconClick={() =>
-              handleChangeItemsCount(itemsCount[index] - 1)
-            }
-            onRightIconClick={() =>
-              handleChangeItemsCount(itemsCount[index] + 1)
-            }
-          />
-          <BxTrashAlt
-            className={styles.trash}
-            onClick={() => deleteCartItem(item.id)}
-          />
+          <div className={styles.quantity}>
+            <Input
+              readOnly
+              className={styles.count}
+              leftIcon={BxMinus}
+              rightIcon={BxPlus}
+              value={itemsCount[index] || 0}
+              onLeftIconClick={() =>
+                handleChangeItemsCount(itemsCount[index] - 1)
+              }
+              onRightIconClick={() =>
+                handleChangeItemsCount(itemsCount[index] + 1)
+              }
+            />
+            <BxTrashAlt
+              className={styles.trash}
+              onClick={() => deleteCartItem(item.id)}
+            />
+          </div>
           <Typography.Text className={styles.singleItemPrice}>
             {Number(item.price) / item.quantity} ₽ / шт.
           </Typography.Text>

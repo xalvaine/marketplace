@@ -39,7 +39,7 @@ const Tariffs = () => {
       {tariffs && (
         <>
           <Typography.Text disabled className={styles.text}>
-            Выберете подходящий способ доставки
+            Выберите подходящий способ доставки
           </Typography.Text>
           <Variant href={PATH.COURIER} tariffs={tariffs} type="COURIER" />
           <Variant href={PATH.MAP} tariffs={tariffs} type="PVZ" />

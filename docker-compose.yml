@@ -6,6 +6,8 @@ services:
     command: node_modules/.bin/next start
     env_file:
       - .env
+    volumes:
+      - ./:/app
   nginx:
     depends_on:
       - frontend

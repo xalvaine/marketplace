@@ -5,8 +5,10 @@ import { Badge, Button, Input, Link } from '@/components'
 import { layout } from '@/reducers'
 import { PATH } from '@/config'
 import { RootState } from '@/pages/_app'
-import Additional from './Additional'
+import { useEffect, useRef, useState } from 'react'
+import classNames from 'classnames'
 import { ReactComponent as Logo } from './assets/logo-small.svg'
+import Additional from './Additional'
 import Icons from './Icons'
 import styles from './header.module.scss'
 import Categories from './Categories'
@@ -14,9 +16,32 @@ import Catalog from './Catalog'
 
 const Header = () => {
   const dispatch = useDispatch()
-  const { showSearch, showCategories, showCatalog, simplifyLayout } =
-    useSelector((state: RootState) => state.layout)
+  const {
+    showSearch,
+    showCategories,
+    showCatalog,
+    simplifyLayout,
+    expandDesktopHeader,
+  } = useSelector((state: RootState) => state.layout)
   const { matches } = useMediaQuery(`(min-width: 1024px)`)
+  const additionalRef = useRef<HTMLDivElement>(null)
+  const expansionRef = useRef<HTMLDivElement>(null)
+  const [shadowVisible, setShadowVisible] = useState(false)
+
+  const handleScroll = () => {
+    if (additionalRef.current) {
+      setShadowVisible(window.scrollY > additionalRef.current.offsetHeight)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener(`scroll`, handleScroll)
+    return () => window.removeEventListener(`scroll`, handleScroll)
+  }, [])
+
+  useEffect(() => {
+    handleScroll()
+  }, [expandDesktopHeader])
 
   if (simplifyLayout) {
     return (
@@ -30,8 +55,21 @@ const Header = () => {
 
   return (
     <>
-      <Additional />
-      <header className={styles.header}>
+      <Additional ref={additionalRef} />
+      <div
+        ref={expansionRef}
+        className={classNames(
+          styles.headerExpansion,
+          expandDesktopHeader && styles.headerExpansionShown,
+        )}
+        id="header-extension-root"
+      />
+      <header
+        className={classNames(
+          shadowVisible ? styles.headerShadowed : styles.header,
+          expandDesktopHeader && styles.headerHidden,
+        )}
+      >
         <Badge dot className={styles.bellBadge} color="#1890ff" count={1}>
           <BxBell className={styles.icon} />
         </Badge>

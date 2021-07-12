@@ -4,29 +4,29 @@
   display: grid;
   grid-auto-flow: column;
   align-items: center;
+}
 
-  .icon {
-    width: 24px;
-    height: 24px;
-    fill: $disabled;
-  }
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: $disabled;
+}
 
-  .pcOnly {
-    display: none;
-  }
+.pcOnly {
+  display: none;
 }
 
 @media (min-width: 1024px) {
   .wrapper {
     grid-gap: 32px;
     padding-left: 16px;
+  }
 
-    .icon {
-      fill: $primary;
-    }
+  .icon {
+    fill: $primary;
+  }
 
-    .pcOnly {
-      display: flex;
-    }
+  .pcOnly {
+    display: flex;
   }
 }

@@ -2,12 +2,19 @@ import { Link, Button, List, Typography, Breadcrumbs } from '@/components'
 import { BxArrowBack } from '@/icons'
 import { PATH } from '@/config'
 import { useProducts } from '@/hooks'
-import { useMediaQuery } from '@/utils'
+import { declareNumber, useMediaQuery } from '@/utils'
 import Products from '@/views/common/Products'
 import { useRouter } from 'next/router'
+import { Category } from '@/interfaces'
+import Filters from '@/views/common/Filters'
 import styles from './group.module.scss'
 
-const Group = () => {
+interface Props {
+  group: Category<Category>
+}
+
+const Group = (props: Props) => {
+  const { group } = props
   const router = useRouter()
   const { data: products } = useProducts({
     category_id: router.query.group as string,
@@ -25,9 +32,9 @@ const Group = () => {
                 category: router.query.category,
               },
             }}
-            text="Продукты питания"
+            text={`Категория с id ${router.query.category}`}
           />
-          <Breadcrumbs.Item text="Сладости" />
+          <Breadcrumbs.Item text={group.name} />
         </Breadcrumbs>
       ) : (
         <Link
@@ -43,22 +50,36 @@ const Group = () => {
       )}
 
       <Typography.Title className={styles.title} level={4}>
-        Сладости
+        {group.name}
       </Typography.Title>
       <Typography.Text disabled className={styles.count}>
-        1 024 товара
+        {products?.total}
+        {` `}
+        {products &&
+          declareNumber(products?.total, [`товар`, `товара`, `товаров`])}
       </Typography.Text>
-      <List className={styles.tabs}>
-        <List.Item>Коллекция</List.Item>
-        <List.Item>Коллекция</List.Item>
-        <List.Item>Коллекция</List.Item>
-        <List.Item>Коллекция</List.Item>
-        <List.Item>Коллекция</List.Item>
-        <List.Item>Коллекция</List.Item>
+      <List className={styles.tabs} type={matches ? `tile` : `text`}>
+        {group.categories.map((subCategory) => (
+          <List.Item
+            key={subCategory.id}
+            href={{
+              pathname: PATH.SUBCATEGORY,
+              query: {
+                category: router.query.category,
+                group: router.query.group,
+                subcategory: subCategory.id,
+              },
+            }}
+          >
+            {subCategory.name}
+          </List.Item>
+        ))}
       </List>
       <div className={styles.productsWrapper}>
-        <div className={styles.filters}>Фильтры</div>
-        <Products products={products} />
+        <div className={styles.filters}>
+          <Filters />
+        </div>
+        <Products products={products?.items} />
       </div>
     </div>
   )

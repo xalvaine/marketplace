@@ -1,6 +1,6 @@
 import { Dispatch, useState } from 'react'
 import SwiperClass from 'swiper/types/swiper-class'
-import { Slider } from '@/components'
+import { Carousel } from '@/components'
 import { mockSrc } from '@/config'
 import { Product } from '@/interfaces'
 import { BxsDownArrow, BxsUpArrow } from '@/icons'
@@ -25,7 +25,7 @@ const PicturesList = (props: Props) => {
           onClick={() => slider?.slidePrev()}
         />
       )}
-      <Slider
+      <Carousel
         className={styles.slider}
         direction="vertical"
         loop={false}
@@ -35,13 +35,13 @@ const PicturesList = (props: Props) => {
         onSwiper={setSlider}
       >
         {images.map((image) => (
-          <Slider.Slide
+          <Carousel.Slide
             key={image.id}
             className={styles.picture}
             image={image.url || mockSrc}
           />
         ))}
-      </Slider>
+      </Carousel>
       {hasScroll && (
         <BxsDownArrow
           className={styles.icon}
